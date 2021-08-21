@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/day_action"
+        android:contentDescription="@string/day"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/day"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/week_action"
+        android:contentDescription="@string/week"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/week"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mouth_action"
+        android:contentDescription="@string/month"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/month"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/year_action"
+        android:contentDescription="@string/year"
+        android:icon="@drawable/ic_calendar"
+        android:title="@string/year"
+        app:showAsAction="ifRoom" />
+
+</menu>
