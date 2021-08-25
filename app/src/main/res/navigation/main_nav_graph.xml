@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/dailyTasksFragment">
+
+    <fragment
+        android:id="@+id/dailyTasksFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.DailyTasksFragment"
+        android:label="@string/daily_tasks"
+        tools:layout="@layout/fragment_daily_tasks">
+
+        <action
+            android:id="@+id/action_dailyTasksFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/addPeriodicTaskFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.AddPeriodicTaskFragment"
+        android:label="@string/add_task"
+        tools:layout="@layout/fragment_add_periodic_task">
+
+        <argument
+            android:name="periodicity"
+            app:argType="com.sibela.smarthabits.domain.model.Periodicity" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weeklyTasksFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.WeeklyTasksFragment"
+        android:label="@string/weekly_tasks"
+        tools:layout="@layout/fragment_weekly_tasks">
+
+        <action
+            android:id="@+id/action_weeklyTasksFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/monthlyTasksFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.MonthlyTasksFragment"
+        android:label="@string/monthly_tasks"
+        tools:layout="@layout/fragment_monthly_tasks">
+
+        <action
+            android:id="@+id/action_monthlyTasksFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/yearlyTasksFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.YearlyTasksFragment"
+        android:label="@string/yearly_tasks"
+        tools:layout="@layout/fragment_yearly_tasks">
+
+        <action
+            android:id="@+id/action_yearlyTasksFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.SettingsFragment"
+        android:label="@string/settings"
+        tools:layout="@layout/fragment_settings">
+
+        <action
+            android:id="@+id/action_settingsFragment_to_dailyTaskListFragment"
+            app:destination="@id/dailyTaskListFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_weeklyTaskListFragment"
+            app:destination="@id/weeklyTaskListFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_monthlyTaskListFragment"
+            app:destination="@id/monthlyTaskListFragment" />
+
+        <action
+            android:id="@+id/action_settingsFragment_to_yearlyTaskListFragment"
+            app:destination="@id/yearlyTaskListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dailyTaskListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.DailyTaskListFragment"
+        android:label="@string/daily_tasks"
+        tools:layout="@layout/fragment_daily_tasks_list">
+
+        <action
+            android:id="@+id/action_dailyTaskListFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
+        <action
+            android:id="@+id/action_dailyTaskListFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/weeklyTaskListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.WeeklyTaskListFragment"
+        android:label="@string/weekly_tasks"
+        tools:layout="@layout/fragment_weekly_task_list">
+
+        <action
+            android:id="@+id/action_weeklyTaskListFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
+        <action
+            android:id="@+id/action_weeklyTaskListFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/monthlyTaskListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.MonthlyTaskListFragment"
+        android:label="@string/monthly_tasks"
+        tools:layout="@layout/fragment_monthly_task_list">
+
+        <action
+            android:id="@+id/action_monthlyTaskListFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
+        <action
+            android:id="@+id/action_monthlyTaskListFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/yearlyTaskListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.YearlyTaskListFragment"
+        android:label="@string/yearly_tasks"
+        tools:layout="@layout/fragment_yearly_task_list">
+
+        <action
+            android:id="@+id/action_yearlyTaskListFragment_to_editTaskFragment"
+            app:destination="@id/editTaskFragment" />
+        <action
+            android:id="@+id/action_yearlyTaskListFragment_to_addPeriodicTaskFragment"
+            app:destination="@id/addPeriodicTaskFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/editTaskFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.EditTaskFragment"
+        android:label="fragment_edit_task"
+        tools:layout="@layout/fragment_edit_task">
+
+        <argument
+            android:name="task"
+            app:argType="com.sibela.smarthabits.domain.model.Task" />
+    </fragment>
+
+</navigation>
