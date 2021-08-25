@@ -115,6 +115,6 @@ class YearlyTasksFragment : Fragment() {
     }
 
     private fun onTaskClicked(task: YearlyTask) {
-        Toast.makeText(requireContext(), task.description, Toast.LENGTH_LONG).show()
+        viewModel.finish(task)
     }
 }

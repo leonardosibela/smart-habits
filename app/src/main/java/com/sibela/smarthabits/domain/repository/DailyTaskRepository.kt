@@ -6,4 +6,5 @@ interface DailyTaskRepository {
 
     suspend fun save(dailyTask: DailyTask)
     suspend fun getTaskFoPeriod(period: Int): List<DailyTask>
+    suspend fun remove(dailyTask: DailyTask)
 }

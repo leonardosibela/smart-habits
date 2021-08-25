@@ -6,4 +6,5 @@ interface YearlyTaskRepository {
 
     suspend fun save(yearlyTask: YearlyTask)
     suspend fun getTasksForPeriod(period: Int): List<YearlyTask>
+    suspend fun remove(yearlyTask: YearlyTask)
 }

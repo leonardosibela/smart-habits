@@ -14,4 +14,6 @@ class MonthlyTaskRepositoryImpl(
     }
 
     override suspend fun getTaskForPeriod(period: Int) = monthlyTaskDao.getTaskForPeriod(period)
+
+    override suspend fun remove(monthlyTask: MonthlyTask) = monthlyTaskDao.delete(monthlyTask)
 }

@@ -13,4 +13,8 @@ class YearlyTaskRepositoryFake : YearlyTaskRepository {
         YearlyTask(0, "Read some pages of a book", false, 1),
         YearlyTask(0, "Exercise for at last 30 min", false, 1),
     )
+
+    override suspend fun remove(yearlyTask: YearlyTask) {
+
+    }
 }

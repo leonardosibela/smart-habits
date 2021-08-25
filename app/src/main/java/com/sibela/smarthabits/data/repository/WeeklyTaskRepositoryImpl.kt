@@ -13,4 +13,6 @@ class WeeklyTaskRepositoryImpl(
     }
 
     override suspend fun getTaskForPeriod(period: Int) = weeklyTaskDao.getTaskForPeriod(period)
+
+    override suspend fun remove(weeklyTask: WeeklyTask) = weeklyTaskDao.delete(weeklyTask)
 }

@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.DailyTask
+import com.sibela.smarthabits.domain.usecase.FinishDailyTaskUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentDailyTasksUseCase
 import com.sibela.smarthabits.extension.asLiveData
 import kotlinx.coroutines.launch
 
 class DailyTasksViewModel(
-    private val getCurrentDailyTasksUseCase: GetCurrentDailyTasksUseCase
+    private val getCurrentDailyTasksUseCase: GetCurrentDailyTasksUseCase,
+    private val finishDailyTaskUseCase: FinishDailyTaskUseCase
 ) : ViewModel() {
 
     private val _tasks: MutableLiveData<PeriodicTaskResult<DailyTask>> =
@@ -30,5 +32,9 @@ class DailyTasksViewModel(
                 }
             }
         }
+    }
+
+    fun finishTask(task: DailyTask) = viewModelScope.launch {
+        finishDailyTaskUseCase(task)
     }
 }

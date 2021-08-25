@@ -14,4 +14,8 @@ class DailyTaskRepositoryFake : DailyTaskRepository {
             DailyTask(0, "Read some pages of a book", false, 1),
             DailyTask(0, "Exercise for at last 30 min", false, 1),
         )
+
+    override suspend fun remove(dailyTask: DailyTask) {
+
+    }
 }

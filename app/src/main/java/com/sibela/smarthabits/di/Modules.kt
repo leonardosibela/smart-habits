@@ -95,8 +95,12 @@ private val mappers = module {
 private val useCases = module {
     single { AddTaskUseCase(get(), get(), get(), get(), get(), get()) }
     single { DeleteTaskUseCase(get()) }
-    single { GetCurrentDailyTasksUseCase(get(), get()) }
     single { EditTaskUseCase(get()) }
+    single { FinishDailyTaskUseCase(get()) }
+    single { FinishMonthlyTaskUseCase(get()) }
+    single { FinishWeeklyTaskUseCase(get()) }
+    single { FinishYearlyTaskUseCase(get()) }
+    single { GetCurrentDailyTasksUseCase(get(), get()) }
     single { GetCurrentMonthlyTasksUseCase(get(), get()) }
     single { GetTasksThatAreDailyUseCase(get()) }
     single { GetTasksThatAreWeeklyUseCase(get()) }
@@ -130,6 +134,12 @@ private val fakeUseCases = module {
         )
     }
     single { EditTaskUseCase(get(qualifier = FakeTaskRepositoryQualifier)) }
+
+    single { FinishDailyTaskUseCase(get(qualifier = FakeDailyTaskRepositoryQualifier)) }
+    single { FinishMonthlyTaskUseCase(get(qualifier = FakeMonthlyTaskRepositoryQualifier)) }
+    single { FinishWeeklyTaskUseCase(get(qualifier = FakeWeeklyTaskRepositoryQualifier)) }
+    single { FinishYearlyTaskUseCase(get(qualifier = FakeYearlyTaskRepositoryQualifier)) }
+
     single {
         GetCurrentMonthlyTasksUseCase(
             get(qualifier = FakeTaskRepositoryQualifier),
@@ -195,15 +205,15 @@ private val fakeUseCases = module {
 private val viewModels = module {
     viewModel { AddPeriodicTaskViewModel(get()) }
     viewModel { DailyTaskListViewModel(get(), get()) }
-    viewModel { DailyTasksViewModel(get()) }
+    viewModel { DailyTasksViewModel(get(), get()) }
     viewModel { EditTaskViewModel(get()) }
     viewModel { MonthlyTaskListViewModel(get(), get()) }
-    viewModel { MonthlyTasksViewModel(get()) }
+    viewModel { MonthlyTasksViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get()) }
     viewModel { WeeklyTaskListViewModel(get(), get()) }
-    viewModel { WeeklyTasksViewModel(get()) }
+    viewModel { WeeklyTasksViewModel(get(), get()) }
     viewModel { YearlyTaskListViewModel(get(), get()) }
-    viewModel { YearlyTasksViewModel(get()) }
+    viewModel { YearlyTasksViewModel(get(), get()) }
 }
 
 object AppModules {

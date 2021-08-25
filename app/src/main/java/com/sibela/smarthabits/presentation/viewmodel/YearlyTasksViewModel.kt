@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.YearlyTask
+import com.sibela.smarthabits.domain.usecase.FinishYearlyTaskUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentYearlyTasksUseCase
 import com.sibela.smarthabits.extension.asLiveData
 import kotlinx.coroutines.launch
 
 class YearlyTasksViewModel(
-    private val getCurrentYearlyTasksUseCase: GetCurrentYearlyTasksUseCase
+    private val getCurrentYearlyTasksUseCase: GetCurrentYearlyTasksUseCase,
+    private val finishYearlyTaskUseCase: FinishYearlyTaskUseCase
 ) : ViewModel() {
 
     private val _tasks: MutableLiveData<PeriodicTaskResult<YearlyTask>> =
@@ -26,5 +28,9 @@ class YearlyTasksViewModel(
                 _tasks.value = PeriodicTaskResult.Success(result.result ?: emptyList())
             }
         }
+    }
+
+    fun finish(yearlyTask: YearlyTask) = viewModelScope.launch {
+        finishYearlyTaskUseCase(yearlyTask)
     }
 }

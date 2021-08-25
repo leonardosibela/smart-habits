@@ -115,6 +115,6 @@ class DailyTasksFragment : Fragment() {
     }
 
     private fun onTaskClicked(task: DailyTask) {
-        Toast.makeText(requireContext(), task.description, Toast.LENGTH_LONG).show()
+        viewModel.finishTask(task)
     }
 }

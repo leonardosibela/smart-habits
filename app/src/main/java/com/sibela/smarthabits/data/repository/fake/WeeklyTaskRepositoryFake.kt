@@ -13,4 +13,8 @@ class WeeklyTaskRepositoryFake : WeeklyTaskRepository {
         WeeklyTask(0, "Read some pages of a book", false, 1),
         WeeklyTask(0, "Exercise for at last 30 min", false, 1),
     )
+
+    override suspend fun remove(weeklyTask: WeeklyTask) {
+        
+    }
 }
