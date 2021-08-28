@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dia</string>
+    <string name="week">Semana</string>
+    <string name="month">Mês</string>
+    <string name="year">Ano</string>
+    <string name="settings">Configurações</string>
+
+
+    <string name="add_task">Adicionar tarefa</string>
+    <string name="edit_task">Editar tarefa</string>
+    <string name="internal_error">Erro interno</string>
+    <string name="no_tasks">Nenhuma tarefa adicionada</string>
+    <string name="description">Descrição</string>
+
+
+    <string name="reset_daily_tasks">Resetar tarefas diárias</string>
+    <string name="reset_weekly_tasks">Resetar tarefas semanais</string>
+    <string name="reset_monthly_tasks">Resetar tarefas mensais</string>
+    <string name="reset_yearly_tasks">Resetar tarefas anuais</string>
+    <string name="list_daily_tasks">Listar tarefas diárias</string>
+    <string name="list_weekly_tasks">Listar tarefas semanais</string>
+    <string name="list_monthly_tasks">Listar tarefas mensais</string>
+    <string name="list_yearly_tasks">Litar tarefas anuais</string>
+    <string name="delete">Deletar</string>
+    <string name="edit">Editar</string>
+    <string name="daily_tasks">Tarefas diárias</string>
+    <string name="weekly_tasks">Tarefas semanais</string>
+    <string name="monthly_tasks">Tarefas mensais</string>
+    <string name="yearly_tasks">Tarefas anuais</string>
+    <string name="task_name_saved">Tarefa %1$s salva!</string>
+</resources>

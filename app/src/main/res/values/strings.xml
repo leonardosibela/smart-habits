@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Smart Habits</string>
+    <string name="app_name" translatable="false">Smart Habits</string>
 
     <string name="day">Day</string>
     <string name="week">Week</string>
@@ -11,7 +11,7 @@
     <string name="add_task">Add task</string>
     <string name="edit_task">Edit task</string>
     <string name="internal_error">Internal error</string>
-    <string name="no_tasks_found">No tasks found</string>
+    <string name="no_tasks">No tasks added</string>
     <string name="description">Description</string>
 
 
