@@ -6,25 +6,25 @@ import com.sibela.smarthabits.domain.usecase.*
 import kotlinx.coroutines.launch
 
 class SettingsViewModel(
-    private val resetDailyTasksUseCase: ResetDailyTasksUseCase,
-    private val resetWeeklyTasksUseCase: ResetWeeklyTasksUseCase,
-    private val resetMonthlyTasksUseCase: ResetMonthlyTasksUseCase,
-    private val resetYearlyTasksUseCase: ResetYearlyTasksUseCase
+    private val resetDailyHabitsUseCase: ResetDailyHabitsUseCase,
+    private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase,
+    private val resetMonthlyHabitsUseCase: ResetMonthlyHabitsUseCase,
+    private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase
 ) : ViewModel() {
 
-    fun resetDailyTasks() = viewModelScope.launch {
-        resetDailyTasksUseCase()
+    fun resetDailyHabits() = viewModelScope.launch {
+        resetDailyHabitsUseCase()
     }
 
-    fun resetWeeklyTasks() = viewModelScope.launch {
-        resetWeeklyTasksUseCase()
+    fun resetWeeklyHabits() = viewModelScope.launch {
+        resetWeeklyHabitsUseCase()
     }
 
-    fun resetMonthlyTasks() = viewModelScope.launch {
-        resetMonthlyTasksUseCase()
+    fun resetMonthlyHabits() = viewModelScope.launch {
+        resetMonthlyHabitsUseCase()
     }
 
-    fun resetYearlyTasks() = viewModelScope.launch {
-        resetYearlyTasksUseCase()
+    fun resetYearlyHabits() = viewModelScope.launch {
+        resetYearlyHabitsUseCase()
     }
 }

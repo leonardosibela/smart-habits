@@ -3,17 +3,17 @@ package com.sibela.smarthabits.di
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.sibela.smarthabits.data.mapper.TaskMapper
-import com.sibela.smarthabits.data.mapper.TaskMapperImpl
+import com.sibela.smarthabits.data.mapper.HabitMapper
+import com.sibela.smarthabits.data.mapper.HabitMapperImpl
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.data.repository.fake.*
-import com.sibela.smarthabits.di.Qualifiers.FakeDailyTaskRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyTaskRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeTaskCounterRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeTaskRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeWeeklyTaskRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeYearlyTaskRepositoryQualifier
-import com.sibela.smarthabits.domain.local.TaskDatabase
+import com.sibela.smarthabits.di.Qualifiers.FakeDailyHabitRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyHabitRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeHabitCounterRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeHabitRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeWeeklyHabitRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeYearlyHabitRepositoryQualifier
+import com.sibela.smarthabits.domain.local.HabitDatabase
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
 import com.sibela.smarthabits.presentation.viewmodel.*
@@ -24,174 +24,174 @@ import org.koin.dsl.module
 
 private val roomDatabaseCallback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
     override fun onCreate(db: SupportSQLiteDatabase) {
-        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (1, 'DAILY', 1)")
-        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (2, 'WEEKLY', 1)")
-        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (3, 'MONTHLY', 1)")
-        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (4, 'YEARLY', 1)")
+        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (1, 'DAILY', 1)")
+        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (2, 'WEEKLY', 1)")
+        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (3, 'MONTHLY', 1)")
+        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (4, 'YEARLY', 1)")
     }
 }
 
 private val daos = module {
     single {
         Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
+            .databaseBuilder(androidContext(), HabitDatabase::class.java, HabitDatabase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .addCallback(roomDatabaseCallback)
             .build()
     }
 
-    single { get<TaskDatabase>().taskDao() }
-    single { get<TaskDatabase>().taskCounterDao() }
-    single { get<TaskDatabase>().dailyTaskDao() }
-    single { get<TaskDatabase>().weeklyTaskDao() }
-    single { get<TaskDatabase>().monthlyTaskDao() }
-    single { get<TaskDatabase>().yearlyTaskDao() }
+    single { get<HabitDatabase>().habitDao() }
+    single { get<HabitDatabase>().habitCounterDao() }
+    single { get<HabitDatabase>().dailyHabitDao() }
+    single { get<HabitDatabase>().weeklyHabitDao() }
+    single { get<HabitDatabase>().monthlyHabitDao() }
+    single { get<HabitDatabase>().yearlyHabitDao() }
 }
 
 private val repositories = module {
-    single<DailyTaskRepository> { DailyTaskRepositoryImpl(get()) }
-    single<MonthlyTaskRepository> { MonthlyTaskRepositoryImpl(get()) }
-    single<TaskCounterRepository> { TaskCounterRepositoryImpl(get()) }
-    single<TaskRepository> { TaskRepositoryImpl(get()) }
-    single<WeeklyTaskRepository> { WeeklyTaskRepositoryImpl(get()) }
-    single<YearlyTaskRepository> { YearlyTaskRepositoryImpl(get()) }
+    single<DailyHabitRepository> { DailyHabitRepositoryImpl(get()) }
+    single<MonthlyHabitRepository> { MonthlyHabitRepositoryImpl(get()) }
+    single<HabitCounterRepository> { HabitCounterRepositoryImpl(get()) }
+    single<HabitRepository> { HabitRepositoryImpl(get()) }
+    single<WeeklyHabitRepository> { WeeklyHabitRepositoryImpl(get()) }
+    single<YearlyHabitRepository> { YearlyHabitRepositoryImpl(get()) }
 }
 
 private val fakeRepositories = module {
-    single<DailyTaskRepository> { DailyTaskRepositoryFake() }
-    single<MonthlyTaskRepository> { MonthlyTaskRepositoryFake() }
-    single<TaskCounterRepository> { TaskCounterRepositoryFake() }
-    single<TaskRepository> { TaskRepositoryFake() }
-    single<WeeklyTaskRepository> { WeeklyTaskRepositoryFake() }
-    single<YearlyTaskRepository> { YearlyTaskRepositoryFake() }
+    single<DailyHabitRepository> { DailyHabitRepositoryFake() }
+    single<MonthlyHabitRepository> { MonthlyHabitRepositoryFake() }
+    single<HabitCounterRepository> { HabitCounterRepositoryFake() }
+    single<HabitRepository> { HabitRepositoryFake() }
+    single<WeeklyHabitRepository> { WeeklyHabitRepositoryFake() }
+    single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
 }
 
 private val mappers = module {
-    single<TaskMapper> { TaskMapperImpl() }
+    single<HabitMapper> { HabitMapperImpl() }
 }
 
 private val useCases = module {
-    single { AddTaskUseCase(get(), get(), get(), get(), get(), get()) }
-    single { DeleteTaskUseCase(get()) }
-    single { EditTaskUseCase(get()) }
-    single { FinishDailyTaskUseCase(get()) }
-    single { FinishMonthlyTaskUseCase(get()) }
-    single { FinishWeeklyTaskUseCase(get()) }
-    single { FinishYearlyTaskUseCase(get()) }
-    single { GetCurrentDailyTasksUseCase(get(), get()) }
-    single { GetCurrentMonthlyTasksUseCase(get(), get()) }
-    single { GetTasksThatAreDailyUseCase(get()) }
-    single { GetTasksThatAreWeeklyUseCase(get()) }
-    single { GetTasksThatAreMonthlyUseCase(get()) }
-    single { GetTasksThatAreYearlyUseCase(get()) }
-    single { GetCurrentWeeklyTasksUseCase(get(), get()) }
-    single { GetCurrentYearlyTasksUseCase(get(), get()) }
-    single { ResetDailyTasksUseCase(get(), get(), get(), get()) }
-    single { ResetMonthlyTasksUseCase(get(), get(), get(), get()) }
-    single { ResetWeeklyTasksUseCase(get(), get(), get(), get()) }
-    single { ResetYearlyTasksUseCase(get(), get(), get(), get()) }
-    single { SaveTaskUseCase(get()) }
+    single { AddHabitUseCase(get(), get(), get(), get(), get(), get()) }
+    single { DeleteHabitUseCase(get()) }
+    single { EditHabitUseCase(get()) }
+    single { FinishDailyHabitUseCase(get()) }
+    single { FinishMonthlyHabitUseCase(get()) }
+    single { FinishWeeklyHabitUseCase(get()) }
+    single { FinishYearlyHabitUseCase(get()) }
+    single { GetCurrentDailyHabitsUseCase(get(), get()) }
+    single { GetCurrentMonthlyHabitsUseCase(get(), get()) }
+    single { GetHabitsThatAreDailyUseCase(get()) }
+    single { GetHabitsThatAreWeeklyUseCase(get()) }
+    single { GetHabitsThatAreMonthlyUseCase(get()) }
+    single { GetHabitsThatAreYearlyUseCase(get()) }
+    single { GetCurrentWeeklyHabitsUseCase(get(), get()) }
+    single { GetCurrentYearlyHabitsUseCase(get(), get()) }
+    single { ResetDailyHabitsUseCase(get(), get(), get(), get()) }
+    single { ResetMonthlyHabitsUseCase(get(), get(), get(), get()) }
+    single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
+    single { ResetYearlyHabitsUseCase(get(), get(), get(), get()) }
+    single { SaveHabitUseCase(get()) }
 }
 
 private val fakeUseCases = module {
     single {
-        AddTaskUseCase(
-            get(qualifier = FakeTaskRepositoryQualifier),
-            get(qualifier = FakeTaskCounterRepositoryQualifier),
-            get(qualifier = FakeDailyTaskRepositoryQualifier),
-            get(qualifier = FakeWeeklyTaskRepositoryQualifier),
-            get(qualifier = FakeMonthlyTaskRepositoryQualifier),
-            get(qualifier = FakeYearlyTaskRepositoryQualifier)
+        AddHabitUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeHabitCounterRepositoryQualifier),
+            get(qualifier = FakeDailyHabitRepositoryQualifier),
+            get(qualifier = FakeWeeklyHabitRepositoryQualifier),
+            get(qualifier = FakeMonthlyHabitRepositoryQualifier),
+            get(qualifier = FakeYearlyHabitRepositoryQualifier)
         )
     }
-    single { DeleteTaskUseCase(get(qualifier = FakeTaskRepositoryQualifier)) }
+    single { DeleteHabitUseCase(get(qualifier = FakeHabitRepositoryQualifier)) }
     single {
-        GetCurrentDailyTasksUseCase(
-            get(qualifier = FakeTaskRepositoryQualifier),
-            get(qualifier = FakeTaskCounterRepositoryQualifier)
+        GetCurrentDailyHabitsUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeHabitCounterRepositoryQualifier)
         )
     }
-    single { EditTaskUseCase(get(qualifier = FakeTaskRepositoryQualifier)) }
+    single { EditHabitUseCase(get(qualifier = FakeHabitRepositoryQualifier)) }
 
-    single { FinishDailyTaskUseCase(get(qualifier = FakeDailyTaskRepositoryQualifier)) }
-    single { FinishMonthlyTaskUseCase(get(qualifier = FakeMonthlyTaskRepositoryQualifier)) }
-    single { FinishWeeklyTaskUseCase(get(qualifier = FakeWeeklyTaskRepositoryQualifier)) }
-    single { FinishYearlyTaskUseCase(get(qualifier = FakeYearlyTaskRepositoryQualifier)) }
-
-    single {
-        GetCurrentMonthlyTasksUseCase(
-            get(qualifier = FakeTaskRepositoryQualifier),
-            get(qualifier = FakeTaskCounterRepositoryQualifier)
-        )
-    }
-    single { GetTasksThatAreDailyUseCase(get(qualifier = FakeDailyTaskRepositoryQualifier)) }
-    single { GetTasksThatAreWeeklyUseCase(get(qualifier = FakeWeeklyTaskRepositoryQualifier)) }
-    single { GetTasksThatAreMonthlyUseCase(get(qualifier = FakeMonthlyTaskRepositoryQualifier)) }
-    single { GetTasksThatAreYearlyUseCase(get(qualifier = FakeYearlyTaskRepositoryQualifier)) }
-    single {
-        GetCurrentWeeklyTasksUseCase(
-            get(qualifier = FakeTaskRepositoryQualifier),
-            get(qualifier = FakeTaskCounterRepositoryQualifier)
-        )
-    }
-    single {
-        GetCurrentYearlyTasksUseCase(
-            get(qualifier = FakeTaskRepositoryQualifier),
-            get(qualifier = FakeTaskCounterRepositoryQualifier)
-        )
-    }
+    single { FinishDailyHabitUseCase(get(qualifier = FakeDailyHabitRepositoryQualifier)) }
+    single { FinishMonthlyHabitUseCase(get(qualifier = FakeMonthlyHabitRepositoryQualifier)) }
+    single { FinishWeeklyHabitUseCase(get(qualifier = FakeWeeklyHabitRepositoryQualifier)) }
+    single { FinishYearlyHabitUseCase(get(qualifier = FakeYearlyHabitRepositoryQualifier)) }
 
     single {
-        ResetDailyTasksUseCase(
+        GetCurrentMonthlyHabitsUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeHabitCounterRepositoryQualifier)
+        )
+    }
+    single { GetHabitsThatAreDailyUseCase(get(qualifier = FakeDailyHabitRepositoryQualifier)) }
+    single { GetHabitsThatAreWeeklyUseCase(get(qualifier = FakeWeeklyHabitRepositoryQualifier)) }
+    single { GetHabitsThatAreMonthlyUseCase(get(qualifier = FakeMonthlyHabitRepositoryQualifier)) }
+    single { GetHabitsThatAreYearlyUseCase(get(qualifier = FakeYearlyHabitRepositoryQualifier)) }
+    single {
+        GetCurrentWeeklyHabitsUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeHabitCounterRepositoryQualifier)
+        )
+    }
+    single {
+        GetCurrentYearlyHabitsUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeHabitCounterRepositoryQualifier)
+        )
+    }
+
+    single {
+        ResetDailyHabitsUseCase(
             get(),
-            get(FakeTaskRepositoryQualifier),
-            get(FakeDailyTaskRepositoryQualifier),
-            get(FakeTaskCounterRepositoryQualifier)
+            get(FakeHabitRepositoryQualifier),
+            get(FakeDailyHabitRepositoryQualifier),
+            get(FakeHabitCounterRepositoryQualifier)
         )
     }
 
     single {
-        ResetMonthlyTasksUseCase(
+        ResetMonthlyHabitsUseCase(
             get(),
-            get(FakeTaskRepositoryQualifier),
-            get(FakeMonthlyTaskRepositoryQualifier),
-            get(FakeTaskCounterRepositoryQualifier)
+            get(FakeHabitRepositoryQualifier),
+            get(FakeMonthlyHabitRepositoryQualifier),
+            get(FakeHabitCounterRepositoryQualifier)
         )
     }
 
     single {
-        ResetWeeklyTasksUseCase(
+        ResetWeeklyHabitsUseCase(
             get(),
-            get(FakeTaskRepositoryQualifier),
-            get(FakeWeeklyTaskRepositoryQualifier),
-            get(FakeTaskCounterRepositoryQualifier)
+            get(FakeHabitRepositoryQualifier),
+            get(FakeWeeklyHabitRepositoryQualifier),
+            get(FakeHabitCounterRepositoryQualifier)
         )
     }
 
     single {
-        ResetYearlyTasksUseCase(
+        ResetYearlyHabitsUseCase(
             get(),
-            get(FakeTaskRepositoryQualifier),
-            get(FakeYearlyTaskRepositoryQualifier),
-            get(FakeTaskCounterRepositoryQualifier)
+            get(FakeHabitRepositoryQualifier),
+            get(FakeYearlyHabitRepositoryQualifier),
+            get(FakeHabitCounterRepositoryQualifier)
         )
     }
 
-    single { SaveTaskUseCase(get(FakeTaskRepositoryQualifier)) }
+    single { SaveHabitUseCase(get(FakeHabitRepositoryQualifier)) }
 }
 
 private val viewModels = module {
-    viewModel { AddPeriodicTaskViewModel(get()) }
-    viewModel { DailyTaskListViewModel(get(), get()) }
-    viewModel { DailyTasksViewModel(get(), get()) }
-    viewModel { EditTaskViewModel(get()) }
-    viewModel { MonthlyTaskListViewModel(get(), get()) }
-    viewModel { MonthlyTasksViewModel(get(), get()) }
+    viewModel { AddPeriodicHabitViewModel(get()) }
+    viewModel { DailyHabitListViewModel(get(), get()) }
+    viewModel { DailyHabitsViewModel(get(), get()) }
+    viewModel { EditHabitViewModel(get()) }
+    viewModel { MonthlyHabitListViewModel(get(), get()) }
+    viewModel { MonthlyHabitsViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get()) }
-    viewModel { WeeklyTaskListViewModel(get(), get()) }
-    viewModel { WeeklyTasksViewModel(get(), get()) }
-    viewModel { YearlyTaskListViewModel(get(), get()) }
-    viewModel { YearlyTasksViewModel(get(), get()) }
+    viewModel { WeeklyHabitListViewModel(get(), get()) }
+    viewModel { WeeklyHabitsViewModel(get(), get()) }
+    viewModel { YearlyHabitListViewModel(get(), get()) }
+    viewModel { YearlyHabitsViewModel(get(), get()) }
 }
 
 object AppModules {
@@ -200,10 +200,10 @@ object AppModules {
 }
 
 private object Qualifiers {
-    val FakeDailyTaskRepositoryQualifier = named("FakeDailyTaskRepository")
-    val FakeMonthlyTaskRepositoryQualifier = named("FakeMonthlyTaskRepository")
-    val FakeTaskCounterRepositoryQualifier = named("FakeTaskCounterRepository")
-    val FakeTaskRepositoryQualifier = named("FakeTaskRepository")
-    val FakeWeeklyTaskRepositoryQualifier = named("FakeWeeklyTaskRepository")
-    val FakeYearlyTaskRepositoryQualifier = named("FakeYearlyTaskRepositoryQualifier")
+    val FakeDailyHabitRepositoryQualifier = named("FakeDailyHabitRepository")
+    val FakeMonthlyHabitRepositoryQualifier = named("FakeMonthlyHabitRepository")
+    val FakeHabitCounterRepositoryQualifier = named("FakeHabitCounterRepository")
+    val FakeHabitRepositoryQualifier = named("FakeHabitRepository")
+    val FakeWeeklyHabitRepositoryQualifier = named("FakeWeeklyHabitRepository")
+    val FakeYearlyHabitRepositoryQualifier = named("FakeYearlyHabitRepositoryQualifier")
 }

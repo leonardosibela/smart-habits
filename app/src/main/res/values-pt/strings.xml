@@ -7,26 +7,29 @@
     <string name="settings">Configurações</string>
 
 
-    <string name="add_task">Adicionar tarefa</string>
-    <string name="edit_task">Editar tarefa</string>
+    <string name="add_habit">Adicionar hábito</string>
+    <string name="edit_habit">Editar hábito</string>
     <string name="internal_error">Erro interno</string>
-    <string name="no_tasks">Nenhuma tarefa adicionada</string>
+    <string name="no_habit">Nenhuma hábito adicionada</string>
     <string name="description">Descrição</string>
 
 
-    <string name="reset_daily_tasks">Resetar tarefas diárias</string>
-    <string name="reset_weekly_tasks">Resetar tarefas semanais</string>
-    <string name="reset_monthly_tasks">Resetar tarefas mensais</string>
-    <string name="reset_yearly_tasks">Resetar tarefas anuais</string>
-    <string name="list_daily_tasks">Listar tarefas diárias</string>
-    <string name="list_weekly_tasks">Listar tarefas semanais</string>
-    <string name="list_monthly_tasks">Listar tarefas mensais</string>
-    <string name="list_yearly_tasks">Litar tarefas anuais</string>
+    <string name="reset_daily_habits">Resetar hábitos diárias</string>
+    <string name="reset_weekly_habits">Resetar hábitos semanais</string>
+    <string name="reset_monthly_habits">Resetar hábitos mensais</string>
+    <string name="reset_yearly_habits">Resetar hábitos anuais</string>
+    <string name="list_daily_habits">Listar hábitos diárias</string>
+    <string name="list_weekly_habits">Listar hábitos semanais</string>
+    <string name="list_monthly_habits">Listar hábitos mensais</string>
+    <string name="list_yearly_habits">Litar hábitos anuais</string>
     <string name="delete">Deletar</string>
     <string name="edit">Editar</string>
-    <string name="daily_tasks">Tarefas diárias</string>
-    <string name="weekly_tasks">Tarefas semanais</string>
-    <string name="monthly_tasks">Tarefas mensais</string>
-    <string name="yearly_tasks">Tarefas anuais</string>
-    <string name="task_name_saved">Tarefa %1$s salva!</string>
+    <string name="daily_habits">Hábitos diárias</string>
+    <string name="weekly_habits">Hábitos semanais</string>
+    <string name="monthly_habits">Hábitos mensais</string>
+    <string name="yearly_habits">Hábitos anuais</string>
+    <string name="habit_name_saved">Hábito %1$s salva!</string>
+
+    <string name="habit_deletion_title">Deletar tarefa</string>
+    <string name="habit_deletion_message">Tem certeza que deseja deletar %1$s?</string>
 </resources>

@@ -37,29 +37,29 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        resetDailyTasks.setOnClickListener { viewModel.resetDailyTasks() }
-        resetWeeklyTasks.setOnClickListener { viewModel.resetWeeklyTasks() }
-        resetMonthlyTasks.setOnClickListener { viewModel.resetMonthlyTasks() }
-        resetYearlyTasks.setOnClickListener { viewModel.resetYearlyTasks() }
-        listDailyTasks.setOnClickListener(::openDailyTaskListFragment)
-        listWeeklyTasks.setOnClickListener(::openWeeklyTaskListFragment)
-        listMonthlyTasks.setOnClickListener(::openMonthlyTaskListFragment)
-        listYearlyTasks.setOnClickListener(::openYearlyTaskListFragment)
+        resetDailyHabits.setOnClickListener { viewModel.resetDailyHabits() }
+        resetWeeklyHabits.setOnClickListener { viewModel.resetWeeklyHabits() }
+        resetMonthlyHabits.setOnClickListener { viewModel.resetMonthlyHabits() }
+        resetYearlyHabits.setOnClickListener { viewModel.resetYearlyHabits() }
+        listDailyHabits.setOnClickListener(::openDailyHabitListFragment)
+        listWeeklyHabits.setOnClickListener(::openWeeklyHabitListFragment)
+        listMonthlyHabits.setOnClickListener(::openMonthlyHabitListFragment)
+        listYearlyHabits.setOnClickListener(::openYearlyHabitListFragment)
     }
 
-    private fun openDailyTaskListFragment(view: View) {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToDailyTaskListFragment())
+    private fun openDailyHabitListFragment(view: View) {
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToDailyHabitListFragment())
     }
 
-    private fun openWeeklyTaskListFragment(view: View) {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToWeeklyTaskListFragment())
+    private fun openWeeklyHabitListFragment(view: View) {
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToWeeklyHabitListFragment())
     }
 
-    private fun openMonthlyTaskListFragment(view: View) {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMonthlyTaskListFragment())
+    private fun openMonthlyHabitListFragment(view: View) {
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMonthlyHabitListFragment())
     }
 
-    private fun openYearlyTaskListFragment(view: View) {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToYearlyTaskListFragment())
+    private fun openYearlyHabitListFragment(view: View) {
+        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToYearlyHabitListFragment())
     }
 }

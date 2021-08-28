@@ -3,28 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/dailyTasksFragment"
+        android:id="@+id/dailyHabitsFragment"
         android:contentDescription="@string/day"
         android:icon="@drawable/ic_calendar"
         android:title="@string/day"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/weeklyTasksFragment"
+        android:id="@+id/weeklyHabitsFragment"
         android:contentDescription="@string/week"
         android:icon="@drawable/ic_calendar"
         android:title="@string/week"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/monthlyTasksFragment"
+        android:id="@+id/monthlyHabitsFragment"
         android:contentDescription="@string/month"
         android:icon="@drawable/ic_calendar"
         android:title="@string/month"
         app:showAsAction="ifRoom" />
 
     <item
-        android:id="@+id/yearlyTasksFragment"
+        android:id="@+id/yearlyHabitsFragment"
         android:contentDescription="@string/year"
         android:icon="@drawable/ic_calendar"
         android:title="@string/year"
