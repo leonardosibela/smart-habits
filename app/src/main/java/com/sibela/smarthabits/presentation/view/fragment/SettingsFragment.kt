@@ -4,8 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.FragmentSettingsBinding
 import com.sibela.smarthabits.presentation.viewmodel.SettingsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -37,14 +39,34 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        resetDailyHabits.setOnClickListener { viewModel.resetDailyHabits() }
-        resetWeeklyHabits.setOnClickListener { viewModel.resetWeeklyHabits() }
-        resetMonthlyHabits.setOnClickListener { viewModel.resetMonthlyHabits() }
-        resetYearlyHabits.setOnClickListener { viewModel.resetYearlyHabits() }
+        resetDailyHabits.setOnClickListener { resetDailyHabits() }
+        resetWeeklyHabits.setOnClickListener { resetWeeklyHabits() }
+        resetMonthlyHabits.setOnClickListener { resetMonthlyHabits() }
+        resetYearlyHabits.setOnClickListener { resetYearlyHabits() }
         listDailyHabits.setOnClickListener(::openDailyHabitListFragment)
         listWeeklyHabits.setOnClickListener(::openWeeklyHabitListFragment)
         listMonthlyHabits.setOnClickListener(::openMonthlyHabitListFragment)
         listYearlyHabits.setOnClickListener(::openYearlyHabitListFragment)
+    }
+
+    private fun resetDailyHabits() {
+        viewModel.resetDailyHabits()
+        Toast.makeText(requireContext(), R.string.daily_habits_reset, Toast.LENGTH_LONG).show()
+    }
+
+    private fun resetWeeklyHabits() {
+        viewModel.resetWeeklyHabits()
+        Toast.makeText(requireContext(), R.string.weekly_habits_reset, Toast.LENGTH_LONG).show()
+    }
+
+    private fun resetMonthlyHabits() {
+        viewModel.resetMonthlyHabits()
+        Toast.makeText(requireContext(), R.string.monthly_habits_reset, Toast.LENGTH_LONG).show()
+    }
+
+    private fun resetYearlyHabits() {
+        viewModel.resetYearlyHabits()
+        Toast.makeText(requireContext(), R.string.yearly_habits_reset, Toast.LENGTH_LONG).show()
     }
 
     private fun openDailyHabitListFragment(view: View) {

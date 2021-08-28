@@ -32,4 +32,9 @@
 
     <string name="habit_deletion_title">Deletar tarefa</string>
     <string name="habit_deletion_message">Tem certeza que deseja deletar %1$s?</string>
+
+    <string name="daily_habits_reset">Hábitos diários resetados</string>
+    <string name="weekly_habits_reset">Hábitos semanais resetados</string>
+    <string name="monthly_habits_reset">Hábitos mensais resetados</string>
+    <string name="yearly_habits_reset">Hábitos anuais resetados</string>
 </resources>
