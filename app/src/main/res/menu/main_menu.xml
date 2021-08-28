@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/dailyTaskFragment"
+        android:id="@+id/dailyTasksFragment"
         android:contentDescription="@string/day"
         android:icon="@drawable/ic_calendar"
         android:title="@string/day"
