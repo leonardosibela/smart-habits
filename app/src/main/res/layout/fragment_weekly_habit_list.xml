@@ -11,6 +11,7 @@
         android:id="@+id/weekly_habits_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layoutAnimation="@anim/slide_in_animation"
         tools:itemCount="6"
         tools:listitem="@layout/item_habit" />
 
