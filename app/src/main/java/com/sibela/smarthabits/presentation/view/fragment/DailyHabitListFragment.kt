@@ -12,6 +12,7 @@ import com.sibela.smarthabits.databinding.FragmentDailyHabitsListBinding
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.HabitAdapter
+import com.sibela.smarthabits.presentation.dialog.HabitDeletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.DailyHabitListViewModel
 import com.sibela.smarthabits.presentation.viewmodel.HabitResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -115,6 +116,11 @@ class DailyHabitListFragment : Fragment() {
     }
 
     private fun onDeleteHabitClicked(habit: Habit) {
+        HabitDeletionDialog(habit, ::deleteHabit)
+            .show(childFragmentManager, HabitDeletionDialog.TAG)
+    }
+
+    private fun deleteHabit(habit: Habit) {
         viewModel.deleteHabit(habit)
         viewModel.fetchHabits()
     }
