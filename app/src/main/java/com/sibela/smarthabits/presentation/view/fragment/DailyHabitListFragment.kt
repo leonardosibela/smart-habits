@@ -39,6 +39,7 @@ class DailyHabitListFragment : Fragment() {
         observeData()
         setupListeners()
         setupRecyclerView()
+        viewModel.fetchHabits()
     }
 
     override fun onDestroyView() {
@@ -115,6 +116,7 @@ class DailyHabitListFragment : Fragment() {
 
     private fun onDeleteHabitClicked(habit: Habit) {
         viewModel.deleteHabit(habit)
+        viewModel.fetchHabits()
     }
 
     private fun onEditHabitClicked(habit: Habit) {

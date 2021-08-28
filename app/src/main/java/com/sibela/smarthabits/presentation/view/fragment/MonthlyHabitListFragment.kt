@@ -12,8 +12,8 @@ import com.sibela.smarthabits.databinding.FragmentMonthlyHabitListBinding
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.HabitAdapter
-import com.sibela.smarthabits.presentation.viewmodel.MonthlyHabitListViewModel
 import com.sibela.smarthabits.presentation.viewmodel.HabitResult
+import com.sibela.smarthabits.presentation.viewmodel.MonthlyHabitListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MonthlyHabitListFragment : Fragment() {
@@ -39,6 +39,7 @@ class MonthlyHabitListFragment : Fragment() {
         observeData()
         setupListeners()
         setupRecyclerView()
+        viewModel.fetchHabits()
     }
 
     override fun onDestroyView() {
@@ -116,6 +117,7 @@ class MonthlyHabitListFragment : Fragment() {
 
     private fun onDeleteHabitClicked(habit: Habit) {
         viewModel.deleteHabit(habit)
+        viewModel.fetchHabits()
     }
 
     private fun onEditHabitClicked(habit: Habit) {

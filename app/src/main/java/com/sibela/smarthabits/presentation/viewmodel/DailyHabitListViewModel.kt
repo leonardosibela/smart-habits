@@ -19,17 +19,15 @@ class DailyHabitListViewModel(
         MutableLiveData(HabitResult.Loading)
     val habits = _habits.asLiveData
 
-    init {
-        viewModelScope.launch {
-            val result = getHabitsThatAreDailyUseCase()
-            if (result is Result.Error) {
-                _habits.value = HabitResult.Error(result.throwable)
+    fun fetchHabits() = viewModelScope.launch {
+        val result = getHabitsThatAreDailyUseCase()
+        if (result is Result.Error) {
+            _habits.value = HabitResult.Error(result.throwable)
+        } else {
+            if (result.result?.isEmpty() ?: true) {
+                _habits.value = HabitResult.EmptyList
             } else {
-                if (result.result?.isEmpty() ?: true) {
-                    _habits.value = HabitResult.EmptyList
-                } else {
-                    _habits.value = HabitResult.Success(result.result ?: emptyList())
-                }
+                _habits.value = HabitResult.Success(result.result ?: emptyList())
             }
         }
     }
