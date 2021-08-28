@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.FragmentAddPeriodicTaskBinding
 import com.sibela.smarthabits.presentation.viewmodel.AddPeriodicTaskViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,6 +48,8 @@ class AddPeriodicTaskFragment : Fragment() {
     private fun onAddTaskClicked(view: View) {
         val description = binding.descriptionInput.text.toString()
         viewModel.addTask(description, periodicity)
-        Toast.makeText(requireContext(), "Task $description saved!", Toast.LENGTH_LONG).show()
+        val message = getString(R.string.task_name_saved, description)
+        Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show()
+        binding.descriptionInput.text?.clear()
     }
 }

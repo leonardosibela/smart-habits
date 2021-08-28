@@ -29,4 +29,6 @@
     <string name="weekly_tasks">Weekly tasks</string>
     <string name="monthly_tasks">Monthly tasks</string>
     <string name="yearly_tasks">Yearly tasks</string>
+    <string name="task_name_saved">Task %1$s saved!</string>
+
 </resources>
