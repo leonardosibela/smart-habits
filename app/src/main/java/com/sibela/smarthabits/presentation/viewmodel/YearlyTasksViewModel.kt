@@ -20,10 +20,16 @@ class YearlyTasksViewModel(
     val tasks = _tasks.asLiveData
 
     init {
-        viewModelScope.launch {
-            val result = getCurrentYearlyTasksUseCase()
-            if (result is Result.Error) {
-                _tasks.value = PeriodicTaskResult.Error(result.throwable)
+        fetchTasks()
+    }
+
+    fun fetchTasks() = viewModelScope.launch {
+        val result = getCurrentYearlyTasksUseCase()
+        if (result is Result.Error) {
+            _tasks.value = PeriodicTaskResult.Error(result.throwable)
+        } else {
+            if (result.result?.isEmpty() ?: true) {
+                _tasks.value = PeriodicTaskResult.EmptyList()
             } else {
                 _tasks.value = PeriodicTaskResult.Success(result.result ?: emptyList())
             }
