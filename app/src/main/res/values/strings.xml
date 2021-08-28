@@ -31,4 +31,7 @@
     <string name="yearly_tasks">Yearly tasks</string>
     <string name="task_name_saved">Task %1$s saved!</string>
 
+    <string name="task_deletion_title">Delete task</string>
+    <string name="task_deletion_message">Are you sure you want to delete %1$s habit?</string>
+
 </resources>

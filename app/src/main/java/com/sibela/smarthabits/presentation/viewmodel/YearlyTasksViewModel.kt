@@ -36,7 +36,7 @@ class YearlyTasksViewModel(
         }
     }
 
-    fun finish(yearlyTask: YearlyTask) = viewModelScope.launch {
+    fun finishTask(yearlyTask: YearlyTask) = viewModelScope.launch {
         finishYearlyTaskUseCase(yearlyTask)
     }
 }

@@ -12,6 +12,7 @@ import com.sibela.smarthabits.databinding.FragmentMonthlyTasksBinding
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.model.YearlyTask
 import com.sibela.smarthabits.presentation.adapter.PeriodicTaskAdapter
+import com.sibela.smarthabits.presentation.dialog.PeriodicTaskDeletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.PeriodicTaskResult
 import com.sibela.smarthabits.presentation.viewmodel.YearlyTasksViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -114,7 +115,12 @@ class YearlyTasksFragment : Fragment() {
     }
 
     private fun onTaskClicked(task: YearlyTask) {
-        viewModel.finish(task)
+        PeriodicTaskDeletionDialog(task, ::deleteTask)
+            .show(childFragmentManager, PeriodicTaskDeletionDialog.TAG)
+    }
+
+    private fun deleteTask(task: YearlyTask) {
+        viewModel.finishTask(task)
         viewModel.fetchTasks()
     }
 }

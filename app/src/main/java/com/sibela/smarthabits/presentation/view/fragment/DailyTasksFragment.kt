@@ -12,6 +12,7 @@ import com.sibela.smarthabits.databinding.FragmentDailyTasksBinding
 import com.sibela.smarthabits.domain.model.DailyTask
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.PeriodicTaskAdapter
+import com.sibela.smarthabits.presentation.dialog.PeriodicTaskDeletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.DailyTasksViewModel
 import com.sibela.smarthabits.presentation.viewmodel.PeriodicTaskResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -114,6 +115,11 @@ class DailyTasksFragment : Fragment() {
     }
 
     private fun onTaskClicked(task: DailyTask) {
+        PeriodicTaskDeletionDialog(task, ::deleteTask)
+            .show(childFragmentManager, PeriodicTaskDeletionDialog.TAG)
+    }
+
+    private fun deleteTask(task: DailyTask) {
         viewModel.finishTask(task)
         viewModel.fetchTasks()
     }

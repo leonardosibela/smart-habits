@@ -36,7 +36,7 @@ class WeeklyTasksViewModel(
         }
     }
 
-    fun finish(weeklyTask: WeeklyTask) = viewModelScope.launch {
+    fun finishTask(weeklyTask: WeeklyTask) = viewModelScope.launch {
         finishWeeklyTaskUseCase(weeklyTask)
     }
 }
