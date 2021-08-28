@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.sibela.smarthabits.databinding.FragmentEditHabitBinding
 import com.sibela.smarthabits.presentation.viewmodel.EditHabitViewModel
@@ -47,5 +48,6 @@ class EditHabitFragment : Fragment() {
     private fun onEditClicked(view: View) {
         habit.description = binding.descriptionInput.text.toString()
         viewModel.editHabit(habit)
+        findNavController().popBackStack()
     }
 }
