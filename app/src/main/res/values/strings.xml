@@ -34,6 +34,9 @@
     <string name="habit_deletion_title">Delete habit</string>
     <string name="habit_deletion_message">Are you sure you want to delete %1$s?</string>
 
+    <string name="habit_completion_title">Delete habit</string>
+    <string name="habit_completion_message">Are you sure you want to complete %1$s?</string>
+
     <string name="daily_habits_reset">Daily habits reset</string>
     <string name="weekly_habits_reset">Weekly habits reset</string>
     <string name="monthly_habits_reset">Monthly habits reset</string>

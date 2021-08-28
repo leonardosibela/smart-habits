@@ -12,7 +12,7 @@ import com.sibela.smarthabits.databinding.FragmentYearlyHabitListBinding
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.HabitAdapter
-import com.sibela.smarthabits.presentation.dialog.HabitDeletionDialog
+import com.sibela.smarthabits.presentation.view.dialog.HabitDeletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.HabitResult
 import com.sibela.smarthabits.presentation.viewmodel.YearlyHabitListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -31,7 +31,10 @@
     <string name="habit_name_saved">Hábito %1$s salvo!</string>
 
     <string name="habit_deletion_title">Deletar hábito</string>
-    <string name="habit_deletion_message">Tem certeza que deseja deletar %1$s?</string>
+    <string name="habit_deletion_message">Tem certeza que deseja deletar o hábito %1$s?</string>
+
+    <string name="habit_completion_title">Completar hábito</string>
+    <string name="habit_completion_message">Tem certeza que deseja completar o hábito %1$s?</string>
 
     <string name="daily_habits_reset">Hábitos diários resetados</string>
     <string name="weekly_habits_reset">Hábitos semanais resetados</string>

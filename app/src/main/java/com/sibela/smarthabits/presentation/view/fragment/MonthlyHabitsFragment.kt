@@ -12,7 +12,7 @@ import com.sibela.smarthabits.databinding.FragmentMonthlyHabitsBinding
 import com.sibela.smarthabits.domain.model.MonthlyHabit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.PeriodicHabitAdapter
-import com.sibela.smarthabits.presentation.dialog.PeriodicHabitDeletionDialog
+import com.sibela.smarthabits.presentation.view.dialog.PeriodicHabitCompletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.MonthlyHabitsViewModel
 import com.sibela.smarthabits.presentation.viewmodel.PeriodicHabitResult
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -116,8 +116,8 @@ class MonthlyHabitsFragment : Fragment() {
     }
 
     private fun onHabitClicked(habit: MonthlyHabit) {
-        PeriodicHabitDeletionDialog(habit, ::deleteHabit)
-            .show(childFragmentManager, PeriodicHabitDeletionDialog.TAG)
+        PeriodicHabitCompletionDialog(habit, ::deleteHabit)
+            .show(childFragmentManager, PeriodicHabitCompletionDialog.TAG)
     }
 
     private fun deleteHabit(habit: MonthlyHabit) {
