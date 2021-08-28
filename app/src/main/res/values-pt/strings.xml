@@ -30,7 +30,7 @@
     <string name="yearly_habits">Hábitos anuais</string>
     <string name="habit_name_saved">Hábito %1$s salvo!</string>
 
-    <string name="habit_deletion_title">Deletar tarefa</string>
+    <string name="habit_deletion_title">Deletar hábito</string>
     <string name="habit_deletion_message">Tem certeza que deseja deletar %1$s?</string>
 
     <string name="daily_habits_reset">Hábitos diários resetados</string>
