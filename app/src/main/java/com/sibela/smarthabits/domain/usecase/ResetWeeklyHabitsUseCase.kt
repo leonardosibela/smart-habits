@@ -18,6 +18,10 @@ class ResetWeeklyHabitsUseCase(
         habitCounterRepository.update(weeklyCounter)
         val habits = habitRepository.getAllHabitsThatAreWeekly()
         val weeklyHabits = habitMapper.toWeeklyHabits(habits, false, weeklyCounter.period)
-        weeklyHabits.forEach { weeklyHabit -> weeklyHabitRepository.save(weeklyHabit) }
+        weeklyHabits.forEach { weeklyHabit ->
+            weeklyHabit.id = 0
+            weeklyHabit.period = weeklyCounter.period
+            weeklyHabitRepository.save(weeklyHabit)
+        }
     }
 }

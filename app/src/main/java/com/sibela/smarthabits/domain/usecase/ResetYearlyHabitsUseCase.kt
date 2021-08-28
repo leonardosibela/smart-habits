@@ -18,6 +18,10 @@ class ResetYearlyHabitsUseCase(
         habitCounterRepository.update(yearlyCounter)
         val habits = habitRepository.getAllHabitsThatAreYearly()
         val yearlyHabits = habitMapper.toYearlyHabits(habits, false, yearlyCounter.period)
-        yearlyHabits.forEach { yearlyHabit -> yearlyHabitRepository.save(yearlyHabit) }
+        yearlyHabits.forEach { yearlyHabit ->
+            yearlyHabit.id = 0
+            yearlyHabit.period = yearlyCounter.period
+            yearlyHabitRepository.save(yearlyHabit)
+        }
     }
 }

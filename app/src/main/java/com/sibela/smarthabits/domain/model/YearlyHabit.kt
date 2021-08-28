@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "yearlyHabits")
 class YearlyHabit(
-    @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
-    override val id: Int = 0,
+    @PrimaryKey(autoGenerate = true)
+    override var id: Int = 0,
 
     @ColumnInfo(name = "description")
     override val description: String,
@@ -17,5 +17,5 @@ class YearlyHabit(
     val completed: Boolean,
 
     @ColumnInfo(name = "period")
-    val period: Int
+    var period: Int
 ) : PeriodicHabit

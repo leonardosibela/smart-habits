@@ -1,9 +1,9 @@
 package com.sibela.smarthabits.domain.usecase
 
 import com.sibela.smarthabits.data.mapper.HabitMapper
-import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
+import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 
 class ResetMonthlyHabitsUseCase(
     private val habitMapper: HabitMapper,
@@ -18,6 +18,10 @@ class ResetMonthlyHabitsUseCase(
         habitCounterRepository.update(monthlyCounter)
         val habits = habitRepository.getAllHabitsThatAreMonthly()
         val monthlyHabits = habitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
-        monthlyHabits.forEach { monthlyHabit -> monthlyHabitRepository.save(monthlyHabit) }
+        monthlyHabits.forEach { monthlyHabit ->
+            monthlyHabit.id = 0
+            monthlyHabit.period = monthlyCounter.period
+            monthlyHabitRepository.save(monthlyHabit)
+        }
     }
 }

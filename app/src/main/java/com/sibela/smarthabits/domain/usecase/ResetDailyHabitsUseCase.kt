@@ -18,6 +18,10 @@ class ResetDailyHabitsUseCase(
         habitCounterRepository.update(dailyCounter)
         val habits = habitRepository.getAllHabitsThatAreDaily()
         val dailyHabits = habitMapper.toDailyHabits(habits, false, dailyCounter.period)
-        dailyHabits.forEach { dailyHabit -> dailyHabitRepository.save(dailyHabit) }
+        dailyHabits.forEach { dailyHabit ->
+            dailyHabit.id = 0
+            dailyHabit.period = dailyCounter.period
+            dailyHabitRepository.save(dailyHabit)
+        }
     }
 }
