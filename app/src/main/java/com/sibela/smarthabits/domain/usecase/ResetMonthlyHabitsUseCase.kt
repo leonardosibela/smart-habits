@@ -14,8 +14,9 @@ class ResetMonthlyHabitsUseCase(
 
     internal suspend operator fun invoke() {
         val monthlyCounter = habitCounterRepository.getLastMonthlyCounter()
+        monthlyCounter.id = 0
         monthlyCounter.period = monthlyCounter.period++
-        habitCounterRepository.update(monthlyCounter)
+        habitCounterRepository.insert(monthlyCounter)
         val habits = habitRepository.getAllHabitsThatAreMonthly()
         val monthlyHabits = habitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
         monthlyHabits.forEach { monthlyHabit ->

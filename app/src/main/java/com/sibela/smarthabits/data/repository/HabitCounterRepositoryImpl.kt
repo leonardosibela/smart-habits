@@ -12,5 +12,5 @@ class HabitCounterRepositoryImpl(
     override suspend fun getLastWeeklyCounter() = habitCounterDao.getLastWeeklyHabitCounter()
     override suspend fun getLastMonthlyCounter() = habitCounterDao.getLastMonthlyHabitCounter()
     override suspend fun getLastYearlyCounter() = habitCounterDao.getLastYearlyHabitCounter()
-    override suspend fun update(habitCounter: HabitCounter) = habitCounterDao.update(habitCounter)
+    override suspend fun insert(habitCounter: HabitCounter) = habitCounterDao.insert(habitCounter)
 }

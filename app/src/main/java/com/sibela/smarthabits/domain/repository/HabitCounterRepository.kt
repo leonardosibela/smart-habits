@@ -8,5 +8,5 @@ interface HabitCounterRepository {
     suspend fun getLastWeeklyCounter(): HabitCounter
     suspend fun getLastMonthlyCounter(): HabitCounter
     suspend fun getLastYearlyCounter(): HabitCounter
-    suspend fun update(habitCounter: HabitCounter)
+    suspend fun insert(habitCounter: HabitCounter)
 }

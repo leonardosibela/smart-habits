@@ -14,8 +14,9 @@ class ResetWeeklyHabitsUseCase(
 
     internal suspend operator fun invoke() {
         val weeklyCounter = habitCounterRepository.getLastWeeklyCounter()
+        weeklyCounter.id = 0
         weeklyCounter.period = weeklyCounter.period++
-        habitCounterRepository.update(weeklyCounter)
+        habitCounterRepository.insert(weeklyCounter)
         val habits = habitRepository.getAllHabitsThatAreWeekly()
         val weeklyHabits = habitMapper.toWeeklyHabits(habits, false, weeklyCounter.period)
         weeklyHabits.forEach { weeklyHabit ->

@@ -11,7 +11,7 @@ class HabitCounterRepositoryFake : HabitCounterRepository {
     override suspend fun getLastMonthlyCounter() = HabitCounter(0, Periodicity.MONTHLY, 1)
     override suspend fun getLastYearlyCounter() = HabitCounter(0, Periodicity.YEARLY, 1)
 
-    override suspend fun update(habitCounter: HabitCounter) {
+    override suspend fun insert(habitCounter: HabitCounter) {
 
     }
 }
