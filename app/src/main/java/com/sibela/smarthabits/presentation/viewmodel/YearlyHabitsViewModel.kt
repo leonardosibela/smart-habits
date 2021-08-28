@@ -19,10 +19,6 @@ class YearlyHabitsViewModel(
         MutableLiveData(PeriodicHabitResult.Loading())
     val habits = _habits.asLiveData
 
-    init {
-        fetchHabits()
-    }
-
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentYearlyHabitsUseCase()
         if (result is Result.Error) {

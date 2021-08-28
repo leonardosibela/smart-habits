@@ -40,6 +40,7 @@ class WeeklyHabitsFragment : Fragment() {
         setupListeners()
         observeData()
         setupRecyclerView()
+        viewModel.fetchHabits()
     }
 
     override fun onDestroyView() {
