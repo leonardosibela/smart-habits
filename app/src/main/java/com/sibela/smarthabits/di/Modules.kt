@@ -1,6 +1,8 @@
 package com.sibela.smarthabits.di
 
 import androidx.room.Room
+import androidx.room.RoomDatabase
+import androidx.sqlite.db.SupportSQLiteDatabase
 import com.sibela.smarthabits.data.mapper.TaskMapper
 import com.sibela.smarthabits.data.mapper.TaskMapperImpl
 import com.sibela.smarthabits.data.repository.*
@@ -20,54 +22,30 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
+private val roomDatabaseCallback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
+    override fun onCreate(db: SupportSQLiteDatabase) {
+        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (1, 'DAILY', 1)")
+        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (2, 'WEEKLY', 1)")
+        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (3, 'MONTHLY', 1)")
+        db.execSQL("INSERT INTO tasksCounter (id, periodicity, period) VALUES (4, 'YEARLY', 1)")
+    }
+}
+
 private val daos = module {
     single {
         Room
             .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
+            .addCallback(roomDatabaseCallback)
             .build()
-            .taskDao()
     }
 
-    single {
-        Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-            .taskCounterDao()
-    }
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-            .dailyTaskDao()
-    }
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-            .weeklyTaskDao()
-    }
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-            .monthlyTaskDao()
-    }
-
-    single {
-        Room
-            .databaseBuilder(androidContext(), TaskDatabase::class.java, TaskDatabase.DATABASE_NAME)
-            .fallbackToDestructiveMigration()
-            .build()
-            .yearlyTaskDao()
-    }
+    single { get<TaskDatabase>().taskDao() }
+    single { get<TaskDatabase>().taskCounterDao() }
+    single { get<TaskDatabase>().dailyTaskDao() }
+    single { get<TaskDatabase>().weeklyTaskDao() }
+    single { get<TaskDatabase>().monthlyTaskDao() }
+    single { get<TaskDatabase>().yearlyTaskDao() }
 }
 
 private val repositories = module {
@@ -217,7 +195,7 @@ private val viewModels = module {
 }
 
 object AppModules {
-    val modules = viewModels + mappers + useCases + repositories + daos
+    val modules = daos + repositories + useCases + mappers + viewModels
     val fakeModules = viewModels + fakeUseCases + fakeRepositories
 }
 
