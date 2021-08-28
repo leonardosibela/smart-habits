@@ -13,5 +13,4 @@ class TaskCounterRepositoryImpl(
     override suspend fun getLastMonthlyCounter() = taskCounterDao.getLastMonthlyTaskCounter()
     override suspend fun getLastYearlyCounter() = taskCounterDao.getLastYearlyTaskCounter()
     override suspend fun update(taskCounter: TaskCounter) = taskCounterDao.update(taskCounter)
-
 }

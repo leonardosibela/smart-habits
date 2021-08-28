@@ -14,5 +14,4 @@ class TaskCounterRepositoryFake : TaskCounterRepository {
     override suspend fun update(taskCounter: TaskCounter) {
 
     }
-
 }
