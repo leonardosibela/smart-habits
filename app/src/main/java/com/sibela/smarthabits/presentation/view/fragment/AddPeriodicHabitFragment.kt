@@ -41,11 +41,8 @@ class AddPeriodicHabitFragment : Fragment() {
         _binding = null
     }
 
-    private fun setupListeners() {
-        val block: FragmentAddPeriodicHabitBinding.() -> Unit = {
-            addHabitButton.setOnClickListener(::onAddHabitClicked)
-        }
-        with(binding, block)
+    private fun setupListeners() = with(binding) {
+        addHabitButton.setOnClickListener(::onAddHabitClicked)
     }
 
     private fun onAddHabitClicked(view: View) {
