@@ -4,8 +4,10 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ItemSimpleHabitBinding
 import com.sibela.smarthabits.domain.model.PeriodicHabit
+import com.sibela.smarthabits.extension.getText
 
 class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit) :
     ListAdapter<T, PeriodicHabitAdapter.HabitViewHolder<T>>(PeriodicHabitDiffUtil<T>()) {
@@ -21,9 +23,11 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
     class HabitViewHolder<T : PeriodicHabit> private constructor(private val binding: ItemSimpleHabitBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(habit: T, listener: ((T) -> Unit)) {
-            binding.habitDescription.text = habit.description
-            binding.root.setOnClickListener { listener.invoke(habit) }
+        fun bind(habit: T, listener: ((T) -> Unit)) = with(binding) {
+            habitDescription.text = habit.description
+            habitDescription.contentDescription =
+                getText(R.string.habit_tap_to_complete, habit.description)
+            root.setOnClickListener { listener.invoke(habit) }
         }
 
         companion object {

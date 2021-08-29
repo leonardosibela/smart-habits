@@ -40,4 +40,6 @@
     <string name="weekly_habits_reset">Hábitos semanais resetados</string>
     <string name="monthly_habits_reset">Hábitos mensais resetados</string>
     <string name="yearly_habits_reset">Hábitos anuais resetados</string>
+
+    <string name="habit_tap_to_complete">%1$s. Clique para concluir</string>
 </resources>
