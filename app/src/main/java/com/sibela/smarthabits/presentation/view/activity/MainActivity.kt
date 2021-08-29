@@ -7,7 +7,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ActivityMainBinding
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
