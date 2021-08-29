@@ -1,14 +1,17 @@
 package com.sibela.smarthabits.util
 
 import com.sibela.smarthabits.domain.model.*
+import io.mockk.MockKAnnotations
 
 object TestData {
-    private const val FIRST_DESCRIPTION = "Description"
-    private val SECOND_DESCRIPTION = "Description two"
+    const val FIRST_DESCRIPTION = "Description"
+    val SECOND_DESCRIPTION = "Description two"
     const val FIRST_COMPLETED = true
     const val SECOND_COMPLETED = false
     const val FIRST_PERIOD = 1
     const val SECOND_PERIOD = 2
+
+    val DAILY_PERIODICITY = Periodicity.DAILY
 
     val FIRST_HABIT = Habit(1, FIRST_DESCRIPTION, Periodicity.DAILY)
     val SECOND_HABIT = Habit(2, SECOND_DESCRIPTION, Periodicity.DAILY)
@@ -24,4 +27,8 @@ object TestData {
 
     val FIRST_YEARLY_HABIT = YearlyHabit(0, FIRST_DESCRIPTION, FIRST_COMPLETED, FIRST_PERIOD)
     val SECOND_YEARLY_HABIT = YearlyHabit(0, SECOND_DESCRIPTION, SECOND_COMPLETED, SECOND_PERIOD)
+}
+
+fun Any.initMockKAnnotations() {
+    MockKAnnotations.init(this, relaxUnitFun = true)
 }
