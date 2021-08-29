@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "weeklyHabits")
-class WeeklyHabit(
+data class WeeklyHabit(
     @ColumnInfo(name = "id")
     @PrimaryKey(autoGenerate = true)
     override var id: Int = 0,
