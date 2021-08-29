@@ -8,9 +8,9 @@ import com.sibela.smarthabits.data.mapper.HabitMapperImpl
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.data.repository.fake.*
 import com.sibela.smarthabits.di.Qualifiers.FakeDailyHabitRepositoryQualifier
-import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeHabitCounterRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeHabitRepositoryQualifier
+import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeWeeklyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeYearlyHabitRepositoryQualifier
 import com.sibela.smarthabits.domain.local.HabitDatabase
@@ -72,7 +72,7 @@ private val mappers = module {
 
 private val useCases = module {
     single { AddHabitUseCase(get(), get(), get(), get(), get(), get()) }
-    single { DeleteHabitUseCase(get()) }
+    single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
     single { EditHabitUseCase(get()) }
     single { FinishDailyHabitUseCase(get()) }
     single { FinishMonthlyHabitUseCase(get()) }
@@ -104,7 +104,15 @@ private val fakeUseCases = module {
             get(qualifier = FakeYearlyHabitRepositoryQualifier)
         )
     }
-    single { DeleteHabitUseCase(get(qualifier = FakeHabitRepositoryQualifier)) }
+    single {
+        DeleteHabitUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeDailyHabitRepositoryQualifier),
+            get(qualifier = FakeWeeklyHabitRepositoryQualifier),
+            get(qualifier = FakeMonthlyHabitRepositoryQualifier),
+            get(qualifier = FakeYearlyHabitRepositoryQualifier)
+        )
+    }
     single {
         GetCurrentDailyHabitsUseCase(
             get(qualifier = FakeHabitRepositoryQualifier),

@@ -13,4 +13,6 @@ class DailyHabitRepositoryImpl(private val dailyHabitDao: DailyHabitDao) : Daily
     override suspend fun getHabitFoPeriod(period: Int) = dailyHabitDao.getHabitsForPeriod(period)
 
     override suspend fun remove(dailyHabit: DailyHabit) = dailyHabitDao.delete(dailyHabit)
+
+    override suspend fun removeNotCompletedById(id: Int) = dailyHabitDao.deleteNotCompletedById(id)
 }

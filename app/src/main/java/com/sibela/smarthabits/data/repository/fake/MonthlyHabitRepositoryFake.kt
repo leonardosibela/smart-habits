@@ -17,4 +17,8 @@ class MonthlyHabitRepositoryFake : MonthlyHabitRepository {
     override suspend fun remove(monthlyHabit: MonthlyHabit) {
 
     }
+
+    override suspend fun removeNotCompletedById(id: Int) {
+
+    }
 }

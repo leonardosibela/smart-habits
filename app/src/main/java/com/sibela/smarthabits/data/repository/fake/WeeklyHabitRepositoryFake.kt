@@ -17,4 +17,8 @@ class WeeklyHabitRepositoryFake : WeeklyHabitRepository {
     override suspend fun remove(weeklyHabit: WeeklyHabit) {
         
     }
+
+    override suspend fun removeNotCompletedById(id: Int) {
+
+    }
 }

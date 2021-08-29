@@ -16,4 +16,7 @@ class MonthlyHabitRepositoryImpl(
     override suspend fun getHabitForPeriod(period: Int) = monthlyHabitDao.getHabitsForPeriod(period)
 
     override suspend fun remove(monthlyHabit: MonthlyHabit) = monthlyHabitDao.delete(monthlyHabit)
+
+    override suspend fun removeNotCompletedById(id: Int) =
+        monthlyHabitDao.deleteNotCompletedById(id)
 }

@@ -17,4 +17,7 @@ interface MonthlyHabitDao {
 
     @Query("SELECT * FROM monthlyHabits WHERE period = :period")
     suspend fun getHabitsForPeriod(period: Int): List<MonthlyHabit>
+
+    @Query("DELETE FROM monthlyHabits WHERE id = :id AND completed = 0")
+    suspend fun deleteNotCompletedById(id: Int)
 }

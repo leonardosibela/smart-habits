@@ -7,4 +7,5 @@ interface DailyHabitRepository {
     suspend fun save(dailyHabit: DailyHabit)
     suspend fun getHabitFoPeriod(period: Int): List<DailyHabit>
     suspend fun remove(dailyHabit: DailyHabit)
+    suspend fun removeNotCompletedById(id: Int)
 }

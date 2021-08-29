@@ -18,4 +18,8 @@ class DailyHabitRepositoryFake : DailyHabitRepository {
     override suspend fun remove(dailyHabit: DailyHabit) {
 
     }
+
+    override suspend fun removeNotCompletedById(id: Int) {
+
+    }
 }

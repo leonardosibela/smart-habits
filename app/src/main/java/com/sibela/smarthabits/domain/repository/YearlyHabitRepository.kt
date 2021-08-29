@@ -7,4 +7,5 @@ interface YearlyHabitRepository {
     suspend fun save(yearlyHabit: YearlyHabit)
     suspend fun getHabitsForPeriod(period: Int): List<YearlyHabit>
     suspend fun remove(yearlyHabit: YearlyHabit)
+    suspend fun removeNotCompletedById(id: Int)
 }
