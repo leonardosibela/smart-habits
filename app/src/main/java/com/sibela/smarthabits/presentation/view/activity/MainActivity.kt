@@ -7,6 +7,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ActivityMainBinding
 
+
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
@@ -15,8 +16,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupBottomNavigation()
+        setupToolbar()
+    }
 
+    private fun setupBottomNavigation() {
         val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
         binding.bottomNavigationView.setupWithNavController(navController)
+    }
+
+    private fun setupToolbar() {
+        setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayShowTitleEnabled(false)
     }
 }
