@@ -32,7 +32,7 @@ class YearlyHabitListViewModel(
         }
     }
 
-    fun deleteHbait(habit: Habit) = viewModelScope.launch {
+    fun deleteHabit(habit: Habit) = viewModelScope.launch {
         deleteHabitUseCase(habit)
     }
 }

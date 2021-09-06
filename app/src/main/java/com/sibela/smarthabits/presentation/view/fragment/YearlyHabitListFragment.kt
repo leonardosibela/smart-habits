@@ -121,7 +121,7 @@ class YearlyHabitListFragment : Fragment() {
     }
 
     private fun deleteHabit(habit: Habit) {
-        viewModel.deleteHbait(habit)
+        viewModel.deleteHabit(habit)
         viewModel.fetchHabits()
     }
 
