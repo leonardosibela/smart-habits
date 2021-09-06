@@ -18,4 +18,22 @@ class ResultTest {
         val success = name.toSuccess()
         Assert.assertEquals(name, success.data)
     }
+
+    @Test
+    fun `resultBy error`() {
+        val throwable = Throwable("Message")
+        val result = resultBy {
+            throw throwable
+        }
+        Assert.assertEquals(Result.Error<String>(throwable), result)
+    }
+
+    @Test
+    fun `resultBy success`() {
+        val name = "Leonardo"
+        val result = resultBy {
+            name
+        }
+        Assert.assertEquals(Result.Success(name), result)
+    }
 }
