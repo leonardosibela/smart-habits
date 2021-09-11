@@ -2,9 +2,9 @@ package com.sibela.smarthabits.presentation.viewmodel
 
 import com.sibela.smarthabits.domain.model.PeriodicHabit
 
-sealed class PeriodicHabitResult<T : PeriodicHabit> {
-    class Loading<T : PeriodicHabit> : PeriodicHabitResult<T>()
-    class EmptyList<T : PeriodicHabit> : PeriodicHabitResult<T>()
+sealed class PeriodicHabitResult<out T : PeriodicHabit> {
+    object Loading : PeriodicHabitResult<Nothing>()
+    object EmptyList : PeriodicHabitResult<Nothing>()
     data class Success<T : PeriodicHabit>(val data: List<T>) : PeriodicHabitResult<T>()
-    data class Error<T : PeriodicHabit>(val data: Throwable) : PeriodicHabitResult<T>()
+    data class Error(val data: Throwable) : PeriodicHabitResult<Nothing>()
 }

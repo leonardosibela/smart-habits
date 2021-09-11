@@ -16,7 +16,7 @@ class WeeklyHabitsViewModel(
 ) : ViewModel() {
 
     private val _habits: MutableLiveData<PeriodicHabitResult<WeeklyHabit>> =
-        MutableLiveData(PeriodicHabitResult.Loading())
+        MutableLiveData(PeriodicHabitResult.Loading)
     val habits = _habits.asLiveData
 
     fun fetchHabits() = viewModelScope.launch {
@@ -25,7 +25,7 @@ class WeeklyHabitsViewModel(
             _habits.value = PeriodicHabitResult.Error(result.throwable)
         } else {
             if (result.result?.isEmpty() ?: true) {
-                _habits.value = PeriodicHabitResult.EmptyList()
+                _habits.value = PeriodicHabitResult.EmptyList
             } else {
                 _habits.value = PeriodicHabitResult.Success(result.result ?: emptyList())
             }
