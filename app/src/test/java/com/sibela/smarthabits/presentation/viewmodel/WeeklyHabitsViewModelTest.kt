@@ -4,12 +4,12 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
-import com.sibela.smarthabits.domain.model.MonthlyHabit
-import com.sibela.smarthabits.domain.usecase.FinishMonthlyHabitUseCase
-import com.sibela.smarthabits.domain.usecase.GetCurrentMonthlyHabitsUseCase
+import com.sibela.smarthabits.domain.model.WeeklyHabit
+import com.sibela.smarthabits.domain.usecase.FinishWeeklyHabitUseCase
+import com.sibela.smarthabits.domain.usecase.GetCurrentWeeklyHabitsUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
-import com.sibela.smarthabits.util.TestData.FIRST_MONTHLY_HABIT
-import com.sibela.smarthabits.util.TestData.SECOND_MONTHLY_HABIT
+import com.sibela.smarthabits.util.TestData.FIRST_WEEKLY_HABIT
+import com.sibela.smarthabits.util.TestData.SECOND_WEEKLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
@@ -21,7 +21,7 @@ import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import org.junit.*
 
-class MonthlyHabitsViewModelTest {
+class WeeklyHabitsViewModelTest {
 
     @get:Rule
     @ExperimentalCoroutinesApi
@@ -31,16 +31,16 @@ class MonthlyHabitsViewModelTest {
     val observerRule = InstantTaskExecutorRule()
 
     @RelaxedMockK
-    private lateinit var getCurrentMonthlyHabitsUseCase: GetCurrentMonthlyHabitsUseCase
+    private lateinit var getCurrentWeeklyHabitsUseCase: GetCurrentWeeklyHabitsUseCase
 
     @RelaxedMockK
-    private lateinit var finishMonthlyHabitUseCase: FinishMonthlyHabitUseCase
+    private lateinit var finishWeeklyHabitUseCase: FinishWeeklyHabitUseCase
 
     @RelaxedMockK
-    private lateinit var habitsObserver: Observer<PeriodicHabitResult<MonthlyHabit>>
+    private lateinit var habitsObserver: Observer<PeriodicHabitResult<WeeklyHabit>>
 
     @InjectMockKs
-    private lateinit var monthlyHabitsViewModel: MonthlyHabitsViewModel
+    private lateinit var weeklyHabitsViewModel: WeeklyHabitsViewModel
 
     init {
         initMockKAnnotations()
@@ -48,63 +48,63 @@ class MonthlyHabitsViewModelTest {
 
     @Before
     fun setUp() {
-        monthlyHabitsViewModel.habits.observeForever(habitsObserver)
+        weeklyHabitsViewModel.habits.observeForever(habitsObserver)
     }
 
     @After
     fun tearDown() {
-        monthlyHabitsViewModel.habits.removeObserver(habitsObserver)
+        weeklyHabitsViewModel.habits.removeObserver(habitsObserver)
     }
 
     @Test
     fun `fetchHabits result Error`() = runBlocking {
         val throwable = Throwable()
-        coEvery { getCurrentMonthlyHabitsUseCase() } returns throwable.toError()
+        coEvery { getCurrentWeeklyHabitsUseCase() } returns throwable.toError()
         Assert.assertEquals(
             PeriodicHabitResult.Loading::class,
-            monthlyHabitsViewModel.habits.value!!::class
+            weeklyHabitsViewModel.habits.value!!::class
         )
-        monthlyHabitsViewModel.fetchHabits()
-        coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
+        weeklyHabitsViewModel.fetchHabits()
+        coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
         verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.Error(throwable)) }
     }
 
     @Test
     fun `fetchHabits result Success`() {
-        val expectedList = listOf(FIRST_MONTHLY_HABIT, SECOND_MONTHLY_HABIT)
-        coEvery { getCurrentMonthlyHabitsUseCase() } returns expectedList.toSuccess()
+        val expectedList = listOf(FIRST_WEEKLY_HABIT, SECOND_WEEKLY_HABIT)
+        coEvery { getCurrentWeeklyHabitsUseCase() } returns expectedList.toSuccess()
         Assert.assertEquals(
             PeriodicHabitResult.Loading::class,
-            monthlyHabitsViewModel.habits.value!!::class
+            weeklyHabitsViewModel.habits.value!!::class
         )
-        monthlyHabitsViewModel.fetchHabits()
-        coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
+        weeklyHabitsViewModel.fetchHabits()
+        coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
         verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.Success(expectedList)) }
     }
 
     @Test
     fun `fetchHabits result EmptyList`() = runBlocking {
-        val expectedHabits = listOf<MonthlyHabit>()
-        coEvery { getCurrentMonthlyHabitsUseCase() } returns expectedHabits.toSuccess()
+        val expectedHabits = listOf<WeeklyHabit>()
+        coEvery { getCurrentWeeklyHabitsUseCase() } returns expectedHabits.toSuccess()
         Assert.assertEquals(
             PeriodicHabitResult.Loading::class,
-            monthlyHabitsViewModel.habits.value!!::class
+            weeklyHabitsViewModel.habits.value!!::class
         )
-        monthlyHabitsViewModel.fetchHabits()
-        coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
+        weeklyHabitsViewModel.fetchHabits()
+        coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
         verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.EmptyList) }
     }
 
     @Test
     fun finishHabit() {
-        val monthlyHabit = FIRST_MONTHLY_HABIT
-        coJustRun { finishMonthlyHabitUseCase(any()) }
+        val weeklyHabit = FIRST_WEEKLY_HABIT
+        coJustRun { finishWeeklyHabitUseCase(any()) }
         Assert.assertEquals(
             PeriodicHabitResult.Loading::class,
-            monthlyHabitsViewModel.habits.value!!::class
+            weeklyHabitsViewModel.habits.value!!::class
         )
-        monthlyHabitsViewModel.finishHabit(monthlyHabit)
-        coVerify(exactly = 1) { finishMonthlyHabitUseCase.invoke(monthlyHabit) }
+        weeklyHabitsViewModel.finishHabit(weeklyHabit)
+        coVerify(exactly = 1) { finishWeeklyHabitUseCase.invoke(weeklyHabit) }
         verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.Loading) }
     }
 }
