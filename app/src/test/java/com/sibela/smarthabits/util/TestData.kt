@@ -35,6 +35,11 @@ object TestData {
 
     val FIRST_YEARLY_HABIT = YearlyHabit(0, FIRST_DESCRIPTION, FIRST_COMPLETED, FIRST_PERIOD)
     val SECOND_YEARLY_HABIT = YearlyHabit(0, SECOND_DESCRIPTION, SECOND_COMPLETED, SECOND_PERIOD)
+
+    val HABIT_COUNTER_DAILY = HabitCounter(1, Periodicity.DAILY, 1)
+    val HABIT_COUNTER_WEEKLY = HabitCounter(1, Periodicity.WEEKLY, 1)
+    val HABIT_COUNTER_MONTHLY = HabitCounter(1, Periodicity.MONTHLY, 1)
+    val HABIT_COUNTER_YEARLY = HabitCounter(1, Periodicity.YEARLY, 1)
 }
 
 fun Any.initMockKAnnotations() {
