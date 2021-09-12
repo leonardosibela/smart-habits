@@ -11,6 +11,6 @@ class GetCurrentMonthlyHabitsUseCase(
 
     internal suspend operator fun invoke() = resultBy {
         val lastMonthlyCounter = habitCounterRepository.getLastMonthlyCounter()
-        monthlyHabitRepository.getHabitForPeriod(lastMonthlyCounter.period)
+        monthlyHabitRepository.getHabitsForPeriod(lastMonthlyCounter.period)
     }
 }

@@ -12,7 +12,7 @@ class WeeklyHabitRepositoryImpl(
         weeklyHabitDao.insert(weeklyHabit)
     }
 
-    override suspend fun getHabitForPeriod(period: Int) = weeklyHabitDao.getHabitsForPeriod(period)
+    override suspend fun getHabitsForPeriod(period: Int) = weeklyHabitDao.getHabitsForPeriod(period)
 
     override suspend fun remove(weeklyHabit: WeeklyHabit) = weeklyHabitDao.delete(weeklyHabit)
 

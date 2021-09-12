@@ -9,7 +9,7 @@ class WeeklyHabitRepositoryFake : WeeklyHabitRepository {
 
     }
 
-    override suspend fun getHabitForPeriod(period: Int) = listOf(
+    override suspend fun getHabitsForPeriod(period: Int) = listOf(
         WeeklyHabit(0, "Read some pages of a book", false, 1),
         WeeklyHabit(0, "Exercise for at last 30 min", false, 1),
     )

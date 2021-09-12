@@ -13,7 +13,7 @@ class MonthlyHabitRepositoryImpl(
         monthlyHabitDao.insert(monthlyHabit)
     }
 
-    override suspend fun getHabitForPeriod(period: Int) = monthlyHabitDao.getHabitsForPeriod(period)
+    override suspend fun getHabitsForPeriod(period: Int) = monthlyHabitDao.getHabitsForPeriod(period)
 
     override suspend fun remove(monthlyHabit: MonthlyHabit) = monthlyHabitDao.delete(monthlyHabit)
 

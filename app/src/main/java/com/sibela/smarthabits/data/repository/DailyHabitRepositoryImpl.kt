@@ -10,7 +10,7 @@ class DailyHabitRepositoryImpl(private val dailyHabitDao: DailyHabitDao) : Daily
         dailyHabitDao.insert(dailyHabit)
     }
 
-    override suspend fun getHabitFoPeriod(period: Int) = dailyHabitDao.getHabitsForPeriod(period)
+    override suspend fun getHabitsForPeriod(period: Int) = dailyHabitDao.getHabitsForPeriod(period)
 
     override suspend fun remove(dailyHabit: DailyHabit) = dailyHabitDao.delete(dailyHabit)
 

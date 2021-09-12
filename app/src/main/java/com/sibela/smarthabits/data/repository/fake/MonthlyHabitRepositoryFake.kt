@@ -9,7 +9,7 @@ class MonthlyHabitRepositoryFake : MonthlyHabitRepository {
 
     }
 
-    override suspend fun getHabitForPeriod(period: Int) = listOf(
+    override suspend fun getHabitsForPeriod(period: Int) = listOf(
         MonthlyHabit(0, "Read some pages of a book", false, 1),
         MonthlyHabit(0, "Exercise for at last 30 min", false, 1),
     )

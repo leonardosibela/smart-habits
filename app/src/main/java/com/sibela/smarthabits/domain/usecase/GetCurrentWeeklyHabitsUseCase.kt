@@ -11,6 +11,6 @@ class GetCurrentWeeklyHabitsUseCase(
 
     internal suspend operator fun invoke() = resultBy {
         val lastWeeklyCounter = habitCounterRepository.getLastWeeklyCounter()
-        weeklyHabitRepository.getHabitForPeriod(lastWeeklyCounter.period)
+        weeklyHabitRepository.getHabitsForPeriod(lastWeeklyCounter.period)
     }
 }
