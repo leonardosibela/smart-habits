@@ -20,4 +20,7 @@ interface YearlyHabitDao {
 
     @Query("DELETE FROM yearlyHabits WHERE description = :description AND completed = 0")
     suspend fun deleteNotCompletedByDescription(description: String)
+
+    @Query("UPDATE yearlyHabits SET description = :newDescription WHERE id = :id AND completed = 0")
+    suspend fun updateNotCompletedDescription(id: Int, newDescription: String)
 }

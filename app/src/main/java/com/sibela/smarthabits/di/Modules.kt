@@ -73,7 +73,7 @@ private val mappers = module {
 private val useCases = module {
     single { AddHabitUseCase(get(), get(), get(), get(), get(), get()) }
     single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-    single { EditHabitUseCase(get()) }
+    single { EditHabitUseCase(get(), get(), get(), get(), get()) }
     single { FinishDailyHabitUseCase(get()) }
     single { FinishMonthlyHabitUseCase(get()) }
     single { FinishWeeklyHabitUseCase(get()) }
@@ -119,13 +119,19 @@ private val fakeUseCases = module {
             get(qualifier = FakeHabitCounterRepositoryQualifier)
         )
     }
-    single { EditHabitUseCase(get(qualifier = FakeHabitRepositoryQualifier)) }
-
+    single {
+        EditHabitUseCase(
+            get(qualifier = FakeHabitRepositoryQualifier),
+            get(qualifier = FakeDailyHabitRepositoryQualifier),
+            get(qualifier = FakeWeeklyHabitRepositoryQualifier),
+            get(qualifier = FakeMonthlyHabitRepositoryQualifier),
+            get(qualifier = FakeYearlyHabitRepositoryQualifier)
+        )
+    }
     single { FinishDailyHabitUseCase(get(qualifier = FakeDailyHabitRepositoryQualifier)) }
     single { FinishMonthlyHabitUseCase(get(qualifier = FakeMonthlyHabitRepositoryQualifier)) }
     single { FinishWeeklyHabitUseCase(get(qualifier = FakeWeeklyHabitRepositoryQualifier)) }
     single { FinishYearlyHabitUseCase(get(qualifier = FakeYearlyHabitRepositoryQualifier)) }
-
     single {
         GetCurrentMonthlyHabitsUseCase(
             get(qualifier = FakeHabitRepositoryQualifier),

@@ -18,4 +18,8 @@ class WeeklyHabitRepositoryImpl(
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         weeklyHabitDao.deleteNotCompletedByDescription(description)
+
+    override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
+        weeklyHabitDao.updateNotCompletedDescription(id, newDescription)
+    }
 }

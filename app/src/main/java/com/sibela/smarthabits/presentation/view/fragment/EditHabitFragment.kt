@@ -46,8 +46,8 @@ class EditHabitFragment : Fragment() {
     }
 
     private fun onEditClicked(view: View) {
-        habit.description = binding.descriptionInput.text.toString()
-        viewModel.editHabit(habit)
+        val newDescription = binding.descriptionInput.text.toString()
+        viewModel.editHabit(habit, newDescription)
         findNavController().popBackStack()
     }
 }

@@ -18,4 +18,8 @@ class YearlyHabitRepositoryImpl(
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         yearlyHabitDao.deleteNotCompletedByDescription(description)
+
+    override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
+        yearlyHabitDao.updateNotCompletedDescription(id, newDescription)
+    }
 }

@@ -22,4 +22,8 @@ class DailyHabitRepositoryFake : DailyHabitRepository {
     override suspend fun removeNotCompletedByDescription(description: String) {
 
     }
+
+    override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
+
+    }
 }

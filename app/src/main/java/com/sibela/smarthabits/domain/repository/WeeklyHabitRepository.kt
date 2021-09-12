@@ -8,4 +8,5 @@ interface WeeklyHabitRepository {
     suspend fun getHabitsForPeriod(period: Int): List<WeeklyHabit>
     suspend fun remove(weeklyHabit: WeeklyHabit)
     suspend fun removeNotCompletedByDescription(description: String)
+    suspend fun updateNotCompletedDescription(id: Int, newDescription: String)
 }

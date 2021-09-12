@@ -85,10 +85,10 @@ class HabitRepositoryImplTest {
     }
 
     @Test
-    fun edit() = runBlocking {
+    fun editHabitDescription() = runBlocking {
         val habit = FIRST_HABIT
-        coJustRun { habitDao.update(habit) }
-        habitRepositoryImpl.edit(habit)
-        coVerify(exactly = 1) { habitDao.update(habit) }
+        coJustRun { habitDao.updateDescription(habit.id, habit.description) }
+        habitRepositoryImpl.editHabitDescription(habit.id, habit.description)
+        coVerify(exactly = 1) { habitDao.updateDescription(habit.id, habit.description) }
     }
 }

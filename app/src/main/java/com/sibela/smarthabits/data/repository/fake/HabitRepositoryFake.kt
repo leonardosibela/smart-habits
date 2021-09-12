@@ -1,6 +1,7 @@
 package com.sibela.smarthabits.data.repository.fake
 
-import com.sibela.smarthabits.domain.model.*
+import com.sibela.smarthabits.domain.model.Habit
+import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.repository.HabitRepository
 
 class HabitRepositoryFake : HabitRepository {
@@ -33,7 +34,7 @@ class HabitRepositoryFake : HabitRepository {
 
     }
 
-    override suspend fun edit(habit: Habit) {
+    override suspend fun editHabitDescription(id: Int, newDescription: String) {
 
     }
 }

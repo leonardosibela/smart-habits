@@ -10,5 +10,5 @@ interface HabitRepository {
     suspend fun getAllHabitsThatAreMonthly(): List<Habit>
     suspend fun getAllHabitsThatAreYearly(): List<Habit>
     suspend fun delete(habit: Habit)
-    suspend fun edit(habit: Habit)
+    suspend fun editHabitDescription(id: Int, newDescription: String)
 }

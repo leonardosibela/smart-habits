@@ -16,4 +16,8 @@ class DailyHabitRepositoryImpl(private val dailyHabitDao: DailyHabitDao) : Daily
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         dailyHabitDao.deleteNotCompletedByDescription(description)
+
+    override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
+        dailyHabitDao.updateNotCompletedDescription(id, newDescription)
+    }
 }

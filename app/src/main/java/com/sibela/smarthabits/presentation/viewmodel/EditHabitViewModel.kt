@@ -8,7 +8,7 @@ import kotlinx.coroutines.launch
 
 class EditHabitViewModel(private val editHabitUseCase: EditHabitUseCase) : ViewModel() {
 
-    fun editHabit(habit: Habit) = viewModelScope.launch {
-        editHabitUseCase(habit)
+    fun editHabit(habit: Habit, newDescription: String) = viewModelScope.launch {
+        editHabitUseCase(habit, newDescription)
     }
 }

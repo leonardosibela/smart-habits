@@ -22,5 +22,6 @@ class HabitRepositoryImpl(
 
     override suspend fun delete(habit: Habit) = habitDao.delete(habit)
 
-    override suspend fun edit(habit: Habit) = habitDao.update(habit)
+    override suspend fun editHabitDescription(id: Int, newDescription: String) =
+        habitDao.updateDescription(id, newDescription)
 }

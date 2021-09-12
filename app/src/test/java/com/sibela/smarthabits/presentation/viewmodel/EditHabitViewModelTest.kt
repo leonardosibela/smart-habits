@@ -33,8 +33,9 @@ class EditHabitViewModelTest {
     @Test
     fun editHabit() {
         val habit = FIRST_HABIT
-        coJustRun { editHabitUseCase(habit) }
-        editHabitViewModel.editHabit(habit)
-        coVerify(exactly = 1) { editHabitUseCase(habit) }
+        val description = "Description"
+        coJustRun { editHabitUseCase(habit, description) }
+        editHabitViewModel.editHabit(habit, description)
+        coVerify(exactly = 1) { editHabitUseCase(habit, description) }
     }
 }

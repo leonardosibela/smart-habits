@@ -21,4 +21,8 @@ class WeeklyHabitRepositoryFake : WeeklyHabitRepository {
     override suspend fun removeNotCompletedByDescription(description: String) {
 
     }
+
+    override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
+
+    }
 }
