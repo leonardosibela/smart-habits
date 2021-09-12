@@ -9,4 +9,5 @@ interface YearlyHabitRepository {
     suspend fun remove(yearlyHabit: YearlyHabit)
     suspend fun removeNotCompletedByDescription(description: String)
     suspend fun updateNotCompletedDescription(id: Int, newDescription: String)
+    suspend fun updateNotCompletedDescription(oldDescription: String, newDescription: String)
 }

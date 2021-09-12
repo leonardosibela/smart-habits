@@ -23,4 +23,10 @@ class MonthlyHabitRepositoryImpl(
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
         monthlyHabitDao.updateNotCompletedDescription(id, newDescription)
     }
+
+    override suspend fun updateNotCompletedDescription(
+        oldDescription: String, newDescription: String
+    ) {
+        monthlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
+    }
 }

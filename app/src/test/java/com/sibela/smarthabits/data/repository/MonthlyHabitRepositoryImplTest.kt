@@ -74,4 +74,18 @@ class MonthlyHabitRepositoryImplTest {
         monthlyHabitRepositoryImpl.updateNotCompletedDescription(id, description)
         coVerify(exactly = 1) { monthlyHabitDao.updateNotCompletedDescription(id, description) }
     }
+
+    @Test
+    fun updateNotCompletedDescriptionByDescription() = runBlocking {
+        val oldDescription = "Old description"
+        val newDescription = "New description"
+        coJustRun { monthlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription) }
+        monthlyHabitRepositoryImpl.updateNotCompletedDescription(oldDescription, newDescription)
+        coVerify(exactly = 1) {
+            monthlyHabitDao.updateNotCompletedDescription(
+                oldDescription,
+                newDescription
+            )
+        }
+    }
 }

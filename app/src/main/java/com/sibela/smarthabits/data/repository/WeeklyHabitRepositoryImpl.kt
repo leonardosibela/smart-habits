@@ -22,4 +22,10 @@ class WeeklyHabitRepositoryImpl(
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
         weeklyHabitDao.updateNotCompletedDescription(id, newDescription)
     }
+
+    override suspend fun updateNotCompletedDescription(
+        oldDescription: String, newDescription: String
+    ) {
+        weeklyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
+    }
 }

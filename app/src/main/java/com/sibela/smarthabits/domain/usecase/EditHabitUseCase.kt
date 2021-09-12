@@ -16,16 +16,28 @@ class EditHabitUseCase(
         habitRepository.editHabitDescription(habit.id, newDescription)
         when (habit.periodicity) {
             Periodicity.DAILY -> {
-                dailyHabitRepository.updateNotCompletedDescription(habit.id, newDescription)
+                dailyHabitRepository.updateNotCompletedDescription(
+                    habit.description,
+                    newDescription
+                )
             }
             Periodicity.WEEKLY -> {
-                weeklyHabitRepository.updateNotCompletedDescription(habit.id, newDescription)
+                weeklyHabitRepository.updateNotCompletedDescription(
+                    habit.description,
+                    newDescription
+                )
             }
             Periodicity.MONTHLY -> {
-                monthlyHabitRepository.updateNotCompletedDescription(habit.id, newDescription)
+                monthlyHabitRepository.updateNotCompletedDescription(
+                    habit.description,
+                    newDescription
+                )
             }
             Periodicity.YEARLY -> {
-                yearlyHabitRepository.updateNotCompletedDescription(habit.id, newDescription)
+                yearlyHabitRepository.updateNotCompletedDescription(
+                    habit.description,
+                    newDescription
+                )
             }
         }
     }

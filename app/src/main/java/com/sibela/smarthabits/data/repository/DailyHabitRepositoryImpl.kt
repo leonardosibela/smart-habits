@@ -20,4 +20,10 @@ class DailyHabitRepositoryImpl(private val dailyHabitDao: DailyHabitDao) : Daily
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
         dailyHabitDao.updateNotCompletedDescription(id, newDescription)
     }
+
+    override suspend fun updateNotCompletedDescription(
+        oldDescription: String, newDescription: String
+    ) {
+        dailyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
+    }
 }

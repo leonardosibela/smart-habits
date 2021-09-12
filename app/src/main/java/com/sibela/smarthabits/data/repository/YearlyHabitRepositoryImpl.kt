@@ -22,4 +22,10 @@ class YearlyHabitRepositoryImpl(
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
         yearlyHabitDao.updateNotCompletedDescription(id, newDescription)
     }
+
+    override suspend fun updateNotCompletedDescription(
+        oldDescription: String, newDescription: String
+    ) {
+        yearlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
+    }
 }

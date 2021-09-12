@@ -25,4 +25,10 @@ class MonthlyHabitRepositoryFake : MonthlyHabitRepository {
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
 
     }
+
+    override suspend fun updateNotCompletedDescription(
+        oldDescription: String, newDescription: String
+    ) {
+
+    }
 }

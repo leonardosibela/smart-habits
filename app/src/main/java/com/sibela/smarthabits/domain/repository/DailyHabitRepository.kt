@@ -9,4 +9,5 @@ interface DailyHabitRepository {
     suspend fun remove(dailyHabit: DailyHabit)
     suspend fun removeNotCompletedByDescription(description: String)
     suspend fun updateNotCompletedDescription(id: Int, newDescription: String)
+    suspend fun updateNotCompletedDescription(oldDescription: String, newDescription: String)
 }

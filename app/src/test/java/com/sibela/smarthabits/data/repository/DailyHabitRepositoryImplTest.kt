@@ -67,11 +67,25 @@ class DailyHabitRepositoryImplTest {
     }
 
     @Test
-    fun updateNotCompletedDescription() = runBlocking {
+    fun updateNotCompletedDescriptionById() = runBlocking {
         val id = 1
         val description = "Description"
         coJustRun { dailyHabitDao.updateNotCompletedDescription(id, description) }
         dailyHabitRepositoryImpl.updateNotCompletedDescription(id, description)
         coVerify(exactly = 1) { dailyHabitDao.updateNotCompletedDescription(id, description) }
+    }
+
+    @Test
+    fun updateNotCompletedDescriptionByDescription() = runBlocking {
+        val oldDescription = "Old description"
+        val newDescription = "New description"
+        coJustRun { dailyHabitDao.updateNotCompletedDescription(oldDescription, newDescription) }
+        dailyHabitRepositoryImpl.updateNotCompletedDescription(oldDescription, newDescription)
+        coVerify(exactly = 1) {
+            dailyHabitDao.updateNotCompletedDescription(
+                oldDescription,
+                newDescription
+            )
+        }
     }
 }
