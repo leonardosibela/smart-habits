@@ -18,6 +18,6 @@ interface DailyHabitDao {
     @Query("SELECT * FROM dailyHabits WHERE period = :period")
     suspend fun getHabitsForPeriod(period: Int): List<DailyHabit>
 
-    @Query("DELETE FROM dailyHabits WHERE id = :id AND completed = 0")
-    suspend fun deleteNotCompletedById(id: Int)
+    @Query("DELETE FROM dailyHabits WHERE description = :description AND completed = 0")
+    suspend fun deleteNotCompletedByDescription(description: String)
 }

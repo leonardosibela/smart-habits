@@ -61,8 +61,8 @@ class MonthlyHabitRepositoryImplTest {
     @Test
     fun removeNotCompletedById() = runBlocking {
         val id = 1
-        coJustRun { monthlyHabitDao.deleteNotCompletedById(id) }
-        monthlyHabitRepositoryImpl.removeNotCompletedById(id)
-        coVerify(exactly = 1) { monthlyHabitDao.deleteNotCompletedById(id) }
+        coJustRun { monthlyHabitDao.deleteNotCompletedByDescription(id) }
+        monthlyHabitRepositoryImpl.removeNotCompletedByDescription(id)
+        coVerify(exactly = 1) { monthlyHabitDao.deleteNotCompletedByDescription(id) }
     }
 }

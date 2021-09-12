@@ -15,10 +15,10 @@ class DeleteHabitUseCase(
     internal suspend operator fun invoke(habit: Habit) {
         habitRepository.delete(habit)
         when (habit.periodicity) {
-            Periodicity.DAILY -> dailyHabitRepository.removeNotCompletedById(habit.id)
-            Periodicity.WEEKLY -> weeklyHabitRepository.removeNotCompletedById(habit.id)
-            Periodicity.MONTHLY -> monthlyHabitRepository.removeNotCompletedById(habit.id)
-            Periodicity.YEARLY -> yearlyHabitRepository.removeNotCompletedById(habit.id)
+            Periodicity.DAILY -> dailyHabitRepository.removeNotCompletedByDescription(habit.description)
+            Periodicity.WEEKLY -> weeklyHabitRepository.removeNotCompletedByDescription(habit.description)
+            Periodicity.MONTHLY -> monthlyHabitRepository.removeNotCompletedByDescription(habit.description)
+            Periodicity.YEARLY -> yearlyHabitRepository.removeNotCompletedByDescription(habit.description)
         }
     }
 }

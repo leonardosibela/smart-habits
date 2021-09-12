@@ -16,5 +16,6 @@ class YearlyHabitRepositoryImpl(
 
     override suspend fun remove(yearlyHabit: YearlyHabit) = yearlyHabitDao.delete(yearlyHabit)
 
-    override suspend fun removeNotCompletedById(id: Int) = yearlyHabitDao.deleteNotCompletedById(id)
+    override suspend fun removeNotCompletedByDescription(description: String) =
+        yearlyHabitDao.deleteNotCompletedByDescription(description)
 }

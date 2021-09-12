@@ -18,7 +18,7 @@ class YearlyHabitRepositoryFake : YearlyHabitRepository {
 
     }
 
-    override suspend fun removeNotCompletedById(id: Int) {
+    override suspend fun removeNotCompletedByDescription(description: String) {
 
     }
 }
