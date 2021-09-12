@@ -5,7 +5,7 @@ import io.mockk.MockKAnnotations
 
 object TestData {
     const val FIRST_DESCRIPTION = "Description"
-    val SECOND_DESCRIPTION = "Description two"
+    const val SECOND_DESCRIPTION = "Description two"
     const val FIRST_COMPLETED = true
     const val SECOND_COMPLETED = false
     const val FIRST_PERIOD = 1
