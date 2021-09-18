@@ -22,21 +22,12 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
-private val roomDatabaseCallback: RoomDatabase.Callback = object : RoomDatabase.Callback() {
-    override fun onCreate(db: SupportSQLiteDatabase) {
-        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (1, 'DAILY', 1)")
-        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (2, 'WEEKLY', 1)")
-        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (3, 'MONTHLY', 1)")
-        db.execSQL("INSERT INTO habitsCounter (id, periodicity, period) VALUES (4, 'YEARLY', 1)")
-    }
-}
-
 private val daos = module {
     single {
         Room
             .databaseBuilder(androidContext(), HabitDatabase::class.java, HabitDatabase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
-            .addCallback(roomDatabaseCallback)
+            .createFromAsset("database/habit.db")
             .build()
     }
 
