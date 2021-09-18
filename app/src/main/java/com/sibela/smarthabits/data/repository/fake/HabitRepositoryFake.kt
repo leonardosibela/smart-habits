@@ -6,35 +6,46 @@ import com.sibela.smarthabits.domain.repository.HabitRepository
 
 class HabitRepositoryFake : HabitRepository {
 
-    override suspend fun save(habit: Habit) {
-
+    private companion object {
+        val habits = arrayListOf(
+            Habit(1, "Read some pages of a book", Periodicity.DAILY),
+            Habit(2, "Exercise for at last 30 min", Periodicity.DAILY),
+            Habit(3, "Read some pages of a book", Periodicity.WEEKLY),
+            Habit(4, "Exercise for at last 30 min", Periodicity.WEEKLY),
+            Habit(5, "Read some pages of a book", Periodicity.MONTHLY),
+            Habit(6, "Exercise for at last 30 min", Periodicity.MONTHLY),
+            Habit(7, "Read some pages of a book", Periodicity.YEARLY),
+            Habit(8, "Exercise for at last 30 min", Periodicity.YEARLY),
+        )
     }
 
-    override suspend fun getAllHabitsThatAreDaily() = listOf(
-        Habit(0, "Read some pages of a book", Periodicity.DAILY),
-        Habit(0, "Exercise for at last 30 min", Periodicity.DAILY),
-    )
+    override suspend fun save(habit: Habit) {
+        habits.add(habit)
+    }
 
-    override suspend fun getAllHabitsThatAreWeekly() = listOf(
-        Habit(0, "Read some pages of a book", Periodicity.WEEKLY),
-        Habit(0, "Exercise for at last 30 min", Periodicity.WEEKLY),
-    )
+    override suspend fun getAllHabitsThatAreDaily() =
+        habits.filter { it.periodicity == Periodicity.DAILY }
 
-    override suspend fun getAllHabitsThatAreMonthly() = listOf(
-        Habit(0, "Read some pages of a book", Periodicity.MONTHLY),
-        Habit(0, "Exercise for at last 30 min", Periodicity.MONTHLY),
-    )
+    override suspend fun getAllHabitsThatAreWeekly() =
+        habits.filter { it.periodicity == Periodicity.WEEKLY }
 
-    override suspend fun getAllHabitsThatAreYearly() = listOf(
-        Habit(0, "Read some pages of a book", Periodicity.YEARLY),
-        Habit(0, "Exercise for at last 30 min", Periodicity.YEARLY),
-    )
+    override suspend fun getAllHabitsThatAreMonthly() =
+        habits.filter { it.periodicity == Periodicity.MONTHLY }
+
+    override suspend fun getAllHabitsThatAreYearly() =
+        habits.filter { it.periodicity == Periodicity.YEARLY }
 
     override suspend fun delete(habit: Habit) {
-
+        habits.remove(habit)
     }
 
     override suspend fun editHabitDescription(id: Int, newDescription: String) {
-
+        val index: Int = habits.indexOfFirst {
+            it.id == id
+        }
+        val habit = habits[index]
+        val updatedHabit = Habit(habit.id, newDescription, habit.periodicity)
+        habits.removeAt(index)
+        habits.add(index, updatedHabit)
     }
 }
