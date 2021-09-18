@@ -63,8 +63,7 @@
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.sibela.smarthabits.presentation.view.fragment.SettingsFragment"
-        android:label="@string/settings"
-        tools:layout="@layout/fragment_settings">
+        android:label="@string/settings">
 
         <action
             android:id="@+id/action_settingsFragment_to_dailyHabitListFragment"

@@ -43,4 +43,21 @@
     <string name="yearly_habits_reset">Yearly habits reset</string>
 
     <string name="habit_tap_to_complete">%1$s. Tap to complete</string>
+
+    <string name="reset_daily_title">Reset daily habits</string>
+    <string name="reset_daily_summary">Click here to reset daily habits</string>
+    <string name="reset_weekly_title">Reset weekly habits</string>
+    <string name="reset_weekly_summary">Click here to reset weekly habits</string>
+    <string name="reset_monthly_title">Reset monthly habits</string>
+    <string name="reset_monthly_summary">Click here to reset monthly habits</string>
+    <string name="reset_yearly_title">Reset yearly habits</string>
+    <string name="reset_yearly_summary">Click here to reset yearly habits</string>
+    <string name="list_daily_title">List daily habits</string>
+    <string name="list_daily_summary">Click here to list daily habits</string>
+    <string name="list_weekly_title">List weekly habits</string>
+    <string name="list_weekly_summary">Click here to list weekly habits</string>
+    <string name="list_monthly_title">List monthly habits</string>
+    <string name="list_monthly_summary">Click here to list monthly habits</string>
+    <string name="list_yearly_title">List yearly habits</string>
+    <string name="list_yearly_summary">Click here to list yearly habits</string>
 </resources>

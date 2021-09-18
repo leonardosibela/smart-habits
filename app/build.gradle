@@ -62,10 +62,13 @@ dependencies {
     def koin_version = '3.1.2'
     implementation "io.insert-koin:koin-android:$koin_version"
 
-    def room = "2.2.5"
-    implementation "androidx.room:room-runtime:$room"
-    implementation "androidx.room:room-ktx:$room"
-    kapt "androidx.room:room-compiler:$room"
+    def room_version = "2.2.5"
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
+
+    def settings_version = "1.1.1"
+    implementation "androidx.preference:preference-ktx:$settings_version"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'

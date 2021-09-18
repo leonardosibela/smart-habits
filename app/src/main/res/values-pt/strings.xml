@@ -42,4 +42,21 @@
     <string name="yearly_habits_reset">Hábitos anuais resetados</string>
 
     <string name="habit_tap_to_complete">%1$s. Clique para concluir</string>
+
+    <string name="reset_daily_title">Resetar hábitos diários</string>
+    <string name="reset_daily_summary">Clique aqui para resetar hábitos diários</string>
+    <string name="reset_weekly_title">Resetar hábitos semanais</string>
+    <string name="reset_weekly_summary">Clique aqui para resetar hábitos semanais</string>
+    <string name="reset_monthly_title">Resetar hábitos mensais</string>
+    <string name="reset_monthly_summary">Clique aqui para resetar hábitos mensais</string>
+    <string name="reset_yearly_title">Resetar hábitos anuais</string>
+    <string name="reset_yearly_summary">Clique aqui para resetar hábitos anuais</string>
+    <string name="list_daily_title">Listar hábitos diários</string>
+    <string name="list_daily_summary">Clique aqui para listar hábitos diários</string>
+    <string name="list_weekly_title">Listar hábitos mensais</string>
+    <string name="list_weekly_summary">Clique aqui para listar hábitos semanais</string>
+    <string name="list_monthly_title">Listar hábitos mensais</string>
+    <string name="list_monthly_summary">Clique aqui para listar hábitos mensais</string>
+    <string name="list_yearly_title">Listar hábitos anuais</string>
+    <string name="list_yearly_summary">Clique aqui para listar hábitos anuais</string>
 </resources>

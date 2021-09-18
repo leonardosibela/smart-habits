@@ -1,52 +1,45 @@
 package com.sibela.smarthabits.presentation.view.fragment
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.preference.Preference
+import androidx.preference.PreferenceFragmentCompat
 import com.sibela.smarthabits.R
-import com.sibela.smarthabits.databinding.FragmentSettingsBinding
 import com.sibela.smarthabits.presentation.viewmodel.SettingsViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SettingsFragment : Fragment() {
+class SettingsFragment : PreferenceFragmentCompat() {
 
-    private var _binding: FragmentSettingsBinding? = null
-    private val binding get() = _binding!!
+    private companion object {
+        const val RESET_DAILY = "resetDaily"
+        const val RESET_WEEKLY = "resetWeekly"
+        const val RESET_MONTHLY = "resetMonthly"
+        const val RESET_YEARLY = "resetYearly"
+        const val LIST_DAILY = "listDaily"
+        const val LIST_WEEKLY = "listWeekly"
+        const val LIST_MONTHLY = "listMonthly"
+        const val LIST_YEARLY = "listYearly"
+    }
 
     private val viewModel: SettingsViewModel by viewModel()
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        _binding = FragmentSettingsBinding.inflate(inflater, container, false)
-        return binding.root
+    override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
+        setPreferencesFromResource(R.xml.preferences, rootKey)
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        setupListeners()
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-
-    private fun setupListeners() = with(binding) {
-        resetDailyHabits.setOnClickListener { resetDailyHabits() }
-        resetWeeklyHabits.setOnClickListener { resetWeeklyHabits() }
-        resetMonthlyHabits.setOnClickListener { resetMonthlyHabits() }
-        resetYearlyHabits.setOnClickListener { resetYearlyHabits() }
-        listDailyHabits.setOnClickListener(::openDailyHabitListFragment)
-        listWeeklyHabits.setOnClickListener(::openWeeklyHabitListFragment)
-        listMonthlyHabits.setOnClickListener(::openMonthlyHabitListFragment)
-        listYearlyHabits.setOnClickListener(::openYearlyHabitListFragment)
+    override fun onPreferenceTreeClick(preference: Preference): Boolean {
+        when (preference.key) {
+            RESET_DAILY -> resetDailyHabits()
+            RESET_WEEKLY -> resetWeeklyHabits()
+            RESET_MONTHLY -> resetMonthlyHabits()
+            RESET_YEARLY -> resetYearlyHabits()
+            LIST_DAILY -> displayDailyHabitListFragment()
+            LIST_WEEKLY -> displayWeeklyHabitListFragment()
+            LIST_MONTHLY -> displayMonthlyHabitListFragment()
+            LIST_YEARLY -> displayYearlyHabitListFragment()
+        }
+        return super.onPreferenceTreeClick(preference)
     }
 
     private fun resetDailyHabits() {
@@ -69,19 +62,19 @@ class SettingsFragment : Fragment() {
         Toast.makeText(requireContext(), R.string.yearly_habits_reset, Toast.LENGTH_LONG).show()
     }
 
-    private fun openDailyHabitListFragment(view: View) {
+    private fun displayDailyHabitListFragment() {
         findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToDailyHabitListFragment())
     }
 
-    private fun openWeeklyHabitListFragment(view: View) {
+    private fun displayWeeklyHabitListFragment() {
         findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToWeeklyHabitListFragment())
     }
 
-    private fun openMonthlyHabitListFragment(view: View) {
+    private fun displayMonthlyHabitListFragment() {
         findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMonthlyHabitListFragment())
     }
 
-    private fun openYearlyHabitListFragment(view: View) {
+    private fun displayYearlyHabitListFragment() {
         findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToYearlyHabitListFragment())
     }
 }
