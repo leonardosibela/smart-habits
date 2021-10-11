@@ -1,8 +1,6 @@
 package com.sibela.smarthabits.di
 
 import androidx.room.Room
-import androidx.room.RoomDatabase
-import androidx.sqlite.db.SupportSQLiteDatabase
 import com.sibela.smarthabits.data.mapper.HabitMapper
 import com.sibela.smarthabits.data.mapper.HabitMapperImpl
 import com.sibela.smarthabits.data.repository.*
@@ -13,7 +11,7 @@ import com.sibela.smarthabits.di.Qualifiers.FakeHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeWeeklyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeYearlyHabitRepositoryQualifier
-import com.sibela.smarthabits.domain.local.HabitDatabase
+import com.sibela.smarthabits.data.local.HabitDatabase
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
 import com.sibela.smarthabits.presentation.viewmodel.*

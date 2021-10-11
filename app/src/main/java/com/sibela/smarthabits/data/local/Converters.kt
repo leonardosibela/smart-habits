@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.domain.local
+package com.sibela.smarthabits.data.local
 
 import androidx.room.TypeConverter
 import com.sibela.smarthabits.domain.model.Periodicity

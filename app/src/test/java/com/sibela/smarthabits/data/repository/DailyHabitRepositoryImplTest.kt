@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.data.repository
 
-import com.sibela.smarthabits.domain.local.DailyHabitDao
+import com.sibela.smarthabits.data.local.DailyHabitDao
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_DAILY_HABIT

@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.domain.local
+package com.sibela.smarthabits.data.local
 
 import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY
 import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY_AS_STRING

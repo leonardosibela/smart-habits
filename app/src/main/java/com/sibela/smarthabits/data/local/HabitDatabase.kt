@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.domain.local
+package com.sibela.smarthabits.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase

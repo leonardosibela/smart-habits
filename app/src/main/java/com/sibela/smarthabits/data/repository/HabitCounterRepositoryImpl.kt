@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.data.repository
 
-import com.sibela.smarthabits.domain.local.HabitCounterDao
+import com.sibela.smarthabits.data.local.HabitCounterDao
 import com.sibela.smarthabits.domain.model.HabitCounter
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 

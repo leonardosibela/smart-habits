@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.domain.local
+package com.sibela.smarthabits.data.local
 
 import androidx.room.*
 import com.sibela.smarthabits.domain.model.WeeklyHabit
