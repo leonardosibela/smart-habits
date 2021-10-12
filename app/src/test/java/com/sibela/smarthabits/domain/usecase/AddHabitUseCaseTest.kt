@@ -3,15 +3,15 @@ package com.sibela.smarthabits.domain.usecase
 import com.sibela.smarthabits.domain.model.*
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.util.CoroutineTestRule
-import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY
+import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY_ENTITY
 import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
 import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_DAILY
 import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_MONTHLY
 import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_WEEKLY
 import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_YEARLY
-import com.sibela.smarthabits.util.TestData.MONTHLY_PERIODICITY
-import com.sibela.smarthabits.util.TestData.WEEKLY_PERIODICITY
-import com.sibela.smarthabits.util.TestData.YEARLY_PERIODICITY
+import com.sibela.smarthabits.util.TestData.MONTHLY_PERIODICITY_ENTITY
+import com.sibela.smarthabits.util.TestData.WEEKLY_PERIODICITY_ENTITY
+import com.sibela.smarthabits.util.TestData.YEARLY_PERIODICITY_ENTITY
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
@@ -57,7 +57,7 @@ class AddHabitUseCaseTest {
     @Test
     fun saveDailyHabit() = runBlocking {
         val description = FIRST_DESCRIPTION
-        val periodicity = DAILY_PERIODICITY
+        val periodicity = DAILY_PERIODICITY_ENTITY
         val habit = Habit(description = description, periodicity = periodicity)
         val lastDailyCounter = HABIT_COUNTER_DAILY
         val dailyHabit = DailyHabit(
@@ -77,7 +77,7 @@ class AddHabitUseCaseTest {
     @Test
     fun saveWeeklyHabit() = runBlocking {
         val description = FIRST_DESCRIPTION
-        val periodicity = WEEKLY_PERIODICITY
+        val periodicity = WEEKLY_PERIODICITY_ENTITY
         val habit = Habit(description = description, periodicity = periodicity)
         val lastWeeklyCounter = HABIT_COUNTER_WEEKLY
         val weeklyHabit = WeeklyHabit(
@@ -97,7 +97,7 @@ class AddHabitUseCaseTest {
     @Test
     fun saveMonthlyHabit() = runBlocking {
         val description = FIRST_DESCRIPTION
-        val periodicity = MONTHLY_PERIODICITY
+        val periodicity = MONTHLY_PERIODICITY_ENTITY
         val habit = Habit(description = description, periodicity = periodicity)
         val lastMonthlyCounter = HABIT_COUNTER_MONTHLY
         val monthlyHabit = MonthlyHabit(
@@ -117,7 +117,7 @@ class AddHabitUseCaseTest {
     @Test
     fun saveYearlyHabit() = runBlocking {
         val description = FIRST_DESCRIPTION
-        val periodicity = YEARLY_PERIODICITY
+        val periodicity = YEARLY_PERIODICITY_ENTITY
         val habit = Habit(description = description, periodicity = periodicity)
         val lastYearlyCounter = HABIT_COUNTER_YEARLY
         val yearlyHabit = YearlyHabit(

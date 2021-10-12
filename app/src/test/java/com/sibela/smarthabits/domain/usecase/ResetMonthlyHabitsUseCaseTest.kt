@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.domain.usecase
 
-import com.sibela.smarthabits.data.mapper.HabitMapper
+import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
 import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
@@ -17,7 +17,7 @@ import org.junit.Test
 class ResetMonthlyHabitsUseCaseTest {
 
     @RelaxedMockK
-    private lateinit var habitMapper: HabitMapper
+    private lateinit var habitToPeriodicityHabitMapper: HabitToPeriodicityHabitMapper
 
     @RelaxedMockK
     private lateinit var habitRepository: HabitRepository
@@ -58,7 +58,7 @@ class ResetMonthlyHabitsUseCaseTest {
         coJustRun { habitCounterRepository.insert(nextHabitCounter) }
         coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns habits
         coEvery {
-            habitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
+            habitToPeriodicityHabitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
         } returns monthlyHabits
         coJustRun { monthlyHabitRepository.save(firstNewMonthlyHabit) }
         coJustRun { monthlyHabitRepository.save(secondNewMonthlyHabit) }
@@ -67,7 +67,7 @@ class ResetMonthlyHabitsUseCaseTest {
         coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
         coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
         coVerify(exactly = 1) {
-            habitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
+            habitToPeriodicityHabitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
         }
         coVerify { monthlyHabitRepository.save(firstNewMonthlyHabit) }
         coVerify { monthlyHabitRepository.save(secondNewMonthlyHabit) }

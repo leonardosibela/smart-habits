@@ -1,5 +1,6 @@
 package com.sibela.smarthabits.util
 
+import com.sibela.smarthabits.data.entity.PeriodicityEntity
 import com.sibela.smarthabits.domain.model.*
 import io.mockk.MockKAnnotations
 
@@ -11,10 +12,10 @@ object TestData {
     const val FIRST_PERIOD = 1
     const val SECOND_PERIOD = 2
 
-    val DAILY_PERIODICITY = Periodicity.DAILY
-    val WEEKLY_PERIODICITY = Periodicity.WEEKLY
-    val MONTHLY_PERIODICITY = Periodicity.MONTHLY
-    val YEARLY_PERIODICITY = Periodicity.YEARLY
+    val DAILY_PERIODICITY_ENTITY = PeriodicityEntity.DAILY
+    val WEEKLY_PERIODICITY_ENTITY = PeriodicityEntity.WEEKLY
+    val MONTHLY_PERIODICITY_ENTITY = PeriodicityEntity.MONTHLY
+    val YEARLY_PERIODICITY_ENTITY = PeriodicityEntity.YEARLY
 
     val DAILY_PERIODICITY_AS_STRING = "DAILY"
     val WEEKLY_PERIODICITY_AS_STRING = "WEEKLY"

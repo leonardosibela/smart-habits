@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.domain.usecase
 
-import com.sibela.smarthabits.data.mapper.HabitMapper
+import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.DailyHabitRepository
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
@@ -17,7 +17,7 @@ import org.junit.Test
 class ResetDailyHabitsUseCaseTest {
 
     @RelaxedMockK
-    private lateinit var habitMapper: HabitMapper
+    private lateinit var habitToPeriodicityHabitMapper: HabitToPeriodicityHabitMapper
 
     @RelaxedMockK
     private lateinit var habitRepository: HabitRepository
@@ -58,7 +58,7 @@ class ResetDailyHabitsUseCaseTest {
         coJustRun { habitCounterRepository.insert(nextHabitCounter) }
         coEvery { habitRepository.getAllHabitsThatAreDaily() } returns habits
         coEvery {
-            habitMapper.toDailyHabits(habits, false, dailyCounter.period)
+            habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
         } returns dailyHabits
         coJustRun { dailyHabitRepository.save(firstNewDailyHabit) }
         coJustRun { dailyHabitRepository.save(secondNewDailyHabit) }
@@ -67,7 +67,7 @@ class ResetDailyHabitsUseCaseTest {
         coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
         coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreDaily() }
         coVerify(exactly = 1) {
-            habitMapper.toDailyHabits(habits, false, dailyCounter.period)
+            habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
         }
         coVerify { dailyHabitRepository.save(firstNewDailyHabit) }
         coVerify { dailyHabitRepository.save(secondNewDailyHabit) }

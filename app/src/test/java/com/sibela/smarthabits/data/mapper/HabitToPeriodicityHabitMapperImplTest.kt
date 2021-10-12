@@ -16,9 +16,9 @@ import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT
 import org.junit.Assert
 import org.junit.Test
 
-class HabitMapperImplTest {
+class HabitToPeriodicityHabitMapperImplTest {
 
-    private val mapper = HabitMapperImpl()
+    private val mapper = HabitToPeriodicityHabitMapperImpl()
 
     @Test
     fun toDailyHabits() {

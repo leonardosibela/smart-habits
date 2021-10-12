@@ -1,42 +1,18 @@
 package com.sibela.smarthabits.data.mapper
 
-import com.sibela.smarthabits.domain.model.*
+import com.sibela.smarthabits.data.entity.HabitEntity
+import com.sibela.smarthabits.domain.model.Habit
 
-class HabitMapperImpl : HabitMapper {
-
-    override fun toDailyHabits(habits: List<Habit>, completed: Boolean, period: Int) =
-        habits.map { toDailyHabit(it, completed, period) }
-
-    override fun toDailyHabit(habit: Habit, completed: Boolean, period: Int) = DailyHabit(
-        description = habit.description,
-        completed = completed,
-        period = period
+class HabitMapperImpl(private val periodicityMapper: PeriodicityMapper) : HabitMapper {
+    override fun toDomain(entity: HabitEntity) = Habit(
+        id = entity.id,
+        description = entity.description,
+        periodicity = periodicityMapper.toDomain(entity.periodicity)
     )
 
-    override fun toWeeklyHabits(habits: List<Habit>, completed: Boolean, period: Int) =
-        habits.map { toWeeklyHabit(it, completed, period) }
-
-    override fun toWeeklyHabit(habit: Habit, completed: Boolean, period: Int) = WeeklyHabit(
-        description = habit.description,
-        completed = completed,
-        period = period
-    )
-
-    override fun toMonthlyHabits(habits: List<Habit>, completed: Boolean, period: Int) =
-        habits.map { toMonthlyHabit(it, completed, period) }
-
-    override fun toMonthlyHabit(habit: Habit, completed: Boolean, period: Int) = MonthlyHabit(
-        description = habit.description,
-        completed = completed,
-        period = period
-    )
-
-    override fun toYearlyHabits(habits: List<Habit>, completed: Boolean, period: Int) =
-        habits.map { toYearlyHabit(it, completed, period) }
-
-    override fun toYearlyHabit(habit: Habit, completed: Boolean, period: Int) = YearlyHabit(
-        description = habit.description,
-        completed = completed,
-        period = period
+    override fun fromDomain(domain: Habit) = HabitEntity(
+        id = domain.id,
+        description = domain.description,
+        periodicity = periodicityMapper.fromDomain(domain.periodicity)
     )
 }

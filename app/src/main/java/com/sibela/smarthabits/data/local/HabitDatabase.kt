@@ -3,12 +3,12 @@ package com.sibela.smarthabits.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.sibela.smarthabits.domain.model.*
+import com.sibela.smarthabits.data.entity.*
 
 @Database(
     entities = [
-        Habit::class, DailyHabit::class, WeeklyHabit::class, MonthlyHabit::class,
-        YearlyHabit::class, HabitCounter::class
+        HabitEntity::class, DailyHabitEntity::class, WeeklyHabitEntity::class,
+        MonthlyHabitEntity::class, YearlyHabitEntity::class, HabitCounterEntity::class
     ], version = 1
 )
 @TypeConverters(Converters::class)

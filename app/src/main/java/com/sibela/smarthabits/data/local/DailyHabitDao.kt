@@ -1,22 +1,23 @@
 package com.sibela.smarthabits.data.local
 
 import androidx.room.*
+import com.sibela.smarthabits.data.entity.DailyHabitEntity
 import com.sibela.smarthabits.domain.model.DailyHabit
 
 @Dao
 interface DailyHabitDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(dailyHabit: DailyHabit): Long
+    suspend fun insert(dailyHabit: DailyHabitEntity): Long
 
     @Update
-    suspend fun update(dailyHabit: DailyHabit)
+    suspend fun update(dailyHabit: DailyHabitEntity)
 
     @Delete
-    suspend fun delete(dailyHabit: DailyHabit)
+    suspend fun delete(dailyHabit: DailyHabitEntity)
 
     @Query("SELECT * FROM dailyHabits WHERE period = :period")
-    suspend fun getHabitsForPeriod(period: Int): List<DailyHabit>
+    suspend fun getHabitsForPeriod(period: Int): List<DailyHabitEntity>
 
     @Query("DELETE FROM dailyHabits WHERE description = :description AND completed = 0")
     suspend fun deleteNotCompletedByDescription(description: String)

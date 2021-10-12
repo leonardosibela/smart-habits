@@ -1,8 +1,8 @@
 package com.sibela.smarthabits.di
 
 import androidx.room.Room
-import com.sibela.smarthabits.data.mapper.HabitMapper
-import com.sibela.smarthabits.data.mapper.HabitMapperImpl
+import com.sibela.smarthabits.data.local.HabitDatabase
+import com.sibela.smarthabits.data.mapper.*
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.data.repository.fake.*
 import com.sibela.smarthabits.di.Qualifiers.FakeDailyHabitRepositoryQualifier
@@ -11,7 +11,6 @@ import com.sibela.smarthabits.di.Qualifiers.FakeHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeMonthlyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeWeeklyHabitRepositoryQualifier
 import com.sibela.smarthabits.di.Qualifiers.FakeYearlyHabitRepositoryQualifier
-import com.sibela.smarthabits.data.local.HabitDatabase
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
 import com.sibela.smarthabits.presentation.viewmodel.*
@@ -38,12 +37,13 @@ private val daos = module {
 }
 
 private val repositories = module {
-    single<DailyHabitRepository> { DailyHabitRepositoryImpl(get()) }
-    single<MonthlyHabitRepository> { MonthlyHabitRepositoryImpl(get()) }
-    single<HabitCounterRepository> { HabitCounterRepositoryImpl(get()) }
-    single<HabitRepository> { HabitRepositoryImpl(get()) }
-    single<WeeklyHabitRepository> { WeeklyHabitRepositoryImpl(get()) }
-    single<YearlyHabitRepository> { YearlyHabitRepositoryImpl(get()) }
+    single<DailyHabitRepository> { DailyHabitRepositoryImpl(get(), get()) }
+    single<MonthlyHabitRepository> { MonthlyHabitRepositoryImpl(get(), get()) }
+    single<HabitCounterRepository> { HabitCounterRepositoryImpl(get(), get()) }
+    single<HabitRepository> { HabitRepositoryImpl(get(), get()) }
+    single<WeeklyHabitRepository> { WeeklyHabitRepositoryImpl(get(), get()) }
+    single<YearlyHabitRepository> { YearlyHabitRepositoryImpl(get(), get()) }
+    single<YearlyHabitMapper> { YearlyHabitMapperImpl() }
 }
 
 private val fakeRepositories = module {
@@ -56,7 +56,14 @@ private val fakeRepositories = module {
 }
 
 private val mappers = module {
-    single<HabitMapper> { HabitMapperImpl() }
+    single<DailyHabitMapper> { DailyHabitMapperImpl() }
+    single<HabitCounterMapper> { HabitCounterMapperImpl(get()) }
+    single<HabitMapper> { HabitMapperImpl(get()) }
+    single<HabitToPeriodicityHabitMapper> { HabitToPeriodicityHabitMapperImpl() }
+    single<MonthlyHabitMapper> { MonthlyHabitMapperImpl() }
+    single<PeriodicityMapper> { PeriodicityMapperImpl() }
+    single<WeeklyHabitMapper> { WeeklyHabitMapperImpl() }
+    single<YearlyHabitMapper> { YearlyHabitMapperImpl() }
 }
 
 private val useCases = module {

@@ -1,22 +1,22 @@
 package com.sibela.smarthabits.data.local
 
 import androidx.room.*
-import com.sibela.smarthabits.domain.model.YearlyHabit
+import com.sibela.smarthabits.data.entity.YearlyHabitEntity
 
 @Dao
 interface YearlyHabitDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(yearlyHabit: YearlyHabit): Long
+    suspend fun insert(yearlyHabit: YearlyHabitEntity): Long
 
     @Update
-    suspend fun update(yearlyHabit: YearlyHabit)
+    suspend fun update(yearlyHabit: YearlyHabitEntity)
 
     @Delete
-    suspend fun delete(yearlyHabit: YearlyHabit)
+    suspend fun delete(yearlyHabit: YearlyHabitEntity)
 
     @Query("SELECT * FROM yearlyHabits WHERE period = :period")
-    suspend fun getHabitsForPeriod(period: Int): List<YearlyHabit>
+    suspend fun getHabitsForPeriod(period: Int): List<YearlyHabitEntity>
 
     @Query("DELETE FROM yearlyHabits WHERE description = :description AND completed = 0")
     suspend fun deleteNotCompletedByDescription(description: String)
