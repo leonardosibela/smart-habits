@@ -18,8 +18,4 @@ class DailyHabitMapperImpl : DailyHabitMapper {
         completed = domain.completed,
         period = domain.period
     )
-
-    override fun toDomainList(entityList: List<DailyHabitEntity>) = entityList.map { toDomain(it) }
-
-    override fun fromDomainList(domainList: List<DailyHabit>) = domainList.map { fromDomain(it) }
 }
