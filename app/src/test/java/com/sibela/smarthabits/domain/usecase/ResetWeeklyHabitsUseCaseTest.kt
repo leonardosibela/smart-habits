@@ -42,7 +42,7 @@ class ResetWeeklyHabitsUseCaseTest {
             id = 0
             period++
         }
-        val habits = listOf(TestData.FIRST_HABIT, TestData.SECOND_HABIT)
+        val habits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
         val weeklyHabits = listOf(TestData.FIRST_WEEKLY_HABIT, TestData.SECOND_WEEKLY_HABIT)
         val firstNewWeeklyHabit = TestData.FIRST_WEEKLY_HABIT
         firstNewWeeklyHabit.apply {

@@ -2,7 +2,7 @@ package com.sibela.smarthabits.presentation.viewmodel
 
 import com.sibela.smarthabits.domain.usecase.AddHabitUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
-import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY_ENTITY
+import com.sibela.smarthabits.util.TestData.DAILY_PERIODICITY
 import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coJustRun
@@ -33,8 +33,8 @@ class AddPeriodicHabitViewModelTest {
 
     @Test
     fun addHabit() {
-        coJustRun { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY_ENTITY) }
-        addPeriodicHabitViewModel.addHabit(FIRST_DESCRIPTION, DAILY_PERIODICITY_ENTITY)
-        coVerify(exactly = 1) { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY_ENTITY) }
+        coJustRun { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY) }
+        addPeriodicHabitViewModel.addHabit(FIRST_DESCRIPTION, DAILY_PERIODICITY)
+        coVerify(exactly = 1) { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY) }
     }
 }

@@ -1,13 +1,18 @@
 package com.sibela.smarthabits.data.repository
 
 import com.sibela.smarthabits.data.local.YearlyHabitDao
+import com.sibela.smarthabits.data.mapper.YearlyHabitMapper
 import com.sibela.smarthabits.util.CoroutineTestRule
+import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
+import com.sibela.smarthabits.util.TestData.FIRST_ID
+import com.sibela.smarthabits.util.TestData.FIRST_PERIOD
 import com.sibela.smarthabits.util.TestData.FIRST_YEARLY_HABIT
+import com.sibela.smarthabits.util.TestData.FIRST_YEARLY_HABIT_ENTITY
+import com.sibela.smarthabits.util.TestData.SECOND_DESCRIPTION
 import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT
+import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT_ENTITY
 import com.sibela.smarthabits.util.initMockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coJustRun
-import io.mockk.coVerify
+import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
@@ -25,6 +30,9 @@ class YearlyHabitRepositoryImplTest {
     @RelaxedMockK
     private lateinit var yearlyHabitDao: YearlyHabitDao
 
+    @RelaxedMockK
+    private lateinit var yearlyHabitMapper: YearlyHabitMapper
+
     @InjectMockKs
     private lateinit var yearlyHabitRepositoryImpl: YearlyHabitRepositoryImpl
 
@@ -35,17 +43,23 @@ class YearlyHabitRepositoryImplTest {
     @Test
     fun save() = runBlocking {
         val yearlyHabit = FIRST_YEARLY_HABIT
-        coJustRun { yearlyHabitDao.insert(yearlyHabit) }
+        val yearlyHabitEntity = FIRST_YEARLY_HABIT_ENTITY
+        coJustRun { yearlyHabitDao.insert(yearlyHabitEntity) }
+        every { yearlyHabitMapper.fromDomain(yearlyHabit) } returns yearlyHabitEntity
         yearlyHabitRepositoryImpl.save(yearlyHabit)
-        coVerify(exactly = 1) { yearlyHabitDao.insert(yearlyHabit) }
+        verify(exactly = 1) { yearlyHabitMapper.fromDomain(yearlyHabit) }
+        coVerify(exactly = 1) { yearlyHabitDao.insert(yearlyHabitEntity) }
     }
 
     @Test
     fun getHabitsFoPeriod() = runBlocking {
-        val period = 1
+        val period = FIRST_PERIOD
         val expectedHabits = listOf(FIRST_YEARLY_HABIT, SECOND_YEARLY_HABIT)
-        coEvery { yearlyHabitDao.getHabitsForPeriod(period) } returns expectedHabits
+        val expectedHabitEntities = listOf(FIRST_YEARLY_HABIT_ENTITY, SECOND_YEARLY_HABIT_ENTITY)
+        coEvery { yearlyHabitDao.getHabitsForPeriod(period) } returns expectedHabitEntities
+        every { yearlyHabitMapper.toDomainList(expectedHabitEntities) } returns expectedHabits
         val actualHabits = yearlyHabitRepositoryImpl.getHabitsForPeriod(period)
+        verify(exactly = 1) { yearlyHabitMapper.toDomainList(expectedHabitEntities) }
         coVerify(exactly = 1) { yearlyHabitDao.getHabitsForPeriod(period) }
         Assert.assertEquals(expectedHabits, actualHabits)
     }
@@ -53,14 +67,17 @@ class YearlyHabitRepositoryImplTest {
     @Test
     fun remove() = runBlocking {
         val habit = FIRST_YEARLY_HABIT
-        coJustRun { yearlyHabitDao.delete(habit) }
+        val habitEntity = FIRST_YEARLY_HABIT_ENTITY
+        coJustRun { yearlyHabitDao.delete(habitEntity) }
+        every { yearlyHabitMapper.fromDomain(habit) } returns habitEntity
         yearlyHabitRepositoryImpl.remove(habit)
-        coVerify(exactly = 1) { yearlyHabitDao.delete(habit) }
+        verify { yearlyHabitMapper.fromDomain(habit) }
+        coVerify(exactly = 1) { yearlyHabitDao.delete(habitEntity) }
     }
 
     @Test
     fun removeNotCompletedById() = runBlocking {
-        val description = "Description"
+        val description = FIRST_DESCRIPTION
         coJustRun { yearlyHabitDao.deleteNotCompletedByDescription(description) }
         yearlyHabitRepositoryImpl.removeNotCompletedByDescription(description)
         coVerify(exactly = 1) { yearlyHabitDao.deleteNotCompletedByDescription(description) }
@@ -68,8 +85,8 @@ class YearlyHabitRepositoryImplTest {
 
     @Test
     fun updateNotCompletedDescription() = runBlocking {
-        val id = 1
-        val description = "Description"
+        val id = FIRST_ID
+        val description = FIRST_DESCRIPTION
         coJustRun { yearlyHabitDao.updateNotCompletedDescription(id, description) }
         yearlyHabitRepositoryImpl.updateNotCompletedDescription(id, description)
         coVerify(exactly = 1) { yearlyHabitDao.updateNotCompletedDescription(id, description) }
@@ -77,8 +94,8 @@ class YearlyHabitRepositoryImplTest {
 
     @Test
     fun updateNotCompletedDescriptionByDescription() = runBlocking {
-        val oldDescription = "Old description"
-        val newDescription = "New description"
+        val oldDescription = FIRST_DESCRIPTION
+        val newDescription = SECOND_DESCRIPTION
         coJustRun { yearlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription) }
         yearlyHabitRepositoryImpl.updateNotCompletedDescription(oldDescription, newDescription)
         coVerify(exactly = 1) {

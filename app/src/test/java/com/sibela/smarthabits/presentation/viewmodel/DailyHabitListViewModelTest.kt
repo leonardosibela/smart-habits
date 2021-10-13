@@ -9,6 +9,8 @@ import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreDailyUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_DAILY
+import com.sibela.smarthabits.util.TestData.SECOND_HABIT_DAILY
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
@@ -80,7 +82,7 @@ class DailyHabitListViewModelTest {
 
     @Test
     fun `fetchHabits result success`() {
-        val expectedHabits = listOf(TestData.FIRST_HABIT, TestData.SECOND_HABIT)
+        val expectedHabits = listOf(FIRST_HABIT_DAILY, SECOND_HABIT_DAILY)
         coEvery { getHabitsThatAreDailyUseCase() } returns expectedHabits.toSuccess()
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Loading) }
         dailyHabitListViewModel.fetchHabits()
@@ -90,8 +92,8 @@ class DailyHabitListViewModelTest {
 
     @Test
     fun deleteHabit() {
-        coJustRun { deleteHabitUseCase(TestData.FIRST_HABIT) }
-        dailyHabitListViewModel.deleteHabit(TestData.FIRST_HABIT)
-        coVerify(exactly = 1) { deleteHabitUseCase.invoke(TestData.FIRST_HABIT) }
+        coJustRun { deleteHabitUseCase(FIRST_HABIT_DAILY) }
+        dailyHabitListViewModel.deleteHabit(FIRST_HABIT_DAILY)
+        coVerify(exactly = 1) { deleteHabitUseCase.invoke(FIRST_HABIT_DAILY) }
     }
 }

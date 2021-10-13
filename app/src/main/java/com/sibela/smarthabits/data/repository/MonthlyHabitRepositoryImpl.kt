@@ -10,7 +10,6 @@ class MonthlyHabitRepositoryImpl(
     private val monthlyHabitMapper: MonthlyHabitMapper
 ) : MonthlyHabitRepository {
 
-
     override suspend fun save(monthlyHabit: MonthlyHabit) {
         monthlyHabitDao.insert(monthlyHabitMapper.fromDomain(monthlyHabit))
     }

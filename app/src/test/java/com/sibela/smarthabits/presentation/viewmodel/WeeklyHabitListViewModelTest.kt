@@ -80,7 +80,7 @@ class WeeklyHabitListViewModelTest {
 
     @Test
     fun `fetchHabits result success`() {
-        val expectedHabits = listOf(TestData.FIRST_HABIT, TestData.SECOND_HABIT)
+        val expectedHabits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
         coEvery { getHabitsThatAreWeeklyUseCase() } returns expectedHabits.toSuccess()
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Loading) }
         weeklyHabitListViewModel.fetchHabits()
@@ -90,8 +90,8 @@ class WeeklyHabitListViewModelTest {
 
     @Test
     fun deleteHabit() {
-        coJustRun { deleteHabitUseCase(TestData.FIRST_HABIT) }
-        weeklyHabitListViewModel.deleteHabit(TestData.FIRST_HABIT)
-        coVerify(exactly = 1) { deleteHabitUseCase.invoke(TestData.FIRST_HABIT) }
+        coJustRun { deleteHabitUseCase(TestData.FIRST_HABIT_DAILY) }
+        weeklyHabitListViewModel.deleteHabit(TestData.FIRST_HABIT_DAILY)
+        coVerify(exactly = 1) { deleteHabitUseCase.invoke(TestData.FIRST_HABIT_DAILY) }
     }
 }

@@ -2,7 +2,8 @@ package com.sibela.smarthabits.presentation.viewmodel
 
 import com.sibela.smarthabits.domain.usecase.EditHabitUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
-import com.sibela.smarthabits.util.TestData.FIRST_HABIT
+import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_DAILY
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coJustRun
 import io.mockk.coVerify
@@ -32,8 +33,8 @@ class EditHabitViewModelTest {
 
     @Test
     fun editHabit() {
-        val habit = FIRST_HABIT
-        val description = "Description"
+        val habit = FIRST_HABIT_DAILY
+        val description = FIRST_DESCRIPTION
         coJustRun { editHabitUseCase(habit, description) }
         editHabitViewModel.editHabit(habit, description)
         coVerify(exactly = 1) { editHabitUseCase(habit, description) }
