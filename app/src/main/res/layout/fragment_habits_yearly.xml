@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/window_color"
-    tools:context=".presentation.view.fragment.WeeklyHabitListFragment">
+    tools:context=".presentation.view.fragment.HabitsYearlyFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/weekly_habits_recycler"
+        android:id="@+id/yearly_habits_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layoutAnimation="@anim/slide_in_animation"
@@ -16,7 +16,7 @@
         tools:listitem="@layout/item_habit" />
 
     <ProgressBar
-        android:id="@+id/weekly_habits_spinner"
+        android:id="@+id/yearly_habits_spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -24,7 +24,7 @@
         android:indeterminateTintMode="src_atop" />
 
     <TextView
-        android:id="@+id/weekly_habits_error"
+        android:id="@+id/yearly_habits_error"
         style="@style/TextAppearance.RecyclerViewMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/weekly_habits_empty_list_message"
+        android:id="@+id/yearly_habits_empty_list_message"
         style="@style/TextAppearance.RecyclerViewMessage"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_weekly_habit_fab"
+        android:id="@+id/add_yearly_habit_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"

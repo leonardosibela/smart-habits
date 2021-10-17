@@ -192,15 +192,15 @@ private val fakeUseCases = module {
 
 private val viewModels = module {
     viewModel { AddPeriodicHabitViewModel(get()) }
-    viewModel { DailyHabitListViewModel(get(), get()) }
+    viewModel { HabitsDailyViewModel(get(), get()) }
     viewModel { DailyHabitsViewModel(get(), get()) }
     viewModel { EditHabitViewModel(get()) }
-    viewModel { MonthlyHabitListViewModel(get(), get()) }
+    viewModel { HabitsMonthlyViewModel(get(), get()) }
     viewModel { MonthlyHabitsViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get()) }
-    viewModel { WeeklyHabitListViewModel(get(), get()) }
+    viewModel { HabitsWeeklyViewModel(get(), get()) }
     viewModel { WeeklyHabitsViewModel(get(), get()) }
-    viewModel { YearlyHabitListViewModel(get(), get()) }
+    viewModel { HabitsYearlyViewModel(get(), get()) }
     viewModel { YearlyHabitsViewModel(get(), get()) }
 }
 

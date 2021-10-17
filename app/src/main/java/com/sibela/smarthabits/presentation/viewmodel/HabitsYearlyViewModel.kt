@@ -6,12 +6,12 @@ import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
-import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreWeeklyUseCase
+import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreYearlyUseCase
 import com.sibela.smarthabits.extension.asLiveData
 import kotlinx.coroutines.launch
 
-class WeeklyHabitListViewModel(
-    private val getHabitsThatAreWeeklyUseCase: GetHabitsThatAreWeeklyUseCase,
+class HabitsYearlyViewModel(
+    private val getHabitsThatAreYearlyUseCase: GetHabitsThatAreYearlyUseCase,
     private val deleteHabitUseCase: DeleteHabitUseCase
 ) : ViewModel() {
 
@@ -20,7 +20,7 @@ class WeeklyHabitListViewModel(
     val habits = _habits.asLiveData
 
     fun fetchHabits() = viewModelScope.launch {
-        val result = getHabitsThatAreWeeklyUseCase()
+        val result = getHabitsThatAreYearlyUseCase()
         if (result is Result.Error) {
             _habits.value = HabitResult.Error(result.throwable)
         } else {

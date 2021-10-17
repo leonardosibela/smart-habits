@@ -84,9 +84,9 @@
 
     <fragment
         android:id="@+id/dailyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.DailyHabitListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsDailyFragment"
         android:label="@string/daily_habits"
-        tools:layout="@layout/fragment_daily_habits_list">
+        tools:layout="@layout/fragment_habits_daily">
 
         <action
             android:id="@+id/action_dailyHabitListFragment_to_editHabitFragment"
@@ -98,9 +98,9 @@
 
     <fragment
         android:id="@+id/weeklyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.WeeklyHabitListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsWeeklyFragment"
         android:label="@string/weekly_habits"
-        tools:layout="@layout/fragment_weekly_habit_list">
+        tools:layout="@layout/fragment_habits_weekly">
 
         <action
             android:id="@+id/action_weeklyHabitListFragment_to_editHabitFragment"
@@ -112,9 +112,9 @@
 
     <fragment
         android:id="@+id/monthlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsMonthlyFragment"
         android:label="@string/monthly_habits"
-        tools:layout="@layout/fragment_monthly_habit_list">
+        tools:layout="@layout/fragment_habits_monthly">
 
         <action
             android:id="@+id/action_monthlyHabitListFragment_to_editHabitFragment"
@@ -126,9 +126,9 @@
 
     <fragment
         android:id="@+id/yearlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.YearlyHabitListFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsYearlyFragment"
         android:label="@string/yearly_habits"
-        tools:layout="@layout/fragment_yearly_habit_list">
+        tools:layout="@layout/fragment_habits_yearly">
 
         <action
             android:id="@+id/action_yearlyHabitListFragment_to_editHabitFragment"

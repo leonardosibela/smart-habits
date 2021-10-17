@@ -8,30 +8,30 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sibela.smarthabits.databinding.FragmentWeeklyHabitListBinding
+import com.sibela.smarthabits.databinding.FragmentHabitsWeeklyBinding
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.HabitAdapter
 import com.sibela.smarthabits.presentation.view.dialog.HabitDeletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.HabitResult
-import com.sibela.smarthabits.presentation.viewmodel.WeeklyHabitListViewModel
+import com.sibela.smarthabits.presentation.viewmodel.HabitsWeeklyViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class WeeklyHabitListFragment : Fragment() {
+class HabitsWeeklyFragment : Fragment() {
 
     private lateinit var habitAdapter: HabitAdapter
 
-    private var _binding: FragmentWeeklyHabitListBinding? = null
+    private var _binding: FragmentHabitsWeeklyBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: WeeklyHabitListViewModel by viewModel()
+    private val viewModelHabits: HabitsWeeklyViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentWeeklyHabitListBinding.inflate(inflater, container, false)
+        _binding = FragmentHabitsWeeklyBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,7 +40,7 @@ class WeeklyHabitListFragment : Fragment() {
         observeData()
         setupListeners()
         setupRecyclerView()
-        viewModel.fetchHabits()
+        viewModelHabits.fetchHabits()
     }
 
     override fun onDestroyView() {
@@ -61,7 +61,7 @@ class WeeklyHabitListFragment : Fragment() {
     }
 
     private fun observeData() {
-        viewModel.habits.observe(viewLifecycleOwner, ::onHabitsChanged)
+        viewModelHabits.habits.observe(viewLifecycleOwner, ::onHabitsChanged)
     }
 
     private fun onHabitsChanged(habitResult: HabitResult) {
@@ -122,8 +122,8 @@ class WeeklyHabitListFragment : Fragment() {
     }
 
     private fun deleteHabit(habit: Habit) {
-        viewModel.deleteHabit(habit)
-        viewModel.fetchHabits()
+        viewModelHabits.deleteHabit(habit)
+        viewModelHabits.fetchHabits()
     }
 
     private fun onEditHabitClicked(habit: Habit) {

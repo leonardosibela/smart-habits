@@ -6,7 +6,7 @@ import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
-import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreMonthlyUseCase
+import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreDailyUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_HABIT_DAILY
 import com.sibela.smarthabits.util.TestData.SECOND_HABIT_DAILY
@@ -24,7 +24,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class MonthlyHabitListViewModelTest {
+class HabitsDailyViewModelTest {
 
     @get:Rule
     @ExperimentalCoroutinesApi
@@ -34,7 +34,7 @@ class MonthlyHabitListViewModelTest {
     val observerRule = InstantTaskExecutorRule()
 
     @RelaxedMockK
-    private lateinit var getHabitsThatAreMonthlyUseCase: GetHabitsThatAreMonthlyUseCase
+    private lateinit var getHabitsThatAreDailyUseCase: GetHabitsThatAreDailyUseCase
 
     @RelaxedMockK
     private lateinit var deleteHabitUseCase: DeleteHabitUseCase
@@ -43,7 +43,7 @@ class MonthlyHabitListViewModelTest {
     private lateinit var habitObserver: Observer<HabitResult>
 
     @InjectMockKs
-    private lateinit var monthlyHabitListViewModel: MonthlyHabitListViewModel
+    private lateinit var habitsDailyViewModel: HabitsDailyViewModel
 
     init {
         initMockKAnnotations()
@@ -51,48 +51,48 @@ class MonthlyHabitListViewModelTest {
 
     @Before
     fun setUp() {
-        monthlyHabitListViewModel.habits.observeForever(habitObserver)
+        habitsDailyViewModel.habits.observeForever(habitObserver)
     }
 
     @After
     fun tearDown() {
-        monthlyHabitListViewModel.habits.removeObserver(habitObserver)
+        habitsDailyViewModel.habits.removeObserver(habitObserver)
     }
 
     @Test
     fun `fetchHabits result error`() = runBlocking {
         val throwable = Throwable()
-        coEvery { getHabitsThatAreMonthlyUseCase() } returns throwable.toError()
+        coEvery { getHabitsThatAreDailyUseCase() } returns throwable.toError()
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Loading) }
-        monthlyHabitListViewModel.fetchHabits()
-        coVerify(exactly = 1) { getHabitsThatAreMonthlyUseCase.invoke() }
+        habitsDailyViewModel.fetchHabits()
+        coVerify(exactly = 1) { getHabitsThatAreDailyUseCase.invoke() }
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Error(throwable)) }
     }
 
     @Test
     fun `fetchHabits result empty`() = runBlocking {
         val expectedHabits = listOf<Habit>()
-        coEvery { getHabitsThatAreMonthlyUseCase() } returns expectedHabits.toSuccess()
+        coEvery { getHabitsThatAreDailyUseCase() } returns expectedHabits.toSuccess()
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Loading) }
-        monthlyHabitListViewModel.fetchHabits()
-        coVerify(exactly = 1) { getHabitsThatAreMonthlyUseCase.invoke() }
+        habitsDailyViewModel.fetchHabits()
+        coVerify(exactly = 1) { getHabitsThatAreDailyUseCase.invoke() }
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.EmptyList) }
     }
 
     @Test
     fun `fetchHabits result success`() {
         val expectedHabits = listOf(FIRST_HABIT_DAILY, SECOND_HABIT_DAILY)
-        coEvery { getHabitsThatAreMonthlyUseCase() } returns expectedHabits.toSuccess()
+        coEvery { getHabitsThatAreDailyUseCase() } returns expectedHabits.toSuccess()
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Loading) }
-        monthlyHabitListViewModel.fetchHabits()
-        coVerify(exactly = 1) { getHabitsThatAreMonthlyUseCase.invoke() }
+        habitsDailyViewModel.fetchHabits()
+        coVerify(exactly = 1) { getHabitsThatAreDailyUseCase.invoke() }
         verify(exactly = 1) { habitObserver.onChanged(HabitResult.Success(expectedHabits)) }
     }
 
     @Test
     fun deleteHabit() {
         coJustRun { deleteHabitUseCase(FIRST_HABIT_DAILY) }
-        monthlyHabitListViewModel.deleteHabit(FIRST_HABIT_DAILY)
+        habitsDailyViewModel.deleteHabit(FIRST_HABIT_DAILY)
         coVerify(exactly = 1) { deleteHabitUseCase.invoke(FIRST_HABIT_DAILY) }
     }
 }

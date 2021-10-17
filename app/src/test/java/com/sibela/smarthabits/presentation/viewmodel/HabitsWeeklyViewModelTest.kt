@@ -23,7 +23,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 
-class WeeklyHabitListViewModelTest {
+class HabitsWeeklyViewModelTest {
 
     @get:Rule
     @ExperimentalCoroutinesApi
@@ -42,7 +42,7 @@ class WeeklyHabitListViewModelTest {
     private lateinit var habitObserver: Observer<HabitResult>
 
     @InjectMockKs
-    private lateinit var weeklyHabitListViewModel: WeeklyHabitListViewModel
+    private lateinit var weeklyHabitListViewModel: HabitsWeeklyViewModel
 
     init {
         initMockKAnnotations()

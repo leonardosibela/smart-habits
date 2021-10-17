@@ -8,30 +8,30 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sibela.smarthabits.databinding.FragmentMonthlyHabitListBinding
+import com.sibela.smarthabits.databinding.FragmentHabitsDailyBinding
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.presentation.adapter.HabitAdapter
 import com.sibela.smarthabits.presentation.view.dialog.HabitDeletionDialog
+import com.sibela.smarthabits.presentation.viewmodel.HabitsDailyViewModel
 import com.sibela.smarthabits.presentation.viewmodel.HabitResult
-import com.sibela.smarthabits.presentation.viewmodel.MonthlyHabitListViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class MonthlyHabitListFragment : Fragment() {
+class HabitsDailyFragment : Fragment() {
 
     private lateinit var habitAdapter: HabitAdapter
 
-    private var _binding: FragmentMonthlyHabitListBinding? = null
+    private var _binding: FragmentHabitsDailyBinding? = null
     private val binding get() = _binding!!
 
-    private val viewModel: MonthlyHabitListViewModel by viewModel()
+    private val viewModel: HabitsDailyViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMonthlyHabitListBinding.inflate(inflater, container, false)
+        _binding = FragmentHabitsDailyBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,13 +49,13 @@ class MonthlyHabitListFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addMonthlyHabitFab.setOnClickListener(::onAddFabClicked)
+        addDailyHabitFab.setOnClickListener(::onAddFabClicked)
     }
 
     private fun onAddFabClicked(view: View) {
         findNavController().navigate(
-            MonthlyHabitListFragmentDirections.actionMonthlyHabitListFragmentToAddPeriodicHabitFragment(
-                Periodicity.MONTHLY
+            DailyHabitListFragmentDirections.actionDailyHabitListFragmentToAddPeriodicHabitFragment(
+                Periodicity.DAILY
             )
         )
     }
@@ -74,42 +74,41 @@ class MonthlyHabitListFragment : Fragment() {
     }
 
     private fun displayLoading() = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = false
-        monthlyHabitsSpinner.isVisible = true
-        monthlyHabitsEmptyListMessage.isVisible = false
+        dailyHabitsError.isVisible = false
+        dailyHabitsRecycler.isVisible = false
+        addDailyHabitFab.isVisible = false
+        dailyHabitsSpinner.isVisible = true
+        dailyHabitsEmptyListMessage.isVisible = false
     }
 
     private fun displayHabits(data: List<Habit>) = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = true
-        addMonthlyHabitFab.isVisible = true
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = false
+        dailyHabitsError.isVisible = false
+        dailyHabitsRecycler.isVisible = true
+        addDailyHabitFab.isVisible = true
+        dailyHabitsSpinner.isVisible = false
+        dailyHabitsEmptyListMessage.isVisible = false
         habitAdapter.submitList(data)
     }
 
     private fun displayError() = with(binding) {
-        monthlyHabitsError.isVisible = true
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = false
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = false
+        dailyHabitsError.isVisible = true
+        dailyHabitsRecycler.isVisible = false
+        addDailyHabitFab.isVisible = false
+        dailyHabitsSpinner.isVisible = false
+        dailyHabitsEmptyListMessage.isVisible = false
     }
 
     private fun displayEmptyListMessage() = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = true
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = true
-
+        dailyHabitsError.isVisible = false
+        dailyHabitsRecycler.isVisible = false
+        addDailyHabitFab.isVisible = true
+        dailyHabitsSpinner.isVisible = false
+        dailyHabitsEmptyListMessage.isVisible = true
     }
 
     private fun setupRecyclerView() {
         habitAdapter = HabitAdapter(::onDeleteHabitClicked, ::onEditHabitClicked)
-        with(binding.monthlyHabitsRecycler) {
+        with(binding.dailyHabitsRecycler) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = habitAdapter
@@ -128,9 +127,7 @@ class MonthlyHabitListFragment : Fragment() {
 
     private fun onEditHabitClicked(habit: Habit) {
         findNavController().navigate(
-            MonthlyHabitListFragmentDirections.actionMonthlyHabitListFragmentToEditHabitFragment(
-                habit
-            )
+            DailyHabitListFragmentDirections.actionDailyHabitListFragmentToEditHabitFragment(habit)
         )
     }
 }
