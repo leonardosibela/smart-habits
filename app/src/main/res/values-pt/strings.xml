@@ -6,13 +6,11 @@
     <string name="year">Ano</string>
     <string name="settings">Configurações</string>
 
-
     <string name="add_habit">Adicionar hábito</string>
     <string name="edit_habit">Editar hábito</string>
     <string name="internal_error">Erro interno</string>
     <string name="no_habit">Nenhum hábito adicionado</string>
     <string name="description">Descrição</string>
-
 
     <string name="reset_daily_habits">Resetar hábitos diários</string>
     <string name="reset_weekly_habits">Resetar hábitos semanais</string>

@@ -7,13 +7,11 @@
     <string name="year">Year</string>
     <string name="settings">Settings</string>
 
-
     <string name="add_habit">Add habit</string>
     <string name="edit_habit">Edit habit</string>
     <string name="internal_error">Internal error</string>
     <string name="no_habit">No habits added</string>
     <string name="description">Description</string>
-
 
     <string name="reset_daily_habits">Reset daily habits</string>
     <string name="reset_weekly_habits">Reset weekly habits</string>
@@ -34,7 +32,7 @@
     <string name="habit_deletion_title">Delete habit</string>
     <string name="habit_deletion_message">Are you sure you want to delete %1$s?</string>
 
-    <string name="habit_completion_title">Delete habit</string>
+    <string name="habit_completion_title">Complete habit</string>
     <string name="habit_completion_message">Are you sure you want to complete %1$s?</string>
 
     <string name="daily_habits_reset">Daily habits reset</string>
