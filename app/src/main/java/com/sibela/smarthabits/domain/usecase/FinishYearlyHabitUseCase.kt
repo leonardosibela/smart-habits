@@ -5,7 +5,7 @@ import com.sibela.smarthabits.domain.repository.YearlyHabitRepository
 
 class FinishYearlyHabitUseCase(private val yearlyHabitRepository: YearlyHabitRepository) {
 
-    internal suspend operator fun invoke(yearlyHabit: YearlyHabit) {
+    suspend operator fun invoke(yearlyHabit: YearlyHabit) {
         yearlyHabitRepository.remove(yearlyHabit)
     }
 }

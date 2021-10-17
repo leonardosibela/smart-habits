@@ -12,7 +12,7 @@ class DeleteHabitUseCase(
     private val yearlyHabitRepository: YearlyHabitRepository
 ) {
 
-    internal suspend operator fun invoke(habit: Habit) {
+    suspend operator fun invoke(habit: Habit) {
         habitRepository.delete(habit)
         when (habit.periodicity) {
             Periodicity.DAILY -> dailyHabitRepository.removeNotCompletedByDescription(habit.description)

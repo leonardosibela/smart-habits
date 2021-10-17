@@ -12,7 +12,7 @@ class AddHabitUseCase(
     private val yearlyHabitRepository: YearlyHabitRepository,
 ) {
 
-    internal suspend operator fun invoke(description: String, periodicity: Periodicity) {
+    suspend operator fun invoke(description: String, periodicity: Periodicity) {
         habitRepository.save(Habit(description = description, periodicity = periodicity))
         when (periodicity) {
             Periodicity.DAILY -> saveDailyHabit(description)

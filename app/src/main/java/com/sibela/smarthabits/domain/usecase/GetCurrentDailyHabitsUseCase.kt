@@ -9,7 +9,7 @@ class GetCurrentDailyHabitsUseCase(
     private val habitCounterRepository: HabitCounterRepository
 ) {
 
-    internal suspend operator fun invoke() = resultBy {
+    suspend operator fun invoke() = resultBy {
         val lastDailyCounter = habitCounterRepository.getLastDailyCounter()
         dailyHabitRepository.getHabitsForPeriod(lastDailyCounter.period)
     }

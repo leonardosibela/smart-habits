@@ -5,7 +5,7 @@ import com.sibela.smarthabits.domain.repository.DailyHabitRepository
 
 class FinishDailyHabitUseCase(private val dailyHabitRepository: DailyHabitRepository) {
 
-    internal suspend operator fun invoke(dailyHabit: DailyHabit) {
+    suspend operator fun invoke(dailyHabit: DailyHabit) {
         dailyHabitRepository.remove(dailyHabit)
     }
 }

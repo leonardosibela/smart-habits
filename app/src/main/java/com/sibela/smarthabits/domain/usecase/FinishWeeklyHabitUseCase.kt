@@ -5,7 +5,7 @@ import com.sibela.smarthabits.domain.repository.WeeklyHabitRepository
 
 class FinishWeeklyHabitUseCase(private val weeklyHabitRepository: WeeklyHabitRepository) {
 
-    internal suspend operator fun invoke(weeklyHabit: WeeklyHabit) {
+    suspend operator fun invoke(weeklyHabit: WeeklyHabit) {
         weeklyHabitRepository.remove(weeklyHabit)
     }
 }

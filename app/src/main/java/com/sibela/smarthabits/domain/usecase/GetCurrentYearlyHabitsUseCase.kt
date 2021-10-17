@@ -9,7 +9,7 @@ class GetCurrentYearlyHabitsUseCase(
     private val habitCounterRepository: HabitCounterRepository
 ) {
 
-    internal suspend operator fun invoke() = resultBy {
+    suspend operator fun invoke() = resultBy {
         val lastYearlyCounter = habitCounterRepository.getLastYearlyCounter()
         yearlyHabitRepository.getHabitsForPeriod(lastYearlyCounter.period)
     }

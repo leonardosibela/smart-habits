@@ -12,7 +12,7 @@ class ResetMonthlyHabitsUseCase(
     private val habitCounterRepository: HabitCounterRepository
 ) {
 
-    internal suspend operator fun invoke() {
+    suspend operator fun invoke() {
         val monthlyCounter = habitCounterRepository.getLastMonthlyCounter()
         monthlyCounter.id = 0
         monthlyCounter.period = monthlyCounter.period++

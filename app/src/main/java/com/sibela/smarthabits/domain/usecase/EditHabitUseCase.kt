@@ -12,7 +12,7 @@ class EditHabitUseCase(
     private val yearlyHabitRepository: YearlyHabitRepository
 ) {
 
-    internal suspend operator fun invoke(habit: Habit, newDescription: String) {
+    suspend operator fun invoke(habit: Habit, newDescription: String) {
         habitRepository.editHabitDescription(habit.id, newDescription)
         when (habit.periodicity) {
             Periodicity.DAILY -> {

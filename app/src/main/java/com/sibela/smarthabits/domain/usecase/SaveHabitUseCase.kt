@@ -5,7 +5,7 @@ import com.sibela.smarthabits.domain.repository.HabitRepository
 
 class SaveHabitUseCase(private val repository: HabitRepository) {
 
-    internal suspend operator fun invoke(habit: Habit) {
-        repository.save(habit)
-    }
+     suspend operator fun invoke(habit: Habit) {
+         repository.save(habit)
+     }
 }

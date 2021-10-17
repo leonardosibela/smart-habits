@@ -5,7 +5,7 @@ import com.sibela.smarthabits.domain.repository.HabitRepository
 
 class GetHabitsThatAreWeeklyUseCase(private val habitRepository: HabitRepository) {
 
-    internal suspend operator fun invoke() = resultBy {
+    suspend operator fun invoke() = resultBy {
         habitRepository.getAllHabitsThatAreWeekly()
     }
 }
