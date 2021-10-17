@@ -54,7 +54,7 @@ class HabitsMonthlyFragment : Fragment() {
 
     private fun onAddFabClicked(view: View) {
         findNavController().navigate(
-            MonthlyHabitListFragmentDirections.actionMonthlyHabitListFragmentToAddPeriodicHabitFragment(
+            HabitsMonthlyFragmentDirections.actionMonthlyHabitListFragmentToAddPeriodicHabitFragment(
                 Periodicity.MONTHLY
             )
         )
@@ -128,7 +128,7 @@ class HabitsMonthlyFragment : Fragment() {
 
     private fun onEditHabitClicked(habit: Habit) {
         findNavController().navigate(
-            MonthlyHabitListFragmentDirections.actionMonthlyHabitListFragmentToEditHabitFragment(
+            HabitsMonthlyFragmentDirections.actionMonthlyHabitListFragmentToEditHabitFragment(
                 habit
             )
         )
