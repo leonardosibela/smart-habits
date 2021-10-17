@@ -4,8 +4,8 @@ import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
 import com.sibela.smarthabits.util.TestData.HABIT_DAILY
-import com.sibela.smarthabits.util.TestData.HABIT_WEEKLY
 import com.sibela.smarthabits.util.TestData.HABIT_MONTHLY
+import com.sibela.smarthabits.util.TestData.HABIT_WEEKLY
 import com.sibela.smarthabits.util.TestData.HABIT_YEARLY
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coJustRun
@@ -51,13 +51,24 @@ class EditHabitUseCaseTest {
         val newDescription = FIRST_DESCRIPTION
         coJustRun { habitRepository.editHabitDescription(habit.id, newDescription) }
         coJustRun { dailyHabitRepository.removeNotCompletedByDescription(habit.description) }
+
         editHabitUseCase(habit, newDescription)
+
         coVerify(exactly = 1) { habitRepository.editHabitDescription(habit.id, newDescription) }
         coVerify(exactly = 1) {
             dailyHabitRepository.updateNotCompletedDescription(
                 habit.description,
                 newDescription
             )
+        }
+        coVerify(exactly = 0) {
+            weeklyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            monthlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            yearlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
         }
     }
 
@@ -67,13 +78,24 @@ class EditHabitUseCaseTest {
         val newDescription = FIRST_DESCRIPTION
         coJustRun { habitRepository.editHabitDescription(habit.id, newDescription) }
         coJustRun { weeklyHabitRepository.removeNotCompletedByDescription(habit.description) }
+
         editHabitUseCase(habit, newDescription)
+
         coVerify(exactly = 1) { habitRepository.editHabitDescription(habit.id, newDescription) }
         coVerify(exactly = 1) {
             weeklyHabitRepository.updateNotCompletedDescription(
                 habit.description,
                 newDescription
             )
+        }
+        coVerify(exactly = 0) {
+            dailyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            monthlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            yearlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
         }
     }
 
@@ -83,13 +105,24 @@ class EditHabitUseCaseTest {
         val newDescription = FIRST_DESCRIPTION
         coJustRun { habitRepository.editHabitDescription(habit.id, newDescription) }
         coJustRun { monthlyHabitRepository.removeNotCompletedByDescription(habit.description) }
+
         editHabitUseCase(habit, newDescription)
+
         coVerify(exactly = 1) { habitRepository.editHabitDescription(habit.id, newDescription) }
         coVerify(exactly = 1) {
             monthlyHabitRepository.updateNotCompletedDescription(
                 habit.description,
                 newDescription
             )
+        }
+        coVerify(exactly = 0) {
+            dailyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            weeklyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            yearlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
         }
     }
 
@@ -99,13 +132,24 @@ class EditHabitUseCaseTest {
         val newDescription = FIRST_DESCRIPTION
         coJustRun { habitRepository.editHabitDescription(habit.id, newDescription) }
         coJustRun { yearlyHabitRepository.removeNotCompletedByDescription(habit.description) }
+
         editHabitUseCase(habit, newDescription)
+
         coVerify(exactly = 1) { habitRepository.editHabitDescription(habit.id, newDescription) }
         coVerify(exactly = 1) {
             yearlyHabitRepository.updateNotCompletedDescription(
                 habit.description,
                 newDescription
             )
+        }
+        coVerify(exactly = 0) {
+            dailyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            weeklyHabitRepository.updateNotCompletedDescription(any<String>(), any())
+        }
+        coVerify(exactly = 0) {
+            monthlyHabitRepository.updateNotCompletedDescription(any<String>(), any())
         }
     }
 }
