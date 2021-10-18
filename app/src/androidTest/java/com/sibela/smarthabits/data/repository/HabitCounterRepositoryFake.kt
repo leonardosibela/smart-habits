@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.data.repository.fake
+package com.sibela.smarthabits.data.repository
 
 import com.sibela.smarthabits.domain.model.HabitCounter
 import com.sibela.smarthabits.domain.model.Periodicity
@@ -8,10 +8,10 @@ class HabitCounterRepositoryFake : HabitCounterRepository {
 
     private companion object {
         val habitCounters = arrayListOf(
-            HabitCounter(0, Periodicity.DAILY, 1),
-            HabitCounter(0, Periodicity.WEEKLY, 1),
-            HabitCounter(0, Periodicity.MONTHLY, 1),
-            HabitCounter(0, Periodicity.YEARLY, 1)
+            HabitCounter(1, Periodicity.DAILY, 2),
+            HabitCounter(1, Periodicity.WEEKLY, 2),
+            HabitCounter(1, Periodicity.MONTHLY, 2),
+            HabitCounter(1, Periodicity.YEARLY, 2)
         )
     }
 

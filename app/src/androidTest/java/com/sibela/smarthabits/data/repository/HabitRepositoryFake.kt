@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.data.repository.fake
+package com.sibela.smarthabits.data.repository
 
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
@@ -40,9 +40,7 @@ class HabitRepositoryFake : HabitRepository {
     }
 
     override suspend fun editHabitDescription(id: Int, newDescription: String) {
-        val index: Int = habits.indexOfFirst {
-            it.id == id
-        }
+        val index: Int = habits.indexOfFirst { it.id == id }
         val habit = habits[index]
         val updatedHabit = Habit(habit.id, newDescription, habit.periodicity)
         habits.removeAt(index)

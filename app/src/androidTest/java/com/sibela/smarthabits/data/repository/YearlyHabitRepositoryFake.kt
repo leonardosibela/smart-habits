@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.data.repository.fake
+package com.sibela.smarthabits.data.repository
 
 import com.sibela.smarthabits.domain.model.YearlyHabit
 import com.sibela.smarthabits.domain.repository.YearlyHabitRepository
@@ -7,8 +7,8 @@ class YearlyHabitRepositoryFake : YearlyHabitRepository {
 
     private companion object {
         val habits = arrayListOf(
-            YearlyHabit(1, "Read some pages of a book", false, 1),
-            YearlyHabit(2, "Exercise for at last 30 min", false, 1),
+            YearlyHabit(1, "Read some pages of a book", true, 1),
+            YearlyHabit(2, "Exercise for at last 30 min", true, 1),
             YearlyHabit(3, "Read some pages of a book", false, 2),
             YearlyHabit(4, "Exercise for at last 30 min", false, 2),
         )
@@ -33,9 +33,7 @@ class YearlyHabitRepositoryFake : YearlyHabitRepository {
     }
 
     override suspend fun updateNotCompletedDescription(id: Int, newDescription: String) {
-        val index: Int = habits.indexOfFirst {
-            it.id == id
-        }
+        val index: Int = habits.indexOfFirst { it.id == id }
         val habit = habits[index]
         val updatedHabit = YearlyHabit(habit.id, newDescription, habit.completed, habit.period)
         habits.removeAt(index)
@@ -45,9 +43,7 @@ class YearlyHabitRepositoryFake : YearlyHabitRepository {
     override suspend fun updateNotCompletedDescription(
         oldDescription: String, newDescription: String
     ) {
-        val index: Int = habits.indexOfFirst {
-            it.description == oldDescription
-        }
+        val index: Int = habits.indexOfFirst { it.description == oldDescription }
         val habit = habits[index]
         val updatedHabit = YearlyHabit(habit.id, newDescription, habit.completed, habit.period)
         habits.removeAt(index)
