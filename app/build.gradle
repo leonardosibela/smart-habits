@@ -63,6 +63,8 @@ dependencies {
     implementation "io.insert-koin:koin-android:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
+    androidTestImplementation "io.mockk:mockk-android:1.12.0"
+
     def room_version = "2.3.0"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
@@ -71,10 +73,16 @@ dependencies {
     def settings_version = "1.1.1"
     implementation "androidx.preference:preference-ktx:$settings_version"
 
-    def espresso_version = "3.4.0"
+    def espresso_version = "3.3.0"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
+
+    def navigation_testing_version = "2.3.5"
+    androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
+
+    debugImplementation "androidx.fragment:fragment-testing:1.3.6"
+    debugImplementation "androidx.fragment:fragment-ktx:1.3.0"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'

@@ -1,7 +1,6 @@
 package com.sibela.smarthabits.presentation.rule
 
 import androidx.test.core.app.ApplicationProvider
-import io.mockk.MockKAnnotations
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.ObsoleteCoroutinesApi
 import org.junit.rules.TestWatcher
@@ -14,10 +13,6 @@ import org.koin.core.module.Module
 @ExperimentalCoroutinesApi
 @OptIn(ObsoleteCoroutinesApi::class)
 class KoinTestRule(private val modules: List<Module>) : TestWatcher() {
-
-    init {
-        MockKAnnotations.init(this, relaxUnitFun = true)
-    }
 
     override fun starting(description: Description?) {
         super.starting(description)

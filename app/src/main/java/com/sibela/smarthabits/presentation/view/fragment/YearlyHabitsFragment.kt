@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.sibela.smarthabits.databinding.FragmentMonthlyHabitsBinding
+import com.sibela.smarthabits.databinding.FragmentYearlyHabitsBinding
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.model.YearlyHabit
 import com.sibela.smarthabits.presentation.adapter.PeriodicHabitAdapter
@@ -23,7 +24,7 @@ class YearlyHabitsFragment : Fragment() {
 
     private val viewModel: YearlyHabitsViewModel by viewModel()
 
-    private var _binding: FragmentMonthlyHabitsBinding? = null
+    private var _binding: FragmentYearlyHabitsBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -31,7 +32,7 @@ class YearlyHabitsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMonthlyHabitsBinding.inflate(inflater, container, false)
+        _binding = FragmentYearlyHabitsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -49,7 +50,7 @@ class YearlyHabitsFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addMonthlyHabitFab.setOnClickListener(::onAddHabitClicked)
+        addYearlyHabitFab.setOnClickListener(::onAddHabitClicked)
     }
 
     private fun onAddHabitClicked(view: View) {
@@ -74,41 +75,41 @@ class YearlyHabitsFragment : Fragment() {
     }
 
     private fun displayLoading() = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = false
-        monthlyHabitsSpinner.isVisible = true
-        monthlyHabitsEmptyListMessage.isVisible = false
+        yearlyHabitsError.isVisible = false
+        yearlyHabitsRecycler.isVisible = false
+        addYearlyHabitFab.isVisible = false
+        yearlyHabitsSpinner.isVisible = true
+        yearlyHabitsEmptyListMessage.isVisible = false
     }
 
     private fun displayHabits(data: List<YearlyHabit>) = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = true
-        addMonthlyHabitFab.isVisible = true
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = false
+        yearlyHabitsError.isVisible = false
+        yearlyHabitsRecycler.isVisible = true
+        addYearlyHabitFab.isVisible = true
+        yearlyHabitsSpinner.isVisible = false
+        yearlyHabitsEmptyListMessage.isVisible = false
         periodicHabitAdapter.submitList(data)
     }
 
     private fun displayError() = with(binding) {
-        monthlyHabitsError.isVisible = true
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = false
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = false
+        yearlyHabitsError.isVisible = true
+        yearlyHabitsRecycler.isVisible = false
+        addYearlyHabitFab.isVisible = false
+        yearlyHabitsSpinner.isVisible = false
+        yearlyHabitsEmptyListMessage.isVisible = false
     }
 
     private fun displayEmptyListMessage() = with(binding) {
-        monthlyHabitsError.isVisible = false
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = true
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = true
+        yearlyHabitsError.isVisible = false
+        yearlyHabitsRecycler.isVisible = false
+        addYearlyHabitFab.isVisible = true
+        yearlyHabitsSpinner.isVisible = false
+        yearlyHabitsEmptyListMessage.isVisible = true
     }
 
     private fun setupRecyclerView() {
         periodicHabitAdapter = PeriodicHabitAdapter(::onHabitClicked)
-        with(binding.monthlyHabitsRecycler) {
+        with(binding.yearlyHabitsRecycler) {
             layoutManager = LinearLayoutManager(requireContext())
             setHasFixedSize(true)
             adapter = periodicHabitAdapter
