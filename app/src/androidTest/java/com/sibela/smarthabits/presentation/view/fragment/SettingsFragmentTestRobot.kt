@@ -71,7 +71,56 @@ class SettingsFragmentTestRobotArrange {
     }
 }
 
-class SettingsFragmentTestRobotAct : BaseTestRobotAction()
+class SettingsFragmentTestRobotAct : BaseTestRobotAction() {
+
+    fun clickOnResetDailyHabits() {
+        R.id.recycler_view.onItem(0) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnResetWeeklyHabits() {
+        R.id.recycler_view.onItem(1) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnResetMonthlyHabits() {
+        R.id.recycler_view.onItem(2) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnResetYearlyHabits() {
+        R.id.recycler_view.onItem(3) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnListDailyHabits() {
+        R.id.recycler_view.onItem(4) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnListWeeklyHabits() {
+        R.id.recycler_view.onItem(5) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnListMonthlyHabits() {
+        R.id.recycler_view.onItem(6) {
+            clickAt(android.R.id.title)
+        }
+    }
+
+    fun clickOnListYearlyHabits() {
+        R.id.recycler_view.onItem(7) {
+            clickAt(android.R.id.title)
+        }
+    }
+}
 
 class SettingsFragmentTestRobotAssert {
 
