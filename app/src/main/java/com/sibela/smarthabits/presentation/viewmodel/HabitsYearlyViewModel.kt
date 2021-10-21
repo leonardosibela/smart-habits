@@ -24,7 +24,7 @@ class HabitsYearlyViewModel(
         if (result is Result.Error) {
             _habits.value = HabitResult.Error(result.throwable)
         } else {
-            if (result.result?.isEmpty() ?: true) {
+            if (result.result?.isEmpty() != false) {
                 _habits.value = HabitResult.EmptyList
             } else {
                 _habits.value = HabitResult.Success(result.result ?: emptyList())
