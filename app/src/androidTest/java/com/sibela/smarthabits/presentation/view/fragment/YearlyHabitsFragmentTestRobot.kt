@@ -40,7 +40,7 @@ class YearlyHabitsFragmentTestRobotArrange {
     }
 }
 
-class YearlyHabitsFragmentTestRobotAct : BaseTestRobotAction()
+class YearlyHabitsFragmentTestRobotAct : BaseTestRobotAct()
 
 class YearlyHabitsFragmentTestRobotAssert {
 

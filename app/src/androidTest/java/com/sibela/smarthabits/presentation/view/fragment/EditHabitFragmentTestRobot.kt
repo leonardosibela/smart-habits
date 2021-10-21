@@ -52,7 +52,7 @@ class EditHabitFragmentTestRobotArrange {
     }
 }
 
-class EditHabitFragmentTestRobotAct : BaseTestRobotAction() {
+class EditHabitFragmentTestRobotAct : BaseTestRobotAct() {
 
     fun typeHabitDescription() {
         R.id.description_input.typeText(HABIT_DESCRIPTION)

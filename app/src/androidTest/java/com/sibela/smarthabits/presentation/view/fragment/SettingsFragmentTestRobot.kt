@@ -71,7 +71,7 @@ class SettingsFragmentTestRobotArrange {
     }
 }
 
-class SettingsFragmentTestRobotAct : BaseTestRobotAction() {
+class SettingsFragmentTestRobotAct : BaseTestRobotAct() {
 
     fun clickOnResetDailyHabits() {
         R.id.recycler_view.onItem(0) {

@@ -43,7 +43,7 @@ class AddPeriodicHabitFragmentTestRobotArrange {
     }
 }
 
-class AddPeriodicHabitFragmentTestRobotAct : BaseTestRobotAction() {
+class AddPeriodicHabitFragmentTestRobotAct : BaseTestRobotAct() {
 
     fun typeHabitDescription() {
         R.id.description_input.typeText(HABIT_DESCRIPTION)

@@ -40,7 +40,7 @@ class DailyHabitsFragmentTestRobotArrange {
     }
 }
 
-class DailyHabitsFragmentTestRobotAct : BaseTestRobotAction()
+class DailyHabitsFragmentTestRobotAct : BaseTestRobotAct()
 
 class DailyHabitsFragmentTestRobotAssert {
 

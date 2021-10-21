@@ -40,7 +40,7 @@ class HabitsWeeklyFragmentTestRobotArrange {
     }
 }
 
-class HabitsWeeklyFragmentTestRobotAct : BaseTestRobotAction()
+class HabitsWeeklyFragmentTestRobotAct : BaseTestRobotAct()
 
 class HabitsWeeklyFragmentTestRobotAssert {
 

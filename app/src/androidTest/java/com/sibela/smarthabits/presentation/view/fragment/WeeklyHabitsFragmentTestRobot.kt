@@ -6,8 +6,6 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.presentation.utils.*
-import com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitsFragmentString.Companion.MONTHLY_HABITS_EMPTY_LIST_MESSAGE
-import com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitsFragmentString.Companion.MONTHLY_HABITS_ERROR
 import com.sibela.smarthabits.presentation.view.fragment.WeeklyHabitsFragmentString.Companion.WEEKLY_HABITS_EMPTY_LIST_MESSAGE
 import com.sibela.smarthabits.presentation.view.fragment.WeeklyHabitsFragmentString.Companion.WEEKLY_HABITS_ERROR
 
@@ -42,7 +40,7 @@ class WeeklyHabitsFragmentTestRobotArrange {
     }
 }
 
-class WeeklyHabitsFragmentTestRobotAct : BaseTestRobotAction()
+class WeeklyHabitsFragmentTestRobotAct : BaseTestRobotAct()
 
 class WeeklyHabitsFragmentTestRobotAssert {
 

@@ -8,7 +8,7 @@ import androidx.test.espresso.ViewAction
 import androidx.test.espresso.matcher.ViewMatchers.isRoot
 import org.hamcrest.Matcher
 
-open class BaseTestRobotAction {
+open class BaseTestRobotAct {
 
     fun clickDeviceBackButton() = Espresso.pressBack()
 
