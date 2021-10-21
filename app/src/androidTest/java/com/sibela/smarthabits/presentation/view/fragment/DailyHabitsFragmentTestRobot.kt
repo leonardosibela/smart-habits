@@ -31,7 +31,7 @@ class DailyHabitsFragmentTestRobotArrange {
             launchFragmentInContainer<DailyHabitsFragment>(themeResId = R.style.Theme_SmartHabits)
 
         fragmentScenario.onFragment { fragment ->
-            with(AddPeriodicHabitFragmentNavController) {
+            with(DailyHabitsFragmentNavController) {
                 navController.setGraph(R.navigation.main_nav_graph)
                 navController.setCurrentDestination(R.id.dailyHabitsFragment)
                 Navigation.setViewNavController(fragment.requireView(), navController)
