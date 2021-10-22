@@ -8,12 +8,16 @@ import com.sibela.smarthabits.R
 import com.sibela.smarthabits.presentation.utils.*
 import com.sibela.smarthabits.presentation.view.fragment.DailyHabitsFragmentString.Companion.DAILY_HABITS_EMPTY_LIST_MESSAGE
 import com.sibela.smarthabits.presentation.view.fragment.DailyHabitsFragmentString.Companion.DAILY_HABITS_ERROR
+import com.sibela.smarthabits.presentation.view.fragment.DailyHabitsFragmentString.Companion.FIRST_HABIT_DESCRIPTION
+import com.sibela.smarthabits.presentation.view.fragment.DailyHabitsFragmentString.Companion.SECOND_HABIT_DESCRIPTION
 
 class DailyHabitsFragmentString {
 
     companion object {
         const val DAILY_HABITS_EMPTY_LIST_MESSAGE = "No habits added"
         const val DAILY_HABITS_ERROR = "Internal error"
+        const val FIRST_HABIT_DESCRIPTION = "Read some pages of a book"
+        const val SECOND_HABIT_DESCRIPTION = "Exercise for at last 30 min"
     }
 }
 
@@ -62,6 +66,14 @@ class DailyHabitsFragmentTestRobotAssert {
     fun viewsHaveCorrectText() {
         R.id.daily_habits_error.hasText(DAILY_HABITS_ERROR)
         R.id.daily_habits_empty_list_message.hasText(DAILY_HABITS_EMPTY_LIST_MESSAGE)
+
+        R.id.daily_habits_recycler.onItem(0) {
+            childHasText(R.id.habit_description, FIRST_HABIT_DESCRIPTION)
+        }
+
+        R.id.daily_habits_recycler.onItem(1) {
+            childHasText(R.id.habit_description, SECOND_HABIT_DESCRIPTION)
+        }
     }
 
     fun addHabitIsEnabled() {

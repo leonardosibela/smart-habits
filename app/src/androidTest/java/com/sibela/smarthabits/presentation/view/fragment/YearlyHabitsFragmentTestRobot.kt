@@ -6,6 +6,8 @@ import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.presentation.utils.*
+import com.sibela.smarthabits.presentation.view.fragment.YearlyHabitsFragmentString.Companion.FIRST_HABIT_DESCRIPTION
+import com.sibela.smarthabits.presentation.view.fragment.YearlyHabitsFragmentString.Companion.SECOND_HABIT_DESCRIPTION
 import com.sibela.smarthabits.presentation.view.fragment.YearlyHabitsFragmentString.Companion.YEARLY_HABITS_EMPTY_LIST_MESSAGE
 import com.sibela.smarthabits.presentation.view.fragment.YearlyHabitsFragmentString.Companion.YEARLY_HABITS_ERROR
 
@@ -14,6 +16,8 @@ class YearlyHabitsFragmentString {
     companion object {
         const val YEARLY_HABITS_EMPTY_LIST_MESSAGE = "No habits added"
         const val YEARLY_HABITS_ERROR = "Internal error"
+        const val FIRST_HABIT_DESCRIPTION = "Read some pages of a book"
+        const val SECOND_HABIT_DESCRIPTION = "Exercise for at last 30 min"
     }
 }
 
@@ -62,6 +66,14 @@ class YearlyHabitsFragmentTestRobotAssert {
     fun viewsHaveCorrectText() {
         R.id.yearly_habits_error.hasText(YEARLY_HABITS_ERROR)
         R.id.yearly_habits_empty_list_message.hasText(YEARLY_HABITS_EMPTY_LIST_MESSAGE)
+
+        R.id.yearly_habits_recycler.onItem(0) {
+            childHasText(R.id.habit_description, FIRST_HABIT_DESCRIPTION)
+        }
+
+        R.id.yearly_habits_recycler.onItem(1) {
+            childHasText(R.id.habit_description, SECOND_HABIT_DESCRIPTION)
+        }
     }
 
     fun addHabitIsEnabled() {
