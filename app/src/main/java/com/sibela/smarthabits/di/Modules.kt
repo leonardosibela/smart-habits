@@ -16,7 +16,6 @@ private val daos = module {
         Room
             .databaseBuilder(androidContext(), HabitDatabase::class.java, HabitDatabase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
-            .createFromAsset("database/habit.db")
             .build()
     }
 
@@ -65,6 +64,7 @@ private val useCases = module {
     single { GetHabitsThatAreYearlyUseCase(get()) }
     single { GetCurrentWeeklyHabitsUseCase(get(), get()) }
     single { GetCurrentYearlyHabitsUseCase(get(), get()) }
+    single { PrePopulateDatabaseUseCase(get()) }
     single { ResetDailyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetMonthlyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
@@ -74,15 +74,16 @@ private val useCases = module {
 
 private val viewModels = module {
     viewModel { AddPeriodicHabitViewModel(get()) }
-    viewModel { HabitsDailyViewModel(get(), get()) }
     viewModel { DailyHabitsViewModel(get(), get()) }
     viewModel { EditHabitViewModel(get()) }
+    viewModel { HabitsDailyViewModel(get(), get()) }
     viewModel { HabitsMonthlyViewModel(get(), get()) }
+    viewModel { HabitsWeeklyViewModel(get(), get()) }
+    viewModel { HabitsYearlyViewModel(get(), get()) }
+    viewModel { MainViewModel(get()) }
     viewModel { MonthlyHabitsViewModel(get(), get()) }
     viewModel { SettingsViewModel(get(), get(), get(), get()) }
-    viewModel { HabitsWeeklyViewModel(get(), get()) }
     viewModel { WeeklyHabitsViewModel(get(), get()) }
-    viewModel { HabitsYearlyViewModel(get(), get()) }
     viewModel { YearlyHabitsViewModel(get(), get()) }
 }
 
