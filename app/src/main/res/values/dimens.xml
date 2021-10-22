@@ -3,4 +3,5 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin_normal">16dp</dimen>
     <dimen name="fab_default_elevation">16dp</dimen>
+    <dimen name="habit_text_size">18sp</dimen>
 </resources>
