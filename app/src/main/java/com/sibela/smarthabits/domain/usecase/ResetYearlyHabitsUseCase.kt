@@ -15,7 +15,7 @@ class ResetYearlyHabitsUseCase(
     suspend operator fun invoke() {
         val yearlyCounter = habitCounterRepository.getLastYearlyCounter()
         yearlyCounter.id = 0
-        yearlyCounter.period = yearlyCounter.period++
+        yearlyCounter.period++
         habitCounterRepository.insert(yearlyCounter)
         val habits = habitRepository.getAllHabitsThatAreYearly()
         val yearlyHabits = habitToPeriodicityHabitMapper.toYearlyHabits(habits, false, yearlyCounter.period)

@@ -15,7 +15,7 @@ class ResetDailyHabitsUseCase(
     suspend operator fun invoke() {
         val dailyCounter = habitCounterRepository.getLastDailyCounter()
         dailyCounter.id = 0
-        dailyCounter.period = dailyCounter.period++
+        dailyCounter.period++
         habitCounterRepository.insert(dailyCounter)
         val habits = habitRepository.getAllHabitsThatAreDaily()
         val dailyHabits = habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
