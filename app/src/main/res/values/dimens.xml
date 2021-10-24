@@ -12,4 +12,5 @@
     <dimen name="fab_default_elevation">16dp</dimen>
 
     <dimen name="habit_text_size">18sp</dimen>
+    <dimen name="empty_item_height">80dp</dimen>
 </resources>

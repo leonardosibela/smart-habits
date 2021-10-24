@@ -4,20 +4,58 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.sibela.smarthabits.databinding.ItemEmptyBinding
 import com.sibela.smarthabits.databinding.ItemHabitBinding
 import com.sibela.smarthabits.domain.model.Habit
 
 class HabitAdapter(
     private val deleteListener: (Habit) -> Unit,
     private val editListener: (Habit) -> Unit
-) : ListAdapter<Habit, HabitAdapter.HabitViewHolder>(HabitDiffUtil()) {
+) : ListAdapter<Habit, RecyclerView.ViewHolder>(HabitDiffUtil()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
-        return HabitViewHolder.from(parent)
+    private companion object {
+        const val ITEM_HABIT = 1
+        const val ITEM_EMPTY = 2
     }
 
-    override fun onBindViewHolder(holder: HabitViewHolder, position: Int) {
-        holder.bind(getItem(position), deleteListener, editListener)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return if (viewType == ITEM_HABIT) {
+            HabitViewHolder.from(parent)
+        } else {
+            EmptyViewHolder.from(parent)
+        }
+    }
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        if (holder is HabitViewHolder) {
+            holder.bind(getItem(position), deleteListener, editListener)
+        }
+    }
+
+    override fun getItemCount(): Int {
+        return super.getItemCount() + 1
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        return if (position + 1 == itemCount) {
+            ITEM_EMPTY
+        } else {
+            ITEM_HABIT
+        }
+    }
+
+    class EmptyViewHolder private constructor(binding: ItemEmptyBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        companion object {
+            fun from(parent: ViewGroup): EmptyViewHolder {
+                val itemEmptyBinding =
+                    ItemEmptyBinding.inflate(
+                        LayoutInflater.from(parent.context), parent, false
+                    )
+                return EmptyViewHolder(itemEmptyBinding)
+            }
+        }
     }
 
     class HabitViewHolder private constructor(private val binding: ItemHabitBinding) :
