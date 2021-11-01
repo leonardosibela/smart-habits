@@ -29,7 +29,7 @@ class HabitsYearlyViewModel(
             if (result.result?.isEmpty() != false) {
                 _habits.value = HabitResult.EmptyList
             } else {
-                _habits.value = HabitResult.Success(result.result ?: emptyList())
+                _habits.value = HabitResult.Success(result.result)
             }
         }
     }

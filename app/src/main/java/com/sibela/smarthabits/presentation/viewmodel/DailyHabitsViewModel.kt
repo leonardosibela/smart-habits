@@ -27,7 +27,7 @@ class DailyHabitsViewModel(
             if (result.result?.isEmpty() != false) {
                 _habits.value = PeriodicHabitResult.EmptyList
             } else {
-                _habits.value = PeriodicHabitResult.Success(result.result ?: emptyList())
+                _habits.value = PeriodicHabitResult.Success(result.result)
             }
         }
     }
