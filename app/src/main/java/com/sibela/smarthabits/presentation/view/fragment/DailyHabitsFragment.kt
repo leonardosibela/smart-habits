@@ -68,13 +68,11 @@ class DailyHabitsFragment : Fragment() {
         when (habitResult) {
             is PeriodicHabitResult.Loading -> displayLoading()
             is PeriodicHabitResult.Success -> displayHabits(habitResult.data)
-            is PeriodicHabitResult.Error -> displayError()
             is PeriodicHabitResult.EmptyList -> displayEmptyListMessage()
         }
     }
 
     private fun displayLoading() = with(binding) {
-        dailyHabitsError.isVisible = false
         dailyHabitsRecycler.isVisible = false
         addDailyHabitFab.isVisible = false
         dailyHabitsSpinner.isVisible = true
@@ -82,7 +80,6 @@ class DailyHabitsFragment : Fragment() {
     }
 
     private fun displayHabits(data: List<DailyHabit>) = with(binding) {
-        dailyHabitsError.isVisible = false
         dailyHabitsRecycler.isVisible = true
         addDailyHabitFab.isVisible = true
         dailyHabitsSpinner.isVisible = false
@@ -90,16 +87,7 @@ class DailyHabitsFragment : Fragment() {
         periodicHabitAdapter.submitList(data)
     }
 
-    private fun displayError() = with(binding) {
-        dailyHabitsError.isVisible = true
-        dailyHabitsRecycler.isVisible = false
-        addDailyHabitFab.isVisible = false
-        dailyHabitsSpinner.isVisible = false
-        dailyHabitsEmptyListMessage.isVisible = false
-    }
-
     private fun displayEmptyListMessage() = with(binding) {
-        dailyHabitsError.isVisible = false
         dailyHabitsRecycler.isVisible = false
         addDailyHabitFab.isVisible = true
         dailyHabitsSpinner.isVisible = false

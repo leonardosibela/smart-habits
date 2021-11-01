@@ -68,13 +68,11 @@ class MonthlyHabitsFragment : Fragment() {
         when (habitResult) {
             is PeriodicHabitResult.Loading -> displayLoading()
             is PeriodicHabitResult.Success -> displayHabits(habitResult.data)
-            is PeriodicHabitResult.Error -> displayError()
             is PeriodicHabitResult.EmptyList -> displayEmptyListMessage()
         }
     }
 
     private fun displayLoading() = with(binding) {
-        monthlyHabitsError.isVisible = false
         monthlyHabitsRecycler.isVisible = false
         addMonthlyHabitFab.isVisible = false
         monthlyHabitsSpinner.isVisible = true
@@ -82,7 +80,6 @@ class MonthlyHabitsFragment : Fragment() {
     }
 
     private fun displayHabits(data: List<MonthlyHabit>) = with(binding) {
-        monthlyHabitsError.isVisible = false
         monthlyHabitsRecycler.isVisible = true
         addMonthlyHabitFab.isVisible = true
         monthlyHabitsSpinner.isVisible = false
@@ -90,16 +87,7 @@ class MonthlyHabitsFragment : Fragment() {
         periodicHabitAdapter.submitList(data)
     }
 
-    private fun displayError() = with(binding) {
-        monthlyHabitsError.isVisible = true
-        monthlyHabitsRecycler.isVisible = false
-        addMonthlyHabitFab.isVisible = false
-        monthlyHabitsSpinner.isVisible = false
-        monthlyHabitsEmptyListMessage.isVisible = false
-    }
-
     private fun displayEmptyListMessage() = with(binding) {
-        monthlyHabitsError.isVisible = false
         monthlyHabitsRecycler.isVisible = false
         addMonthlyHabitFab.isVisible = true
         monthlyHabitsSpinner.isVisible = false

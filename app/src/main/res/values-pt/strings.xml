@@ -12,10 +12,6 @@
     <string name="no_habit">Nenhum hábito adicionado</string>
     <string name="description">Descrição</string>
 
-    <string name="reset_daily_habits">Resetar hábitos diários</string>
-    <string name="reset_weekly_habits">Resetar hábitos semanais</string>
-    <string name="reset_monthly_habits">Resetar hábitos mensais</string>
-    <string name="reset_yearly_habits">Resetar hábitos anuais</string>
     <string name="list_daily_habits">Listar hábitos diários</string>
     <string name="list_weekly_habits">Listar hábitos semanais</string>
     <string name="list_monthly_habits">Listar hábitos mensais</string>
@@ -34,11 +30,6 @@
     <string name="habit_completion_title">Completar hábito</string>
     <string name="habit_completion_message">Tem certeza que deseja completar o hábito %1$s?</string>
 
-    <string name="daily_habits_reset">Hábitos diários resetados</string>
-    <string name="weekly_habits_reset">Hábitos semanais resetados</string>
-    <string name="monthly_habits_reset">Hábitos mensais resetados</string>
-    <string name="yearly_habits_reset">Hábitos anuais resetados</string>
-
     <string name="habit_tap_to_complete">%1$s. Clique para concluir</string>
 
     <string name="reset_daily_title">Resetar hábitos diários</string>
@@ -51,7 +42,7 @@
     <string name="reset_yearly_summary">Clique aqui para resetar hábitos anuais</string>
     <string name="list_daily_title">Listar hábitos diários</string>
     <string name="list_daily_summary">Clique aqui para listar hábitos diários</string>
-    <string name="list_weekly_title">Listar hábitos mensais</string>
+    <string name="list_weekly_title">Listar hábitos semanais</string>
     <string name="list_weekly_summary">Clique aqui para listar hábitos semanais</string>
     <string name="list_monthly_title">Listar hábitos mensais</string>
     <string name="list_monthly_summary">Clique aqui para listar hábitos mensais</string>

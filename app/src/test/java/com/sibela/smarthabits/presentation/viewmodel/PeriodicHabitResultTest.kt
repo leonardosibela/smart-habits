@@ -13,11 +13,4 @@ class PeriodicHabitResultTest {
         val success = PeriodicHabitResult.Success(habits)
         Assert.assertEquals(habits, success.data)
     }
-
-    @Test
-    fun error() {
-        val throwable = Throwable("Message")
-        val error = PeriodicHabitResult.Error(throwable)
-        Assert.assertEquals(throwable, error.data)
-    }
 }

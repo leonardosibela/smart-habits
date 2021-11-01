@@ -22,7 +22,7 @@ class DailyHabitsViewModel(
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentDailyHabitsUseCase()
         if (result is Result.Error) {
-            _habits.value = PeriodicHabitResult.Error(result.throwable)
+            _habits.value = PeriodicHabitResult.EmptyList
         } else {
             if (result.result?.isEmpty() != false) {
                 _habits.value = PeriodicHabitResult.EmptyList

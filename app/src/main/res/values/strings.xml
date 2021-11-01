@@ -13,10 +13,6 @@
     <string name="no_habit">No habits added</string>
     <string name="description">Description</string>
 
-    <string name="reset_daily_habits">Reset daily habits</string>
-    <string name="reset_weekly_habits">Reset weekly habits</string>
-    <string name="reset_monthly_habits">Reset monthly habits</string>
-    <string name="reset_yearly_habits">Reset yearly habits</string>
     <string name="list_daily_habits">List daily habits</string>
     <string name="list_weekly_habits">List weekly habits</string>
     <string name="list_monthly_habits">List monthly habits</string>
@@ -34,11 +30,6 @@
 
     <string name="habit_completion_title">Complete habit</string>
     <string name="habit_completion_message">Are you sure you want to complete %1$s?</string>
-
-    <string name="daily_habits_reset">Daily habits reset</string>
-    <string name="weekly_habits_reset">Weekly habits reset</string>
-    <string name="monthly_habits_reset">Monthly habits reset</string>
-    <string name="yearly_habits_reset">Yearly habits reset</string>
 
     <string name="habit_tap_to_complete">%1$s. Tap to complete</string>
 

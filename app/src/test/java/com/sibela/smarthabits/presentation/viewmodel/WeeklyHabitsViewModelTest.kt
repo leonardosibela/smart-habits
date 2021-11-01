@@ -66,7 +66,7 @@ class WeeklyHabitsViewModelTest {
         )
         weeklyHabitsViewModel.fetchHabits()
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.Error(throwable)) }
+        verify(exactly = 1) { habitsObserver.onChanged(PeriodicHabitResult.EmptyList) }
     }
 
     @Test

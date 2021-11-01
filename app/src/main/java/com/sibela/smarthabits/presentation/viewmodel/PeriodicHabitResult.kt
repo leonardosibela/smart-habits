@@ -6,5 +6,4 @@ sealed class PeriodicHabitResult<out T : PeriodicHabit> {
     object Loading : PeriodicHabitResult<Nothing>()
     object EmptyList : PeriodicHabitResult<Nothing>()
     data class Success<T : PeriodicHabit>(val data: List<T>) : PeriodicHabitResult<T>()
-    data class Error(val data: Throwable) : PeriodicHabitResult<Nothing>()
 }

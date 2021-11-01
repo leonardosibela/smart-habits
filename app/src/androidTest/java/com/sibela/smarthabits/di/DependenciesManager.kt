@@ -104,7 +104,6 @@ object DependenciesManager {
         single { ResetMonthlyHabitsUseCase(get(), get(), get(), get()) }
         single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
         single { ResetYearlyHabitsUseCase(get(), get(), get(), get()) }
-        viewModel { SettingsViewModel(get(), get(), get(), get()) }
     }
 
     val weeklyHabitFragmentModule = module(override = true) {

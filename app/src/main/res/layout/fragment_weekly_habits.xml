@@ -24,19 +24,6 @@
         android:indeterminateTintMode="src_atop" />
 
     <TextView
-        android:id="@+id/weekly_habits_error"
-        style="@style/TextAppearance.RecyclerViewMessage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginHorizontal="@dimen/size_extra_large"
-        android:text="@string/internal_error"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/weekly_habits_empty_list_message"
         style="@style/TextAppearance.RecyclerViewMessage"
         android:layout_width="match_parent"

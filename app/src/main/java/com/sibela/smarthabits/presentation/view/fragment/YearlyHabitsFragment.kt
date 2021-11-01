@@ -69,13 +69,11 @@ class YearlyHabitsFragment : Fragment() {
         when (habitResult) {
             is PeriodicHabitResult.Loading -> displayLoading()
             is PeriodicHabitResult.Success -> displayHabits(habitResult.data)
-            is PeriodicHabitResult.Error -> displayError()
             is PeriodicHabitResult.EmptyList -> displayEmptyListMessage()
         }
     }
 
     private fun displayLoading() = with(binding) {
-        yearlyHabitsError.isVisible = false
         yearlyHabitsRecycler.isVisible = false
         addYearlyHabitFab.isVisible = false
         yearlyHabitsSpinner.isVisible = true
@@ -83,7 +81,6 @@ class YearlyHabitsFragment : Fragment() {
     }
 
     private fun displayHabits(data: List<YearlyHabit>) = with(binding) {
-        yearlyHabitsError.isVisible = false
         yearlyHabitsRecycler.isVisible = true
         addYearlyHabitFab.isVisible = true
         yearlyHabitsSpinner.isVisible = false
@@ -91,16 +88,7 @@ class YearlyHabitsFragment : Fragment() {
         periodicHabitAdapter.submitList(data)
     }
 
-    private fun displayError() = with(binding) {
-        yearlyHabitsError.isVisible = true
-        yearlyHabitsRecycler.isVisible = false
-        addYearlyHabitFab.isVisible = false
-        yearlyHabitsSpinner.isVisible = false
-        yearlyHabitsEmptyListMessage.isVisible = false
-    }
-
     private fun displayEmptyListMessage() = with(binding) {
-        yearlyHabitsError.isVisible = false
         yearlyHabitsRecycler.isVisible = false
         addYearlyHabitFab.isVisible = true
         yearlyHabitsSpinner.isVisible = false

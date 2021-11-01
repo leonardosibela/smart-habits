@@ -29,6 +29,7 @@ private val daos = module {
 
 private val repositories = module {
     single<DailyHabitRepository> { DailyHabitRepositoryImpl(get(), get()) }
+    single<DataStoreRepository> { DataStoreRepositoryImpl(androidContext()) }
     single<MonthlyHabitRepository> { MonthlyHabitRepositoryImpl(get(), get()) }
     single<HabitCounterRepository> { HabitCounterRepositoryImpl(get(), get()) }
     single<HabitRepository> { HabitRepositoryImpl(get(), get()) }
@@ -64,7 +65,7 @@ private val useCases = module {
     single { GetHabitsThatAreYearlyUseCase(get()) }
     single { GetCurrentWeeklyHabitsUseCase(get(), get()) }
     single { GetCurrentYearlyHabitsUseCase(get(), get()) }
-    single { PrePopulateDatabaseUseCase(get()) }
+    single { PrePopulateDatabaseUseCase(get(), get()) }
     single { ResetDailyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetMonthlyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
@@ -82,7 +83,6 @@ private val viewModels = module {
     viewModel { HabitsYearlyViewModel(get(), get()) }
     viewModel { MainViewModel(get()) }
     viewModel { MonthlyHabitsViewModel(get(), get()) }
-    viewModel { SettingsViewModel(get(), get(), get(), get()) }
     viewModel { WeeklyHabitsViewModel(get(), get()) }
     viewModel { YearlyHabitsViewModel(get(), get()) }
 }
