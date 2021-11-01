@@ -1,13 +1,13 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.DailyHabit
 import com.sibela.smarthabits.domain.usecase.FinishDailyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentDailyHabitsUseCase
-import com.sibela.smarthabits.extension.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class DailyHabitsViewModel(
@@ -15,9 +15,9 @@ class DailyHabitsViewModel(
     private val finishDailyHabitUseCase: FinishDailyHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableLiveData<PeriodicHabitResult<DailyHabit>> =
-        MutableLiveData(PeriodicHabitResult.Loading)
-    val habits = _habits.asLiveData
+    private val _habits: MutableStateFlow<PeriodicHabitResult<DailyHabit>> =
+        MutableStateFlow(PeriodicHabitResult.Loading)
+    val habits = _habits.asStateFlow()
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentDailyHabitsUseCase()

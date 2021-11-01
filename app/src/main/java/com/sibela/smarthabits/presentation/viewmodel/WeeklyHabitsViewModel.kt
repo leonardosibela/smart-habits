@@ -8,6 +8,8 @@ import com.sibela.smarthabits.domain.model.WeeklyHabit
 import com.sibela.smarthabits.domain.usecase.FinishWeeklyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentWeeklyHabitsUseCase
 import com.sibela.smarthabits.extension.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class WeeklyHabitsViewModel(
@@ -15,9 +17,9 @@ class WeeklyHabitsViewModel(
     private val finishWeeklyHabitUseCase: FinishWeeklyHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableLiveData<PeriodicHabitResult<WeeklyHabit>> =
-        MutableLiveData(PeriodicHabitResult.Loading)
-    val habits = _habits.asLiveData
+    private val _habits: MutableStateFlow<PeriodicHabitResult<WeeklyHabit>> =
+        MutableStateFlow(PeriodicHabitResult.Loading)
+    val habits = _habits.asStateFlow()
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentWeeklyHabitsUseCase()

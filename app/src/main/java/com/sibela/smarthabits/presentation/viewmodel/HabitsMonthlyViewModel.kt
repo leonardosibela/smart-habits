@@ -1,13 +1,13 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreMonthlyUseCase
-import com.sibela.smarthabits.extension.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HabitsMonthlyViewModel(
@@ -15,9 +15,9 @@ class HabitsMonthlyViewModel(
     private val deleteHabitUseCase: DeleteHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableLiveData<HabitResult> =
-        MutableLiveData(HabitResult.Loading)
-    val habits = _habits.asLiveData
+    private val _habits: MutableStateFlow<HabitResult> =
+        MutableStateFlow(HabitResult.Loading)
+    val habits = _habits.asStateFlow()
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getHabitsThatAreMonthlyUseCase()

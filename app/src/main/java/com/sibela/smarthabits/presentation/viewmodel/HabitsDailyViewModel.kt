@@ -8,6 +8,8 @@ import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreDailyUseCase
 import com.sibela.smarthabits.extension.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class HabitsDailyViewModel(
@@ -15,9 +17,9 @@ class HabitsDailyViewModel(
     private val deleteHabitUseCase: DeleteHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableLiveData<HabitResult> =
-        MutableLiveData(HabitResult.Loading)
-    val habits = _habits.asLiveData
+    private val _habits: MutableStateFlow<HabitResult> =
+        MutableStateFlow(HabitResult.Loading)
+    val habits = _habits.asStateFlow()
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getHabitsThatAreDailyUseCase()

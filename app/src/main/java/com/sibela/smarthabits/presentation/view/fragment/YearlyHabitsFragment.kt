@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.sibela.smarthabits.databinding.FragmentMonthlyHabitsBinding
 import com.sibela.smarthabits.databinding.FragmentYearlyHabitsBinding
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.model.YearlyHabit
@@ -16,6 +16,7 @@ import com.sibela.smarthabits.presentation.adapter.PeriodicHabitAdapter
 import com.sibela.smarthabits.presentation.view.dialog.PeriodicHabitCompletionDialog
 import com.sibela.smarthabits.presentation.viewmodel.PeriodicHabitResult
 import com.sibela.smarthabits.presentation.viewmodel.YearlyHabitsViewModel
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class YearlyHabitsFragment : Fragment() {
@@ -61,8 +62,8 @@ class YearlyHabitsFragment : Fragment() {
         )
     }
 
-    private fun observeData() {
-        viewModel.habits.observe(viewLifecycleOwner, ::onHabitsChanged)
+    private fun observeData() = lifecycleScope.launchWhenCreated {
+        viewModel.habits.collectLatest(::onHabitsChanged)
     }
 
     private fun onHabitsChanged(habitResult: PeriodicHabitResult<YearlyHabit>) {

@@ -8,6 +8,8 @@ import com.sibela.smarthabits.domain.model.YearlyHabit
 import com.sibela.smarthabits.domain.usecase.FinishYearlyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentYearlyHabitsUseCase
 import com.sibela.smarthabits.extension.asLiveData
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 
 class YearlyHabitsViewModel(
@@ -15,9 +17,9 @@ class YearlyHabitsViewModel(
     private val finishYearlyHabitUseCase: FinishYearlyHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableLiveData<PeriodicHabitResult<YearlyHabit>> =
-        MutableLiveData(PeriodicHabitResult.Loading)
-    val habits = _habits.asLiveData
+    private val _habits: MutableStateFlow<PeriodicHabitResult<YearlyHabit>> =
+        MutableStateFlow(PeriodicHabitResult.Loading)
+    val habits = _habits.asStateFlow()
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentYearlyHabitsUseCase()
