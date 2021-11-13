@@ -62,7 +62,7 @@ class MonthlyHabitsFragment : Fragment() {
         )
     }
 
-    private fun observeData() = lifecycleScope.launchWhenCreated {
+    private fun observeData() = viewLifecycleOwner.lifecycleScope.launchWhenCreated {
         viewModel.habits.collectLatest(::onHabitsChanged)
     }
 
