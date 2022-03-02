@@ -53,3 +53,8 @@ class ResultTest {
         Assert.assertEquals(RESULT_IS_NULL, result.error?.message)
     }
 }
+
+inline fun <reified T> assertThat(value: Any?, scope: T.() -> Unit) {
+    check(value is T) { "Value is not an instance of ${T::class.java}" }
+    value.scope()
+}
