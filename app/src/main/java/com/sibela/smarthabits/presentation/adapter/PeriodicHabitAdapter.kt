@@ -52,11 +52,11 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
 
         companion object {
             fun <T : PeriodicHabit> from(parent: ViewGroup): EmptyViewHolder<T> {
-                val itemEmptyBinding =
-                    ItemEmptyBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
-                    )
-                return EmptyViewHolder(itemEmptyBinding)
+                return ItemEmptyBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                ).let {
+                    EmptyViewHolder(it)
+                }
             }
         }
     }
@@ -68,16 +68,18 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
             habitDescription.text = habit.description
             habitDescription.contentDescription =
                 getText(R.string.habit_tap_to_complete, habit.description)
-            root.setOnClickListener { listener.invoke(habit) }
+            root.setOnClickListener {
+                listener.invoke(habit)
+            }
         }
 
         companion object {
             fun <T : PeriodicHabit> from(parent: ViewGroup): HabitViewHolder<T> {
-                val habitItemBinding =
-                    ItemSimpleHabitBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
-                    )
-                return HabitViewHolder(habitItemBinding)
+                return ItemSimpleHabitBinding.inflate(
+                    LayoutInflater.from(parent.context), parent, false
+                ).let {
+                    HabitViewHolder(it)
+                }
             }
         }
     }

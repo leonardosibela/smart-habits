@@ -41,6 +41,7 @@
     <string name="reset_monthly_summary">Click here to reset monthly habits</string>
     <string name="reset_yearly_title">Reset yearly habits</string>
     <string name="reset_yearly_summary">Click here to reset yearly habits</string>
+
     <string name="list_daily_title">List daily habits</string>
     <string name="list_daily_summary">Click here to list daily habits</string>
     <string name="list_weekly_title">List weekly habits</string>

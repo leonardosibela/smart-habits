@@ -51,16 +51,14 @@ class MonthlyHabitsFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addMonthlyHabitFab.setOnClickListener(::onAddHabitClicked)
+        addMonthlyHabitFab.setOnClickListener { onAddHabitClicked() }
     }
 
-    private fun onAddHabitClicked(view: View) {
-        findNavController().navigate(
-            MonthlyHabitsFragmentDirections.actionMonthlyHabitsFragmentToAddPeriodicHabitFragment(
-                Periodicity.MONTHLY
-            )
+    private fun onAddHabitClicked() = findNavController().navigate(
+        MonthlyHabitsFragmentDirections.actionMonthlyHabitsFragmentToAddPeriodicHabitFragment(
+            Periodicity.MONTHLY
         )
-    }
+    )
 
     private fun observeData() = viewLifecycleOwner.lifecycleScope.launchWhenCreated {
         viewModel.habits.collectLatest(::onHabitsChanged)

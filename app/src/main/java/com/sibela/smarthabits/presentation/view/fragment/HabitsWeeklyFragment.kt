@@ -51,16 +51,14 @@ class HabitsWeeklyFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addWeeklyHabitFab.setOnClickListener(::onAddFabClicked)
+        addWeeklyHabitFab.setOnClickListener { onAddFabClicked() }
     }
 
-    private fun onAddFabClicked(view: View) {
-        findNavController().navigate(
-            HabitsWeeklyFragmentDirections.actionWeeklyHabitListFragmentToAddPeriodicHabitFragment(
-                Periodicity.WEEKLY
-            )
+    private fun onAddFabClicked() = findNavController().navigate(
+        HabitsWeeklyFragmentDirections.actionWeeklyHabitListFragmentToAddPeriodicHabitFragment(
+            Periodicity.WEEKLY
         )
-    }
+    )
 
     private fun observeData() = viewLifecycleOwner.lifecycleScope.launchWhenCreated {
         viewModelHabits.habits.collectLatest(::onHabitsChanged)
@@ -128,9 +126,7 @@ class HabitsWeeklyFragment : Fragment() {
         viewModelHabits.fetchHabits()
     }
 
-    private fun onEditHabitClicked(habit: Habit) {
-        findNavController().navigate(
-            HabitsWeeklyFragmentDirections.actionWeeklyHabitListFragmentToEditHabitFragment(habit)
-        )
-    }
+    private fun onEditHabitClicked(habit: Habit) = findNavController().navigate(
+        HabitsWeeklyFragmentDirections.actionWeeklyHabitListFragmentToEditHabitFragment(habit)
+    )
 }

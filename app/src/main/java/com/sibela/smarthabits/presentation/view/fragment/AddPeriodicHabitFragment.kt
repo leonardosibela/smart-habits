@@ -42,10 +42,10 @@ class AddPeriodicHabitFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addHabitButton.setOnClickListener(::onAddHabitClicked)
+        addHabitButton.setOnClickListener { onAddHabitClicked() }
     }
 
-    private fun onAddHabitClicked(view: View) {
+    private fun onAddHabitClicked() {
         val description = binding.descriptionInput.text.toString()
         viewModel.addHabit(description, periodicity)
         val message = getString(R.string.habit_name_saved, description)

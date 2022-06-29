@@ -42,10 +42,10 @@ class EditHabitFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        editHabitButton.setOnClickListener(::onEditClicked)
+        editHabitButton.setOnClickListener { onEditClicked() }
     }
 
-    private fun onEditClicked(view: View) {
+    private fun onEditClicked() {
         val newDescription = binding.descriptionInput.text.toString()
         viewModel.editHabit(habit, newDescription)
         findNavController().popBackStack()

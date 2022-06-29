@@ -1,10 +1,8 @@
 package com.sibela.smarthabits.di
 
 import android.app.Application
-import android.telephony.TelephonyManager
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
-import io.mockk.every
 import io.mockk.mockk
 import io.mockk.mockkObject
 import org.junit.Before
@@ -33,9 +31,7 @@ class AppDependencyTest {
 
     @Test
     fun `check module`() {
-        val mockContext = mockk<Application> {
-            every { getSystemService(any()) } returns mockk<TelephonyManager>(relaxUnitFun = true)
-        }
+        val mockContext = mockk<Application>()
         koinApplication {
             androidContext(mockContext)
             modules(AppModules.modules)

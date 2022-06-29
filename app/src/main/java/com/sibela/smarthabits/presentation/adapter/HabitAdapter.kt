@@ -36,12 +36,10 @@ class HabitAdapter(
         return super.getItemCount() + 1
     }
 
-    override fun getItemViewType(position: Int): Int {
-        return if (position + 1 == itemCount) {
-            ITEM_EMPTY
-        } else {
-            ITEM_HABIT
-        }
+    override fun getItemViewType(position: Int) = if (position + 1 == itemCount) {
+        ITEM_EMPTY
+    } else {
+        ITEM_HABIT
     }
 
     class EmptyViewHolder private constructor(binding: ItemEmptyBinding) :

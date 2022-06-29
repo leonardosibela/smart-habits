@@ -13,15 +13,16 @@ class ResetDailyHabitsUseCase(
 ) {
 
     suspend operator fun invoke() {
-        val dailyCounter = habitCounterRepository.getLastDailyCounter()
-        dailyCounter.id = 0
-        dailyCounter.period++
-        habitCounterRepository.insert(dailyCounter)
+        val nextDailyCounter = habitCounterRepository.getLastDailyCounter().apply {
+            id = 0
+            period = period++
+        }
+        habitCounterRepository.insert(nextDailyCounter)
         val habits = habitRepository.getAllHabitsThatAreDaily()
-        val dailyHabits = habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
+        val dailyHabits = habitToPeriodicityHabitMapper.toDailyHabits(habits, false, nextDailyCounter.period)
         dailyHabits.forEach { dailyHabit ->
             dailyHabit.id = 0
-            dailyHabit.period = dailyCounter.period
+            dailyHabit.period = nextDailyCounter.period
             dailyHabitRepository.save(dailyHabit)
         }
     }
