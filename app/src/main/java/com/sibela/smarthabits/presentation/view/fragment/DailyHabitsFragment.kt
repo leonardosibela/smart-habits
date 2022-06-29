@@ -55,9 +55,7 @@ class DailyHabitsFragment : Fragment() {
     }
 
     private fun onAddHabitClicked() = findNavController().navigate(
-        DailyHabitsFragmentDirections.actionDailyHabitsFragmentToAddPeriodicHabitFragment(
-            Periodicity.DAILY
-        )
+        DailyHabitsFragmentDirections.toAddPeriodicHabitFragment(Periodicity.DAILY)
     )
 
     private fun observeData() = viewLifecycleOwner.lifecycleScope.launchWhenCreated {

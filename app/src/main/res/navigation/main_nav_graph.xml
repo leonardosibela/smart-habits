@@ -12,8 +12,9 @@
         tools:layout="@layout/fragment_daily_habits">
 
         <action
-            android:id="@+id/action_dailyHabitsFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -25,6 +26,7 @@
         <argument
             android:name="periodicity"
             app:argType="com.sibela.smarthabits.domain.model.Periodicity" />
+
     </fragment>
 
     <fragment
@@ -34,8 +36,9 @@
         tools:layout="@layout/fragment_weekly_habits">
 
         <action
-            android:id="@+id/action_weeklyHabitsFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -45,8 +48,9 @@
         tools:layout="@layout/fragment_monthly_habits">
 
         <action
-            android:id="@+id/action_monthlyHabitsFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -56,8 +60,9 @@
         tools:layout="@layout/fragment_yearly_habits">
 
         <action
-            android:id="@+id/action_yearlyHabitsFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -66,20 +71,21 @@
         android:label="@string/settings">
 
         <action
-            android:id="@+id/action_settingsFragment_to_dailyHabitListFragment"
+            android:id="@+id/to_dailyHabitListFragment"
             app:destination="@id/dailyHabitListFragment" />
 
         <action
-            android:id="@+id/action_settingsFragment_to_weeklyHabitListFragment"
+            android:id="@+id/to_weeklyHabitListFragment"
             app:destination="@id/weeklyHabitListFragment" />
 
         <action
-            android:id="@+id/action_settingsFragment_to_monthlyHabitListFragment"
+            android:id="@+id/to_monthlyHabitListFragment"
             app:destination="@id/monthlyHabitListFragment" />
 
         <action
-            android:id="@+id/action_settingsFragment_to_yearlyHabitListFragment"
+            android:id="@+id/to_yearlyHabitListFragment"
             app:destination="@id/yearlyHabitListFragment" />
+
     </fragment>
 
     <fragment
@@ -89,11 +95,13 @@
         tools:layout="@layout/fragment_habits_daily">
 
         <action
-            android:id="@+id/action_dailyHabitListFragment_to_editHabitFragment"
+            android:id="@+id/to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
+
         <action
-            android:id="@+id/action_dailyHabitListFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -103,11 +111,13 @@
         tools:layout="@layout/fragment_habits_weekly">
 
         <action
-            android:id="@+id/action_weeklyHabitListFragment_to_editHabitFragment"
+            android:id="@+id/to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
+
         <action
-            android:id="@+id/action_weeklyHabitListFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -117,11 +127,13 @@
         tools:layout="@layout/fragment_habits_monthly">
 
         <action
-            android:id="@+id/action_monthlyHabitListFragment_to_editHabitFragment"
+            android:id="@+id/to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
+
         <action
-            android:id="@+id/action_monthlyHabitListFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -131,11 +143,13 @@
         tools:layout="@layout/fragment_habits_yearly">
 
         <action
-            android:id="@+id/action_yearlyHabitListFragment_to_editHabitFragment"
+            android:id="@+id/to_editHabitFragment"
             app:destination="@id/editHabitFragment" />
+
         <action
-            android:id="@+id/action_yearlyHabitListFragment_to_addPeriodicHabitFragment"
+            android:id="@+id/to_addPeriodicHabitFragment"
             app:destination="@id/addPeriodicHabitFragment" />
+
     </fragment>
 
     <fragment
@@ -147,6 +161,7 @@
         <argument
             android:name="habit"
             app:argType="com.sibela.smarthabits.domain.model.Habit" />
+
     </fragment>
 
 </navigation>

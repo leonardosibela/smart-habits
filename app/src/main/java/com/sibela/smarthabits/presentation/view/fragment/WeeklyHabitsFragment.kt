@@ -51,14 +51,12 @@ class WeeklyHabitsFragment : Fragment() {
     }
 
     private fun setupListeners() = with(binding) {
-        addWeeklyHabitFab.setOnClickListener(::onAddHabitClicked)
+        addWeeklyHabitFab.setOnClickListener { onAddHabitClicked() }
     }
 
-    private fun onAddHabitClicked(view: View) {
+    private fun onAddHabitClicked() {
         findNavController().navigate(
-            WeeklyHabitsFragmentDirections.actionWeeklyHabitsFragmentToAddPeriodicHabitFragment(
-                Periodicity.WEEKLY
-            )
+            WeeklyHabitsFragmentDirections.toAddPeriodicHabitFragment(Periodicity.WEEKLY)
         )
     }
 

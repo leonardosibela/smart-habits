@@ -42,19 +42,19 @@ class SettingsFragment : PreferenceFragmentCompat() {
     }
 
     private fun displayDailyHabitListFragment() {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToDailyHabitListFragment())
+        findNavController().navigate(SettingsFragmentDirections.toDailyHabitListFragment())
     }
 
     private fun displayWeeklyHabitListFragment() {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToWeeklyHabitListFragment())
+        findNavController().navigate(SettingsFragmentDirections.toWeeklyHabitListFragment())
     }
 
     private fun displayMonthlyHabitListFragment() {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToMonthlyHabitListFragment())
+        findNavController().navigate(SettingsFragmentDirections.toMonthlyHabitListFragment())
     }
 
     private fun displayYearlyHabitListFragment() {
-        findNavController().navigate(SettingsFragmentDirections.actionSettingsFragmentToYearlyHabitListFragment())
+        findNavController().navigate(SettingsFragmentDirections.toYearlyHabitListFragment())
     }
 
     private fun resetDailyHabitListFragment() {

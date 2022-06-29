@@ -56,9 +56,7 @@ class YearlyHabitsFragment : Fragment() {
 
     private fun onAddHabitClicked(view: View) {
         findNavController().navigate(
-            YearlyHabitsFragmentDirections.actionYearlyHabitsFragmentToAddPeriodicHabitFragment(
-                Periodicity.YEARLY
-            )
+            YearlyHabitsFragmentDirections.toAddPeriodicHabitFragment(Periodicity.YEARLY)
         )
     }
 

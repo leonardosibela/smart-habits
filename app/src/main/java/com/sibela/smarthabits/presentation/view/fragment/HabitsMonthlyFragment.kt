@@ -55,9 +55,7 @@ class HabitsMonthlyFragment : Fragment() {
     }
 
     private fun onAddFabClicked() = findNavController().navigate(
-        HabitsMonthlyFragmentDirections.actionMonthlyHabitListFragmentToAddPeriodicHabitFragment(
-            Periodicity.MONTHLY
-        )
+        HabitsMonthlyFragmentDirections.toAddPeriodicHabitFragment(Periodicity.MONTHLY)
     )
 
     private fun observeData() = viewLifecycleOwner.lifecycleScope.launchWhenCreated {
@@ -127,6 +125,6 @@ class HabitsMonthlyFragment : Fragment() {
     }
 
     private fun onEditHabitClicked(habit: Habit) = findNavController().navigate(
-        HabitsMonthlyFragmentDirections.actionMonthlyHabitListFragmentToEditHabitFragment(habit)
+        HabitsMonthlyFragmentDirections.toEditHabitFragment(habit)
     )
 }
