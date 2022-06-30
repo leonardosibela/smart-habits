@@ -4,11 +4,16 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
 import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
-import com.sibela.smarthabits.util.TestData
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_MONTHLY
+import com.sibela.smarthabits.util.TestData.FIRST_MONTHLY_HABIT
+import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_MONTHLY
+import com.sibela.smarthabits.util.TestData.SECOND_HABIT_MONTHLY
+import com.sibela.smarthabits.util.TestData.SECOND_MONTHLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
@@ -36,40 +41,66 @@ class ResetMonthlyHabitsUseCaseTest {
     }
 
     @Test
-    fun invoke() = runBlocking {
-        val monthlyCounter = TestData.HABIT_COUNTER_MONTHLY
-        val nextHabitCounter = monthlyCounter.apply {
-            id = 0
-            period++
-        }
-        val habits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
-        val monthlyHabits = listOf(TestData.FIRST_MONTHLY_HABIT, TestData.SECOND_MONTHLY_HABIT)
-        val firstNewMonthlyHabit = TestData.FIRST_MONTHLY_HABIT
-        firstNewMonthlyHabit.apply {
-            id = 0
-            period = monthlyCounter.period
-        }
-        val secondNewMonthlyHabit = TestData.SECOND_MONTHLY_HABIT
-        secondNewMonthlyHabit.apply {
-            id = 0
-            period = monthlyCounter.period
-        }
-        coEvery { habitCounterRepository.getLastMonthlyCounter() } returns monthlyCounter
-        coJustRun { habitCounterRepository.insert(nextHabitCounter) }
-        coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns habits
+    fun `invoke when has habits`() = runBlocking {
+        val habitsMonthly = listOf(FIRST_HABIT_MONTHLY, SECOND_HABIT_MONTHLY)
+        coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns habitsMonthly
+
+        val lastMonthlyCounter = HABIT_COUNTER_MONTHLY
+        coEvery { habitCounterRepository.getLastMonthlyCounter() } returns lastMonthlyCounter
+        val nextMonthlyCounter =
+            lastMonthlyCounter.copy(id = 0, period = lastMonthlyCounter.period + 1)
+
+        coJustRun { habitCounterRepository.insert(nextMonthlyCounter) }
+
+        val monthlyHabits = listOf(
+            FIRST_MONTHLY_HABIT.copy(completed = false, period = nextMonthlyCounter.period),
+            SECOND_MONTHLY_HABIT.copy(completed = false, period = nextMonthlyCounter.period)
+        )
+
         coEvery {
-            habitToPeriodicityHabitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
+            habitToPeriodicityHabitMapper.toMonthlyHabits(
+                habitsMonthly, false, nextMonthlyCounter.period
+            )
         } returns monthlyHabits
-        coJustRun { monthlyHabitRepository.save(firstNewMonthlyHabit) }
-        coJustRun { monthlyHabitRepository.save(secondNewMonthlyHabit) }
-        resetMonthlyHabitsUseCase.invoke()
-        coVerify(exactly = 1) { habitCounterRepository.getLastMonthlyCounter() }
-        coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
-        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
-        coVerify(exactly = 1) {
-            habitToPeriodicityHabitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
+
+        val nextMonthlyHabits = monthlyHabits.map {
+            it.copy(id = 0, period = nextMonthlyCounter.period)
         }
-        coVerify { monthlyHabitRepository.save(firstNewMonthlyHabit) }
-        coVerify { monthlyHabitRepository.save(secondNewMonthlyHabit) }
+
+        coJustRun { monthlyHabitRepository.save(nextMonthlyHabits[0]) }
+        coJustRun { monthlyHabitRepository.save(nextMonthlyHabits[1]) }
+
+        resetMonthlyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitCounterRepository.getLastMonthlyCounter() }
+        coVerify(exactly = 1) { habitCounterRepository.insert(nextMonthlyCounter) }
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
+
+        coVerify(exactly = 1) {
+            habitToPeriodicityHabitMapper.toMonthlyHabits(
+                habitsMonthly, false, nextMonthlyCounter.period
+            )
+        }
+
+        coVerifyOrder {
+            monthlyHabitRepository.save(nextMonthlyHabits[0])
+            monthlyHabitRepository.save(nextMonthlyHabits[1])
+        }
+
+        coVerify(exactly = 1) { monthlyHabitRepository.save(nextMonthlyHabits[0]) }
+        coVerify(exactly = 1) { monthlyHabitRepository.save(nextMonthlyHabits[1]) }
+    }
+
+    @Test
+    fun `invoke when does not have habits`() = runBlocking {
+        coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns emptyList()
+
+        resetMonthlyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
+        coVerify(exactly = 0) { habitCounterRepository.getLastMonthlyCounter() }
+        coVerify(exactly = 0) { habitCounterRepository.insert(any()) }
+        coVerify(exactly = 0) { habitToPeriodicityHabitMapper.toMonthlyHabits(any(), any(), any()) }
+        coVerify(exactly = 0) { monthlyHabitRepository.save(any()) }
     }
 }

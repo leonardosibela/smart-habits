@@ -55,11 +55,11 @@ class PrePopulateDatabaseUseCaseTest {
 
     @Test
     fun `invoke already pre populated`() = runBlocking {
-        coEvery { dataStoreRepository.readBoolean(PRE_POPULATED_DATABASE_KEY) } returns true
+        coEvery { dataStoreRepository.readBoolean(any()) } returns true
 
         prePopulateDatabaseUseCase.invoke()
 
         coVerify(exactly = 0) { dataStoreRepository.saveBoolean(any(), any()) }
-        coVerify(exactly = 0) { habitCounterRepository.insert(HabitCounter(any(), any(), any())) }
+        coVerify(exactly = 0) { habitCounterRepository.insert(any()) }
     }
 }

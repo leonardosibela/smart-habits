@@ -4,11 +4,16 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
 import com.sibela.smarthabits.domain.repository.WeeklyHabitRepository
-import com.sibela.smarthabits.util.TestData
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_WEEKLY
+import com.sibela.smarthabits.util.TestData.FIRST_WEEKLY_HABIT
+import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_WEEKLY
+import com.sibela.smarthabits.util.TestData.SECOND_HABIT_WEEKLY
+import com.sibela.smarthabits.util.TestData.SECOND_WEEKLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
@@ -36,40 +41,66 @@ class ResetWeeklyHabitsUseCaseTest {
     }
 
     @Test
-    fun invoke() = runBlocking {
-        val weeklyCounter = TestData.HABIT_COUNTER_WEEKLY
-        val nextHabitCounter = weeklyCounter.apply {
-            id = 0
-            period++
-        }
-        val habits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
-        val weeklyHabits = listOf(TestData.FIRST_WEEKLY_HABIT, TestData.SECOND_WEEKLY_HABIT)
-        val firstNewWeeklyHabit = TestData.FIRST_WEEKLY_HABIT
-        firstNewWeeklyHabit.apply {
-            id = 0
-            period = weeklyCounter.period
-        }
-        val secondNewWeeklyHabit = TestData.SECOND_WEEKLY_HABIT
-        secondNewWeeklyHabit.apply {
-            id = 0
-            period = weeklyCounter.period
-        }
-        coEvery { habitCounterRepository.getLastWeeklyCounter() } returns weeklyCounter
-        coJustRun { habitCounterRepository.insert(nextHabitCounter) }
-        coEvery { habitRepository.getAllHabitsThatAreWeekly() } returns habits
+    fun `invoke when has habits`() = runBlocking {
+        val habitsWeekly = listOf(FIRST_HABIT_WEEKLY, SECOND_HABIT_WEEKLY)
+        coEvery { habitRepository.getAllHabitsThatAreWeekly() } returns habitsWeekly
+
+        val lastWeeklyCounter = HABIT_COUNTER_WEEKLY
+        coEvery { habitCounterRepository.getLastWeeklyCounter() } returns lastWeeklyCounter
+        val nextWeeklyCounter =
+            lastWeeklyCounter.copy(id = 0, period = lastWeeklyCounter.period + 1)
+
+        coJustRun { habitCounterRepository.insert(nextWeeklyCounter) }
+
+        val weeklyHabits = listOf(
+            FIRST_WEEKLY_HABIT.copy(completed = false, period = nextWeeklyCounter.period),
+            SECOND_WEEKLY_HABIT.copy(completed = false, period = nextWeeklyCounter.period)
+        )
+
         coEvery {
-            habitToPeriodicityHabitMapper.toWeeklyHabits(habits, false, weeklyCounter.period)
+            habitToPeriodicityHabitMapper.toWeeklyHabits(
+                habitsWeekly, false, nextWeeklyCounter.period
+            )
         } returns weeklyHabits
-        coJustRun { weeklyHabitRepository.save(firstNewWeeklyHabit) }
-        coJustRun { weeklyHabitRepository.save(secondNewWeeklyHabit) }
-        resetWeeklyHabitsUseCase.invoke()
-        coVerify(exactly = 1) { habitCounterRepository.getLastWeeklyCounter() }
-        coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
-        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreWeekly() }
-        coVerify(exactly = 1) {
-            habitToPeriodicityHabitMapper.toWeeklyHabits(habits, false, weeklyCounter.period)
+
+        val nextWeeklyHabits = weeklyHabits.map {
+            it.copy(id = 0, period = nextWeeklyCounter.period)
         }
-        coVerify { weeklyHabitRepository.save(firstNewWeeklyHabit) }
-        coVerify { weeklyHabitRepository.save(secondNewWeeklyHabit) }
+
+        coJustRun { weeklyHabitRepository.save(nextWeeklyHabits[0]) }
+        coJustRun { weeklyHabitRepository.save(nextWeeklyHabits[1]) }
+
+        resetWeeklyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitCounterRepository.getLastWeeklyCounter() }
+        coVerify(exactly = 1) { habitCounterRepository.insert(nextWeeklyCounter) }
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreWeekly() }
+
+        coVerify(exactly = 1) {
+            habitToPeriodicityHabitMapper.toWeeklyHabits(
+                habitsWeekly, false, nextWeeklyCounter.period
+            )
+        }
+
+        coVerifyOrder {
+            weeklyHabitRepository.save(nextWeeklyHabits[0])
+            weeklyHabitRepository.save(nextWeeklyHabits[1])
+        }
+
+        coVerify(exactly = 1) { weeklyHabitRepository.save(nextWeeklyHabits[0]) }
+        coVerify(exactly = 1) { weeklyHabitRepository.save(nextWeeklyHabits[1]) }
+    }
+
+    @Test
+    fun `invoke when does not have habits`() = runBlocking {
+        coEvery { habitRepository.getAllHabitsThatAreWeekly() } returns emptyList()
+
+        resetWeeklyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreWeekly() }
+        coVerify(exactly = 0) { habitCounterRepository.getLastWeeklyCounter() }
+        coVerify(exactly = 0) { habitCounterRepository.insert(any()) }
+        coVerify(exactly = 0) { habitToPeriodicityHabitMapper.toWeeklyHabit(any(), any(), any()) }
+        coVerify(exactly = 0) { weeklyHabitRepository.save(any()) }
     }
 }

@@ -4,11 +4,16 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.DailyHabitRepository
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
-import com.sibela.smarthabits.util.TestData
+import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_DAILY
+import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_DAILY
+import com.sibela.smarthabits.util.TestData.SECOND_DAILY_HABIT
+import com.sibela.smarthabits.util.TestData.SECOND_HABIT_DAILY
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
@@ -36,40 +41,66 @@ class ResetDailyHabitsUseCaseTest {
     }
 
     @Test
-    fun invoke() = runBlocking {
-        val dailyCounter = TestData.HABIT_COUNTER_DAILY
-        val nextHabitCounter = dailyCounter.apply {
-            id = 0
-            period++
-        }
-        val habits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
-        val dailyHabits = listOf(TestData.FIRST_DAILY_HABIT, TestData.SECOND_DAILY_HABIT)
-        val firstNewDailyHabit = TestData.FIRST_DAILY_HABIT
-        firstNewDailyHabit.apply {
-            id = 0
-            period = dailyCounter.period
-        }
-        val secondNewDailyHabit = TestData.SECOND_DAILY_HABIT
-        secondNewDailyHabit.apply {
-            id = 0
-            period = dailyCounter.period
-        }
-        coEvery { habitCounterRepository.getLastDailyCounter() } returns dailyCounter
-        coJustRun { habitCounterRepository.insert(nextHabitCounter) }
-        coEvery { habitRepository.getAllHabitsThatAreDaily() } returns habits
+    fun `invoke when has habits`() = runBlocking {
+        val habitsDaily = listOf(FIRST_HABIT_DAILY, SECOND_HABIT_DAILY)
+        coEvery { habitRepository.getAllHabitsThatAreDaily() } returns habitsDaily
+
+        val lastDailyCounter = HABIT_COUNTER_DAILY
+        coEvery { habitCounterRepository.getLastDailyCounter() } returns lastDailyCounter
+        val nextDailyCounter =
+            lastDailyCounter.copy(id = 0, period = lastDailyCounter.period + 1)
+
+        coJustRun { habitCounterRepository.insert(nextDailyCounter) }
+
+        val dailyHabits = listOf(
+            FIRST_DAILY_HABIT.copy(completed = false, period = nextDailyCounter.period),
+            SECOND_DAILY_HABIT.copy(completed = false, period = nextDailyCounter.period)
+        )
+
         coEvery {
-            habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
+            habitToPeriodicityHabitMapper.toDailyHabits(
+                habitsDaily, false, nextDailyCounter.period
+            )
         } returns dailyHabits
-        coJustRun { dailyHabitRepository.save(firstNewDailyHabit) }
-        coJustRun { dailyHabitRepository.save(secondNewDailyHabit) }
-        resetDailyHabitsUseCase.invoke()
-        coVerify(exactly = 1) { habitCounterRepository.getLastDailyCounter() }
-        coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
-        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreDaily() }
-        coVerify(exactly = 1) {
-            habitToPeriodicityHabitMapper.toDailyHabits(habits, false, dailyCounter.period)
+
+        val nextDailyHabits = dailyHabits.map {
+            it.copy(id = 0, period = nextDailyCounter.period)
         }
-        coVerify { dailyHabitRepository.save(firstNewDailyHabit) }
-        coVerify { dailyHabitRepository.save(secondNewDailyHabit) }
+
+        coJustRun { dailyHabitRepository.save(nextDailyHabits[0]) }
+        coJustRun { dailyHabitRepository.save(nextDailyHabits[1]) }
+
+        resetDailyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitCounterRepository.getLastDailyCounter() }
+        coVerify(exactly = 1) { habitCounterRepository.insert(nextDailyCounter) }
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreDaily() }
+
+        coVerify(exactly = 1) {
+            habitToPeriodicityHabitMapper.toDailyHabits(
+                habitsDaily, false, nextDailyCounter.period
+            )
+        }
+
+        coVerifyOrder {
+            dailyHabitRepository.save(nextDailyHabits[0])
+            dailyHabitRepository.save(nextDailyHabits[1])
+        }
+
+        coVerify(exactly = 1) { dailyHabitRepository.save(nextDailyHabits[0]) }
+        coVerify(exactly = 1) { dailyHabitRepository.save(nextDailyHabits[1]) }
+    }
+
+    @Test
+    fun `invoke when does not have habits`() = runBlocking {
+        coEvery { habitRepository.getAllHabitsThatAreDaily() } returns emptyList()
+
+        resetDailyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreDaily() }
+        coVerify(exactly = 0) { habitCounterRepository.getLastDailyCounter() }
+        coVerify(exactly = 0) { habitCounterRepository.insert(any()) }
+        coVerify(exactly = 0) { habitToPeriodicityHabitMapper.toDailyHabits(any(), any(), any()) }
+        coVerify(exactly = 0) { dailyHabitRepository.save(any()) }
     }
 }

@@ -4,11 +4,16 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
 import com.sibela.smarthabits.domain.repository.YearlyHabitRepository
-import com.sibela.smarthabits.util.TestData
+import com.sibela.smarthabits.util.TestData.FIRST_HABIT_YEARLY
+import com.sibela.smarthabits.util.TestData.FIRST_YEARLY_HABIT
+import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_YEARLY
+import com.sibela.smarthabits.util.TestData.SECOND_HABIT_YEARLY
+import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
 import io.mockk.coJustRun
 import io.mockk.coVerify
+import io.mockk.coVerifyOrder
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.runBlocking
@@ -36,40 +41,66 @@ class ResetYearlyHabitsUseCaseTest {
     }
 
     @Test
-    fun invoke() = runBlocking {
-        val yearlyCounter = TestData.HABIT_COUNTER_YEARLY
-        val nextHabitCounter = yearlyCounter.apply {
-            id = 0
-            period++
-        }
-        val habits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
-        val yearlyHabits = listOf(TestData.FIRST_YEARLY_HABIT, TestData.SECOND_YEARLY_HABIT)
-        val firstNewYearlyHabit = TestData.FIRST_YEARLY_HABIT
-        firstNewYearlyHabit.apply {
-            id = 0
-            period = yearlyCounter.period
-        }
-        val secondNewYearlyHabit = TestData.SECOND_YEARLY_HABIT
-        secondNewYearlyHabit.apply {
-            id = 0
-            period = yearlyCounter.period
-        }
-        coEvery { habitCounterRepository.getLastYearlyCounter() } returns yearlyCounter
-        coJustRun { habitCounterRepository.insert(nextHabitCounter) }
-        coEvery { habitRepository.getAllHabitsThatAreYearly() } returns habits
+    fun `invoke when has habits`() = runBlocking {
+        val habitsYearly = listOf(FIRST_HABIT_YEARLY, SECOND_HABIT_YEARLY)
+        coEvery { habitRepository.getAllHabitsThatAreYearly() } returns habitsYearly
+
+        val lastYearlyCounter = HABIT_COUNTER_YEARLY
+        coEvery { habitCounterRepository.getLastYearlyCounter() } returns lastYearlyCounter
+        val nextYearlyCounter =
+            lastYearlyCounter.copy(id = 0, period = lastYearlyCounter.period + 1)
+
+        coJustRun { habitCounterRepository.insert(nextYearlyCounter) }
+
+        val yearlyHabits = listOf(
+            FIRST_YEARLY_HABIT.copy(completed = false, period = nextYearlyCounter.period),
+            SECOND_YEARLY_HABIT.copy(completed = false, period = nextYearlyCounter.period)
+        )
+
         coEvery {
-            habitToPeriodicityHabitMapper.toYearlyHabits(habits, false, yearlyCounter.period)
+            habitToPeriodicityHabitMapper.toYearlyHabits(
+                habitsYearly, false, nextYearlyCounter.period
+            )
         } returns yearlyHabits
-        coJustRun { yearlyHabitRepository.save(firstNewYearlyHabit) }
-        coJustRun { yearlyHabitRepository.save(secondNewYearlyHabit) }
-        resetYearlyHabitsUseCase.invoke()
-        coVerify(exactly = 1) { habitCounterRepository.getLastYearlyCounter() }
-        coVerify(exactly = 1) { habitCounterRepository.insert(nextHabitCounter) }
-        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreYearly() }
-        coVerify(exactly = 1) {
-            habitToPeriodicityHabitMapper.toYearlyHabits(habits, false, yearlyCounter.period)
+
+        val nextYearlyHabits = yearlyHabits.map {
+            it.copy(id = 0, period = nextYearlyCounter.period)
         }
-        coVerify { yearlyHabitRepository.save(firstNewYearlyHabit) }
-        coVerify { yearlyHabitRepository.save(secondNewYearlyHabit) }
+
+        coJustRun { yearlyHabitRepository.save(nextYearlyHabits[0]) }
+        coJustRun { yearlyHabitRepository.save(nextYearlyHabits[1]) }
+
+        resetYearlyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitCounterRepository.getLastYearlyCounter() }
+        coVerify(exactly = 1) { habitCounterRepository.insert(nextYearlyCounter) }
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreYearly() }
+
+        coVerify(exactly = 1) {
+            habitToPeriodicityHabitMapper.toYearlyHabits(
+                habitsYearly, false, nextYearlyCounter.period
+            )
+        }
+
+        coVerifyOrder {
+            yearlyHabitRepository.save(nextYearlyHabits[0])
+            yearlyHabitRepository.save(nextYearlyHabits[1])
+        }
+
+        coVerify(exactly = 1) { yearlyHabitRepository.save(nextYearlyHabits[0]) }
+        coVerify(exactly = 1) { yearlyHabitRepository.save(nextYearlyHabits[1]) }
+    }
+
+    @Test
+    fun `invoke when does not have habits`() = runBlocking {
+        coEvery { habitRepository.getAllHabitsThatAreYearly() } returns emptyList()
+
+        resetYearlyHabitsUseCase.invoke()
+
+        coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreYearly() }
+        coVerify(exactly = 0) { habitCounterRepository.getLastYearlyCounter() }
+        coVerify(exactly = 0) { habitCounterRepository.insert(any()) }
+        coVerify(exactly = 0) { habitToPeriodicityHabitMapper.toYearlyHabits(any(), any(), any()) }
+        coVerify(exactly = 0) { yearlyHabitRepository.save(any()) }
     }
 }

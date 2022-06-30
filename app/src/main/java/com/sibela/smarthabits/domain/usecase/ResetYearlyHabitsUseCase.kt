@@ -13,17 +13,24 @@ class ResetYearlyHabitsUseCase(
 ) {
 
     suspend operator fun invoke() {
-        val yearlyCounter = habitCounterRepository.getLastYearlyCounter().apply {
+        val habits = habitRepository.getAllHabitsThatAreYearly().also {
+            if (it.isEmpty()) return
+        }
+
+        val nextYearlyCounter = habitCounterRepository.getLastYearlyCounter().apply {
             id = 0
             period++
-
         }
-        habitCounterRepository.insert(yearlyCounter)
-        val habits = habitRepository.getAllHabitsThatAreYearly()
-        val yearlyHabits = habitToPeriodicityHabitMapper.toYearlyHabits(habits, false, yearlyCounter.period)
+
+        habitCounterRepository.insert(nextYearlyCounter)
+
+        val yearlyHabits = habitToPeriodicityHabitMapper.toYearlyHabits(
+            habits, false, nextYearlyCounter.period
+        )
+
         yearlyHabits.forEach { yearlyHabit ->
             yearlyHabit.id = 0
-            yearlyHabit.period = yearlyCounter.period
+            yearlyHabit.period = nextYearlyCounter.period
             yearlyHabitRepository.save(yearlyHabit)
         }
     }

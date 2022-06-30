@@ -18,8 +18,8 @@ class MonthlyHabitMapperImplTest {
 
     @Test
     fun fromDomain() {
-        val expectHabit = FIRST_MONTHLY_HABIT_ENTITY
-        val actualHabit = mapper.fromDomain(FIRST_MONTHLY_HABIT)
+        val expectHabit = FIRST_MONTHLY_HABIT_ENTITY.copy()
+        val actualHabit = mapper.fromDomain(FIRST_MONTHLY_HABIT.copy())
         Assert.assertEquals(expectHabit, actualHabit)
     }
 }

@@ -13,16 +13,24 @@ class ResetWeeklyHabitsUseCase(
 ) {
 
     suspend operator fun invoke() {
-        val weeklyCounter = habitCounterRepository.getLastWeeklyCounter().apply {
+        val habits = habitRepository.getAllHabitsThatAreWeekly().also {
+            if (it.isEmpty()) return
+        }
+
+        val nextWeeklyCounter = habitCounterRepository.getLastWeeklyCounter().apply {
             id = 0
             period++
         }
-        habitCounterRepository.insert(weeklyCounter)
-        val habits = habitRepository.getAllHabitsThatAreWeekly()
-        val weeklyHabits = habitToPeriodicityHabitMapper.toWeeklyHabits(habits, false, weeklyCounter.period)
+
+        habitCounterRepository.insert(nextWeeklyCounter)
+
+        val weeklyHabits = habitToPeriodicityHabitMapper.toWeeklyHabits(
+            habits, false, nextWeeklyCounter.period
+        )
+
         weeklyHabits.forEach { weeklyHabit ->
             weeklyHabit.id = 0
-            weeklyHabit.period = weeklyCounter.period
+            weeklyHabit.period = nextWeeklyCounter.period
             weeklyHabitRepository.save(weeklyHabit)
         }
     }

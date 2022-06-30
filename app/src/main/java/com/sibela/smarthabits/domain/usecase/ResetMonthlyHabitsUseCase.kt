@@ -13,16 +13,24 @@ class ResetMonthlyHabitsUseCase(
 ) {
 
     suspend operator fun invoke() {
-        val monthlyCounter = habitCounterRepository.getLastMonthlyCounter().apply {
+        val habits = habitRepository.getAllHabitsThatAreMonthly().also {
+            if (it.isEmpty()) return
+        }
+
+        val nextMonthlyCounter = habitCounterRepository.getLastMonthlyCounter().apply {
             id = 0
             period++
         }
-        habitCounterRepository.insert(monthlyCounter)
-        val habits = habitRepository.getAllHabitsThatAreMonthly()
-        val monthlyHabits = habitToPeriodicityHabitMapper.toMonthlyHabits(habits, false, monthlyCounter.period)
+
+        habitCounterRepository.insert(nextMonthlyCounter)
+
+        val monthlyHabits = habitToPeriodicityHabitMapper.toMonthlyHabits(
+            habits, false, nextMonthlyCounter.period
+        )
+
         monthlyHabits.forEach { monthlyHabit ->
             monthlyHabit.id = 0
-            monthlyHabit.period = monthlyCounter.period
+            monthlyHabit.period = nextMonthlyCounter.period
             monthlyHabitRepository.save(monthlyHabit)
         }
     }
