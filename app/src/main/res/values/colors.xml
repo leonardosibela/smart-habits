@@ -3,11 +3,10 @@
     <color name="purple_200">#FFBB86FC</color>
     <color name="colorPrimary">#E09091</color>
     <color name="colorPrimaryVariant">#C17D7C</color>
+    <color name="colorSecondary">#E09091</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-
-    <color name="icon_color">#757575</color>
 
     <color name="window_color">#EEEEEE</color>
 </resources>

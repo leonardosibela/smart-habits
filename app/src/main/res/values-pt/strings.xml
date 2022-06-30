@@ -4,7 +4,7 @@
     <string name="week">Semana</string>
     <string name="month">Mês</string>
     <string name="year">Ano</string>
-    <string name="settings">Configurações</string>
+    <string name="settings">Config</string>
 
     <string name="add_habit">Adicionar hábito</string>
     <string name="edit_habit">Editar hábito</string>

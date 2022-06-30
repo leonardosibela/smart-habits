@@ -21,8 +21,8 @@
             android:id="@+id/description_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:imeOptions="actionDone"
+            android:background="?android:windowBackground"
             android:inputType="textCapSentences" />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -34,6 +34,7 @@
         android:layout_marginHorizontal="@dimen/size_large"
         android:layout_marginBottom="@dimen/size_large"
         android:text="@string/add_habit"
+        style="@style/Widget.AppCompat.Button.Colored"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
