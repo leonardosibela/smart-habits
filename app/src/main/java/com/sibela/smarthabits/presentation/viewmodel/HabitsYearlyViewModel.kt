@@ -1,13 +1,11 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreYearlyUseCase
-import com.sibela.smarthabits.extension.asLiveData
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -36,5 +34,12 @@ class HabitsYearlyViewModel(
 
     fun deleteHabit(habit: Habit) = viewModelScope.launch {
         deleteHabitUseCase(habit)
+        runCatching {
+            (habits.value as HabitResult.Success).data
+        }.getOrNull()?.also {
+            ArrayList(it).apply { remove(habit) }.also { list ->
+                _habits.value = HabitResult.Success(list)
+            }
+        }
     }
 }

@@ -121,7 +121,6 @@ class HabitsWeeklyFragment : Fragment() {
 
     private fun deleteHabit(habit: Habit) {
         viewModelHabits.deleteHabit(habit)
-        viewModelHabits.fetchHabits()
     }
 
     private fun onEditHabitClicked(habit: Habit) = findNavController().navigate(

@@ -14,7 +14,6 @@ import io.mockk.coVerify
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -39,7 +38,7 @@ class HabitsYearlyViewModelTest {
     }
 
     @Test
-    fun `fetchHabits result error`() = runBlocking {
+    fun `fetchHabits result error`() {
         val throwable = Throwable()
         coEvery { getHabitsThatAreYearlyUseCase() } returns throwable.toError()
 
@@ -52,7 +51,7 @@ class HabitsYearlyViewModelTest {
     }
 
     @Test
-    fun `fetchHabits result empty`() = runBlocking {
+    fun `fetchHabits result empty`() {
         val expectedHabits = listOf<Habit>()
         coEvery { getHabitsThatAreYearlyUseCase() } returns expectedHabits.toSuccess()
 
@@ -79,8 +78,20 @@ class HabitsYearlyViewModelTest {
 
     @Test
     fun deleteHabit() {
-        coJustRun { deleteHabitUseCase(TestData.FIRST_HABIT_DAILY) }
-        viewModel.deleteHabit(TestData.FIRST_HABIT_DAILY)
-        coVerify(exactly = 1) { deleteHabitUseCase.invoke(TestData.FIRST_HABIT_DAILY) }
+        val habitToDelete = TestData.FIRST_HABIT_DAILY
+        val initialHabits = arrayListOf(habitToDelete, TestData.SECOND_HABIT_DAILY)
+        val expectedHabitResult = initialHabits.let {
+            it.remove(habitToDelete)
+            HabitResult.Success(it)
+        }
+
+        coEvery { getHabitsThatAreYearlyUseCase.invoke() } returns initialHabits.toSuccess()
+        viewModel.fetchHabits()
+        coJustRun { deleteHabitUseCase(habitToDelete) }
+
+        viewModel.deleteHabit(habitToDelete)
+
+        coVerify(exactly = 1) { deleteHabitUseCase.invoke(habitToDelete) }
+        Assert.assertEquals(expectedHabitResult, viewModel.habits.value)
     }
 }

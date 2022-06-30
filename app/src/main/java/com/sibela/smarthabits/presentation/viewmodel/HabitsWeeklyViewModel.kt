@@ -34,5 +34,12 @@ class HabitsWeeklyViewModel(
 
     fun deleteHabit(habit: Habit) = viewModelScope.launch {
         deleteHabitUseCase(habit)
+        runCatching {
+            (habits.value as HabitResult.Success).data
+        }.getOrNull()?.also {
+            ArrayList(it).apply { remove(habit) }.also { list ->
+                _habits.value = HabitResult.Success(list)
+            }
+        }
     }
 }
