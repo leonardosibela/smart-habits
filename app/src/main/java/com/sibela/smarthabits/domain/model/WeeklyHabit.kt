@@ -1,5 +1,8 @@
 package com.sibela.smarthabits.domain.model
 
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class WeeklyHabit(
     override var id: Int = 0,
     override val description: String,

@@ -1,35 +1,44 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sibela.smarthabits.domain.common.Result
 import com.sibela.smarthabits.domain.model.DailyHabit
 import com.sibela.smarthabits.domain.usecase.FinishDailyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentDailyHabitsUseCase
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
 class DailyHabitsViewModel(
+    private val savedStateHandle: SavedStateHandle,
     private val getCurrentDailyHabitsUseCase: GetCurrentDailyHabitsUseCase,
     private val finishDailyHabitUseCase: FinishDailyHabitUseCase
 ) : ViewModel() {
 
-    private val _habits: MutableStateFlow<PeriodicHabitResult<DailyHabit>> =
-        MutableStateFlow(PeriodicHabitResult.Loading)
-    val habits = _habits.asStateFlow()
+    companion object {
+        private const val DAILY_HABITS_KEY = "daily_habits_key"
+    }
+
+    val habits: StateFlow<PeriodicHabitResult<DailyHabit>> = savedStateHandle.getStateFlow(
+        DAILY_HABITS_KEY, PeriodicHabitResult.Loading
+    )
 
     fun fetchHabits() = viewModelScope.launch {
         val result = getCurrentDailyHabitsUseCase()
         if (result is Result.Error) {
-            _habits.value = PeriodicHabitResult.EmptyList
+            setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
         } else {
             if (result.result?.isEmpty() != false) {
-                _habits.value = PeriodicHabitResult.EmptyList
+                setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
             } else {
-                _habits.value = PeriodicHabitResult.Success(result.result)
+                setPeriodicHabitResult(PeriodicHabitResult.Success(result.result))
             }
         }
+    }
+
+    private fun setPeriodicHabitResult(periodicHabitResult: PeriodicHabitResult<DailyHabit>) {
+        savedStateHandle[DAILY_HABITS_KEY] = periodicHabitResult
     }
 
     fun finishHabit(habit: DailyHabit) = viewModelScope.launch {

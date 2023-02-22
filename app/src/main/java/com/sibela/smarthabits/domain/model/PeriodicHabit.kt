@@ -1,6 +1,8 @@
 package com.sibela.smarthabits.domain.model
 
-interface PeriodicHabit {
+import android.os.Parcelable
+
+interface PeriodicHabit : Parcelable {
     val id: Int
     val description: String
 }

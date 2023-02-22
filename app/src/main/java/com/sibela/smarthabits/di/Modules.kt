@@ -75,16 +75,16 @@ private val useCases = module {
 
 private val viewModels = module {
     viewModel { AddPeriodicHabitViewModel(get()) }
-    viewModel { DailyHabitsViewModel(get(), get()) }
+    viewModel { DailyHabitsViewModel(get(), get(), get()) }
     viewModel { EditHabitViewModel(get()) }
-    viewModel { HabitsDailyViewModel(get(), get()) }
-    viewModel { HabitsMonthlyViewModel(get(), get()) }
-    viewModel { HabitsWeeklyViewModel(get(), get()) }
-    viewModel { HabitsYearlyViewModel(get(), get()) }
+    viewModel { HabitsDailyViewModel(get(), get(), get()) }
+    viewModel { HabitsMonthlyViewModel(get(), get(), get()) }
+    viewModel { HabitsWeeklyViewModel(get(), get(), get()) }
+    viewModel { HabitsYearlyViewModel(get(), get(), get()) }
     viewModel { MainViewModel(get()) }
-    viewModel { MonthlyHabitsViewModel(get(), get()) }
-    viewModel { WeeklyHabitsViewModel(get(), get()) }
-    viewModel { YearlyHabitsViewModel(get(), get()) }
+    viewModel { MonthlyHabitsViewModel(get(), get(), get()) }
+    viewModel { WeeklyHabitsViewModel(get(), get(), get()) }
+    viewModel { YearlyHabitsViewModel(get(), get(), get()) }
 }
 
 object AppModules {
