@@ -27,7 +27,7 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishDailyHabitUseCase(get()) }
         single { GetCurrentDailyHabitsUseCase(get(), get()) }
-        viewModel { DailyHabitsViewModel(get(), get()) }
+        viewModel { DailyHabitsViewModel(get(), get(), get()) }
     }
 
     val editHabitFragmentModule = module(override = true) {
@@ -48,7 +48,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreDailyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsDailyViewModel(get(), get()) }
+        viewModel { HabitsDailyViewModel(get(), get(), get()) }
     }
 
     val habitsMonthlyFragmentModule = module(override = true) {
@@ -59,7 +59,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreMonthlyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsMonthlyViewModel(get(), get()) }
+        viewModel { HabitsMonthlyViewModel(get(), get(), get()) }
     }
 
     val habitsWeeklyFragmentModule = module(override = true) {
@@ -70,7 +70,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreWeeklyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsWeeklyViewModel(get(), get()) }
+        viewModel { HabitsWeeklyViewModel(get(), get(), get()) }
     }
 
     val habitsYearlyFragmentModule = module(override = true) {
@@ -81,7 +81,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreYearlyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsYearlyViewModel(get(), get()) }
+        viewModel { HabitsYearlyViewModel(get(), get(), get()) }
     }
 
     val monthlyHabitFragmentModule = module(override = true) {
@@ -89,7 +89,7 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishMonthlyHabitUseCase(get()) }
         single { GetCurrentMonthlyHabitsUseCase(get(), get()) }
-        viewModel { MonthlyHabitsViewModel(get(), get()) }
+        viewModel { MonthlyHabitsViewModel(get(), get(), get()) }
     }
 
     val settingsFragmentModule = module(override = true) {
@@ -111,7 +111,7 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishWeeklyHabitUseCase(get()) }
         single { GetCurrentWeeklyHabitsUseCase(get(), get()) }
-        viewModel { WeeklyHabitsViewModel(get(), get()) }
+        viewModel { WeeklyHabitsViewModel(get(), get(), get()) }
     }
 
     val yearlyHabitFragmentModule = module(override = true) {
@@ -119,6 +119,6 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishYearlyHabitUseCase(get()) }
         single { GetCurrentYearlyHabitsUseCase(get(), get()) }
-        viewModel { YearlyHabitsViewModel(get(), get()) }
+        viewModel { YearlyHabitsViewModel(get(), get(), get()) }
     }
 }

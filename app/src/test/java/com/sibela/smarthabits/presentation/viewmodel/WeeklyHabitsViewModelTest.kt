@@ -1,20 +1,20 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.WeeklyHabit
 import com.sibela.smarthabits.domain.usecase.FinishWeeklyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentWeeklyHabitsUseCase
+import com.sibela.smarthabits.presentation.viewmodel.WeeklyHabitsViewModel.Companion.WEEKLY_HABIT_KEY
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_WEEKLY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_WEEKLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coJustRun
-import io.mockk.coVerify
-import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
@@ -27,16 +27,36 @@ class WeeklyHabitsViewModelTest {
     val coroutineTestRule = CoroutineTestRule()
 
     @RelaxedMockK
+    private lateinit var savedStateHandle: SavedStateHandle
+
+    @RelaxedMockK
     private lateinit var getCurrentWeeklyHabitsUseCase: GetCurrentWeeklyHabitsUseCase
 
     @RelaxedMockK
     private lateinit var finishWeeklyHabitUseCase: FinishWeeklyHabitUseCase
 
-    @InjectMockKs
     private lateinit var viewModel: WeeklyHabitsViewModel
 
     init {
         initMockKAnnotations()
+        mockInitialValueForHabitResult()
+        initializeViewModel()
+    }
+
+    private fun mockInitialValueForHabitResult() {
+        every {
+            savedStateHandle.getStateFlow(WEEKLY_HABIT_KEY, PeriodicHabitResult.Loading)
+        } returns MutableStateFlow(PeriodicHabitResult.Loading)
+    }
+
+    private fun initializeViewModel() {
+        viewModel = spyk(
+            WeeklyHabitsViewModel(
+                savedStateHandle,
+                getCurrentWeeklyHabitsUseCase,
+                finishWeeklyHabitUseCase
+            )
+        )
     }
 
     @Test
@@ -49,7 +69,7 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.EmptyList, viewModel.habits.value)
+        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
     }
 
     @Test
@@ -62,7 +82,7 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.Success(expectedList), viewModel.habits.value)
+        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList) }
     }
 
     @Test
@@ -75,19 +95,19 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.EmptyList, viewModel.habits.value)
+        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
     }
 
     @Test
     fun finishHabit() {
         val weeklyHabit = FIRST_WEEKLY_HABIT
-        coJustRun { finishWeeklyHabitUseCase(any()) }
+        coEvery { getCurrentWeeklyHabitsUseCase.invoke() } returns listOf<WeeklyHabit>().toSuccess()
 
         Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
 
         viewModel.finishHabit(weeklyHabit)
 
         coVerify(exactly = 1) { finishWeeklyHabitUseCase.invoke(weeklyHabit) }
-        Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
+        verify { viewModel.fetchHabits() }
     }
 }

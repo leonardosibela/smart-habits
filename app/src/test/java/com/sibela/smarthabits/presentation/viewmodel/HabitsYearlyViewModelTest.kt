@@ -1,19 +1,20 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetHabitsThatAreYearlyUseCase
+import com.sibela.smarthabits.presentation.viewmodel.HabitsYearlyViewModel.Companion.HABITS_YEARLY_KEY
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData
 import com.sibela.smarthabits.util.initMockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coJustRun
-import io.mockk.coVerify
+import io.mockk.*
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
@@ -25,16 +26,34 @@ class HabitsYearlyViewModelTest {
     val coroutineTestRule = CoroutineTestRule()
 
     @RelaxedMockK
+    private lateinit var savedStateHandle: SavedStateHandle
+
+    @RelaxedMockK
     private lateinit var getHabitsThatAreYearlyUseCase: GetHabitsThatAreYearlyUseCase
 
     @RelaxedMockK
     private lateinit var deleteHabitUseCase: DeleteHabitUseCase
 
-    @InjectMockKs
     private lateinit var viewModel: HabitsYearlyViewModel
 
     init {
         initMockKAnnotations()
+        mockInitialValueForHabitResult()
+        initializeViewModel()
+    }
+
+    private fun mockInitialValueForHabitResult() {
+        every {
+            savedStateHandle.getStateFlow(HABITS_YEARLY_KEY, HabitResult.Loading)
+        } returns MutableStateFlow(HabitResult.Loading)
+    }
+
+    private fun initializeViewModel() {
+        viewModel = HabitsYearlyViewModel(
+            savedStateHandle,
+            getHabitsThatAreYearlyUseCase,
+            deleteHabitUseCase
+        )
     }
 
     @Test
@@ -47,7 +66,7 @@ class HabitsYearlyViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getHabitsThatAreYearlyUseCase.invoke() }
-        Assert.assertEquals(HabitResult.Error(throwable), viewModel.habits.value)
+        verify { savedStateHandle[HABITS_YEARLY_KEY] = HabitResult.Error(throwable) }
     }
 
     @Test
@@ -60,7 +79,7 @@ class HabitsYearlyViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getHabitsThatAreYearlyUseCase.invoke() }
-        Assert.assertEquals(HabitResult.EmptyList, viewModel.habits.value)
+        verify { savedStateHandle[HABITS_YEARLY_KEY] = HabitResult.EmptyList }
     }
 
     @Test
@@ -73,7 +92,7 @@ class HabitsYearlyViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getHabitsThatAreYearlyUseCase.invoke() }
-        Assert.assertEquals(HabitResult.Success(expectedHabits), viewModel.habits.value)
+        verify { savedStateHandle[HABITS_YEARLY_KEY] = HabitResult.Success(expectedHabits) }
     }
 
     @Test
@@ -92,6 +111,6 @@ class HabitsYearlyViewModelTest {
         viewModel.deleteHabit(habitToDelete)
 
         coVerify(exactly = 1) { deleteHabitUseCase.invoke(habitToDelete) }
-        Assert.assertEquals(expectedHabitResult, viewModel.habits.value)
+        verify { savedStateHandle[HABITS_YEARLY_KEY] = expectedHabitResult }
     }
 }

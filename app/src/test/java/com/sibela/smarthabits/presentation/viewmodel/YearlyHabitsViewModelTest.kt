@@ -1,20 +1,20 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.lifecycle.SavedStateHandle
 import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.YearlyHabit
 import com.sibela.smarthabits.domain.usecase.FinishYearlyHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentYearlyHabitsUseCase
+import com.sibela.smarthabits.presentation.viewmodel.YearlyHabitsViewModel.Companion.YEARLY_HABIT_KEY
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_YEARLY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
-import io.mockk.coEvery
-import io.mockk.coJustRun
-import io.mockk.coVerify
-import io.mockk.impl.annotations.InjectMockKs
+import io.mockk.*
 import io.mockk.impl.annotations.RelaxedMockK
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
@@ -27,16 +27,36 @@ class YearlyHabitsViewModelTest {
     val coroutineTestRule = CoroutineTestRule()
 
     @RelaxedMockK
+    private lateinit var savedStateHandle: SavedStateHandle
+
+    @RelaxedMockK
     private lateinit var getCurrentYearlyHabitsUseCase: GetCurrentYearlyHabitsUseCase
 
     @RelaxedMockK
     private lateinit var finishYearlyHabitUseCase: FinishYearlyHabitUseCase
 
-    @InjectMockKs
     private lateinit var viewModel: YearlyHabitsViewModel
 
     init {
         initMockKAnnotations()
+        mockInitialValueForHabitResult()
+        initializeViewModel()
+    }
+
+    private fun mockInitialValueForHabitResult() {
+        every {
+            savedStateHandle.getStateFlow(YEARLY_HABIT_KEY, PeriodicHabitResult.Loading)
+        } returns MutableStateFlow(PeriodicHabitResult.Loading)
+    }
+
+    private fun initializeViewModel() {
+        viewModel = spyk(
+            YearlyHabitsViewModel(
+                savedStateHandle,
+                getCurrentYearlyHabitsUseCase,
+                finishYearlyHabitUseCase
+            )
+        )
     }
 
     @Test
@@ -49,7 +69,7 @@ class YearlyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.EmptyList, viewModel.habits.value)
+        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
     }
 
     @Test
@@ -62,7 +82,7 @@ class YearlyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.Success(expectedList), viewModel.habits.value)
+        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList) }
     }
 
     @Test
@@ -75,19 +95,19 @@ class YearlyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        Assert.assertEquals(PeriodicHabitResult.EmptyList, viewModel.habits.value)
+        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
     }
 
     @Test
     fun finishHabit() {
         val yearlyHabit = FIRST_YEARLY_HABIT
-        coJustRun { finishYearlyHabitUseCase(any()) }
+        coEvery { getCurrentYearlyHabitsUseCase.invoke() } returns listOf<YearlyHabit>().toSuccess()
 
         Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
 
         viewModel.finishHabit(yearlyHabit)
 
         coVerify(exactly = 1) { finishYearlyHabitUseCase.invoke(yearlyHabit) }
-        Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
+        verify { viewModel.fetchHabits() }
     }
 }

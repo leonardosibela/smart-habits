@@ -1,5 +1,6 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,7 +18,8 @@ class MonthlyHabitsViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val MONTHLY_HABITS_KEY = "monthly_habits_key"
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+        const val MONTHLY_HABITS_KEY = "monthly_habits_key"
     }
 
     val habits: StateFlow<PeriodicHabitResult<MonthlyHabit>> = savedStateHandle.getStateFlow(
@@ -25,14 +27,14 @@ class MonthlyHabitsViewModel(
     )
 
     fun fetchHabits() = viewModelScope.launch {
-        val result = getCurrentMonthlyHabitsUseCase()
-        if (result is Result.Error) {
-            setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
-        } else {
-            if (result.result?.isEmpty() != false) {
-                setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
-            } else {
-                setPeriodicHabitResult(PeriodicHabitResult.Success(result.result))
+        when(val result = getCurrentMonthlyHabitsUseCase()) {
+            is Result.Error -> setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
+            is Result.Success -> {
+                if (result.data.isEmpty()) {
+                    setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
+                } else {
+                    setPeriodicHabitResult(PeriodicHabitResult.Success(result.data))
+                }
             }
         }
     }
@@ -43,5 +45,6 @@ class MonthlyHabitsViewModel(
 
     fun finishHabit(monthlyHabit: MonthlyHabit) = viewModelScope.launch {
         finishMonthlyHabitUseCase(monthlyHabit)
+        fetchHabits()
     }
 }

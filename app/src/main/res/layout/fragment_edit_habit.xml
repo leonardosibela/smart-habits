@@ -21,7 +21,7 @@
             android:id="@+id/description_input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
+            android:background="?android:windowBackground"
             android:imeOptions="actionDone"
             android:inputType="textCapSentences" />
 
@@ -29,6 +29,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/edit_habit_button"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/size_large"

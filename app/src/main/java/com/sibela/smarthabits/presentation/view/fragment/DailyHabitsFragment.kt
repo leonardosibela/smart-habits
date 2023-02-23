@@ -108,6 +108,5 @@ class DailyHabitsFragment : Fragment() {
 
     private fun deleteHabit(habit: DailyHabit) {
         viewModel.finishHabit(habit)
-        viewModel.fetchHabits()
     }
 }

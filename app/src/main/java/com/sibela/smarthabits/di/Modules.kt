@@ -6,6 +6,8 @@ import com.sibela.smarthabits.data.mapper.*
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
+import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmScheduler
+import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmSchedulerImpl
 import com.sibela.smarthabits.presentation.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -14,7 +16,11 @@ import org.koin.dsl.module
 private val daos = module {
     single {
         Room
-            .databaseBuilder(androidContext(), HabitDatabase::class.java, HabitDatabase.DATABASE_NAME)
+            .databaseBuilder(
+                androidContext(),
+                HabitDatabase::class.java,
+                HabitDatabase.DATABASE_NAME
+            )
             .fallbackToDestructiveMigration()
             .build()
     }
@@ -67,6 +73,7 @@ private val useCases = module {
     single { GetCurrentYearlyHabitsUseCase(get(), get()) }
     single { PrePopulateDatabaseUseCase(get(), get()) }
     single { ResetDailyHabitsUseCase(get(), get(), get(), get()) }
+    single { ResetHabitsUseCase(get(), get(), get(), get()) }
     single { ResetMonthlyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetYearlyHabitsUseCase(get(), get(), get(), get()) }
@@ -87,6 +94,10 @@ private val viewModels = module {
     viewModel { YearlyHabitsViewModel(get(), get(), get()) }
 }
 
+private val alarmSchedulers = module {
+    single<CleanTaskAlarmScheduler> { CleanTaskAlarmSchedulerImpl(androidContext()) }
+}
+
 object AppModules {
-    val modules = daos + repositories + useCases + mappers + viewModels
+    val modules = daos + repositories + useCases + mappers + viewModels + alarmSchedulers
 }

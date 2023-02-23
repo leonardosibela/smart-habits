@@ -21,24 +21,24 @@
         app:summary="@string/list_yearly_summary"
         app:title="@string/list_yearly_title" />
 
-    <Preference
-        app:key="resetDaily"
-        app:summary="@string/reset_daily_summary"
-        app:title="@string/reset_daily_title" />
+<!--    <Preference-->
+<!--        app:key="resetDaily"-->
+<!--        app:summary="@string/reset_daily_summary"-->
+<!--        app:title="@string/reset_daily_title" />-->
 
-    <Preference
-        app:key="resetWeekly"
-        app:summary="@string/reset_weekly_summary"
-        app:title="@string/reset_weekly_title" />
+<!--    <Preference-->
+<!--        app:key="resetWeekly"-->
+<!--        app:summary="@string/reset_weekly_summary"-->
+<!--        app:title="@string/reset_weekly_title" />-->
 
-    <Preference
-        app:key="resetMonthly"
-        app:summary="@string/reset_monthly_summary"
-        app:title="@string/reset_monthly_title" />
+<!--    <Preference-->
+<!--        app:key="resetMonthly"-->
+<!--        app:summary="@string/reset_monthly_summary"-->
+<!--        app:title="@string/reset_monthly_title" />-->
 
-    <Preference
-        app:key="resetYearly"
-        app:summary="@string/reset_yearly_summary"
-        app:title="@string/reset_yearly_title" />
+<!--    <Preference-->
+<!--        app:key="resetYearly"-->
+<!--        app:summary="@string/reset_yearly_summary"-->
+<!--        app:title="@string/reset_yearly_title" />-->
 
 </PreferenceScreen>

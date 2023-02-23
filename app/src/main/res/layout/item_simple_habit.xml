@@ -14,7 +14,7 @@
             android:id="@+id/habit_description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/size_medium"
+            android:layout_marginHorizontal="@dimen/size_large"
             android:textSize="@dimen/habit_text_size"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

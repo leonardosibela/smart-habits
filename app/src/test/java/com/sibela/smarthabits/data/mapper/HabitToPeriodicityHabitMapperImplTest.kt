@@ -33,8 +33,8 @@ class HabitToPeriodicityHabitMapperImplTest {
             listOf(FIRST_HABIT_DAILY, FIRST_HABIT_DAILY), FIRST_COMPLETED, FIRST_PERIOD
         )
 
-        val firstDailyHabit = FIRST_DAILY_HABIT.apply { id = 0 }
-        val secondDailyHabit = FIRST_DAILY_HABIT.apply { id = 0 }
+        val firstDailyHabit = FIRST_DAILY_HABIT.copy().apply { id = 0 }
+        val secondDailyHabit = FIRST_DAILY_HABIT.copy().apply { id = 0 }
         val expectedDailyHabits = arrayOf(firstDailyHabit, secondDailyHabit)
 
         Assert.assertArrayEquals(expectedDailyHabits, actualDailyHabits.toTypedArray())
@@ -42,12 +42,12 @@ class HabitToPeriodicityHabitMapperImplTest {
 
     @Test
     fun toDailyHabit() {
-        val expectedFirstDailyHabit = FIRST_DAILY_HABIT.apply { id = 0 }
+        val expectedFirstDailyHabit = FIRST_DAILY_HABIT.copy().apply { id = 0 }
         val actualFirstDailyHabit =
             mapper.toDailyHabit(FIRST_HABIT_DAILY, FIRST_COMPLETED, FIRST_PERIOD)
         Assert.assertEquals(expectedFirstDailyHabit, actualFirstDailyHabit)
 
-        val expectedSecondDailyHabit = SECOND_DAILY_HABIT.apply { id = 0 }
+        val expectedSecondDailyHabit = SECOND_DAILY_HABIT.copy().apply { id = 0 }
         val actualSecondDailyHabit =
             mapper.toDailyHabit(SECOND_HABIT_DAILY, SECOND_COMPLETED, SECOND_PERIOD)
         Assert.assertEquals(expectedSecondDailyHabit, actualSecondDailyHabit)
@@ -59,8 +59,8 @@ class HabitToPeriodicityHabitMapperImplTest {
             listOf(FIRST_HABIT_WEEKLY, FIRST_HABIT_WEEKLY), FIRST_COMPLETED, FIRST_PERIOD
         )
 
-        val firstWeeklyHabit = FIRST_WEEKLY_HABIT.apply { id = 0 }
-        val secondWeeklyHabit = FIRST_WEEKLY_HABIT.apply { id = 0 }
+        val firstWeeklyHabit = FIRST_WEEKLY_HABIT.copy().apply { id = 0 }
+        val secondWeeklyHabit = FIRST_WEEKLY_HABIT.copy().apply { id = 0 }
         val expectedWeeklyHabits = arrayOf(firstWeeklyHabit, secondWeeklyHabit)
 
         Assert.assertArrayEquals(expectedWeeklyHabits, actualWeeklyHabits.toTypedArray())
@@ -68,12 +68,12 @@ class HabitToPeriodicityHabitMapperImplTest {
 
     @Test
     fun toWeeklyHabit() {
-        val expectedFirstWeeklyHabit = FIRST_WEEKLY_HABIT.apply { id = 0 }
+        val expectedFirstWeeklyHabit = FIRST_WEEKLY_HABIT.copy().apply { id = 0 }
         val actualFirstWeeklyHabit =
             mapper.toWeeklyHabit(FIRST_HABIT_WEEKLY, FIRST_COMPLETED, FIRST_PERIOD)
         Assert.assertEquals(expectedFirstWeeklyHabit, actualFirstWeeklyHabit)
 
-        val expectedSecondWeeklyHabit = SECOND_WEEKLY_HABIT.apply { id = 0 }
+        val expectedSecondWeeklyHabit = SECOND_WEEKLY_HABIT.copy().apply { id = 0 }
         val actualSecondWeeklyHabit =
             mapper.toWeeklyHabit(SECOND_HABIT_WEEKLY, SECOND_COMPLETED, SECOND_PERIOD)
         Assert.assertEquals(expectedSecondWeeklyHabit, actualSecondWeeklyHabit)
@@ -85,8 +85,8 @@ class HabitToPeriodicityHabitMapperImplTest {
             listOf(FIRST_HABIT_MONTHLY, FIRST_HABIT_MONTHLY), FIRST_COMPLETED, FIRST_PERIOD
         )
 
-        val firstMonthlyHabit = FIRST_MONTHLY_HABIT.apply { id = 0 }
-        val secondMonthlyHabit = FIRST_MONTHLY_HABIT.apply { id = 0 }
+        val firstMonthlyHabit = FIRST_MONTHLY_HABIT.copy().apply { id = 0 }
+        val secondMonthlyHabit = FIRST_MONTHLY_HABIT.copy().apply { id = 0 }
         val expectedMonthlyHabits = arrayOf(firstMonthlyHabit, secondMonthlyHabit)
 
         Assert.assertArrayEquals(expectedMonthlyHabits, actualMonthlyHabits.toTypedArray())
@@ -94,12 +94,12 @@ class HabitToPeriodicityHabitMapperImplTest {
 
     @Test
     fun toMonthlyHabit() {
-        val expectedFirstMonthlyHabit = FIRST_MONTHLY_HABIT.apply { id = 0 }
+        val expectedFirstMonthlyHabit = FIRST_MONTHLY_HABIT.copy().apply { id = 0 }
         val actualFirstMonthlyHabit =
             mapper.toMonthlyHabit(FIRST_HABIT_MONTHLY, FIRST_COMPLETED, FIRST_PERIOD)
         Assert.assertEquals(expectedFirstMonthlyHabit, actualFirstMonthlyHabit)
 
-        val expectedSecondMonthlyHabit = SECOND_MONTHLY_HABIT.apply { id = 0 }
+        val expectedSecondMonthlyHabit = SECOND_MONTHLY_HABIT.copy().apply { id = 0 }
         val actualSecondMonthlyHabit =
             mapper.toMonthlyHabit(SECOND_HABIT_MONTHLY, SECOND_COMPLETED, SECOND_PERIOD)
         Assert.assertEquals(expectedSecondMonthlyHabit, actualSecondMonthlyHabit)
@@ -111,8 +111,8 @@ class HabitToPeriodicityHabitMapperImplTest {
             listOf(FIRST_HABIT_YEARLY, FIRST_HABIT_YEARLY), FIRST_COMPLETED, FIRST_PERIOD
         )
 
-        val firstYearlyHabit = FIRST_YEARLY_HABIT.apply { id = 0 }
-        val secondYearlyHabit = FIRST_YEARLY_HABIT.apply { id = 0 }
+        val firstYearlyHabit = FIRST_YEARLY_HABIT.copy().apply { id = 0 }
+        val secondYearlyHabit = FIRST_YEARLY_HABIT.copy().apply { id = 0 }
         val expectedYearlyHabits = arrayOf(firstYearlyHabit, secondYearlyHabit)
 
         Assert.assertArrayEquals(expectedYearlyHabits, actualYearlyHabits.toTypedArray())
@@ -120,12 +120,12 @@ class HabitToPeriodicityHabitMapperImplTest {
 
     @Test
     fun toYearlyHabit() {
-        val expectedFirstYearlyHabit = FIRST_YEARLY_HABIT.apply { id = 0 }
+        val expectedFirstYearlyHabit = FIRST_YEARLY_HABIT.copy().apply { id = 0 }
         val actualFirstYearlyHabit =
             mapper.toYearlyHabit(FIRST_HABIT_YEARLY, FIRST_COMPLETED, FIRST_PERIOD)
         Assert.assertEquals(expectedFirstYearlyHabit, actualFirstYearlyHabit)
 
-        val expectedSecondYearlyHabit = SECOND_YEARLY_HABIT.apply { id = 0 }
+        val expectedSecondYearlyHabit = SECOND_YEARLY_HABIT.copy().apply { id = 0 }
         val actualSecondYearlyHabit =
             mapper.toYearlyHabit(SECOND_HABIT_YEARLY, SECOND_COMPLETED, SECOND_PERIOD)
         Assert.assertEquals(expectedSecondYearlyHabit, actualSecondYearlyHabit)

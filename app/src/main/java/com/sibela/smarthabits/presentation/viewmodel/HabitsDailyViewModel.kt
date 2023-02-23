@@ -1,5 +1,6 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,11 +18,12 @@ class HabitsDailyViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val HABITS_DAILY_KEY = "habits_daily_key"
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+        const val HABITS_DAILY_KEY = "habits_daily_key"
     }
 
     val habits: StateFlow<HabitResult> = savedStateHandle.getStateFlow(
-        HABITS_DAILY_KEY, HabitResult.EmptyList
+        HABITS_DAILY_KEY, HabitResult.Loading
     )
 
     fun fetchHabits() = viewModelScope.launch {

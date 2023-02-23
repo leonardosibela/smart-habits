@@ -1,5 +1,6 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -17,6 +18,7 @@ class WeeklyHabitsViewModel(
 ) : ViewModel() {
 
     companion object {
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
         const val WEEKLY_HABIT_KEY = "weekly_habit_key"
     }
 
@@ -25,14 +27,14 @@ class WeeklyHabitsViewModel(
     )
 
     fun fetchHabits() = viewModelScope.launch {
-        val result = getCurrentWeeklyHabitsUseCase()
-        if (result is Result.Error) {
-            setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
-        } else {
-            if (result.result?.isEmpty() != false) {
-                setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
-            } else {
-                setPeriodicHabitResult(PeriodicHabitResult.Success(result.result))
+        when(val result = getCurrentWeeklyHabitsUseCase()) {
+            is Result.Error -> setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
+            is Result.Success -> {
+                if (result.data.isEmpty()) {
+                    setPeriodicHabitResult(PeriodicHabitResult.EmptyList)
+                } else {
+                    setPeriodicHabitResult(PeriodicHabitResult.Success(result.data))
+                }
             }
         }
     }
@@ -43,5 +45,6 @@ class WeeklyHabitsViewModel(
 
     fun finishHabit(weeklyHabit: WeeklyHabit) = viewModelScope.launch {
         finishWeeklyHabitUseCase(weeklyHabit)
+        fetchHabits()
     }
 }
