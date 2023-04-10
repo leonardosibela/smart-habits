@@ -3,25 +3,25 @@ package com.sibela.smarthabits.domain.usecase
 import com.sibela.smarthabits.extension.isFirstDayOfMonth
 import com.sibela.smarthabits.extension.isFirstDayOfWeek
 import com.sibela.smarthabits.extension.isFirstDayOfYear
-import java.util.Calendar
+import java.time.LocalDateTime
 
 class ResetHabitsUseCase(
     private val resetDailyHabitsUseCase: ResetDailyHabitsUseCase,
     private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase,
     private val resetMonthlyHabitsUseCase: ResetMonthlyHabitsUseCase,
-    private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase
+    private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase,
 ) {
 
     suspend operator fun invoke() {
         resetDailyHabitsUseCase.invoke()
-        val currentCalendar = Calendar.getInstance()
-        if (currentCalendar.isFirstDayOfWeek()) {
+        val dateTime = LocalDateTime.now()
+        if (dateTime.isFirstDayOfWeek()) {
             resetWeeklyHabitsUseCase.invoke()
         }
-        if (currentCalendar.isFirstDayOfMonth()) {
+        if (dateTime.isFirstDayOfMonth()) {
             resetMonthlyHabitsUseCase.invoke()
         }
-        if (currentCalendar.isFirstDayOfYear()) {
+        if (dateTime.isFirstDayOfYear()) {
             resetYearlyHabitsUseCase.invoke()
         }
     }

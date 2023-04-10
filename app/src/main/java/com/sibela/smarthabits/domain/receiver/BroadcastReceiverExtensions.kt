@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.presentation.receiver
+package com.sibela.smarthabits.domain.receiver
 
 import android.content.BroadcastReceiver
 import kotlinx.coroutines.CoroutineScope

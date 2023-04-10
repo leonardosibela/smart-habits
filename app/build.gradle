@@ -28,6 +28,7 @@ android {
     }
 
     compileOptions {
+        coreLibraryDesugaringEnabled true
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
@@ -43,6 +44,7 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.0.3'
 
     implementation 'androidx.core:core-ktx:1.9.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -53,16 +55,15 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:$navigation_version"
     implementation "androidx.navigation:navigation-ui-ktx:$navigation_version"
 
-    def lifecycle_version = '2.5.1'
+    def lifecycle_version = '2.6.1'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
-    def koin_version = '3.3.0'
+    def koin_version = '3.3.3'
     implementation "io.insert-koin:koin-android:$koin_version"
     testImplementation "io.insert-koin:koin-test-junit4:$koin_version"
 
-
-    def room_version = "2.5.0"
+    def room_version = "2.5.1"
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
@@ -80,17 +81,18 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
 
-    def navigation_testing_version = "2.5.3"
+    def navigation_testing_version = "1.0.0"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
 
-    debugImplementation "androidx.fragment:fragment-testing:1.5.5"
-    debugImplementation "androidx.fragment:fragment-ktx:1.5.5"
+    def fragment_test_version = "1.5.6"
+    debugImplementation "androidx.fragment:fragment-testing:$fragment_test_version"
+    debugImplementation "androidx.fragment:fragment-ktx:$fragment_test_version"
 
     androidTestImplementation 'androidx.test:core-ktx:1.5.0'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.13.2'
-    testImplementation "io.mockk:mockk:1.12.0"
+    testImplementation "io.mockk:mockk:1.13.3"
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     testImplementation "androidx.arch.core:core-testing:2.2.0"
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'

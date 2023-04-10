@@ -6,8 +6,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.ui.setupWithNavController
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ActivityMainBinding
-import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmScheduler
-import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmSchedulerImpl
+import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.sibela.smarthabits.presentation.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel

@@ -11,10 +11,9 @@ import org.koin.core.context.stopKoin
 import org.koin.core.module.Module
 
 @ExperimentalCoroutinesApi
-@OptIn(ObsoleteCoroutinesApi::class)
 class KoinTestRule(private val modules: List<Module>) : TestWatcher() {
 
-    override fun starting(description: Description?) {
+    override fun starting(description: Description) {
         super.starting(description)
         startKoin {
             androidContext(ApplicationProvider.getApplicationContext())
@@ -22,7 +21,7 @@ class KoinTestRule(private val modules: List<Module>) : TestWatcher() {
         }
     }
 
-    override fun finished(description: Description?) {
+    override fun finished(description: Description) {
         super.finished(description)
         stopKoin()
     }

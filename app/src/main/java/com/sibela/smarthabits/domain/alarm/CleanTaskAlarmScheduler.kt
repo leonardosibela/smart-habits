@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.presentation.alarm
+package com.sibela.smarthabits.domain.alarm
 
 interface CleanTaskAlarmScheduler {
     fun schedule()

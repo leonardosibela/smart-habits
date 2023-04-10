@@ -7,7 +7,6 @@ import androidx.preference.PreferenceFragmentCompat
 import com.sibela.smarthabits.R
 
 class SettingsFragment : PreferenceFragmentCompat() {
-
     companion object {
         private const val LIST_DAILY = "listDaily"
         private const val LIST_WEEKLY = "listWeekly"

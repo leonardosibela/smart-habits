@@ -8,7 +8,8 @@ import com.sibela.smarthabits.data.entity.*
 @Database(
     entities = [
         HabitEntity::class, DailyHabitEntity::class, WeeklyHabitEntity::class,
-        MonthlyHabitEntity::class, YearlyHabitEntity::class, HabitCounterEntity::class
+        MonthlyHabitEntity::class, YearlyHabitEntity::class, HabitCounterEntity::class,
+        ScheduleDateEntity::class
     ], version = 1
 )
 @TypeConverters(Converters::class)
@@ -20,6 +21,7 @@ abstract class HabitDatabase : RoomDatabase() {
     abstract fun weeklyHabitDao(): WeeklyHabitDao
     abstract fun monthlyHabitDao(): MonthlyHabitDao
     abstract fun yearlyHabitDao(): YearlyHabitDao
+    abstract fun scheduleDao(): ScheduleDao
 
     companion object {
         const val DATABASE_NAME: String = "habit_db"

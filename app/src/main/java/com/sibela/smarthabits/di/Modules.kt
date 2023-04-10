@@ -4,10 +4,10 @@ import androidx.room.Room
 import com.sibela.smarthabits.data.local.HabitDatabase
 import com.sibela.smarthabits.data.mapper.*
 import com.sibela.smarthabits.data.repository.*
+import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
+import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmSchedulerImpl
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
-import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmScheduler
-import com.sibela.smarthabits.presentation.alarm.CleanTaskAlarmSchedulerImpl
 import com.sibela.smarthabits.presentation.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
@@ -31,6 +31,7 @@ private val daos = module {
     single { get<HabitDatabase>().weeklyHabitDao() }
     single { get<HabitDatabase>().monthlyHabitDao() }
     single { get<HabitDatabase>().yearlyHabitDao() }
+    single { get<HabitDatabase>().scheduleDao() }
 }
 
 private val repositories = module {
@@ -39,9 +40,9 @@ private val repositories = module {
     single<MonthlyHabitRepository> { MonthlyHabitRepositoryImpl(get(), get()) }
     single<HabitCounterRepository> { HabitCounterRepositoryImpl(get(), get()) }
     single<HabitRepository> { HabitRepositoryImpl(get(), get()) }
+    single<ScheduleRepository> { ScheduleRepositoryImpl(get()) }
     single<WeeklyHabitRepository> { WeeklyHabitRepositoryImpl(get(), get()) }
     single<YearlyHabitRepository> { YearlyHabitRepositoryImpl(get(), get()) }
-    single<YearlyHabitMapper> { YearlyHabitMapperImpl() }
 }
 
 private val mappers = module {
@@ -71,6 +72,7 @@ private val useCases = module {
     single { GetHabitsThatAreYearlyUseCase(get()) }
     single { GetCurrentWeeklyHabitsUseCase(get(), get()) }
     single { GetCurrentYearlyHabitsUseCase(get(), get()) }
+    single { GetLastScheduleDateUseCase(get()) }
     single { PrePopulateDatabaseUseCase(get(), get()) }
     single { ResetDailyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetHabitsUseCase(get(), get(), get(), get()) }
@@ -78,6 +80,7 @@ private val useCases = module {
     single { ResetWeeklyHabitsUseCase(get(), get(), get(), get()) }
     single { ResetYearlyHabitsUseCase(get(), get(), get(), get()) }
     single { SaveHabitUseCase(get()) }
+    single { SetLastScheduleDateUseCase(get()) }
 }
 
 private val viewModels = module {
