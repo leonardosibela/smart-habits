@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#E09091</color>
-    <color name="colorPrimaryVariant">#C17D7C</color>
-    <color name="colorSecondary">#E09091</color>
+    <color name="colorPrimary">#212f32</color>
+    <color name="colorPrimaryVariant">#212f32</color>
+    <color name="colorSecondary">#008e97</color>
+
+    <color name="cardViewBackgroundColor">#3f484b</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="window_color">@color/white</color>
+    <color name="fab_background_color">#008e97</color>
+    <color name="fab_ripple_color">#009ba4</color>
+
+    <color name="selected_tab_color">#009ba4</color>
+
+    <color name="window_color">#181c1d</color>
     <color name="toolbar_title">@color/white</color>
 </resources>
