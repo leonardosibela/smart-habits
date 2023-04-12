@@ -1,7 +1,6 @@
 package com.sibela.smarthabits.data.repository
 
 import com.sibela.smarthabits.domain.model.MonthlyHabit
-import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 
 class MonthlyHabitRepositoryFake : MonthlyHabitRepository {
 

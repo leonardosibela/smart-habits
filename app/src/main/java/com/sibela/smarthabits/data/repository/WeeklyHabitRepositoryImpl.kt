@@ -3,22 +3,26 @@ package com.sibela.smarthabits.data.repository
 import com.sibela.smarthabits.data.local.WeeklyHabitDao
 import com.sibela.smarthabits.data.mapper.WeeklyHabitMapper
 import com.sibela.smarthabits.domain.model.WeeklyHabit
-import com.sibela.smarthabits.domain.repository.WeeklyHabitRepository
+import com.sibela.smarthabits.domain.repository.HabitCounterRepository
+import com.sibela.smarthabits.domain.repository.PeriodicHabitRepository
 
 class WeeklyHabitRepositoryImpl(
     private val weeklyHabitDao: WeeklyHabitDao,
-    private val weeklyHabitMapper: WeeklyHabitMapper
-) : WeeklyHabitRepository {
+    private val weeklyHabitMapper: WeeklyHabitMapper,
+    private val habitCounterRepository: HabitCounterRepository
+) : PeriodicHabitRepository<WeeklyHabit> {
 
-    override suspend fun save(weeklyHabit: WeeklyHabit) {
-        weeklyHabitDao.insert(weeklyHabitMapper.fromDomain(weeklyHabit))
+    override suspend fun save(habit: WeeklyHabit) {
+        weeklyHabitDao.insert(weeklyHabitMapper.fromDomain(habit))
     }
 
-    override suspend fun getHabitsForPeriod(period: Int) =
-        weeklyHabitMapper.toDomainList(weeklyHabitDao.getHabitsForPeriod(period))
+    override suspend fun getHabitsForLastPeriod(): List<WeeklyHabit> {
+        val habitCounter = habitCounterRepository.getLastWeeklyCounter()
+        return weeklyHabitMapper.toDomainList(weeklyHabitDao.getHabitsForPeriod(habitCounter.period))
+    }
 
-    override suspend fun remove(weeklyHabit: WeeklyHabit) =
-        weeklyHabitDao.delete(weeklyHabitMapper.fromDomain(weeklyHabit))
+    override suspend fun remove(habit: WeeklyHabit) =
+        weeklyHabitDao.delete(weeklyHabitMapper.fromDomain(habit))
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         weeklyHabitDao.deleteNotCompletedByDescription(description)
@@ -28,7 +32,7 @@ class WeeklyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String
+        oldDescription: String, newDescription: String,
     ) {
         weeklyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }

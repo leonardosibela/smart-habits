@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="Theme.SmartHabits" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.SmartHabits" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
         <item name="colorOnPrimary">@color/white</item>
@@ -28,5 +28,15 @@
         <item name="android:alpha">.54</item>
         <item name="android:gravity">center</item>
         <item name="android:textColor">@android:color/black</item>
+    </style>
+
+
+    <style name="Widget.Material3.TextInputLayout.FilledBox.Dense.SmartHabits">
+        <item name="boxStrokeColor">@color/colorSecondary</item>
+        <item name="hintTextColor">@color/colorSecondary</item>
+        <item name="colorControlActivated">@color/colorSecondary</item>
+        <item name="errorTextColor">@color/errorColor</item>
+        <item name="errorIconTint">@color/errorColor</item>
+        <item name="boxStrokeErrorColor">@color/errorColor</item>
     </style>
 </resources>

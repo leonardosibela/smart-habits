@@ -32,7 +32,7 @@ class HabitsMonthlyFragmentTestRobotArrange {
             TestNavHostController(ApplicationProvider.getApplicationContext())
 
         val fragmentScenario =
-            launchFragmentInContainer<HabitsMonthlyFragment>(themeResId = R.style.Theme_SmartHabits)
+            launchFragmentInContainer<MonthlyHabitsSettingsFragment>(themeResId = R.style.Theme_SmartHabits)
 
         fragmentScenario.onFragment { fragment ->
             with(HabitsMonthlyFragmentNavController) {

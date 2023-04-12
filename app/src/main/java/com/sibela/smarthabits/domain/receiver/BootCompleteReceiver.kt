@@ -16,7 +16,7 @@ class BootCompleteReceiver : BroadcastReceiver() {
     private val getLastScheduleDateUseCase: GetLastScheduleDateUseCase by inject()
     private val cleanTaskAlarmScheduler: CleanTaskAlarmScheduler by inject()
 
-    private val resetDailyHabitUseCase: ResetDailyHabitsUseCase by inject()
+    private val resetDailyHabitUseCase: ResetHabitsUseCase by inject()
     private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase by inject()
     private val resetMonthlyHabitsUseCase: ResetMonthlyHabitsUseCase by inject()
     private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase by inject()

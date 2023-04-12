@@ -4,15 +4,18 @@ import androidx.lifecycle.SavedStateHandle
 import com.sibela.smarthabits.domain.common.toError
 import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.WeeklyHabit
-import com.sibela.smarthabits.domain.usecase.FinishWeeklyHabitUseCase
-import com.sibela.smarthabits.domain.usecase.GetCurrentWeeklyHabitsUseCase
-import com.sibela.smarthabits.presentation.viewmodel.WeeklyHabitsViewModel.Companion.WEEKLY_HABIT_KEY
+import com.sibela.smarthabits.domain.usecase.FinishHabitUseCase
+import com.sibela.smarthabits.domain.usecase.GetCurrentHabitsUseCase
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_WEEKLY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_WEEKLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
-import io.mockk.*
+import io.mockk.coEvery
+import io.mockk.coVerify
+import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
+import io.mockk.spyk
+import io.mockk.verify
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.runBlocking
@@ -30,12 +33,16 @@ class WeeklyHabitsViewModelTest {
     private lateinit var savedStateHandle: SavedStateHandle
 
     @RelaxedMockK
-    private lateinit var getCurrentWeeklyHabitsUseCase: GetCurrentWeeklyHabitsUseCase
+    private lateinit var getCurrentWeeklyHabitsUseCase: GetCurrentHabitsUseCase<WeeklyHabit>
 
     @RelaxedMockK
-    private lateinit var finishWeeklyHabitUseCase: FinishWeeklyHabitUseCase
+    private lateinit var finishWeeklyHabitUseCase: FinishHabitUseCase<WeeklyHabit>
 
-    private lateinit var viewModel: WeeklyHabitsViewModel
+    private lateinit var viewModel: WeeklyHabitListViewModel
+
+    companion object {
+        private const val WEEKLY_HABIT_KEY: String = "WEEKLY_HABIT_KEY"
+    }
 
     init {
         initMockKAnnotations()
@@ -51,7 +58,7 @@ class WeeklyHabitsViewModelTest {
 
     private fun initializeViewModel() {
         viewModel = spyk(
-            WeeklyHabitsViewModel(
+            WeeklyHabitListViewModel(
                 savedStateHandle,
                 getCurrentWeeklyHabitsUseCase,
                 finishWeeklyHabitUseCase

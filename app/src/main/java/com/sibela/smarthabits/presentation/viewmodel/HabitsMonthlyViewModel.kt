@@ -31,10 +31,10 @@ class HabitsMonthlyViewModel(
         if (result is Result.Error) {
             setHabitResult(HabitResult.Error(result.throwable))
         } else {
-            if (result.result?.isEmpty() != false) {
+            if (result.value?.isEmpty() != false) {
                 setHabitResult(HabitResult.EmptyList)
             } else {
-                setHabitResult(HabitResult.Success(result.result))
+                setHabitResult(HabitResult.Success(result.value))
             }
         }
     }

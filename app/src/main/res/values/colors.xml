@@ -16,4 +16,6 @@
 
     <color name="window_color">#181c1d</color>
     <color name="toolbar_title">@color/white</color>
+
+    <color name="errorColor">#D2070E</color>
 </resources>

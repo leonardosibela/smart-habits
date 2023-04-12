@@ -9,6 +9,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/description_input_layout"
+        style="@style/Widget.Material3.TextInputLayout.FilledBox.Dense.SmartHabits"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/size_large"

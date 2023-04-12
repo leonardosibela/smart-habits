@@ -7,7 +7,6 @@ import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT
 import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT_ENTITY
 import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
 import com.sibela.smarthabits.util.TestData.FIRST_ID
-import com.sibela.smarthabits.util.TestData.FIRST_PERIOD
 import com.sibela.smarthabits.util.TestData.SECOND_DAILY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_DAILY_HABIT_ENTITY
 import com.sibela.smarthabits.util.TestData.SECOND_DESCRIPTION
@@ -56,13 +55,12 @@ class DailyHabitRepositoryImplTest {
 
     @Test
     fun getHabitsForPeriod() = runBlocking {
-        val period = FIRST_PERIOD
         val expectedHabits = listOf(FIRST_DAILY_HABIT, SECOND_DAILY_HABIT)
         val expectedHabitEntities = listOf(FIRST_DAILY_HABIT_ENTITY, SECOND_DAILY_HABIT_ENTITY)
 
         coEvery { dailyHabitDao.getHabitsForPeriod(period) } returns expectedHabitEntities
         every { dailyHabitMapper.toDomainList(expectedHabitEntities) } returns expectedHabits
-        val actualHabits = dailyHabitRepositoryImpl.getHabitsForPeriod(period)
+        val actualHabits = dailyHabitRepositoryImpl.getHabitsForLastPeriod(period)
         coVerify(exactly = 1) { dailyHabitDao.getHabitsForPeriod(period) }
         Assert.assertEquals(expectedHabits, actualHabits)
     }

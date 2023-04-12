@@ -9,7 +9,7 @@
         android:id="@+id/dailyHabitsFragment"
         android:name="com.sibela.smarthabits.presentation.view.fragment.DailyHabitsFragment"
         android:label="@string/daily_habits"
-        tools:layout="@layout/fragment_daily_habits">
+        tools:layout="@layout/fragment_habit_list">
 
         <action
             android:id="@+id/to_addPeriodicHabitFragment"
@@ -90,7 +90,7 @@
 
     <fragment
         android:id="@+id/dailyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsDailyFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.DailyHabitsSettingsFragment"
         android:label="@string/daily_habits"
         tools:layout="@layout/fragment_habits_daily">
 
@@ -106,7 +106,7 @@
 
     <fragment
         android:id="@+id/weeklyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsWeeklyFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.WeeklyHabitsSettingsFragment"
         android:label="@string/weekly_habits"
         tools:layout="@layout/fragment_habits_weekly">
 
@@ -122,7 +122,7 @@
 
     <fragment
         android:id="@+id/monthlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsMonthlyFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitsSettingsFragment"
         android:label="@string/monthly_habits"
         tools:layout="@layout/fragment_habits_monthly">
 
@@ -138,7 +138,7 @@
 
     <fragment
         android:id="@+id/yearlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.view.fragment.HabitsYearlyFragment"
+        android:name="com.sibela.smarthabits.presentation.view.fragment.YearlyHabitsSettingsFragment"
         android:label="@string/yearly_habits"
         tools:layout="@layout/fragment_habits_yearly">
 

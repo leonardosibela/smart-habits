@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.domain.common
 
-sealed class Result<T>(val result: T? = null, val error: Throwable? = null) {
+sealed class Result<T>(val value: T? = null, val error: Throwable? = null) {
     data class Success<T>(val data: T) : Result<T>(data)
     data class Error<T>(val throwable: Throwable) : Result<T>(error = throwable)
 }

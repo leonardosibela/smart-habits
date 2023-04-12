@@ -1,14 +1,15 @@
 package com.sibela.smarthabits.domain.usecase
 
 import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
+import com.sibela.smarthabits.domain.model.WeeklyHabit
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
-import com.sibela.smarthabits.domain.repository.WeeklyHabitRepository
+import com.sibela.smarthabits.domain.repository.PeriodicHabitRepository
 
 class ResetWeeklyHabitsUseCase(
     private val habitToPeriodicityHabitMapper: HabitToPeriodicityHabitMapper,
     private val habitRepository: HabitRepository,
-    private val weeklyHabitRepository: WeeklyHabitRepository,
+    private val weeklyHabitRepository: PeriodicHabitRepository<WeeklyHabit>,
     private val habitCounterRepository: HabitCounterRepository
 ) {
 

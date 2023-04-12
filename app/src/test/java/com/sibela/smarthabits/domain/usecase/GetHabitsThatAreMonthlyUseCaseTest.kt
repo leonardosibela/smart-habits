@@ -29,6 +29,6 @@ class GetHabitsThatAreMonthlyUseCaseTest {
         coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns expectedHabits
         val result = getHabitsThatAreMonthlyUseCase.invoke()
         coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
-        assertEquals(expectedHabits, result.result)
+        assertEquals(expectedHabits, result.value)
     }
 }

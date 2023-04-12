@@ -10,7 +10,11 @@ fun LocalDateTime.isFirstDayOfMonth() = dayOfMonth == 1
 
 fun LocalDateTime.isFirstDayOfYear() = dayOfYear == 1
 
-fun LocalDateTime.getNextDayAtMidnight(): LocalDateTime = LocalDateTime.now().plusSeconds(10)
+fun LocalDateTime.getNextDayAtMidnight(): LocalDateTime = plusDays(1)
+    .withHour(0)
+    .withMinute(0)
+    .withSecond(0)
+    .withNano(0)
 
 infix fun LocalDateTime.hasYearAheadOf(localDateTime: LocalDateTime) = year > localDateTime.year
 
@@ -19,8 +23,8 @@ infix fun LocalDateTime.hasMonthAheadOf(localDateTime: LocalDateTime) =
             ChronoUnit.MONTHS.between(localDateTime, this) > 0
 
 infix fun LocalDateTime.hasWeekAheadOf(localDateTime: LocalDateTime) =
-    this hasMonthAheadOf  localDateTime ||
-    ChronoUnit.WEEKS.between(localDateTime, this) > 0
+    this hasMonthAheadOf localDateTime ||
+            ChronoUnit.WEEKS.between(localDateTime, this) > 0
 
 infix fun LocalDateTime.hasDayAheadOf(localDateTime: LocalDateTime) =
     ChronoUnit.DAYS.between(localDateTime, this) > 0

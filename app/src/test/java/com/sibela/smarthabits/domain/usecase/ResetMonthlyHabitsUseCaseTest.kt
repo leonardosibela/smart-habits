@@ -3,7 +3,6 @@ package com.sibela.smarthabits.domain.usecase
 import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapper
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
 import com.sibela.smarthabits.domain.repository.HabitRepository
-import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 import com.sibela.smarthabits.util.TestData.FIRST_HABIT_MONTHLY
 import com.sibela.smarthabits.util.TestData.FIRST_MONTHLY_HABIT
 import com.sibela.smarthabits.util.TestData.HABIT_COUNTER_MONTHLY

@@ -3,22 +3,26 @@ package com.sibela.smarthabits.data.repository
 import com.sibela.smarthabits.data.local.DailyHabitDao
 import com.sibela.smarthabits.data.mapper.DailyHabitMapper
 import com.sibela.smarthabits.domain.model.DailyHabit
-import com.sibela.smarthabits.domain.repository.DailyHabitRepository
+import com.sibela.smarthabits.domain.repository.HabitCounterRepository
+import com.sibela.smarthabits.domain.repository.PeriodicHabitRepository
 
 class DailyHabitRepositoryImpl(
     private val dailyHabitDao: DailyHabitDao,
-    private val dailyHabitMapper: DailyHabitMapper
-) : DailyHabitRepository {
+    private val dailyHabitMapper: DailyHabitMapper,
+    private val habitCounterRepository: HabitCounterRepository,
+) : PeriodicHabitRepository<DailyHabit> {
 
-    override suspend fun save(dailyHabit: DailyHabit) {
-        dailyHabitDao.insert(dailyHabitMapper.fromDomain(dailyHabit))
+    override suspend fun save(habit: DailyHabit) {
+        dailyHabitDao.insert(dailyHabitMapper.fromDomain(habit))
     }
 
-    override suspend fun getHabitsForPeriod(period: Int) =
-        dailyHabitMapper.toDomainList(dailyHabitDao.getHabitsForPeriod(period))
+    override suspend fun getHabitsForLastPeriod(): List<DailyHabit> {
+        val habitCounter = habitCounterRepository.getLastDailyCounter()
+        return dailyHabitMapper.toDomainList(dailyHabitDao.getHabitsForPeriod(habitCounter.period))
+    }
 
-    override suspend fun remove(dailyHabit: DailyHabit) =
-        dailyHabitDao.delete(dailyHabitMapper.fromDomain(dailyHabit))
+    override suspend fun remove(habit: DailyHabit) =
+        dailyHabitDao.delete(dailyHabitMapper.fromDomain(habit))
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         dailyHabitDao.deleteNotCompletedByDescription(description)
@@ -28,7 +32,7 @@ class DailyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String
+        oldDescription: String, newDescription: String,
     ) {
         dailyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }

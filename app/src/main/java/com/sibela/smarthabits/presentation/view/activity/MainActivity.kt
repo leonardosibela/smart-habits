@@ -1,9 +1,12 @@
 package com.sibela.smarthabits.presentation.view.activity
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.Navigation
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.NavigationUI
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ActivityMainBinding
 import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
@@ -33,12 +36,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupBottomNavigation() {
-        val navController = Navigation.findNavController(this, R.id.nav_host_fragment)
-        binding.bottomNavigationView.setupWithNavController(navController)
+        binding.bottomNavigationView.setOnItemSelectedListener(::onNavItemChanged)
+    }
+
+    private fun onNavItemChanged(item: MenuItem): Boolean {
+        val navController = findNavControllerByContainerView(R.id.fragment_container_view)
+        NavigationUI.onNavDestinationSelected(item, navController)
+        return true
     }
 
     private fun setupToolbar() {
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayShowTitleEnabled(false)
     }
+}
+
+fun AppCompatActivity.findNavControllerByContainerView(@IdRes id: Int): NavController {
+    val fragment = supportFragmentManager.findFragmentById(id)
+    return (fragment as NavHostFragment).navController
 }

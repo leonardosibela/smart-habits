@@ -12,5 +12,8 @@ sealed class PeriodicHabitResult<out T : PeriodicHabit> : Parcelable {
     object EmptyList : PeriodicHabitResult<Nothing>()
 
     @Parcelize
+    object Error : PeriodicHabitResult<Nothing>()
+
+    @Parcelize
     data class Success<T : PeriodicHabit>(val data: List<T>) : PeriodicHabitResult<T>()
 }

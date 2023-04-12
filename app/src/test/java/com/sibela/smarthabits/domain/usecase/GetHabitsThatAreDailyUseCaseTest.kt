@@ -29,6 +29,6 @@ class GetHabitsThatAreDailyUseCaseTest {
         coEvery { habitRepository.getAllHabitsThatAreDaily() } returns expectedHabits
         val result = getHabitsThatAreDailyUseCase.invoke()
         coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreDaily() }
-        assertEquals(expectedHabits, result.result)
+        assertEquals(expectedHabits, result.value)
     }
 }

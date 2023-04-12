@@ -34,7 +34,7 @@ class CleanTaskAlarmSchedulerImpl(private val context: Context) : CleanTaskAlarm
         alarmManager.cancel(pendingIntent)
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
-            nextDayMidnight.atZone(ZoneId.systemDefault()).toEpochSecond(),
+            nextDayMidnight.atZone(ZoneId.systemDefault()).toEpochSecond() * 1_000,
             pendingIntent
         )
 

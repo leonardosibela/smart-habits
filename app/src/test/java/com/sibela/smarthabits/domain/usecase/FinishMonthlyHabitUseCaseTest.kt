@@ -1,6 +1,5 @@
 package com.sibela.smarthabits.domain.usecase
 
-import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 import com.sibela.smarthabits.util.TestData.FIRST_MONTHLY_HABIT
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coJustRun

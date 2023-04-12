@@ -32,7 +32,7 @@ class HabitsDailyFragmentTestRobotArrange {
             TestNavHostController(ApplicationProvider.getApplicationContext())
 
         val fragmentScenario =
-            launchFragmentInContainer<HabitsDailyFragment>(themeResId = R.style.Theme_SmartHabits)
+            launchFragmentInContainer<DailyHabitsSettingsFragment>(themeResId = R.style.Theme_SmartHabits)
 
         fragmentScenario.onFragment { fragment ->
             with(AddPeriodicHabitFragmentNavController) {
@@ -49,34 +49,34 @@ class HabitsDailyFragmentTestRobotAct : BaseTestRobotAct()
 class HabitsDailyFragmentTestRobotAssert {
 
     fun viewsAreDisplayed() {
-        R.id.daily_habits_recycler.isDisplayed()
-        R.id.add_daily_habit_fab.isDisplayed()
+        R.id.habits_recycler.isDisplayed()
+        R.id.add_habit_fab.isDisplayed()
     }
 
     fun viewsAreVisible() {
-        R.id.daily_habits_recycler.isVisible()
-        R.id.add_daily_habit_fab.isVisible()
+        R.id.habits_recycler.isVisible()
+        R.id.add_habit_fab.isVisible()
     }
 
     fun viewsAreGone() {
-        R.id.daily_habits_error.isGone()
-        R.id.daily_habits_empty_list_message.isGone()
+        R.id.habits_list_error.isGone()
+        R.id.habits_empty_list_message.isGone()
     }
 
     fun viewsHaveCorrectText() {
-        R.id.daily_habits_error.hasText(DAILY_HABITS_ERROR)
-        R.id.daily_habits_empty_list_message.hasText(DAILY_HABITS_EMPTY_LIST_MESSAGE)
+        R.id.habits_list_error.hasText(DAILY_HABITS_ERROR)
+        R.id.habits_empty_list_message.hasText(DAILY_HABITS_EMPTY_LIST_MESSAGE)
 
-        R.id.daily_habits_recycler.onItem(0) {
+        R.id.habits_recycler.onItem(0) {
             childHasText(R.id.habit_description, FIRST_HABIT_DESCRIPTION)
         }
 
-        R.id.daily_habits_recycler.onItem(1) {
+        R.id.habits_recycler.onItem(1) {
             childHasText(R.id.habit_description, SECOND_HABIT_DESCRIPTION)
         }
     }
 
     fun addHabitIsEnabled() {
-        R.id.add_daily_habit_fab.isEnabled()
+        R.id.add_habit_fab.isEnabled()
     }
 }

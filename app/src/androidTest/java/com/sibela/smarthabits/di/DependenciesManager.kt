@@ -89,7 +89,7 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishMonthlyHabitUseCase(get()) }
         single { GetCurrentMonthlyHabitsUseCase(get(), get()) }
-        viewModel { MonthlyHabitsViewModel(get(), get(), get()) }
+        viewModel { MonthlyHabitListViewModel(get(), get(), get()) }
     }
 
     val settingsFragmentModule = module(override = true) {
@@ -119,6 +119,6 @@ object DependenciesManager {
         single<HabitCounterRepository> { HabitCounterRepositoryFake() }
         single { FinishYearlyHabitUseCase(get()) }
         single { GetCurrentYearlyHabitsUseCase(get(), get()) }
-        viewModel { YearlyHabitsViewModel(get(), get(), get()) }
+        viewModel { YearlyHabitListViewModel(get(), get(), get()) }
     }
 }

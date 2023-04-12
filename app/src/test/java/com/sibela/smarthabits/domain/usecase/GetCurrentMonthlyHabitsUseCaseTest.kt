@@ -1,7 +1,6 @@
 package com.sibela.smarthabits.domain.usecase
 
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
-import com.sibela.smarthabits.domain.repository.MonthlyHabitRepository
 import com.sibela.smarthabits.util.TestData
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.coEvery
@@ -35,6 +34,6 @@ class GetCurrentMonthlyHabitsUseCaseTest {
         coEvery { monthlyHabitRepository.getHabitsForPeriod(habitCounter.period) } returns expectedHabits
         val result = getCurrentMonthlyHabitsUseCase.invoke()
         coVerify(exactly = 1) { monthlyHabitRepository.getHabitsForPeriod(habitCounter.period) }
-        Assert.assertEquals(expectedHabits, result.result)
+        Assert.assertEquals(expectedHabits, result.value)
     }
 }

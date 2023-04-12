@@ -3,22 +3,26 @@ package com.sibela.smarthabits.data.repository
 import com.sibela.smarthabits.data.local.YearlyHabitDao
 import com.sibela.smarthabits.data.mapper.YearlyHabitMapper
 import com.sibela.smarthabits.domain.model.YearlyHabit
-import com.sibela.smarthabits.domain.repository.YearlyHabitRepository
+import com.sibela.smarthabits.domain.repository.HabitCounterRepository
+import com.sibela.smarthabits.domain.repository.PeriodicHabitRepository
 
 class YearlyHabitRepositoryImpl(
     private val yearlyHabitDao: YearlyHabitDao,
-    private val yearlyHabitMapper: YearlyHabitMapper
-) : YearlyHabitRepository {
+    private val yearlyHabitMapper: YearlyHabitMapper,
+    private val habitCounterRepository: HabitCounterRepository,
+) : PeriodicHabitRepository<YearlyHabit> {
 
-    override suspend fun save(yearlyHabit: YearlyHabit) {
-        yearlyHabitDao.insert(yearlyHabitMapper.fromDomain(yearlyHabit))
+    override suspend fun save(habit: YearlyHabit) {
+        yearlyHabitDao.insert(yearlyHabitMapper.fromDomain(habit))
     }
 
-    override suspend fun getHabitsForPeriod(period: Int) =
-        yearlyHabitMapper.toDomainList(yearlyHabitDao.getHabitsForPeriod(period))
+    override suspend fun getHabitsForLastPeriod(): List<YearlyHabit> {
+        val habitCounter = habitCounterRepository.getLastYearlyCounter()
+        return yearlyHabitMapper.toDomainList(yearlyHabitDao.getHabitsForPeriod(habitCounter.period))
+    }
 
-    override suspend fun remove(yearlyHabit: YearlyHabit) =
-        yearlyHabitDao.delete(yearlyHabitMapper.fromDomain(yearlyHabit))
+    override suspend fun remove(habit: YearlyHabit) =
+        yearlyHabitDao.delete(yearlyHabitMapper.fromDomain(habit))
 
     override suspend fun removeNotCompletedByDescription(description: String) =
         yearlyHabitDao.deleteNotCompletedByDescription(description)
@@ -28,7 +32,7 @@ class YearlyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String
+        oldDescription: String, newDescription: String,
     ) {
         yearlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }
