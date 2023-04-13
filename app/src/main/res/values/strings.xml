@@ -24,6 +24,7 @@
     <string name="monthly_habits">Monthly habits</string>
     <string name="yearly_habits">Yearly habits</string>
     <string name="habit_name_saved">habit %1$s saved!</string>
+    <string name="fill_habit_description">You must type a description</string>
 
     <string name="habit_deletion_title">Delete habit</string>
     <string name="habit_deletion_message">Are you sure you want to delete %1$s?</string>

@@ -23,6 +23,7 @@
     <string name="monthly_habits">Hábitos mensais</string>
     <string name="yearly_habits">Hábitos anuais</string>
     <string name="habit_name_saved">Hábito %1$s salvo!</string>
+    <string name="fill_habit_description">Você precisa digitar uma descrição</string>
 
     <string name="habit_deletion_title">Deletar hábito</string>
     <string name="habit_deletion_message">Tem certeza que deseja deletar o hábito %1$s?</string>

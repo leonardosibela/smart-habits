@@ -55,13 +55,13 @@ import com.sibela.smarthabits.domain.usecase.ResetWeeklyHabitsUseCase
 import com.sibela.smarthabits.domain.usecase.ResetYearlyHabitsUseCase
 import com.sibela.smarthabits.domain.usecase.SaveHabitUseCase
 import com.sibela.smarthabits.domain.usecase.SetLastScheduleDateUseCase
-import com.sibela.smarthabits.presentation.features.list.viewmodel.AddPeriodicHabitViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.DailyHabitListViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.HabitListViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.MonthlyHabitListViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.WeeklyHabitListViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.YearlyHabitListViewModel
 import com.sibela.smarthabits.presentation.features.main.viewmodel.MainViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.DailyHabitsSettingsViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.MonthlyHabitsSettingsViewModel
@@ -243,8 +243,8 @@ private val viewModels = module {
         )
     }
 
-    viewModel { AddPeriodicHabitViewModel(get()) }
-    viewModel { EditHabitViewModel(get()) }
+    viewModel { AddPeriodicHabitViewModel(get(), get()) }
+    viewModel { EditHabitViewModel(get(), get()) }
 
     viewModel { DailyHabitsSettingsViewModel(get(), get(), get()) }
     viewModel { MonthlyHabitsSettingsViewModel(get(), get(), get()) }

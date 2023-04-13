@@ -2,29 +2,27 @@ package com.sibela.smarthabits.presentation.features.settings.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.sibela.smarthabits.domain.model.Habit
-import com.sibela.smarthabits.domain.usecase.EditHabitUseCase
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
+import androidx.lifecycle.viewModelScope
+import com.sibela.smarthabits.domain.model.Periodicity
+import com.sibela.smarthabits.domain.usecase.AddHabitUseCase
 import kotlinx.coroutines.launch
 
-class EditHabitViewModel(
+class AddPeriodicHabitViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val editHabitUseCase: EditHabitUseCase,
+    private val addHabitUseCase: AddHabitUseCase,
 ) : ViewModel() {
 
     companion object {
         private const val DESCRIPTION_STATE_KEY = "description_state_key"
     }
 
-    val descriptionErrorState =
-        savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, NoError)
+    val descriptionErrorState = savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, NoError)
 
-    fun editHabit(habit: Habit, newDescription: String) = CoroutineScope(Dispatchers.IO).launch {
-        if (newDescription.isBlank()) {
+    fun addHabit(description: String, periodicity: Periodicity) = viewModelScope.launch {
+        if (description.isBlank()) {
             savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError
         } else {
-            editHabitUseCase(habit, newDescription)
+            addHabitUseCase(description, periodicity)
         }
     }
 

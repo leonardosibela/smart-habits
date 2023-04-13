@@ -9,7 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.FragmentAddPeriodicHabitBinding
-import com.sibela.smarthabits.presentation.features.list.viewmodel.AddPeriodicHabitViewModel
+import com.sibela.smarthabits.extension.doOnTextChanged
+import com.sibela.smarthabits.extension.launchWhenCreated
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.DescriptionErrorState
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.EmptyError
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.NoError
+import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class AddPeriodicHabitFragment : Fragment() {
@@ -25,7 +31,7 @@ class AddPeriodicHabitFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
+        savedInstanceState: Bundle?,
     ): View {
         _binding = FragmentAddPeriodicHabitBinding.inflate(inflater, container, false)
         return binding.root
@@ -34,6 +40,7 @@ class AddPeriodicHabitFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupListeners()
+        observeViewModel()
     }
 
     override fun onDestroyView() {
@@ -41,8 +48,24 @@ class AddPeriodicHabitFragment : Fragment() {
         _binding = null
     }
 
+    private fun observeViewModel() = launchWhenCreated {
+        viewModel.descriptionErrorState.collectLatest(::onDescriptionErrorStateChanged)
+    }
+
+    private fun onDescriptionErrorStateChanged(descriptionErrorState: DescriptionErrorState) {
+        binding.descriptionInputLayout.error = when (descriptionErrorState) {
+            EmptyError -> getString(R.string.fill_habit_description)
+            NoError -> ""
+        }
+    }
+
     private fun setupListeners() = with(binding) {
+        descriptionInput.doOnTextChanged(::onDescriptionChanged)
         addHabitButton.setOnClickListener { onAddHabitClicked() }
+    }
+
+    private fun onDescriptionChanged(description: String) {
+        viewModel.onDescriptionChanged(description)
     }
 
     private fun onAddHabitClicked() {

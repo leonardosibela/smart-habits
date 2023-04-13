@@ -5,9 +5,9 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapperImpl
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
-import com.sibela.smarthabits.presentation.features.list.viewmodel.AddPeriodicHabitViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.MonthlyHabitListViewModel
 import com.sibela.smarthabits.presentation.features.list.viewmodel.YearlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.DailyHabitsSettingsViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
 import com.sibela.smarthabits.presentation.features.settings.viewmodel.MonthlyHabitsSettingsViewModel
