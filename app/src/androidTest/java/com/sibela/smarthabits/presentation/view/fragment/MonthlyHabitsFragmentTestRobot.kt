@@ -5,6 +5,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import com.sibela.smarthabits.R
+import com.sibela.smarthabits.presentation.features.list.view.fragment.MonthlyHabitsFragment
 import com.sibela.smarthabits.presentation.utils.*
 import com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitsFragmentString.Companion.FIRST_HABIT_DESCRIPTION
 import com.sibela.smarthabits.presentation.view.fragment.MonthlyHabitsFragmentString.Companion.MONTHLY_HABITS_EMPTY_LIST_MESSAGE

@@ -5,6 +5,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.testing.TestNavHostController
 import androidx.test.core.app.ApplicationProvider
 import com.sibela.smarthabits.R
+import com.sibela.smarthabits.presentation.features.settings.view.fragment.WeeklyHabitsSettingsFragment
 import com.sibela.smarthabits.presentation.utils.*
 import com.sibela.smarthabits.presentation.view.fragment.HabitsWeeklyFragmentString.Companion.FIRST_HABIT_DESCRIPTION
 import com.sibela.smarthabits.presentation.view.fragment.HabitsWeeklyFragmentString.Companion.SECOND_HABIT_DESCRIPTION

@@ -6,6 +6,8 @@ import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.YearlyHabit
 import com.sibela.smarthabits.domain.usecase.FinishHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentHabitsUseCase
+import com.sibela.smarthabits.presentation.features.list.viewmodel.PeriodicHabitResult
+import com.sibela.smarthabits.presentation.features.list.viewmodel.YearlyHabitListViewModel
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_YEARLY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_YEARLY_HABIT

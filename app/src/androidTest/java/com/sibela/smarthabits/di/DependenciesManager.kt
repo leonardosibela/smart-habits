@@ -5,6 +5,14 @@ import com.sibela.smarthabits.data.mapper.HabitToPeriodicityHabitMapperImpl
 import com.sibela.smarthabits.data.repository.*
 import com.sibela.smarthabits.domain.repository.*
 import com.sibela.smarthabits.domain.usecase.*
+import com.sibela.smarthabits.presentation.features.list.viewmodel.AddPeriodicHabitViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.MonthlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.YearlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.DailyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.MonthlyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.WeeklyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.YearlyHabitsSettingsViewModel
 import com.sibela.smarthabits.presentation.viewmodel.*
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
@@ -48,7 +56,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreDailyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsDailyViewModel(get(), get(), get()) }
+        viewModel { DailyHabitsSettingsViewModel(get(), get(), get()) }
     }
 
     val habitsMonthlyFragmentModule = module(override = true) {
@@ -59,7 +67,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreMonthlyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsMonthlyViewModel(get(), get(), get()) }
+        viewModel { MonthlyHabitsSettingsViewModel(get(), get(), get()) }
     }
 
     val habitsWeeklyFragmentModule = module(override = true) {
@@ -70,7 +78,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreWeeklyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsWeeklyViewModel(get(), get(), get()) }
+        viewModel { WeeklyHabitsSettingsViewModel(get(), get(), get()) }
     }
 
     val habitsYearlyFragmentModule = module(override = true) {
@@ -81,7 +89,7 @@ object DependenciesManager {
         single<YearlyHabitRepository> { YearlyHabitRepositoryFake() }
         single { GetHabitsThatAreYearlyUseCase(get()) }
         single { DeleteHabitUseCase(get(), get(), get(), get(), get()) }
-        viewModel { HabitsYearlyViewModel(get(), get(), get()) }
+        viewModel { YearlyHabitsSettingsViewModel(get(), get(), get()) }
     }
 
     val monthlyHabitFragmentModule = module(override = true) {

@@ -55,18 +55,18 @@ import com.sibela.smarthabits.domain.usecase.ResetWeeklyHabitsUseCase
 import com.sibela.smarthabits.domain.usecase.ResetYearlyHabitsUseCase
 import com.sibela.smarthabits.domain.usecase.SaveHabitUseCase
 import com.sibela.smarthabits.domain.usecase.SetLastScheduleDateUseCase
-import com.sibela.smarthabits.presentation.viewmodel.AddPeriodicHabitViewModel
-import com.sibela.smarthabits.presentation.viewmodel.DailyHabitListViewModel
-import com.sibela.smarthabits.presentation.viewmodel.EditHabitViewModel
-import com.sibela.smarthabits.presentation.viewmodel.HabitListViewModel
-import com.sibela.smarthabits.presentation.viewmodel.HabitsDailyViewModel
-import com.sibela.smarthabits.presentation.viewmodel.HabitsMonthlyViewModel
-import com.sibela.smarthabits.presentation.viewmodel.HabitsWeeklyViewModel
-import com.sibela.smarthabits.presentation.viewmodel.HabitsYearlyViewModel
-import com.sibela.smarthabits.presentation.viewmodel.MainViewModel
-import com.sibela.smarthabits.presentation.viewmodel.MonthlyHabitListViewModel
-import com.sibela.smarthabits.presentation.viewmodel.WeeklyHabitListViewModel
-import com.sibela.smarthabits.presentation.viewmodel.YearlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.AddPeriodicHabitViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.DailyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.HabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.MonthlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.WeeklyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.YearlyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.main.viewmodel.MainViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.DailyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.MonthlyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.WeeklyHabitsSettingsViewModel
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.YearlyHabitsSettingsViewModel
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -246,10 +246,10 @@ private val viewModels = module {
     viewModel { AddPeriodicHabitViewModel(get()) }
     viewModel { EditHabitViewModel(get()) }
 
-    viewModel { HabitsDailyViewModel(get(), get(), get()) }
-    viewModel { HabitsMonthlyViewModel(get(), get(), get()) }
-    viewModel { HabitsWeeklyViewModel(get(), get(), get()) }
-    viewModel { HabitsYearlyViewModel(get(), get(), get()) }
+    viewModel { DailyHabitsSettingsViewModel(get(), get(), get()) }
+    viewModel { MonthlyHabitsSettingsViewModel(get(), get(), get()) }
+    viewModel { WeeklyHabitsSettingsViewModel(get(), get(), get()) }
+    viewModel { YearlyHabitsSettingsViewModel(get(), get(), get()) }
 
     viewModel { MainViewModel(get()) }
 }

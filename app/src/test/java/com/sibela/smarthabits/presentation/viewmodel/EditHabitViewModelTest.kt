@@ -1,6 +1,7 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
 import com.sibela.smarthabits.domain.usecase.EditHabitUseCase
+import com.sibela.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_DESCRIPTION
 import com.sibela.smarthabits.util.TestData.FIRST_HABIT_DAILY

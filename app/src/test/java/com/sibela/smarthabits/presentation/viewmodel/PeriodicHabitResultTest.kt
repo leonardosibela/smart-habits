@@ -1,5 +1,6 @@
 package com.sibela.smarthabits.presentation.viewmodel
 
+import com.sibela.smarthabits.presentation.features.list.viewmodel.PeriodicHabitResult
 import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT
 import com.sibela.smarthabits.util.TestData.FIRST_WEEKLY_HABIT
 import org.junit.Assert

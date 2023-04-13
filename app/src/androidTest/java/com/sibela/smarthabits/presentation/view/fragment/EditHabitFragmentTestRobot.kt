@@ -8,6 +8,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.domain.model.Habit
 import com.sibela.smarthabits.domain.model.Periodicity
+import com.sibela.smarthabits.presentation.features.settings.view.fragment.EditHabitFragment
 import com.sibela.smarthabits.presentation.utils.*
 import com.sibela.smarthabits.presentation.view.fragment.EditHabitFragmentString.Companion.EDIT_HABIT_BUTTON_TEXT
 import com.sibela.smarthabits.presentation.view.fragment.EditHabitFragmentString.Companion.HABIT

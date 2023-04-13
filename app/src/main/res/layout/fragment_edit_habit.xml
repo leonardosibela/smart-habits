@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/window_color"
-    tools:context=".presentation.view.fragment.EditHabitFragment">
+    tools:context=".presentation.features.settings.view.fragment.EditHabitFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/description_input_layout"

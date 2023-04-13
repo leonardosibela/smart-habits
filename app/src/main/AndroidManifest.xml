@@ -16,7 +16,7 @@
         android:theme="@style/Theme.SmartHabits">
 
         <activity
-            android:name=".presentation.view.activity.MainActivity"
+            android:name=".presentation.features.main.view.activity.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

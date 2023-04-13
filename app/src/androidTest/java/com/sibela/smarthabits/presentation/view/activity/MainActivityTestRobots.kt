@@ -2,6 +2,7 @@ package com.sibela.smarthabits.presentation.view.activity
 
 import androidx.test.core.app.launchActivity
 import com.sibela.smarthabits.R
+import com.sibela.smarthabits.presentation.features.main.view.activity.MainActivity
 import com.sibela.smarthabits.presentation.utils.hasText
 import com.sibela.smarthabits.presentation.view.activity.MainActivityTestRobotsString.Companion.DAY
 import com.sibela.smarthabits.presentation.view.activity.MainActivityTestRobotsString.Companion.MONTH

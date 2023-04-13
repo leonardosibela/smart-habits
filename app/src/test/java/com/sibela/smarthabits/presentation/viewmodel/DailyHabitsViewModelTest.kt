@@ -6,6 +6,8 @@ import com.sibela.smarthabits.domain.common.toSuccess
 import com.sibela.smarthabits.domain.model.DailyHabit
 import com.sibela.smarthabits.domain.usecase.FinishHabitUseCase
 import com.sibela.smarthabits.domain.usecase.GetCurrentHabitsUseCase
+import com.sibela.smarthabits.presentation.features.list.viewmodel.DailyHabitListViewModel
+import com.sibela.smarthabits.presentation.features.list.viewmodel.PeriodicHabitResult
 import com.sibela.smarthabits.util.CoroutineTestRule
 import com.sibela.smarthabits.util.TestData.FIRST_DAILY_HABIT
 import com.sibela.smarthabits.util.TestData.SECOND_DAILY_HABIT
