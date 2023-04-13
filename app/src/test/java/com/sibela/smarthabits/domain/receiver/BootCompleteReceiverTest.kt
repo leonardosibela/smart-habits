@@ -1,7 +1,6 @@
 package com.sibela.smarthabits.domain.receiver
 
 import android.content.Intent
-import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.sibela.smarthabits.domain.usecase.GetLastScheduleDateUseCase
 import com.sibela.smarthabits.domain.usecase.ResetDailyHabitsUseCase
 import com.sibela.smarthabits.domain.usecase.ResetMonthlyHabitsUseCase
@@ -33,7 +32,7 @@ class BootCompleteReceiverTest {
     private lateinit var getLastScheduleDateUseCase: GetLastScheduleDateUseCase
 
     @RelaxedMockK
-    private lateinit var cleanTaskAlarmScheduler: CleanTaskAlarmScheduler
+    private lateinit var cleanTaskAlarmScheduler: com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 
     @RelaxedMockK
     private lateinit var resetDailyHabitUseCase: ResetDailyHabitsUseCase

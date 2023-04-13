@@ -1,5 +1,13 @@
 package com.sibela.smarthabits.extension
 
+import com.sibela.smarthabits.common.extension.getNextDayAtMidnight
+import com.sibela.smarthabits.common.extension.hasDayAheadOf
+import com.sibela.smarthabits.common.extension.hasMonthAheadOf
+import com.sibela.smarthabits.common.extension.hasWeekAheadOf
+import com.sibela.smarthabits.common.extension.hasYearAheadOf
+import com.sibela.smarthabits.common.extension.isFirstDayOfMonth
+import com.sibela.smarthabits.common.extension.isFirstDayOfWeek
+import com.sibela.smarthabits.common.extension.isFirstDayOfYear
 import org.junit.Assert
 import org.junit.Test
 import java.time.LocalDateTime

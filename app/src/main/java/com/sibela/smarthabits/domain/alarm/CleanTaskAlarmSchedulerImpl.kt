@@ -4,10 +4,10 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
-import com.sibela.smarthabits.di.inject
+import com.sibela.smarthabits.common.di.inject
+import com.sibela.smarthabits.common.extension.getNextDayAtMidnight
 import com.sibela.smarthabits.domain.receiver.CleanTaskReceiver
 import com.sibela.smarthabits.domain.usecase.SetLastScheduleDateUseCase
-import com.sibela.smarthabits.extension.getNextDayAtMidnight
 import com.sibela.smarthabits.presentation.constants.RequestCode
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -15,7 +15,8 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-class CleanTaskAlarmSchedulerImpl(private val context: Context) : CleanTaskAlarmScheduler {
+class CleanTaskAlarmSchedulerImpl(private val context: Context) :
+    com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler {
 
     private val alarmManager = context.getSystemService(AlarmManager::class.java)
     private val setLastScheduleDateUseCase: SetLastScheduleDateUseCase by inject()

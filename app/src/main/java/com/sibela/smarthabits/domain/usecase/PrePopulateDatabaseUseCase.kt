@@ -4,7 +4,6 @@ import com.sibela.smarthabits.domain.model.HabitCounter
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.repository.DataStoreRepository
 import com.sibela.smarthabits.domain.repository.HabitCounterRepository
-import kotlinx.coroutines.runBlocking
 
 class PrePopulateDatabaseUseCase(
     private val dataStoreRepository: DataStoreRepository,

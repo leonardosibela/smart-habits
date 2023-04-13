@@ -3,7 +3,7 @@ package com.sibela.smarthabits.domain.alarm
 import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
-import com.sibela.smarthabits.extension.getNextDayAtMidnight
+import com.sibela.smarthabits.common.extension.getNextDayAtMidnight
 import com.sibela.smarthabits.presentation.constants.RequestCode
 import com.sibela.smarthabits.util.initMockKAnnotations
 import io.mockk.every
@@ -26,13 +26,14 @@ class CleanTaskAlarmSchedulerImplTest {
     @RelaxedMockK
     private lateinit var context: Context
 
-    private lateinit var cleanTaskAlarmSchedulerImpl: CleanTaskAlarmSchedulerImpl
+    private lateinit var cleanTaskAlarmSchedulerImpl: com.sibela.smarthabits.domain.alarm.CleanTaskAlarmSchedulerImpl
 
     @Before
     fun setup() {
         initMockKAnnotations()
         every { context.getSystemService(AlarmManager::class.java) } returns alarmManager
-        cleanTaskAlarmSchedulerImpl = CleanTaskAlarmSchedulerImpl(context)
+        cleanTaskAlarmSchedulerImpl =
+            com.sibela.smarthabits.domain.alarm.CleanTaskAlarmSchedulerImpl(context)
 
         mockkStatic(PendingIntent::class)
         every {

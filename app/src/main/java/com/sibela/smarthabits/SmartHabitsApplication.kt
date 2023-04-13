@@ -1,7 +1,7 @@
 package com.sibela.smarthabits
 
 import android.app.Application
-import com.sibela.smarthabits.di.AppModules
+import com.sibela.smarthabits.common.di.AppModules
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin

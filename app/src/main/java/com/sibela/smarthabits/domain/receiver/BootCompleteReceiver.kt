@@ -5,8 +5,11 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import androidx.annotation.VisibleForTesting
-import com.sibela.smarthabits.di.inject
-import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
+import com.sibela.smarthabits.common.di.inject
+import com.sibela.smarthabits.common.extension.hasDayAheadOf
+import com.sibela.smarthabits.common.extension.hasMonthAheadOf
+import com.sibela.smarthabits.common.extension.hasWeekAheadOf
+import com.sibela.smarthabits.common.extension.hasYearAheadOf
 import com.sibela.smarthabits.domain.usecase.*
 import com.sibela.smarthabits.extension.*
 import java.time.LocalDateTime
@@ -14,7 +17,7 @@ import java.time.LocalDateTime
 class BootCompleteReceiver : BroadcastReceiver() {
 
     private val getLastScheduleDateUseCase: GetLastScheduleDateUseCase by inject()
-    private val cleanTaskAlarmScheduler: CleanTaskAlarmScheduler by inject()
+    private val cleanTaskAlarmScheduler: com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler by inject()
 
     private val resetDailyHabitUseCase: ResetHabitsUseCase by inject()
     private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase by inject()

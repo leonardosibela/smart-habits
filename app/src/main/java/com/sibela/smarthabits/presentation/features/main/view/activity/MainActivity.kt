@@ -9,14 +9,13 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.sibela.smarthabits.R
 import com.sibela.smarthabits.databinding.ActivityMainBinding
-import com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.sibela.smarthabits.presentation.features.main.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val cleanTaskAlarmScheduler by inject<CleanTaskAlarmScheduler>()
+    private val cleanTaskAlarmScheduler by inject<com.sibela.smarthabits.domain.alarm.CleanTaskAlarmScheduler>()
 
     private lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()

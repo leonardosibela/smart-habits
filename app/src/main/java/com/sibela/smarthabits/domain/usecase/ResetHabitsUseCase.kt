@@ -1,8 +1,8 @@
 package com.sibela.smarthabits.domain.usecase
 
-import com.sibela.smarthabits.extension.isFirstDayOfMonth
-import com.sibela.smarthabits.extension.isFirstDayOfWeek
-import com.sibela.smarthabits.extension.isFirstDayOfYear
+import com.sibela.smarthabits.common.extension.isFirstDayOfMonth
+import com.sibela.smarthabits.common.extension.isFirstDayOfWeek
+import com.sibela.smarthabits.common.extension.isFirstDayOfYear
 import java.time.LocalDateTime
 
 class ResetHabitsUseCase(

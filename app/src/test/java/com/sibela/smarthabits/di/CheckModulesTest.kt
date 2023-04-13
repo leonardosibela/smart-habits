@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.SavedStateHandle
+import com.sibela.smarthabits.common.di.AppModules
 import io.mockk.mockkObject
 import org.junit.Ignore
 import org.junit.Rule

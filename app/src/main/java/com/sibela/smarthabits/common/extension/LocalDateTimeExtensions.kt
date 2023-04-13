@@ -1,4 +1,4 @@
-package com.sibela.smarthabits.extension
+package com.sibela.smarthabits.common.extension
 
 import java.time.DayOfWeek
 import java.time.LocalDateTime

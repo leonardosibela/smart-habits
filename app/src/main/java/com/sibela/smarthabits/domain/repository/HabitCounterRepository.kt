@@ -1,6 +1,6 @@
 package com.sibela.smarthabits.domain.repository
 
-import com.sibela.smarthabits.domain.model.*
+import com.sibela.smarthabits.domain.model.HabitCounter
 
 interface HabitCounterRepository {
 

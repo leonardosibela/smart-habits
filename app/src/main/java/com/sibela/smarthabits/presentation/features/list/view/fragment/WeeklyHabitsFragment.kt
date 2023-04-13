@@ -1,7 +1,7 @@
 package com.sibela.smarthabits.presentation.features.list.view.fragment
 
 import androidx.navigation.fragment.findNavController
-import com.sibela.smarthabits.di.weeklyQualifier
+import com.sibela.smarthabits.common.di.weeklyQualifier
 import com.sibela.smarthabits.domain.model.Periodicity
 import com.sibela.smarthabits.domain.model.WeeklyHabit
 import org.koin.core.qualifier.StringQualifier
