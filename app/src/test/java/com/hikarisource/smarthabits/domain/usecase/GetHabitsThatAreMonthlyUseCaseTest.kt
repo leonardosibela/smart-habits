@@ -27,7 +27,9 @@ class GetHabitsThatAreMonthlyUseCaseTest {
     fun invoke() = runBlocking {
         val expectedHabits = listOf(TestData.FIRST_HABIT_DAILY, TestData.SECOND_HABIT_DAILY)
         coEvery { habitRepository.getAllHabitsThatAreMonthly() } returns expectedHabits
+
         val result = getHabitsThatAreMonthlyUseCase.invoke()
+
         coVerify(exactly = 1) { habitRepository.getAllHabitsThatAreMonthly() }
         assertEquals(expectedHabits, result.value)
     }

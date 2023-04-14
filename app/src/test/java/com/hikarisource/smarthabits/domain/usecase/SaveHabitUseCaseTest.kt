@@ -26,7 +26,9 @@ class SaveHabitUseCaseTest {
     fun invoke() = runBlocking {
         val habit = TestData.FIRST_HABIT_DAILY
         coJustRun { repository.save(habit) }
+
         saveHabitUseCase.invoke(habit)
+
         coVerify(exactly = 1) { saveHabitUseCase.invoke(habit) }
     }
 }
