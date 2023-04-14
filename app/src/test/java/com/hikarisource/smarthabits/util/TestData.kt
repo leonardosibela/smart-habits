@@ -1,7 +1,19 @@
 package com.hikarisource.smarthabits.util
 
-import com.hikarisource.smarthabits.data.entity.*
-import com.hikarisource.smarthabits.domain.model.*
+import com.hikarisource.smarthabits.data.entity.DailyHabitEntity
+import com.hikarisource.smarthabits.data.entity.HabitCounterEntity
+import com.hikarisource.smarthabits.data.entity.HabitEntity
+import com.hikarisource.smarthabits.data.entity.MonthlyHabitEntity
+import com.hikarisource.smarthabits.data.entity.PeriodicityEntity
+import com.hikarisource.smarthabits.data.entity.WeeklyHabitEntity
+import com.hikarisource.smarthabits.data.entity.YearlyHabitEntity
+import com.hikarisource.smarthabits.domain.model.DailyHabit
+import com.hikarisource.smarthabits.domain.model.Habit
+import com.hikarisource.smarthabits.domain.model.HabitCounter
+import com.hikarisource.smarthabits.domain.model.MonthlyHabit
+import com.hikarisource.smarthabits.domain.model.Periodicity
+import com.hikarisource.smarthabits.domain.model.WeeklyHabit
+import com.hikarisource.smarthabits.domain.model.YearlyHabit
 import io.mockk.MockKAnnotations
 
 object TestData {
@@ -25,10 +37,10 @@ object TestData {
     val MONTHLY_PERIODICITY_ENTITY = PeriodicityEntity.MONTHLY
     val YEARLY_PERIODICITY_ENTITY = PeriodicityEntity.YEARLY
 
-    val DAILY_PERIODICITY_AS_STRING = "DAILY"
-    val WEEKLY_PERIODICITY_AS_STRING = "WEEKLY"
-    val MONTHLY_PERIODICITY_AS_STRING = "MONTHLY"
-    val YEARLY_PERIODICITY_AS_STRING = "YEARLY"
+    const val DAILY_PERIODICITY_AS_STRING = "DAILY"
+    const val WEEKLY_PERIODICITY_AS_STRING = "WEEKLY"
+    const val MONTHLY_PERIODICITY_AS_STRING = "MONTHLY"
+    const val YEARLY_PERIODICITY_AS_STRING = "YEARLY"
 
     val FIRST_HABIT_DAILY = Habit(FIRST_ID, FIRST_DESCRIPTION, DAILY_PERIODICITY)
 
