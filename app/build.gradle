@@ -81,7 +81,7 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-contrib:$espresso_version"
     androidTestImplementation "androidx.test.espresso:espresso-intents:$espresso_version"
 
-    def navigation_testing_version = "1.0.0"
+    def navigation_testing_version = "2.5.3"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
 
     def fragment_test_version = "1.5.6"
