@@ -1,5 +1,6 @@
 package com.hikarisource.smarthabits.presentation.features.settings.viewmodel
 
+import androidx.annotation.VisibleForTesting
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.hikarisource.smarthabits.domain.model.Habit
@@ -14,7 +15,8 @@ class EditHabitViewModel(
 ) : ViewModel() {
 
     companion object {
-        private const val DESCRIPTION_STATE_KEY = "description_state_key"
+        @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
+        const val DESCRIPTION_STATE_KEY = "description_state_key"
     }
 
     val descriptionErrorState =

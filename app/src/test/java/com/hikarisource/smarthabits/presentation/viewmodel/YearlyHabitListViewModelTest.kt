@@ -18,13 +18,14 @@ import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.spyk
 import io.mockk.verify
+import io.mockk.verifyOrder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class YearlyHabitListViewModelTest {
 
     @get:Rule
@@ -43,7 +44,7 @@ class YearlyHabitListViewModelTest {
     private lateinit var viewModel: YearlyHabitListViewModel
 
     companion object {
-        private const val YEARLY_HABIT_KEY: String = "YEARLY_HABIT_KEY"
+        private const val YEARLY_HABIT_KEY: String = "YEARLY_HABITS_KEY"
     }
 
     init {
@@ -63,13 +64,14 @@ class YearlyHabitListViewModelTest {
             YearlyHabitListViewModel(
                 savedStateHandle,
                 getCurrentYearlyHabitsUseCase,
-                finishYearlyHabitUseCase
+                finishYearlyHabitUseCase,
+                DispatcherHandlerUnconfined
             )
         )
     }
 
     @Test
-    fun `fetchHabits result Error`() = runBlocking {
+    fun `fetchHabits result Error`() {
         val throwable = Throwable()
         coEvery { getCurrentYearlyHabitsUseCase() } returns throwable.toError()
 
@@ -78,7 +80,10 @@ class YearlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Error
+        }
     }
 
     @Test
@@ -91,11 +96,14 @@ class YearlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList) }
+        verifyOrder {
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList)
+        }
     }
 
     @Test
-    fun `fetchHabits result EmptyList`() = runBlocking {
+    fun `fetchHabits result EmptyList`() {
         val expectedHabits = listOf<YearlyHabit>()
         coEvery { getCurrentYearlyHabitsUseCase() } returns expectedHabits.toSuccess()
 
@@ -104,7 +112,10 @@ class YearlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentYearlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[YEARLY_HABIT_KEY] = PeriodicHabitResult.EmptyList
+        }
     }
 
     @Test

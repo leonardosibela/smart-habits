@@ -53,6 +53,8 @@ import com.hikarisource.smarthabits.domain.usecase.ResetWeeklyHabitsUseCase
 import com.hikarisource.smarthabits.domain.usecase.ResetYearlyHabitsUseCase
 import com.hikarisource.smarthabits.domain.usecase.SaveHabitUseCase
 import com.hikarisource.smarthabits.domain.usecase.SetLastScheduleDateUseCase
+import com.hikarisource.smarthabits.presentation.features.common.viewmodel.DispatcherHandler
+import com.hikarisource.smarthabits.presentation.features.common.viewmodel.DispatcherHandlerImpl
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.DailyHabitListViewModel
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.HabitListViewModel
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.MonthlyHabitListViewModel
@@ -208,12 +210,17 @@ private val useCases = module {
     single { SetLastScheduleDateUseCase(get()) }
 }
 
+private val dispatchers = module {
+    single<DispatcherHandler> { DispatcherHandlerImpl }
+}
+
 private val viewModels = module {
     viewModel<HabitListViewModel<DailyHabit>>(qualifier = dailyQualifier) {
         DailyHabitListViewModel(
             get(),
             get(qualifier = dailyQualifier),
-            get(qualifier = dailyQualifier)
+            get(qualifier = dailyQualifier),
+            get()
         )
     }
 
@@ -221,7 +228,8 @@ private val viewModels = module {
         WeeklyHabitListViewModel(
             get(),
             get(qualifier = weeklyQualifier),
-            get(qualifier = weeklyQualifier)
+            get(qualifier = weeklyQualifier),
+            get()
         )
     }
 
@@ -229,7 +237,8 @@ private val viewModels = module {
         MonthlyHabitListViewModel(
             get(),
             get(qualifier = monthlyQualifier),
-            get(qualifier = monthlyQualifier)
+            get(qualifier = monthlyQualifier),
+            get()
         )
     }
 
@@ -237,17 +246,18 @@ private val viewModels = module {
         YearlyHabitListViewModel(
             get(),
             get(qualifier = yearlyQualifier),
-            get(qualifier = yearlyQualifier)
+            get(qualifier = yearlyQualifier),
+            get()
         )
     }
 
     viewModel { AddPeriodicHabitViewModel(get(), get()) }
     viewModel { EditHabitViewModel(get(), get()) }
 
-    viewModel { DailyHabitsSettingsViewModel(get(), get(), get()) }
-    viewModel { MonthlyHabitsSettingsViewModel(get(), get(), get()) }
-    viewModel { WeeklyHabitsSettingsViewModel(get(), get(), get()) }
-    viewModel { YearlyHabitsSettingsViewModel(get(), get(), get()) }
+    viewModel { DailyHabitsSettingsViewModel(get(), get(), get(), get()) }
+    viewModel { MonthlyHabitsSettingsViewModel(get(), get(), get(), get()) }
+    viewModel { WeeklyHabitsSettingsViewModel(get(), get(), get(), get()) }
+    viewModel { YearlyHabitsSettingsViewModel(get(), get(), get(), get()) }
 
     viewModel { MainViewModel(get()) }
 }
@@ -261,5 +271,6 @@ private val alarmSchedulers = module {
 }
 
 object AppModules {
-    val modules = daos + repositories + useCases + mappers + viewModels + alarmSchedulers
+    val modules =
+        daos + repositories + useCases + mappers + dispatchers + viewModels + alarmSchedulers
 }

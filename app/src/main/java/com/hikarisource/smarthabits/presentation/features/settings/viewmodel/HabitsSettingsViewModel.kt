@@ -7,6 +7,7 @@ import com.hikarisource.smarthabits.domain.common.Result
 import com.hikarisource.smarthabits.domain.model.Habit
 import com.hikarisource.smarthabits.domain.usecase.DeleteHabitUseCase
 import com.hikarisource.smarthabits.domain.usecase.GetHabitsFromPeriodUseCase
+import com.hikarisource.smarthabits.presentation.features.common.viewmodel.DispatcherHandler
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -14,6 +15,7 @@ abstract class HabitsSettingsViewModel(
     private val savedStateHandle: SavedStateHandle,
     private val getHabitsFromPeriod: GetHabitsFromPeriodUseCase,
     private val deleteHabitUseCase: DeleteHabitUseCase,
+    private val dispatcherHandler: DispatcherHandler
 ) : ViewModel() {
 
     companion object {
@@ -25,7 +27,7 @@ abstract class HabitsSettingsViewModel(
         HABITS_KEY, HabitResult.Loading
     )
 
-    fun fetchHabits() = viewModelScope.launch {
+    fun fetchHabits() = viewModelScope.launch(dispatcherHandler.IO) {
         val result = getHabitsFromPeriod()
         if (result is Result.Error) {
             setHabitResult(HabitResult.Error(result.throwable))
@@ -42,7 +44,7 @@ abstract class HabitsSettingsViewModel(
         savedStateHandle[HABITS_KEY] = habitResult
     }
 
-    fun deleteHabit(habit: Habit) = viewModelScope.launch {
+    fun deleteHabit(habit: Habit) = viewModelScope.launch(dispatcherHandler.IO) {
         deleteHabitUseCase(habit)
         runCatching {
             (habits.value as HabitResult.Success).data

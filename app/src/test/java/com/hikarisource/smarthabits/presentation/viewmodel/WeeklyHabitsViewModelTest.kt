@@ -18,13 +18,14 @@ import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.spyk
 import io.mockk.verify
+import io.mockk.verifyOrder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class WeeklyHabitsViewModelTest {
 
     @get:Rule
@@ -43,7 +44,7 @@ class WeeklyHabitsViewModelTest {
     private lateinit var viewModel: WeeklyHabitListViewModel
 
     companion object {
-        private const val WEEKLY_HABIT_KEY: String = "WEEKLY_HABIT_KEY"
+        private const val WEEKLY_HABIT_KEY: String = "WEEKLY_HABITS_KEY"
     }
 
     init {
@@ -63,13 +64,14 @@ class WeeklyHabitsViewModelTest {
             WeeklyHabitListViewModel(
                 savedStateHandle,
                 getCurrentWeeklyHabitsUseCase,
-                finishWeeklyHabitUseCase
+                finishWeeklyHabitUseCase,
+                DispatcherHandlerUnconfined
             )
         )
     }
 
     @Test
-    fun `fetchHabits result Error`() = runBlocking {
+    fun `fetchHabits result Error`() {
         val throwable = Throwable()
         coEvery { getCurrentWeeklyHabitsUseCase() } returns throwable.toError()
 
@@ -78,7 +80,10 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Error
+        }
     }
 
     @Test
@@ -91,11 +96,14 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList) }
+        verifyOrder {
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Success(expectedList)
+        }
     }
 
     @Test
-    fun `fetchHabits result EmptyList`() = runBlocking {
+    fun `fetchHabits result EmptyList`() {
         val expectedHabits = listOf<WeeklyHabit>()
         coEvery { getCurrentWeeklyHabitsUseCase() } returns expectedHabits.toSuccess()
 
@@ -104,7 +112,10 @@ class WeeklyHabitsViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentWeeklyHabitsUseCase.invoke() }
-        verify { savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[WEEKLY_HABIT_KEY] = PeriodicHabitResult.EmptyList
+        }
     }
 
     @Test

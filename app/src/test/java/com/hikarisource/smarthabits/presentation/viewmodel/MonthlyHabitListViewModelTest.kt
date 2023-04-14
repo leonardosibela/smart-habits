@@ -18,13 +18,14 @@ import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.spyk
 import io.mockk.verify
+import io.mockk.verifyOrder
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.runBlocking
 import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
+@ExperimentalCoroutinesApi
 class MonthlyHabitListViewModelTest {
 
     @get:Rule
@@ -63,13 +64,14 @@ class MonthlyHabitListViewModelTest {
             MonthlyHabitListViewModel(
                 savedStateHandle,
                 getCurrentMonthlyHabitsUseCase,
-                finishMonthlyHabitUseCase
+                finishMonthlyHabitUseCase,
+                DispatcherHandlerUnconfined
             )
         )
     }
 
     @Test
-    fun `fetchHabits result Error`() = runBlocking {
+    fun `fetchHabits result Error`() {
         val throwable = Throwable()
         coEvery { getCurrentMonthlyHabitsUseCase() } returns throwable.toError()
 
@@ -78,7 +80,10 @@ class MonthlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Error
+        }
     }
 
     @Test
@@ -91,11 +96,14 @@ class MonthlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Success(expectedList) }
+        verifyOrder {
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Success(expectedList)
+        }
     }
 
     @Test
-    fun `fetchHabits result EmptyList`() = runBlocking {
+    fun `fetchHabits result EmptyList`() {
         val expectedHabits = listOf<MonthlyHabit>()
         coEvery { getCurrentMonthlyHabitsUseCase() } returns expectedHabits.toSuccess()
 
@@ -104,7 +112,10 @@ class MonthlyHabitListViewModelTest {
         viewModel.fetchHabits()
 
         coVerify(exactly = 1) { getCurrentMonthlyHabitsUseCase.invoke() }
-        verify { savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.EmptyList }
+        verifyOrder {
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.Loading
+            savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.EmptyList
+        }
     }
 
     @Test
