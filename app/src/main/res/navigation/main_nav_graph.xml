@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/dailyHabitsFragment"
-        android:name="com.sibela.smarthabits.presentation.features.list.view.fragment.DailyHabitsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.list.view.fragment.DailyHabitsFragment"
         android:label="@string/daily_habits"
         tools:layout="@layout/fragment_habit_list">
 
@@ -19,19 +19,19 @@
 
     <fragment
         android:id="@+id/addPeriodicHabitFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.AddPeriodicHabitFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.AddPeriodicHabitFragment"
         android:label="@string/add_habit"
         tools:layout="@layout/fragment_add_periodic_habit">
 
         <argument
             android:name="periodicity"
-            app:argType="com.sibela.smarthabits.domain.model.Periodicity" />
+            app:argType="com.hikarisource.smarthabits.domain.model.Periodicity" />
 
     </fragment>
 
     <fragment
         android:id="@+id/weeklyHabitsFragment"
-        android:name="com.sibela.smarthabits.presentation.features.list.view.fragment.WeeklyHabitsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.list.view.fragment.WeeklyHabitsFragment"
         android:label="@string/weekly_habits"
         tools:layout="@layout/fragment_weekly_habits">
 
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/monthlyHabitsFragment"
-        android:name="com.sibela.smarthabits.presentation.features.list.view.fragment.MonthlyHabitsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.list.view.fragment.MonthlyHabitsFragment"
         android:label="@string/monthly_habits"
         tools:layout="@layout/fragment_monthly_habits">
 
@@ -55,7 +55,7 @@
 
     <fragment
         android:id="@+id/yearlyHabitsFragment"
-        android:name="com.sibela.smarthabits.presentation.features.list.view.fragment.YearlyHabitsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.list.view.fragment.YearlyHabitsFragment"
         android:label="@string/yearly_habits"
         tools:layout="@layout/fragment_yearly_habits">
 
@@ -67,7 +67,7 @@
 
     <fragment
         android:id="@+id/settingsFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.SettingsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.SettingsFragment"
         android:label="@string/settings">
 
         <action
@@ -90,7 +90,7 @@
 
     <fragment
         android:id="@+id/dailyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.DailyHabitsSettingsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.DailyHabitsSettingsFragment"
         android:label="@string/daily_habits"
         tools:layout="@layout/fragment_habits_daily">
 
@@ -106,7 +106,7 @@
 
     <fragment
         android:id="@+id/weeklyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.WeeklyHabitsSettingsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.WeeklyHabitsSettingsFragment"
         android:label="@string/weekly_habits"
         tools:layout="@layout/fragment_habits_weekly">
 
@@ -122,7 +122,7 @@
 
     <fragment
         android:id="@+id/monthlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.MonthlyHabitsSettingsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.MonthlyHabitsSettingsFragment"
         android:label="@string/monthly_habits"
         tools:layout="@layout/fragment_habits_monthly">
 
@@ -138,7 +138,7 @@
 
     <fragment
         android:id="@+id/yearlyHabitListFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.YearlyHabitsSettingsFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.YearlyHabitsSettingsFragment"
         android:label="@string/yearly_habits"
         tools:layout="@layout/fragment_habits_yearly">
 
@@ -154,13 +154,13 @@
 
     <fragment
         android:id="@+id/editHabitFragment"
-        android:name="com.sibela.smarthabits.presentation.features.settings.view.fragment.EditHabitFragment"
+        android:name="com.hikarisource.smarthabits.presentation.features.settings.view.fragment.EditHabitFragment"
         android:label="fragment_edit_habit"
         tools:layout="@layout/fragment_edit_habit">
 
         <argument
             android:name="habit"
-            app:argType="com.sibela.smarthabits.domain.model.Habit" />
+            app:argType="com.hikarisource.smarthabits.domain.model.Habit" />
 
     </fragment>
 
