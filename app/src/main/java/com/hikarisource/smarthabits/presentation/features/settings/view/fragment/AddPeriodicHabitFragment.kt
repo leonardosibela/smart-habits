@@ -10,7 +10,7 @@ import androidx.navigation.fragment.navArgs
 import com.hikarisource.smarthabits.R
 import com.hikarisource.smarthabits.databinding.FragmentAddPeriodicHabitBinding
 import com.hikarisource.smarthabits.extension.doOnTextChanged
-import com.hikarisource.smarthabits.extension.launchWhenCreated
+import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.DescriptionErrorState
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EmptyError

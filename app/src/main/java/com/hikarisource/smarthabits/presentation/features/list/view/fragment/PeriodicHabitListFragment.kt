@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikarisource.smarthabits.databinding.FragmentHabitListBinding
 import com.hikarisource.smarthabits.domain.model.PeriodicHabit
-import com.hikarisource.smarthabits.extension.launchWhenCreated
 import com.hikarisource.smarthabits.presentation.adapter.PeriodicHabitAdapter
 import com.hikarisource.smarthabits.presentation.constants.AnimationConstants
+import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
 import com.hikarisource.smarthabits.presentation.features.list.view.dialog.PeriodicHabitCompletionDialog
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.HabitListViewModel
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.PeriodicHabitResult

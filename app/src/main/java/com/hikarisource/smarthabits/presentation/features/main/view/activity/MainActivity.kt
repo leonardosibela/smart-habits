@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private val cleanTaskAlarmScheduler by inject<com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler>()
 
-    private lateinit var binding: ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
