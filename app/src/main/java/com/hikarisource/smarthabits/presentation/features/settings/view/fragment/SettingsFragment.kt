@@ -1,6 +1,7 @@
 package com.hikarisource.smarthabits.presentation.features.settings.view.fragment
 
 import android.os.Bundle
+import android.view.View
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -12,6 +13,11 @@ class SettingsFragment : PreferenceFragmentCompat() {
         private const val LIST_WEEKLY = "listWeekly"
         private const val LIST_MONTHLY = "listMonthly"
         private const val LIST_YEARLY = "listYearly"
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        view.setBackgroundColor(resources.getColor(R.color.window_color))
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
