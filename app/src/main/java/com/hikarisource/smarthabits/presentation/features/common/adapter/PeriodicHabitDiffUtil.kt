@@ -1,4 +1,4 @@
-package com.hikarisource.smarthabits.presentation.adapter
+package com.hikarisource.smarthabits.presentation.features.common.adapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.hikarisource.smarthabits.domain.model.PeriodicHabit

@@ -1,4 +1,4 @@
-package com.hikarisource.smarthabits.presentation.adapter
+package com.hikarisource.smarthabits.presentation.features.common.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup

@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikarisource.smarthabits.databinding.FragmentHabitListBinding
 import com.hikarisource.smarthabits.domain.model.Habit
-import com.hikarisource.smarthabits.presentation.adapter.HabitAdapter
 import com.hikarisource.smarthabits.presentation.constants.AnimationConstants.DELAY_BEFORE_SHOWING_FAB
 import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
+import com.hikarisource.smarthabits.presentation.features.common.adapter.HabitAdapter
 import com.hikarisource.smarthabits.presentation.features.settings.view.dialog.HabitDeletionDialog
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.HabitResult
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.HabitsSettingsViewModel

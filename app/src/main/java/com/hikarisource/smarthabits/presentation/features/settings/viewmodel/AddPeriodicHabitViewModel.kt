@@ -25,6 +25,7 @@ class AddPeriodicHabitViewModel(
             savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError
         } else {
             addHabitUseCase(description, periodicity)
+            savedStateHandle[DESCRIPTION_STATE_KEY] = NoError
         }
     }
 

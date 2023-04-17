@@ -51,12 +51,13 @@ class AddPeriodicHabitViewModelTest {
     }
 
     @Test
-    fun `GIVEN description not blank WHEN addHabit called THEN addHabitUseCase must be called`() {
+    fun `GIVEN description not blank WHEN addHabit called THEN addHabitUseCase must be called and NoError must be set`() {
         val description = FIRST_DESCRIPTION
 
         addPeriodicHabitViewModel.addHabit(description, DAILY_PERIODICITY)
 
         coVerify(exactly = 1) { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY) }
+        verify(exactly = 1) { savedStateHandle[DESCRIPTION_STATE_KEY] = NoError }
     }
 
     @Test

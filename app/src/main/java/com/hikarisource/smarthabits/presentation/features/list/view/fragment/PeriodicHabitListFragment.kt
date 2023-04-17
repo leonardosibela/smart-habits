@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikarisource.smarthabits.databinding.FragmentHabitListBinding
 import com.hikarisource.smarthabits.domain.model.PeriodicHabit
-import com.hikarisource.smarthabits.presentation.adapter.PeriodicHabitAdapter
 import com.hikarisource.smarthabits.presentation.constants.AnimationConstants
 import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
+import com.hikarisource.smarthabits.presentation.features.common.adapter.PeriodicHabitAdapter
 import com.hikarisource.smarthabits.presentation.features.list.view.dialog.PeriodicHabitCompletionDialog
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.HabitListViewModel
 import com.hikarisource.smarthabits.presentation.features.list.viewmodel.PeriodicHabitResult
@@ -78,8 +78,8 @@ abstract class PeriodicHabitListFragment<T : PeriodicHabit> : Fragment() {
     private fun onHabitsChanged(habitResult: PeriodicHabitResult<T>) {
         when (habitResult) {
             is PeriodicHabitResult.Loading -> displayLoading()
-            PeriodicHabitResult.Error -> displayErrorMessage()
             is PeriodicHabitResult.EmptyList -> displayEmptyListMessage()
+            is PeriodicHabitResult.Error -> displayErrorMessage()
             is PeriodicHabitResult.Success -> displayHabits(habitResult.data)
         }
     }
