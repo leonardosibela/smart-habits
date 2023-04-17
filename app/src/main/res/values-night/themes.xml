@@ -1,4 +1,5 @@
 <resources>
+
     <style name="Theme.SmartHabits" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
@@ -42,5 +43,11 @@
         <item name="errorTextColor">@color/errorColor</item>
         <item name="errorIconTint">@color/errorColor</item>
         <item name="boxStrokeErrorColor">@color/errorColor</item>
+    </style>
+
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <item name="colorControlNormal">@color/colorSecondary</item>
+        <item name="colorControlActivated">@color/colorSecondary</item>
+        <item name="colorControlHighlight">@color/colorSecondary</item>
     </style>
 </resources>
