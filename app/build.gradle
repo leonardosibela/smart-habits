@@ -23,7 +23,14 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            manifestPlaceholders = [appName: "Smart Habits"]
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            minifyEnabled false
+            applicationIdSuffix ".debug"
+            manifestPlaceholders = [appName: "Smart Habits Debug"]
         }
     }
 

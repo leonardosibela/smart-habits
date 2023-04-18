@@ -2,6 +2,7 @@ package com.hikarisource.smarthabits.presentation.features.settings.view.fragmen
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.findNavController
 import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
@@ -17,7 +18,7 @@ class SettingsFragment : PreferenceFragmentCompat() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.setBackgroundColor(resources.getColor(R.color.window_color))
+        view.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.window_color))
     }
 
     override fun onCreatePreferences(savedInstanceState: Bundle?, rootKey: String?) {
