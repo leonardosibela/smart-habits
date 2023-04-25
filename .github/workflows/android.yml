@@ -24,4 +24,12 @@ jobs:
       run: chmod +x gradlew
       
     - name: Build with Gradle
-      run: ./gradlew build
+      run: ./gradlew build --stacktrace
+
+    - name: Setup detekt
+      uses: peter-murray/setup-detekt@v2
+      with:
+        detekt_version: 1.22
+
+    - name: Run detekt
+      run: detekt-cli

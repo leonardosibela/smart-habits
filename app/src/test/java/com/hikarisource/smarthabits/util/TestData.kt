@@ -20,7 +20,7 @@ object TestData {
     const val FIRST_ID = 1
     const val SECOND_ID = 2
 
-    const val BLANK_DESCRIPTION = "  "
+    const val BLANK_DESCRIPTION = ""
     const val FIRST_DESCRIPTION = "Description one"
     const val SECOND_DESCRIPTION = "Description two"
     const val FIRST_COMPLETED = true
