@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.hikarisource.smarthabits.databinding.FragmentHabitListBinding
 import com.hikarisource.smarthabits.domain.model.PeriodicHabit
-import com.hikarisource.smarthabits.presentation.constants.AnimationConstants
+import com.hikarisource.smarthabits.presentation.constants.AnimationConstants.DELAY_BEFORE_SHOWING_FAB
 import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
 import com.hikarisource.smarthabits.presentation.features.common.adapter.PeriodicHabitAdapter
 import com.hikarisource.smarthabits.presentation.features.list.view.dialog.PeriodicHabitCompletionDialog
@@ -118,7 +118,7 @@ abstract class PeriodicHabitListFragment<T : PeriodicHabit> : Fragment() {
     }
 
     private fun displayFab() = launchWhenCreated {
-        delay(AnimationConstants.DELAY_BEFORE_SHOWING_FAB)
+        delay(DELAY_BEFORE_SHOWING_FAB)
         binding.addHabitFab.apply {
             isVisible = false
             scaleX = 0F
