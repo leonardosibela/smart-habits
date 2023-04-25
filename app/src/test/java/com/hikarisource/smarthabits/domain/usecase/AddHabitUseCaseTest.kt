@@ -24,11 +24,13 @@ import io.mockk.coJustRun
 import io.mockk.coVerify
 import io.mockk.impl.annotations.InjectMockKs
 import io.mockk.impl.annotations.RelaxedMockK
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.Rule
 import org.junit.Test
 
+@DelicateCoroutinesApi
 @ExperimentalCoroutinesApi
 class AddHabitUseCaseTest {
 

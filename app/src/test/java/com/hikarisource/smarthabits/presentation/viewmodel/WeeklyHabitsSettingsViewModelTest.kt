@@ -19,6 +19,7 @@ import io.mockk.coVerify
 import io.mockk.every
 import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.verify
+import kotlinx.coroutines.DelicateCoroutinesApi
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.test.UnconfinedTestDispatcher
@@ -26,6 +27,7 @@ import org.junit.Assert
 import org.junit.Rule
 import org.junit.Test
 
+@DelicateCoroutinesApi
 @ExperimentalCoroutinesApi
 class WeeklyHabitsSettingsViewModelTest {
 
