@@ -1,4 +1,4 @@
-name: Android CI
+name: Smart Habits Action
 
 on:
   push:
