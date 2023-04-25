@@ -1,4 +1,5 @@
 name: Smart Habits Action
+description: This action will run on ubuntu, grant execute permission for gradlew and setup up Java 8. Then, it will run all unit tests. It will be done on every single push or pull request to the default branch.
 
 on:
   push:
