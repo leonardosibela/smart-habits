@@ -3,7 +3,7 @@
     <style name="Theme.SmartHabits" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
-        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
         <item name="alertDialogTheme">@style/AlertDialogTheme</item>
         <item name="android:windowBackground">@android:color/black</item>
         <item name="colorSecondary">@color/colorSecondary</item>
@@ -18,15 +18,15 @@
     </style>
 
     <style name="NegativeButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textColor">@color/dialogButtonTextColor</item>
     </style>
 
     <style name="PositiveButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textColor">@color/dialogButtonTextColor</item>
     </style>
 
     <style name="NeutralButtonStyle" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
-        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textColor">@color/dialogButtonTextColor</item>
     </style>
 
     <style name="TextAppearance.RecyclerViewMessage" parent="TextAppearance.MaterialComponents.Subtitle1">
@@ -37,17 +37,17 @@
     </style>
 
     <style name="Widget.Material3.TextInputLayout.FilledBox.Dense.SmartHabits">
-        <item name="boxStrokeColor">@color/colorSecondary</item>
-        <item name="hintTextColor">@color/colorSecondary</item>
-        <item name="colorControlActivated">@color/colorSecondary</item>
+        <item name="boxStrokeColor">@color/textInputLayoutColor</item>
+        <item name="hintTextColor">@color/textInputLayoutColor</item>
+        <item name="colorControlActivated">@color/textInputLayoutColor</item>
         <item name="errorTextColor">@color/errorColor</item>
         <item name="errorIconTint">@color/errorColor</item>
         <item name="boxStrokeErrorColor">@color/errorColor</item>
     </style>
 
     <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
-        <item name="colorControlNormal">@color/colorSecondary</item>
-        <item name="colorControlActivated">@color/colorSecondary</item>
-        <item name="colorControlHighlight">@color/colorSecondary</item>
+        <item name="colorControlNormal">@color/textInputLayoutColor</item>
+        <item name="colorControlActivated">@color/textInputLayoutColor</item>
+        <item name="colorControlHighlight">@color/textInputLayoutColor</item>
     </style>
 </resources>

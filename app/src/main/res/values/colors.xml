@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#212f32</color>
-    <color name="colorPrimaryVariant">#212f32</color>
-    <color name="colorSecondary">#008e97</color>
+    <color name="colorPrimary">#dbedf1</color>
+    <color name="colorPrimaryVariant">#dbedf1</color>
+    <color name="colorSecondary">#c3e7fd</color>
+    <color name="colorOnPrimary">@android:color/black</color>
 
-    <color name="cardViewBackgroundColor">#3f484b</color>
-
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-
-    <color name="fab_background_color">#008e97</color>
+    <color name="fab_background_color">#c3e7fd</color>
     <color name="fab_ripple_color">#009ba4</color>
 
     <color name="selected_tab_color">#009ba4</color>
 
-    <color name="window_color">#181c1d</color>
-    <color name="toolbar_title">@color/white</color>
+    <color name="window_color">#f5fdff</color>
+    <color name="toolbar_title">@android:color/black</color>
 
     <color name="errorColor">#D2070E</color>
+
+    <color name="dialogButtonTextColor">#056676</color>
+    <color name="textInputLayoutColor">#056676</color>
 </resources>

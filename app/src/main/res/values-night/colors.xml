@@ -3,11 +3,7 @@
     <color name="colorPrimary">#212f32</color>
     <color name="colorPrimaryVariant">#212f32</color>
     <color name="colorSecondary">#008e97</color>
-
-    <color name="cardViewBackgroundColor">#323a3c</color>
-
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="colorOnPrimary">@android:color/white</color>
 
     <color name="fab_background_color">#008e97</color>
     <color name="fab_ripple_color">#009ba4</color>
@@ -15,5 +11,10 @@
     <color name="selected_tab_color">#009ba4</color>
 
     <color name="window_color">#181c1d</color>
-    <color name="toolbar_title">@color/white</color>
+    <color name="toolbar_title">@android:color/white</color>
+
+    <color name="errorColor">#D2070E</color>
+
+    <color name="dialogButtonTextColor">#008e97</color>
+    <color name="textInputLayoutColor">#008e97</color>
 </resources>
