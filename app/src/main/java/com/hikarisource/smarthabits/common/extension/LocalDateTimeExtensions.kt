@@ -2,6 +2,7 @@ package com.hikarisource.smarthabits.common.extension
 
 import java.time.DayOfWeek
 import java.time.LocalDateTime
+import java.time.ZonedDateTime
 import java.time.temporal.ChronoUnit
 
 fun LocalDateTime.isFirstDayOfWeek() = dayOfWeek == DayOfWeek.SUNDAY
@@ -28,3 +29,7 @@ infix fun LocalDateTime.hasWeekAheadOf(localDateTime: LocalDateTime) =
 
 infix fun LocalDateTime.hasDayAheadOf(localDateTime: LocalDateTime) =
     ChronoUnit.DAYS.between(localDateTime, this) > 0
+
+const val ONE_SECOND_IN_MILLISECONDS = 1_000
+
+fun ZonedDateTime.toEpochMillisecond() = toEpochSecond() * ONE_SECOND_IN_MILLISECONDS

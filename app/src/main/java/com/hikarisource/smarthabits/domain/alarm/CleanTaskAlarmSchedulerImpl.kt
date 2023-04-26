@@ -15,8 +15,7 @@ import kotlinx.coroutines.launch
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-class CleanTaskAlarmSchedulerImpl(private val context: Context) :
-    com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler {
+class CleanTaskAlarmSchedulerImpl(private val context: Context) : CleanTaskAlarmScheduler {
 
     private val alarmManager = context.getSystemService(AlarmManager::class.java)
     private val setLastScheduleDateUseCase: SetLastScheduleDateUseCase by inject()

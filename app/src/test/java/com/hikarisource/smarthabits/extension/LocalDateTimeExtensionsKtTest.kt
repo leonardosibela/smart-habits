@@ -8,11 +8,13 @@ import com.hikarisource.smarthabits.common.extension.hasYearAheadOf
 import com.hikarisource.smarthabits.common.extension.isFirstDayOfMonth
 import com.hikarisource.smarthabits.common.extension.isFirstDayOfWeek
 import com.hikarisource.smarthabits.common.extension.isFirstDayOfYear
+import com.hikarisource.smarthabits.common.extension.toEpochMillisecond
 import org.junit.Assert
 import org.junit.Test
 import java.time.LocalDateTime
 import java.time.Month
 import java.time.ZoneOffset
+import java.time.ZonedDateTime
 import kotlin.test.assertFalse
 import kotlin.test.assertTrue
 
@@ -154,6 +156,18 @@ internal class LocalDateTimeExtensionsKtTest {
         Assert.assertEquals(
             nextDayAtMidnight.toEpochSecond(ZoneOffset.UTC),
             dateTime.getNextDayAtMidnight().toEpochSecond(ZoneOffset.UTC)
+        )
+    }
+
+    @Test
+    fun toEpochMillisecond() {
+        val zonedDateTime = ZonedDateTime.now()
+
+        val oneSecondInMilliseconds = 1_000
+
+        Assert.assertEquals(
+            zonedDateTime.toEpochSecond() * oneSecondInMilliseconds,
+            zonedDateTime.toEpochMillisecond()
         )
     }
 }
