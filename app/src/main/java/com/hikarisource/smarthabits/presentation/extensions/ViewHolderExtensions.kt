@@ -1,4 +1,4 @@
-package com.hikarisource.smarthabits.extension
+package com.hikarisource.smarthabits.presentation.extensions
 
 import androidx.annotation.StringRes
 import androidx.recyclerview.widget.RecyclerView
