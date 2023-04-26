@@ -3,7 +3,13 @@ package com.hikarisource.smarthabits.data.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import com.hikarisource.smarthabits.data.entity.*
+import com.hikarisource.smarthabits.data.entity.DailyHabitEntity
+import com.hikarisource.smarthabits.data.entity.HabitCounterEntity
+import com.hikarisource.smarthabits.data.entity.HabitEntity
+import com.hikarisource.smarthabits.data.entity.MonthlyHabitEntity
+import com.hikarisource.smarthabits.data.entity.ScheduleDateEntity
+import com.hikarisource.smarthabits.data.entity.WeeklyHabitEntity
+import com.hikarisource.smarthabits.data.entity.YearlyHabitEntity
 
 @Database(
     entities = [
