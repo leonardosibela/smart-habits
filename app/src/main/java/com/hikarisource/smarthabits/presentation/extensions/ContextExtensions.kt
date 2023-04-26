@@ -1,4 +1,4 @@
-package com.hikarisource.smarthabits.extension
+package com.hikarisource.smarthabits.presentation.extensions
 
 import android.content.Context
 import androidx.datastore.core.DataStore

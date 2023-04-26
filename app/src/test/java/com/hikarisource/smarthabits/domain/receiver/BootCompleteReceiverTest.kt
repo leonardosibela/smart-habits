@@ -26,6 +26,7 @@ import org.koin.dsl.module
 import java.time.LocalDateTime
 
 @ExperimentalCoroutinesApi
+@Suppress("MaxLineLength")
 class BootCompleteReceiverTest {
 
     @RelaxedMockK

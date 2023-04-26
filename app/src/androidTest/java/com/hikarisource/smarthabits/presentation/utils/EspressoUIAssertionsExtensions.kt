@@ -4,12 +4,16 @@ import androidx.annotation.IdRes
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withContentDescription
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withSpinnerText
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import org.hamcrest.Matchers.containsString
 
 @IdRes
 fun Int.hasText(text: String) {
-    onView(withId(this)).check(matches(ViewMatchers.withText(text)))
+    onView(withId(this)).check(matches(withText(text)))
 }
 
 @IdRes

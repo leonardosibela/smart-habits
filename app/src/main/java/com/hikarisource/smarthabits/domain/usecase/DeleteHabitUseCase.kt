@@ -25,6 +25,5 @@ class DeleteHabitUseCase(
             Periodicity.MONTHLY -> monthlyHabitRepository.removeNotCompletedByDescription(habit.description)
             Periodicity.YEARLY -> yearlyHabitRepository.removeNotCompletedByDescription(habit.description)
         }
-        return Unit
     }
 }

@@ -13,7 +13,7 @@ import org.junit.rules.TestRule
 import org.koin.test.check.checkKoinModules
 import org.koin.test.mock.MockProviderRule
 
-@Ignore
+@Ignore("Not working after koin upgrade")
 class CheckModulesTest {
 
     @get:Rule

@@ -1,6 +1,10 @@
 package com.hikarisource.smarthabits.data.mapper
 
-import com.hikarisource.smarthabits.domain.model.*
+import com.hikarisource.smarthabits.domain.model.DailyHabit
+import com.hikarisource.smarthabits.domain.model.Habit
+import com.hikarisource.smarthabits.domain.model.MonthlyHabit
+import com.hikarisource.smarthabits.domain.model.WeeklyHabit
+import com.hikarisource.smarthabits.domain.model.YearlyHabit
 
 interface HabitToPeriodicityHabitMapper {
     fun toDailyHabits(habits: List<Habit>, completed: Boolean, period: Int): List<DailyHabit>

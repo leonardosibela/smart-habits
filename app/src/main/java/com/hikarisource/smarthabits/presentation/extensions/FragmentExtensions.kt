@@ -17,7 +17,6 @@ fun Fragment.launchWhenCreated(block: suspend CoroutineScope.() -> Unit) {
     }
 }
 
-
 fun Fragment.setSelectedItem(@IdRes id: Int) {
     require(requireActivity() is MainActivity)
     (requireActivity() as MainActivity).binding.bottomNavigationView.selectedItemId = id

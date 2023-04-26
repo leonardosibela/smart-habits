@@ -1,6 +1,10 @@
 package com.hikarisource.smarthabits.data.local
 
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.hikarisource.smarthabits.data.entity.HabitEntity
 
 @Dao
@@ -14,9 +18,6 @@ interface HabitDao {
 
     @Delete
     suspend fun delete(habit: HabitEntity)
-
-    @Query("SELECT * FROM habits")
-    suspend fun getAll(): List<HabitEntity>
 
     @Query("SELECT * FROM habits WHERE periodicity = 'DAILY'")
     suspend fun getAllThatAreDaily(): List<HabitEntity>

@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
 import com.hikarisource.smarthabits.domain.repository.DataStoreRepository
-import com.hikarisource.smarthabits.extension.dataStore
+import com.hikarisource.smarthabits.presentation.extensions.dataStore
 import kotlinx.coroutines.flow.first
 
 class DataStoreRepositoryImpl(private val context: Context) : DataStoreRepository {

@@ -9,7 +9,7 @@ import com.hikarisource.smarthabits.R
 import com.hikarisource.smarthabits.databinding.ItemEmptyBinding
 import com.hikarisource.smarthabits.databinding.ItemSimpleHabitBinding
 import com.hikarisource.smarthabits.domain.model.PeriodicHabit
-import com.hikarisource.smarthabits.extension.getText
+import com.hikarisource.smarthabits.presentation.extensions.getText
 
 class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit) :
     ListAdapter<T, PeriodicHabitAdapter.BaseViewHolder<T>>(PeriodicHabitDiffUtil<T>()) {

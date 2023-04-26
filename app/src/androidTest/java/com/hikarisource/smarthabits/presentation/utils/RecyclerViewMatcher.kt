@@ -8,6 +8,7 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
+@Suppress("SwallowedException")
 class RecyclerViewMatcher(@IdRes val recyclerViewId: Int) {
 
     fun atPositionOnView(position: Int, targetViewId: Int): Matcher<View> {
@@ -20,11 +21,8 @@ class RecyclerViewMatcher(@IdRes val recyclerViewId: Int) {
                 if (resources != null) {
                     idDescription = try {
                         resources!!.getResourceName(recyclerViewId)
-                    } catch (var4: Resources.NotFoundException) {
-                        String.format(
-                            "%s (resource name not found)",
-                            Integer.valueOf(recyclerViewId)
-                        )
+                    } catch (_: Resources.NotFoundException) {
+                        "$recyclerViewId (resource name not found)"
                     }
                 }
                 description.appendText("with id: $idDescription")

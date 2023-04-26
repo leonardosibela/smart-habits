@@ -5,6 +5,7 @@ sealed class Result<T>(val value: T? = null, val error: Throwable? = null) {
     data class Error<T>(val throwable: Throwable) : Result<T>(error = throwable)
 }
 
+@Suppress("TooGenericExceptionCaught")
 inline fun <T> resultBy(scope: () -> T?): Result<T> = try {
     val data = scope.invoke()
     if (data != null)

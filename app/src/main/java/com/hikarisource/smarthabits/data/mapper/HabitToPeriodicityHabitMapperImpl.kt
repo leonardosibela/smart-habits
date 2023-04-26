@@ -1,6 +1,10 @@
 package com.hikarisource.smarthabits.data.mapper
 
-import com.hikarisource.smarthabits.domain.model.*
+import com.hikarisource.smarthabits.domain.model.DailyHabit
+import com.hikarisource.smarthabits.domain.model.Habit
+import com.hikarisource.smarthabits.domain.model.MonthlyHabit
+import com.hikarisource.smarthabits.domain.model.WeeklyHabit
+import com.hikarisource.smarthabits.domain.model.YearlyHabit
 
 class HabitToPeriodicityHabitMapperImpl : HabitToPeriodicityHabitMapper {
 
