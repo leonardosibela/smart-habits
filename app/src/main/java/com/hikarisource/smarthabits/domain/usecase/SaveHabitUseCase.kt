@@ -5,7 +5,7 @@ import com.hikarisource.smarthabits.domain.repository.HabitRepository
 
 class SaveHabitUseCase(private val repository: HabitRepository) {
 
-     suspend operator fun invoke(habit: Habit) {
-         repository.save(habit)
-     }
+    suspend operator fun invoke(habit: Habit) {
+        repository.save(habit)
+    }
 }

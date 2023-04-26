@@ -11,10 +11,10 @@ import io.mockk.impl.annotations.RelaxedMockK
 import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.verify
-import org.junit.Before
-import org.junit.Test
 import java.time.LocalDateTime
 import java.time.ZoneId
+import org.junit.Before
+import org.junit.Test
 
 @Suppress("MaxLineLength")
 class CleanTaskAlarmSchedulerImplTest {

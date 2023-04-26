@@ -7,8 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
-
+  Build:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,14 +21,46 @@ jobs:
 
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
-
-    - name: Setup detekt
-      uses: peter-murray/setup-detekt@v2
-      with:
-        detekt_version: 1.22
-
-    - name: Run detekt
-      run: detekt-cli
       
     - name: Build with Gradle
       run: ./gradlew build --stacktrace
+
+
+  Detekt:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 8
+        uses: actions/setup-java@v3
+        with:
+          java-version: '8'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Setup detekt
+        uses: peter-murray/setup-detekt@v2
+        with:
+          detekt_version: 1.22
+
+      - name: Run Detekt
+        run: detekt-cli
+
+
+  Ktlint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+          cache: gradle
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Run Ktlint
+        run: ./gradlew ktlintCheck

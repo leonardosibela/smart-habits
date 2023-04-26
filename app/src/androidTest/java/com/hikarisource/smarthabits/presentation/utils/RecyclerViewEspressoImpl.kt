@@ -44,7 +44,11 @@ class RecyclerViewEspressoImpl(
 
     override fun childIsInvisible(childId: Int) {
         onView(RecyclerViewMatcher(recyclerViewId).atPositionOnView(position, childId))
-            .check(ViewAssertions.matches(withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)))
+            .check(
+                ViewAssertions.matches(
+                    withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)
+                )
+            )
     }
 
     override fun childIsGone(childId: Int) {
@@ -52,4 +56,3 @@ class RecyclerViewEspressoImpl(
             .check(ViewAssertions.matches(withEffectiveVisibility(ViewMatchers.Visibility.GONE)))
     }
 }
-

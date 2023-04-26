@@ -1,6 +1,7 @@
 package com.hikarisource.smarthabits.domain.receiver
 
 import android.content.Intent
+import com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.hikarisource.smarthabits.domain.usecase.GetLastScheduleDateUseCase
 import com.hikarisource.smarthabits.domain.usecase.ResetDailyHabitsUseCase
 import com.hikarisource.smarthabits.domain.usecase.ResetMonthlyHabitsUseCase
@@ -15,6 +16,7 @@ import io.mockk.mockk
 import io.mockk.mockkStatic
 import io.mockk.spyk
 import io.mockk.verify
+import java.time.LocalDateTime
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.test.runTest
 import org.junit.After
@@ -23,7 +25,6 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.core.context.stopKoin
 import org.koin.dsl.module
-import java.time.LocalDateTime
 
 @ExperimentalCoroutinesApi
 @Suppress("MaxLineLength")
@@ -33,7 +34,7 @@ class BootCompleteReceiverTest {
     private lateinit var getLastScheduleDateUseCase: GetLastScheduleDateUseCase
 
     @RelaxedMockK
-    private lateinit var cleanTaskAlarmScheduler: com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler
+    private lateinit var cleanTaskAlarmScheduler: CleanTaskAlarmScheduler
 
     @RelaxedMockK
     private lateinit var resetDailyHabitUseCase: ResetDailyHabitsUseCase
@@ -53,15 +54,17 @@ class BootCompleteReceiverTest {
         initMockKAnnotations()
         startKoin {
             androidContext(mockk())
-            modules(module {
-                single { getLastScheduleDateUseCase }
-                single { cleanTaskAlarmScheduler }
+            modules(
+                module {
+                    single { getLastScheduleDateUseCase }
+                    single { cleanTaskAlarmScheduler }
 
-                single { resetDailyHabitUseCase }
-                single { resetWeeklyHabitsUseCase }
-                single { resetMonthlyHabitsUseCase }
-                single { resetYearlyHabitsUseCase }
-            })
+                    single { resetDailyHabitUseCase }
+                    single { resetWeeklyHabitsUseCase }
+                    single { resetMonthlyHabitsUseCase }
+                    single { resetYearlyHabitsUseCase }
+                }
+            )
         }
 
         bootCompleteReceiver = BootCompleteReceiver()

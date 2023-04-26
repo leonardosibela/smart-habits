@@ -6,5 +6,4 @@ import com.hikarisource.smarthabits.domain.model.Habit
 interface GetHabitsFromPeriodUseCase {
 
     suspend operator fun invoke(): Result<List<Habit>>
-
 }

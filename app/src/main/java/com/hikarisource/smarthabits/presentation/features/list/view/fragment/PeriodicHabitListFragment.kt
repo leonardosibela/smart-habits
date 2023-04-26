@@ -38,7 +38,7 @@ abstract class PeriodicHabitListFragment<T : PeriodicHabit> : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundle?
     ): View {
         _binding = FragmentHabitListBinding.inflate(inflater, container, false)
         return binding.root

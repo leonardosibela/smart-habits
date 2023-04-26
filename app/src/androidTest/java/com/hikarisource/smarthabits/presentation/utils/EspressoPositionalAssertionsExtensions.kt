@@ -52,4 +52,3 @@ infix fun Int.isTopAlignWith(@IdRes id: Int) {
     Espresso.onView(ViewMatchers.withId(this))
         .check(PositionAssertions.isTopAlignedWith(ViewMatchers.withId(id)))
 }
-

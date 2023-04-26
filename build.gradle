@@ -1,22 +1,32 @@
 buildscript {
     ext.kotlin_version = "1.8.10"
     ext.nav_version = '2.4.1'
+
     repositories {
         google()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 
     dependencies {
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
         classpath 'com.android.tools.build:gradle:7.4.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jlleitschuh.gradle:ktlint-gradle:11.3.2"
     }
 }
 
 allprojects {
+    apply plugin: "org.jlleitschuh.gradle.ktlint"
+
+    ktlint {
+        debug = true
+    }
+
     repositories {
         google()
         mavenCentral()
+        maven { url "https://plugins.gradle.org/m2/" }
     }
 }
 
@@ -24,6 +34,28 @@ allprojects {
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
         kotlinOptions {
             freeCompilerArgs += ["-opt-in=kotlin.RequiresOptIn"]
+            jvmTarget = "1.8"
+        }
+    }
+
+    ktlint {
+        android.set(true)
+        outputToConsole.set(true)
+        outputColorName.set("RED")
+        disabledRules = ["max-line-length"]
+
+        reporters {
+            customReporters {
+                register("html") {
+                    fileExtension = "html"
+                    dependency = "me.cassiano:ktlint-html-reporter:0.2.3"
+                }
+            }
+        }
+
+        filter {
+            exclude("**/build/**")
+            include("**/java/**")
         }
     }
 }

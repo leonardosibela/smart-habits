@@ -10,6 +10,7 @@ import com.hikarisource.smarthabits.common.extension.hasDayAheadOf
 import com.hikarisource.smarthabits.common.extension.hasMonthAheadOf
 import com.hikarisource.smarthabits.common.extension.hasWeekAheadOf
 import com.hikarisource.smarthabits.common.extension.hasYearAheadOf
+import com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.hikarisource.smarthabits.domain.usecase.GetLastScheduleDateUseCase
 import com.hikarisource.smarthabits.domain.usecase.ResetDailyHabitsUseCase
 import com.hikarisource.smarthabits.domain.usecase.ResetMonthlyHabitsUseCase
@@ -20,7 +21,7 @@ import java.time.LocalDateTime
 class BootCompleteReceiver : BroadcastReceiver() {
 
     private val getLastScheduleDateUseCase: GetLastScheduleDateUseCase by inject()
-    private val cleanTaskAlarmScheduler: com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler by inject()
+    private val cleanTaskAlarmScheduler: CleanTaskAlarmScheduler by inject()
 
     private val resetDailyHabitUseCase: ResetDailyHabitsUseCase by inject()
     private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase by inject()

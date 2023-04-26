@@ -10,7 +10,7 @@ class ResetYearlyHabitsUseCase(
     private val habitToPeriodicityHabitMapper: HabitToPeriodicityHabitMapper,
     private val habitRepository: HabitRepository,
     private val yearlyHabitRepository: PeriodicHabitRepository<YearlyHabit>,
-    private val habitCounterRepository: HabitCounterRepository,
+    private val habitCounterRepository: HabitCounterRepository
 ) {
 
     suspend operator fun invoke() {
@@ -26,7 +26,9 @@ class ResetYearlyHabitsUseCase(
         habitCounterRepository.insert(nextYearlyCounter)
 
         val yearlyHabits = habitToPeriodicityHabitMapper.toYearlyHabits(
-            habits, false, nextYearlyCounter.period
+            habits = habits,
+            completed = false,
+            period = nextYearlyCounter.period
         )
 
         yearlyHabits.forEach { yearlyHabit ->

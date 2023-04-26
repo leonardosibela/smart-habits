@@ -27,7 +27,7 @@ class ScheduleRepositoryImpl(private val scheduleDao: ScheduleDao) : ScheduleRep
             hour = hour,
             minute = minute,
             second = second,
-            nanoSecond = nano,
+            nanoSecond = nano
         )
     }
 }

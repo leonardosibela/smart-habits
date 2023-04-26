@@ -16,7 +16,7 @@ class AddHabitUseCase(
     private val dailyHabitRepository: PeriodicHabitRepository<DailyHabit>,
     private val weeklyHabitRepository: PeriodicHabitRepository<WeeklyHabit>,
     private val monthlyHabitRepository: PeriodicHabitRepository<MonthlyHabit>,
-    private val yearlyHabitRepository: PeriodicHabitRepository<YearlyHabit>,
+    private val yearlyHabitRepository: PeriodicHabitRepository<YearlyHabit>
 ) {
 
     suspend operator fun invoke(description: String, periodicity: Periodicity) {

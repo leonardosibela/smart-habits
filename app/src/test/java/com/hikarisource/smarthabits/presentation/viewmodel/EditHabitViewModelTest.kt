@@ -54,7 +54,6 @@ class EditHabitViewModelTest {
         coVerify(exactly = 1) { editHabitUseCase(habit, description) }
     }
 
-
     @Test
     fun `GIVEN description is blank WHEN editHabit called THEN editHabitUseCase must not be called`() {
         val description = TestData.BLANK_DESCRIPTION

@@ -18,7 +18,7 @@ abstract class HabitListViewModel<T : PeriodicHabit>(
     private val savedStateHandle: SavedStateHandle,
     private val getCurrentDailyHabitsUseCase: GetCurrentHabitsUseCase<T>,
     private val finishDailyHabitUseCase: FinishHabitUseCase<T>,
-    private val dispatcherHandler: DispatcherHandler,
+    private val dispatcherHandler: DispatcherHandler
 ) : ViewModel() {
 
     companion object {
@@ -30,7 +30,8 @@ abstract class HabitListViewModel<T : PeriodicHabit>(
 
     @Suppress("LeakingThis")
     val habits: StateFlow<PeriodicHabitResult<T>> = savedStateHandle.getStateFlow(
-        HABITS_KEY, PeriodicHabitResult.Loading
+        key = HABITS_KEY,
+        initialValue = PeriodicHabitResult.Loading
     )
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)

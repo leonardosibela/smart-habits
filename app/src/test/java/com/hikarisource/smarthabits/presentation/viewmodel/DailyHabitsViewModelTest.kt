@@ -80,7 +80,6 @@ class DailyHabitsViewModelTest {
         )
     }
 
-
     @Test
     fun `GIVEN getCurrentWeeklyHabits returns an error twice WHEN fetchHabits called THEN must set PeriodicHabitResult_Error`() =
         runTest(unconfinedTestDispatcher) {
@@ -104,7 +103,9 @@ class DailyHabitsViewModelTest {
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then a success on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_Success`() =
         runTest(unconfinedTestDispatcher) {
             val expectedList = listOf(FIRST_DAILY_HABIT, FIRST_DAILY_HABIT)
-            coEvery { getCurrentDailyHabitsUseCase() } returns Throwable().toError() andThen expectedList.toSuccess()
+            coEvery {
+                getCurrentDailyHabitsUseCase()
+            } returns Throwable().toError() andThen expectedList.toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -124,7 +125,9 @@ class DailyHabitsViewModelTest {
     @Test
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then an empty list on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_EmptyList`() =
         runTest(unconfinedTestDispatcher) {
-            coEvery { getCurrentDailyHabitsUseCase() } returns Throwable().toError() andThen emptyList<DailyHabit>().toSuccess()
+            coEvery {
+                getCurrentDailyHabitsUseCase()
+            } returns Throwable().toError() andThen emptyList<DailyHabit>().toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -140,7 +143,6 @@ class DailyHabitsViewModelTest {
                 savedStateHandle[DAILY_HABITS_KEY] = PeriodicHabitResult.EmptyList
             }
         }
-
 
     @Test
     fun `fetchHabits result Success`() {

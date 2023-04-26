@@ -102,7 +102,9 @@ class MonthlyHabitListViewModelTest {
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then a success on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_Success`() =
         runTest(unconfinedTestDispatcher) {
             val expectedList = listOf(FIRST_MONTHLY_HABIT, SECOND_MONTHLY_HABIT)
-            coEvery { getCurrentMonthlyHabitsUseCase() } returns Throwable().toError() andThen expectedList.toSuccess()
+            coEvery {
+                getCurrentMonthlyHabitsUseCase()
+            } returns Throwable().toError() andThen expectedList.toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -122,7 +124,9 @@ class MonthlyHabitListViewModelTest {
     @Test
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then an empty list on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_EmptyList`() =
         runTest(unconfinedTestDispatcher) {
-            coEvery { getCurrentMonthlyHabitsUseCase() } returns Throwable().toError() andThen emptyList<MonthlyHabit>().toSuccess()
+            coEvery {
+                getCurrentMonthlyHabitsUseCase()
+            } returns Throwable().toError() andThen emptyList<MonthlyHabit>().toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -138,7 +142,6 @@ class MonthlyHabitListViewModelTest {
                 savedStateHandle[MONTHLY_HABITS_KEY] = PeriodicHabitResult.EmptyList
             }
         }
-
 
     @Test
     fun `fetchHabits result Success`() {

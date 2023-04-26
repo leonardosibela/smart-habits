@@ -49,7 +49,9 @@ class HabitAdapter(
             fun from(parent: ViewGroup): EmptyViewHolder {
                 val itemEmptyBinding =
                     ItemEmptyBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
                     )
                 return EmptyViewHolder(itemEmptyBinding)
             }
@@ -69,7 +71,9 @@ class HabitAdapter(
             fun from(parent: ViewGroup): HabitViewHolder {
                 val habitItemBinding =
                     ItemHabitBinding.inflate(
-                        LayoutInflater.from(parent.context), parent, false
+                        LayoutInflater.from(parent.context),
+                        parent,
+                        false
                     )
                 return HabitViewHolder(habitItemBinding)
             }

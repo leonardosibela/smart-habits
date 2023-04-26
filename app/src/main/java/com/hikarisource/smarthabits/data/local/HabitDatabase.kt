@@ -16,7 +16,8 @@ import com.hikarisource.smarthabits.data.entity.YearlyHabitEntity
         HabitEntity::class, DailyHabitEntity::class, WeeklyHabitEntity::class,
         MonthlyHabitEntity::class, YearlyHabitEntity::class, HabitCounterEntity::class,
         ScheduleDateEntity::class
-    ], version = 1
+    ],
+    version = 1
 )
 @TypeConverters(Converters::class)
 abstract class HabitDatabase : RoomDatabase() {

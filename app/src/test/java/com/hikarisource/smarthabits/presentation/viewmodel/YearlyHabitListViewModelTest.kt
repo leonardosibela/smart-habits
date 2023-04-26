@@ -102,7 +102,9 @@ class YearlyHabitListViewModelTest {
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then a success on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_Success`() =
         runTest(unconfinedTestDispatcher) {
             val expectedList = listOf(FIRST_YEARLY_HABIT, SECOND_YEARLY_HABIT)
-            coEvery { getCurrentYearlyHabitsUseCase() } returns Throwable().toError() andThen expectedList.toSuccess()
+            coEvery {
+                getCurrentYearlyHabitsUseCase()
+            } returns Throwable().toError() andThen expectedList.toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -122,7 +124,9 @@ class YearlyHabitListViewModelTest {
     @Test
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then an empty list on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_EmptyList`() =
         runTest(unconfinedTestDispatcher) {
-            coEvery { getCurrentYearlyHabitsUseCase() } returns Throwable().toError() andThen emptyList<YearlyHabit>().toSuccess()
+            coEvery {
+                getCurrentYearlyHabitsUseCase()
+            } returns Throwable().toError() andThen emptyList<YearlyHabit>().toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)

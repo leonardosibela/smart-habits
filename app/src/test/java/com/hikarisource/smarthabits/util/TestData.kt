@@ -18,9 +18,9 @@ import io.mockk.MockKAnnotations
 
 object TestData {
     const val FIRST_ID = 1
-    const val SECOND_ID = 2
+    private const val SECOND_ID = 2
 
-    const val BLANK_DESCRIPTION = ""
+    const val BLANK_DESCRIPTION = "   "
     const val FIRST_DESCRIPTION = "Description one"
     const val SECOND_DESCRIPTION = "Description two"
     const val FIRST_COMPLETED = true
@@ -77,8 +77,6 @@ object TestData {
     val HABIT_MONTHLY = Habit(FIRST_ID, FIRST_DESCRIPTION, Periodicity.MONTHLY)
     val HABIT_YEARLY = Habit(FIRST_ID, FIRST_DESCRIPTION, Periodicity.YEARLY)
 
-
-
     val FIRST_DAILY_HABIT = DailyHabit(FIRST_ID, FIRST_DESCRIPTION, FIRST_COMPLETED, FIRST_PERIOD)
     val SECOND_DAILY_HABIT =
         DailyHabit(SECOND_ID, SECOND_DESCRIPTION, SECOND_COMPLETED, SECOND_PERIOD)
@@ -95,7 +93,6 @@ object TestData {
     val FIRST_YEARLY_HABIT = YearlyHabit(FIRST_ID, FIRST_DESCRIPTION, FIRST_COMPLETED, FIRST_PERIOD)
     val SECOND_YEARLY_HABIT =
         YearlyHabit(SECOND_ID, SECOND_DESCRIPTION, SECOND_COMPLETED, SECOND_PERIOD)
-
 
     val FIRST_DAILY_HABIT_ENTITY =
         DailyHabitEntity(FIRST_ID, FIRST_DESCRIPTION, FIRST_COMPLETED, FIRST_PERIOD)

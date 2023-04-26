@@ -11,7 +11,7 @@ import kotlinx.coroutines.launch
 
 class EditHabitViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val editHabitUseCase: EditHabitUseCase,
+    private val editHabitUseCase: EditHabitUseCase
 ) : ViewModel() {
 
     companion object {

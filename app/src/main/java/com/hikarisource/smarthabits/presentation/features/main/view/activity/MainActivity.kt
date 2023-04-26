@@ -9,13 +9,14 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import com.hikarisource.smarthabits.R
 import com.hikarisource.smarthabits.databinding.ActivityMainBinding
+import com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler
 import com.hikarisource.smarthabits.presentation.features.main.viewmodel.MainViewModel
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
 
-    private val cleanTaskAlarmScheduler by inject<com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmScheduler>()
+    private val cleanTaskAlarmScheduler by inject<CleanTaskAlarmScheduler>()
 
     lateinit var binding: ActivityMainBinding
     private val viewModel: MainViewModel by viewModel()

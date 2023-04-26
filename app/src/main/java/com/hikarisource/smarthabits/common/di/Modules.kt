@@ -181,15 +181,31 @@ private val useCases = module {
         )
     }
 
-    single(qualifier = dailyQualifier) { FinishHabitUseCase<DailyHabit>(get(qualifier = dailyQualifier)) }
-    single(qualifier = weeklyQualifier) { FinishHabitUseCase<WeeklyHabit>(get(qualifier = weeklyQualifier)) }
-    single(qualifier = monthlyQualifier) { FinishHabitUseCase<MonthlyHabit>(get(qualifier = monthlyQualifier)) }
-    single(qualifier = yearlyQualifier) { FinishHabitUseCase<YearlyHabit>(get(qualifier = yearlyQualifier)) }
+    single(qualifier = dailyQualifier) {
+        FinishHabitUseCase<DailyHabit>(get(qualifier = dailyQualifier))
+    }
+    single(qualifier = weeklyQualifier) {
+        FinishHabitUseCase<WeeklyHabit>(get(qualifier = weeklyQualifier))
+    }
+    single(qualifier = monthlyQualifier) {
+        FinishHabitUseCase<MonthlyHabit>(get(qualifier = monthlyQualifier))
+    }
+    single(qualifier = yearlyQualifier) {
+        FinishHabitUseCase<YearlyHabit>(get(qualifier = yearlyQualifier))
+    }
 
-    single(qualifier = dailyQualifier) { GetCurrentHabitsUseCase<DailyHabit>(get(qualifier = dailyQualifier)) }
-    single(qualifier = weeklyQualifier) { GetCurrentHabitsUseCase<WeeklyHabit>(get(qualifier = weeklyQualifier)) }
-    single(qualifier = monthlyQualifier) { GetCurrentHabitsUseCase<MonthlyHabit>(get(qualifier = monthlyQualifier)) }
-    single(qualifier = yearlyQualifier) { GetCurrentHabitsUseCase<YearlyHabit>(get(qualifier = yearlyQualifier)) }
+    single(qualifier = dailyQualifier) {
+        GetCurrentHabitsUseCase<DailyHabit>(get(qualifier = dailyQualifier))
+    }
+    single(qualifier = weeklyQualifier) {
+        GetCurrentHabitsUseCase<WeeklyHabit>(get(qualifier = weeklyQualifier))
+    }
+    single(qualifier = monthlyQualifier) {
+        GetCurrentHabitsUseCase<MonthlyHabit>(get(qualifier = monthlyQualifier))
+    }
+    single(qualifier = yearlyQualifier) {
+        GetCurrentHabitsUseCase<YearlyHabit>(get(qualifier = yearlyQualifier))
+    }
 
     single { GetHabitsThatAreDailyUseCase(get()) }
     single { GetHabitsThatAreWeeklyUseCase(get()) }

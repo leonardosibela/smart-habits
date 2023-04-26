@@ -9,7 +9,7 @@ class DispatcherHandlerCustom(
     override val Default: CoroutineDispatcher,
     override val IO: CoroutineDispatcher,
     override val Main: CoroutineDispatcher,
-    override val Unconfined: CoroutineDispatcher,
+    override val Unconfined: CoroutineDispatcher
 ) : DispatcherHandler {
 
     constructor(coroutineDispatcher: CoroutineDispatcher) : this(

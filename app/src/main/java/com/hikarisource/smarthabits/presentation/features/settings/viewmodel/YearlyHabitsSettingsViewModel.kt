@@ -9,7 +9,7 @@ class YearlyHabitsSettingsViewModel(
     savedStateHandle: SavedStateHandle,
     getHabitsThatAreYearlyUseCase: GetHabitsThatAreYearlyUseCase,
     deleteHabitUseCase: DeleteHabitUseCase,
-    dispatcherHandler: DispatcherHandler,
+    dispatcherHandler: DispatcherHandler
 ) : HabitsSettingsViewModel(
     savedStateHandle,
     getHabitsThatAreYearlyUseCase,
