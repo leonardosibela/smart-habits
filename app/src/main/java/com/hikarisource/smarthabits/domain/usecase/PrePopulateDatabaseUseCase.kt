@@ -14,6 +14,7 @@ class PrePopulateDatabaseUseCase(
         const val PRE_POPULATED_DATABASE_KEY = "PRE_POPULATED_DATABASE_KEY"
     }
 
+    @Suppress("MagicNumber")
     suspend operator fun invoke() {
         val alreadyPrePopulated = dataStoreRepository.readBoolean(PRE_POPULATED_DATABASE_KEY)
         if (alreadyPrePopulated.not()) {
