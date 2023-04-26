@@ -25,7 +25,7 @@ abstract class HabitListViewModel<T : PeriodicHabit>(
         private const val DELAY_SETUP_DATABASE = 500L
     }
 
-    @Suppress("PropertyName")
+    @Suppress("PropertyName", "VariableNaming")
     abstract val HABITS_KEY: String
 
     @Suppress("LeakingThis")

@@ -2,7 +2,7 @@ package com.hikarisource.smarthabits.presentation.features.common.viewmodel
 
 import kotlinx.coroutines.CoroutineDispatcher
 
-@Suppress("PropertyName")
+@Suppress("PropertyName", "VariableNaming")
 interface DispatcherHandler {
 
     val Default: CoroutineDispatcher
