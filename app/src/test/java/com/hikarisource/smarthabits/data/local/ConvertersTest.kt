@@ -1,13 +1,13 @@
 package com.hikarisource.smarthabits.data.local
 
-import com.hikarisource.smarthabits.util.TestData.DAILY_PERIODICITY_ENTITY
 import com.hikarisource.smarthabits.util.TestData.DAILY_PERIODICITY_AS_STRING
-import com.hikarisource.smarthabits.util.TestData.MONTHLY_PERIODICITY_ENTITY
+import com.hikarisource.smarthabits.util.TestData.DAILY_PERIODICITY_ENTITY
 import com.hikarisource.smarthabits.util.TestData.MONTHLY_PERIODICITY_AS_STRING
-import com.hikarisource.smarthabits.util.TestData.WEEKLY_PERIODICITY_ENTITY
+import com.hikarisource.smarthabits.util.TestData.MONTHLY_PERIODICITY_ENTITY
 import com.hikarisource.smarthabits.util.TestData.WEEKLY_PERIODICITY_AS_STRING
-import com.hikarisource.smarthabits.util.TestData.YEARLY_PERIODICITY_ENTITY
+import com.hikarisource.smarthabits.util.TestData.WEEKLY_PERIODICITY_ENTITY
 import com.hikarisource.smarthabits.util.TestData.YEARLY_PERIODICITY_AS_STRING
+import com.hikarisource.smarthabits.util.TestData.YEARLY_PERIODICITY_ENTITY
 import org.junit.Assert
 import org.junit.Test
 
