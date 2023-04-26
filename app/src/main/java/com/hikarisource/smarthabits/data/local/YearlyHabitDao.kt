@@ -9,6 +9,7 @@ import androidx.room.Update
 import com.hikarisource.smarthabits.data.entity.YearlyHabitEntity
 
 @Dao
+@Suppress("MaxLineLength")
 interface YearlyHabitDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

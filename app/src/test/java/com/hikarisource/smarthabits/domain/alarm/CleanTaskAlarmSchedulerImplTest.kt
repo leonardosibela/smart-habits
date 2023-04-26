@@ -16,6 +16,7 @@ import org.junit.Test
 import java.time.LocalDateTime
 import java.time.ZoneId
 
+@Suppress("MaxLineLength")
 class CleanTaskAlarmSchedulerImplTest {
 
     @RelaxedMockK
@@ -26,14 +27,14 @@ class CleanTaskAlarmSchedulerImplTest {
     @RelaxedMockK
     private lateinit var context: Context
 
-    private lateinit var cleanTaskAlarmSchedulerImpl: com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmSchedulerImpl
+    private lateinit var cleanTaskAlarmSchedulerImpl: CleanTaskAlarmSchedulerImpl
 
     @Before
     fun setup() {
         initMockKAnnotations()
         every { context.getSystemService(AlarmManager::class.java) } returns alarmManager
         cleanTaskAlarmSchedulerImpl =
-            com.hikarisource.smarthabits.domain.alarm.CleanTaskAlarmSchedulerImpl(context)
+            CleanTaskAlarmSchedulerImpl(context)
 
         mockkStatic(PendingIntent::class)
         every {

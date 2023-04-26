@@ -22,6 +22,7 @@ import org.junit.Rule
 import org.junit.Test
 
 @DelicateCoroutinesApi
+@Suppress("MaxLineLength")
 class AddPeriodicHabitViewModelTest {
 
     @get:Rule

@@ -32,6 +32,7 @@ import org.junit.Test
 
 @DelicateCoroutinesApi
 @ExperimentalCoroutinesApi
+@Suppress("MaxLineLength")
 class MonthlyHabitListViewModelTest {
 
     @get:Rule

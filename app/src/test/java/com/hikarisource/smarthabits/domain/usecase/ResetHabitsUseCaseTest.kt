@@ -13,6 +13,7 @@ import org.junit.Test
 import java.time.LocalDateTime
 
 @ExperimentalCoroutinesApi
+@Suppress("MaxLineLength")
 internal class ResetHabitsUseCaseTest {
 
     @RelaxedMockK

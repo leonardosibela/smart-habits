@@ -18,6 +18,7 @@ import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Hab
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 
+@Suppress("TooManyFunctions")
 abstract class HabitsSettingsFragment : Fragment() {
 
     private lateinit var habitAdapter: HabitAdapter
