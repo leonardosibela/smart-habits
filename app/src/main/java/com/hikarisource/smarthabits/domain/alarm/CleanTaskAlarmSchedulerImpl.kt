@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import com.hikarisource.smarthabits.common.di.inject
 import com.hikarisource.smarthabits.common.extension.getNextDayAtMidnight
+import com.hikarisource.smarthabits.common.extension.toEpochMillisecond
 import com.hikarisource.smarthabits.domain.receiver.CleanTaskReceiver
 import com.hikarisource.smarthabits.domain.usecase.SetLastScheduleDateUseCase
 import com.hikarisource.smarthabits.presentation.constants.RequestCode
@@ -34,7 +35,7 @@ class CleanTaskAlarmSchedulerImpl(private val context: Context) : CleanTaskAlarm
         alarmManager.cancel(pendingIntent)
         alarmManager.setExactAndAllowWhileIdle(
             AlarmManager.RTC_WAKEUP,
-            nextDayMidnight.atZone(ZoneId.systemDefault()).toEpochSecond() * 1_000,
+            nextDayMidnight.atZone(ZoneId.systemDefault()).toEpochMillisecond(),
             pendingIntent
         )
 

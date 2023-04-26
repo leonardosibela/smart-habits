@@ -20,7 +20,7 @@ import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.qualifier.StringQualifier
 
-@Suppress("PeriodicHabitListFragment")
+@Suppress("TooManyFunctions")
 abstract class PeriodicHabitListFragment<T : PeriodicHabit> : Fragment() {
 
     private lateinit var periodicHabitAdapter: PeriodicHabitAdapter<T>
