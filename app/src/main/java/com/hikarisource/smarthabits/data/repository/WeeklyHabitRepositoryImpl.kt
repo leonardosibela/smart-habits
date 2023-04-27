@@ -18,7 +18,9 @@ class WeeklyHabitRepositoryImpl(
 
     override suspend fun getHabitsForLastPeriod(): List<WeeklyHabit> {
         val habitCounter = habitCounterRepository.getLastWeeklyCounter()
-        return weeklyHabitMapper.toDomainList(weeklyHabitDao.getHabitsForPeriod(habitCounter.period))
+        return weeklyHabitMapper.toDomainList(
+            weeklyHabitDao.getHabitsForPeriod(habitCounter.period)
+        )
     }
 
     override suspend fun remove(habit: WeeklyHabit) =
@@ -32,7 +34,8 @@ class WeeklyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String,
+        oldDescription: String,
+        newDescription: String
     ) {
         weeklyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }

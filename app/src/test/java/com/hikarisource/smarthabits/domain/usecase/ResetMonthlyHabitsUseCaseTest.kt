@@ -62,7 +62,9 @@ class ResetMonthlyHabitsUseCaseTest {
 
         coEvery {
             habitToPeriodicityHabitMapper.toMonthlyHabits(
-                habitsMonthly, false, nextMonthlyCounter.period
+                habits = habitsMonthly,
+                completed = false,
+                period = nextMonthlyCounter.period
             )
         } returns monthlyHabits
 
@@ -81,7 +83,9 @@ class ResetMonthlyHabitsUseCaseTest {
 
         coVerify(exactly = 1) {
             habitToPeriodicityHabitMapper.toMonthlyHabits(
-                habitsMonthly, false, nextMonthlyCounter.period
+                habits = habitsMonthly,
+                completed = false,
+                period = nextMonthlyCounter.period
             )
         }
 

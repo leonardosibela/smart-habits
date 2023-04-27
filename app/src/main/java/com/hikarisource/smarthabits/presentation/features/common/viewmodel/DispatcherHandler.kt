@@ -12,5 +12,4 @@ interface DispatcherHandler {
     val Main: CoroutineDispatcher
 
     val Unconfined: CoroutineDispatcher
-
 }

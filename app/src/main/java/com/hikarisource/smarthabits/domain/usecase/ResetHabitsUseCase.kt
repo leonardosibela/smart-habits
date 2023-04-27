@@ -9,7 +9,7 @@ class ResetHabitsUseCase(
     private val resetDailyHabitsUseCase: ResetDailyHabitsUseCase,
     private val resetWeeklyHabitsUseCase: ResetWeeklyHabitsUseCase,
     private val resetMonthlyHabitsUseCase: ResetMonthlyHabitsUseCase,
-    private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase,
+    private val resetYearlyHabitsUseCase: ResetYearlyHabitsUseCase
 ) {
 
     suspend operator fun invoke() {

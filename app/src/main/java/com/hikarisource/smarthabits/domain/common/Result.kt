@@ -8,10 +8,11 @@ sealed class Result<T>(val value: T? = null, val error: Throwable? = null) {
 @Suppress("TooGenericExceptionCaught")
 inline fun <T> resultBy(scope: () -> T?): Result<T> = try {
     val data = scope.invoke()
-    if (data != null)
+    if (data != null) {
         Result.Success(data)
-    else
+    } else {
         Result.Error(Exception("Result is null"))
+    }
 } catch (error: Throwable) {
     Result.Error(error)
 }

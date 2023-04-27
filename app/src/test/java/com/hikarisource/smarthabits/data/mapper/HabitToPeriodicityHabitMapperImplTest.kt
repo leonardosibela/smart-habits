@@ -30,7 +30,9 @@ class HabitToPeriodicityHabitMapperImplTest {
     @Test
     fun toDailyHabits() {
         val actualDailyHabits = mapper.toDailyHabits(
-            listOf(FIRST_HABIT_DAILY, FIRST_HABIT_DAILY), FIRST_COMPLETED, FIRST_PERIOD
+            listOf(FIRST_HABIT_DAILY, FIRST_HABIT_DAILY),
+            FIRST_COMPLETED,
+            FIRST_PERIOD
         )
 
         val firstDailyHabit = FIRST_DAILY_HABIT.copy().apply { id = 0 }
@@ -56,7 +58,9 @@ class HabitToPeriodicityHabitMapperImplTest {
     @Test
     fun toWeeklyHabits() {
         val actualWeeklyHabits = mapper.toWeeklyHabits(
-            listOf(FIRST_HABIT_WEEKLY, FIRST_HABIT_WEEKLY), FIRST_COMPLETED, FIRST_PERIOD
+            listOf(FIRST_HABIT_WEEKLY, FIRST_HABIT_WEEKLY),
+            FIRST_COMPLETED,
+            FIRST_PERIOD
         )
 
         val firstWeeklyHabit = FIRST_WEEKLY_HABIT.copy().apply { id = 0 }
@@ -82,7 +86,9 @@ class HabitToPeriodicityHabitMapperImplTest {
     @Test
     fun toMonthlyHabits() {
         val actualMonthlyHabits = mapper.toMonthlyHabits(
-            listOf(FIRST_HABIT_MONTHLY, FIRST_HABIT_MONTHLY), FIRST_COMPLETED, FIRST_PERIOD
+            habits = listOf(FIRST_HABIT_MONTHLY, FIRST_HABIT_MONTHLY),
+            completed = FIRST_COMPLETED,
+            period = FIRST_PERIOD
         )
 
         val firstMonthlyHabit = FIRST_MONTHLY_HABIT.copy().apply { id = 0 }
@@ -108,7 +114,9 @@ class HabitToPeriodicityHabitMapperImplTest {
     @Test
     fun toYearlyHabits() {
         val actualYearlyHabits = mapper.toYearlyHabits(
-            listOf(FIRST_HABIT_YEARLY, FIRST_HABIT_YEARLY), FIRST_COMPLETED, FIRST_PERIOD
+            listOf(FIRST_HABIT_YEARLY, FIRST_HABIT_YEARLY),
+            FIRST_COMPLETED,
+            FIRST_PERIOD
         )
 
         val firstYearlyHabit = FIRST_YEARLY_HABIT.copy().apply { id = 0 }

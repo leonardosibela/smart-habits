@@ -8,5 +8,4 @@ interface PeriodicityMapper {
     fun toDomain(periodicityEntity: PeriodicityEntity): Periodicity
 
     fun fromDomain(periodicity: Periodicity): PeriodicityEntity
-
 }

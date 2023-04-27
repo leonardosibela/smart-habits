@@ -10,7 +10,7 @@ import kotlinx.coroutines.launch
 
 class AddPeriodicHabitViewModel(
     private val savedStateHandle: SavedStateHandle,
-    private val addHabitUseCase: AddHabitUseCase,
+    private val addHabitUseCase: AddHabitUseCase
 ) : ViewModel() {
 
     companion object {

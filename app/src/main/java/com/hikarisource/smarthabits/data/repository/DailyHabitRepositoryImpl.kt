@@ -9,7 +9,7 @@ import com.hikarisource.smarthabits.domain.repository.PeriodicHabitRepository
 class DailyHabitRepositoryImpl(
     private val dailyHabitDao: DailyHabitDao,
     private val dailyHabitMapper: DailyHabitMapper,
-    private val habitCounterRepository: HabitCounterRepository,
+    private val habitCounterRepository: HabitCounterRepository
 ) : PeriodicHabitRepository<DailyHabit> {
 
     override suspend fun save(habit: DailyHabit) {
@@ -32,7 +32,8 @@ class DailyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String,
+        oldDescription: String,
+        newDescription: String
     ) {
         dailyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }

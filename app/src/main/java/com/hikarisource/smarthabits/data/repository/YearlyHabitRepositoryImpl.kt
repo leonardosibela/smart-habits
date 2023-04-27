@@ -9,7 +9,7 @@ import com.hikarisource.smarthabits.domain.repository.PeriodicHabitRepository
 class YearlyHabitRepositoryImpl(
     private val yearlyHabitDao: YearlyHabitDao,
     private val yearlyHabitMapper: YearlyHabitMapper,
-    private val habitCounterRepository: HabitCounterRepository,
+    private val habitCounterRepository: HabitCounterRepository
 ) : PeriodicHabitRepository<YearlyHabit> {
 
     override suspend fun save(habit: YearlyHabit) {
@@ -18,7 +18,9 @@ class YearlyHabitRepositoryImpl(
 
     override suspend fun getHabitsForLastPeriod(): List<YearlyHabit> {
         val habitCounter = habitCounterRepository.getLastYearlyCounter()
-        return yearlyHabitMapper.toDomainList(yearlyHabitDao.getHabitsForPeriod(habitCounter.period))
+        return yearlyHabitMapper.toDomainList(
+            yearlyHabitDao.getHabitsForPeriod(habitCounter.period)
+        )
     }
 
     override suspend fun remove(habit: YearlyHabit) =
@@ -32,7 +34,8 @@ class YearlyHabitRepositoryImpl(
     }
 
     override suspend fun updateNotCompletedDescription(
-        oldDescription: String, newDescription: String,
+        oldDescription: String,
+        newDescription: String
     ) {
         yearlyHabitDao.updateNotCompletedDescription(oldDescription, newDescription)
     }

@@ -10,7 +10,7 @@ class YearlyHabitListViewModel(
     savedStateHandle: SavedStateHandle,
     getCurrentHabitsUseCase: GetCurrentHabitsUseCase<YearlyHabit>,
     finishHabitUseCase: FinishHabitUseCase<YearlyHabit>,
-    dispatcherHandler: DispatcherHandler,
+    dispatcherHandler: DispatcherHandler
 ) : HabitListViewModel<YearlyHabit>(
     savedStateHandle,
     getCurrentHabitsUseCase,

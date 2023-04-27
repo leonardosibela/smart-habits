@@ -53,7 +53,9 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
         companion object {
             fun <T : PeriodicHabit> from(parent: ViewGroup): EmptyViewHolder<T> {
                 return ItemEmptyBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
                 ).let {
                     EmptyViewHolder(it)
                 }
@@ -61,8 +63,9 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
         }
     }
 
-    class HabitViewHolder<T : PeriodicHabit> private constructor(private val binding: ItemSimpleHabitBinding) :
-        BaseViewHolder<T>(binding.root) {
+    class HabitViewHolder<T : PeriodicHabit> private constructor(
+        private val binding: ItemSimpleHabitBinding
+    ) : BaseViewHolder<T>(binding.root) {
 
         fun bind(habit: T, listener: ((T) -> Unit)) = with(binding) {
             habitDescription.text = habit.description
@@ -76,7 +79,9 @@ class PeriodicHabitAdapter<T : PeriodicHabit>(private val listener: (T) -> Unit)
         companion object {
             fun <T : PeriodicHabit> from(parent: ViewGroup): HabitViewHolder<T> {
                 return ItemSimpleHabitBinding.inflate(
-                    LayoutInflater.from(parent.context), parent, false
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
                 ).let {
                     HabitViewHolder(it)
                 }

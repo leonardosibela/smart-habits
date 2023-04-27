@@ -102,7 +102,9 @@ class WeeklyHabitsViewModelTest {
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then a success on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_Success`() =
         runTest(unconfinedTestDispatcher) {
             val expectedList = listOf(FIRST_WEEKLY_HABIT, SECOND_WEEKLY_HABIT)
-            coEvery { getCurrentWeeklyHabitsUseCase() } returns Throwable().toError() andThen expectedList.toSuccess()
+            coEvery {
+                getCurrentWeeklyHabitsUseCase()
+            } returns Throwable().toError() andThen expectedList.toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)
@@ -122,7 +124,9 @@ class WeeklyHabitsViewModelTest {
     @Test
     fun `GIVEN getCurrentWeeklyHabits returns an error once and then an empty list on the second attempt WHEN fetchHabits called THEN must set PeriodicHabitResult_EmptyList`() =
         runTest(unconfinedTestDispatcher) {
-            coEvery { getCurrentWeeklyHabitsUseCase() } returns Throwable().toError() andThen emptyList<WeeklyHabit>().toSuccess()
+            coEvery {
+                getCurrentWeeklyHabitsUseCase()
+            } returns Throwable().toError() andThen emptyList<WeeklyHabit>().toSuccess()
             viewModel.isFirstFetch = true
 
             Assert.assertEquals(PeriodicHabitResult.Loading, viewModel.habits.value)

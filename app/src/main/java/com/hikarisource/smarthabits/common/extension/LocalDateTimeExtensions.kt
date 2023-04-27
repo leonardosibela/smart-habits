@@ -21,11 +21,11 @@ infix fun LocalDateTime.hasYearAheadOf(localDateTime: LocalDateTime) = year > lo
 
 infix fun LocalDateTime.hasMonthAheadOf(localDateTime: LocalDateTime) =
     this hasYearAheadOf localDateTime ||
-            ChronoUnit.MONTHS.between(localDateTime, this) > 0
+        ChronoUnit.MONTHS.between(localDateTime, this) > 0
 
 infix fun LocalDateTime.hasWeekAheadOf(localDateTime: LocalDateTime) =
     this hasMonthAheadOf localDateTime ||
-            ChronoUnit.WEEKS.between(localDateTime, this) > 0
+        ChronoUnit.WEEKS.between(localDateTime, this) > 0
 
 infix fun LocalDateTime.hasDayAheadOf(localDateTime: LocalDateTime) =
     ChronoUnit.DAYS.between(localDateTime, this) > 0

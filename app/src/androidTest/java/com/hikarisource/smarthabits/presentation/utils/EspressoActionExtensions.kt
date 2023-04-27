@@ -32,4 +32,3 @@ fun Int.clickOnSpinner(position: Int) {
 fun Int.openLinkWithText(text: String) {
     onView(withId(this)).perform(ViewActions.openLinkWithText(text))
 }
-

@@ -34,19 +34,25 @@ class ParentChildAssertImpl(@IdRes private val parent: Int) : ParentChildAssert 
 
     override fun childIsVisible(@IdRes childId: Int) {
         getViewInteraction(childId).check(
-            ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE))
+            ViewAssertions.matches(
+                ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.VISIBLE)
+            )
         )
     }
 
     override fun childIsInvisible(@IdRes childId: Int) {
         getViewInteraction(childId).check(
-            ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE))
+            ViewAssertions.matches(
+                ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.INVISIBLE)
+            )
         )
     }
 
     override fun childIsGone(@IdRes childId: Int) {
         getViewInteraction(childId).check(
-            ViewAssertions.matches(ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.GONE))
+            ViewAssertions.matches(
+                ViewMatchers.withEffectiveVisibility(ViewMatchers.Visibility.GONE)
+            )
         )
     }
 

@@ -62,7 +62,9 @@ class ResetDailyHabitsUseCaseTest {
 
         coEvery {
             habitToPeriodicityHabitMapper.toDailyHabits(
-                habitsDaily, false, nextDailyCounter.period
+                habits = habitsDaily,
+                completed = false,
+                period = nextDailyCounter.period
             )
         } returns dailyHabits
 
@@ -81,7 +83,9 @@ class ResetDailyHabitsUseCaseTest {
 
         coVerify(exactly = 1) {
             habitToPeriodicityHabitMapper.toDailyHabits(
-                habitsDaily, false, nextDailyCounter.period
+                habits = habitsDaily,
+                completed = false,
+                period = nextDailyCounter.period
             )
         }
 

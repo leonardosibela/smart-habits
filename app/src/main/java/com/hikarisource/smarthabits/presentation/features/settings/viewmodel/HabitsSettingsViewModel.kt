@@ -24,7 +24,8 @@ abstract class HabitsSettingsViewModel(
 
     @Suppress("LeakingThis")
     val habits: StateFlow<HabitResult> = savedStateHandle.getStateFlow(
-        HABITS_KEY, HabitResult.Loading
+        key = HABITS_KEY,
+        initialValue = HabitResult.Loading
     )
 
     fun fetchHabits() = viewModelScope.launch(dispatcherHandler.IO) {

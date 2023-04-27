@@ -14,5 +14,5 @@ data class HabitCounterEntity(
     val periodicity: PeriodicityEntity,
 
     @ColumnInfo(name = "period")
-    var period: Int,
+    var period: Int
 )

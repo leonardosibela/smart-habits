@@ -7,5 +7,5 @@ import kotlinx.parcelize.Parcelize
 data class Habit(
     var id: Int = 0,
     var description: String,
-    val periodicity: Periodicity,
+    val periodicity: Periodicity
 ) : Parcelable

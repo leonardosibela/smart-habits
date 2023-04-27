@@ -10,7 +10,7 @@ class WeeklyHabitListViewModel(
     savedStateHandle: SavedStateHandle,
     getCurrentHabitsUseCase: GetCurrentHabitsUseCase<WeeklyHabit>,
     finishHabitUseCase: FinishHabitUseCase<WeeklyHabit>,
-    dispatcherHandler: DispatcherHandler,
+    dispatcherHandler: DispatcherHandler
 ) : HabitListViewModel<WeeklyHabit>(
     savedStateHandle,
     getCurrentHabitsUseCase,

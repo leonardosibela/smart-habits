@@ -62,7 +62,9 @@ class ResetWeeklyHabitsUseCaseTest {
 
         coEvery {
             habitToPeriodicityHabitMapper.toWeeklyHabits(
-                habitsWeekly, false, nextWeeklyCounter.period
+                habits = habitsWeekly,
+                completed = false,
+                period = nextWeeklyCounter.period
             )
         } returns weeklyHabits
 
@@ -81,7 +83,9 @@ class ResetWeeklyHabitsUseCaseTest {
 
         coVerify(exactly = 1) {
             habitToPeriodicityHabitMapper.toWeeklyHabits(
-                habitsWeekly, false, nextWeeklyCounter.period
+                habits = habitsWeekly,
+                completed = false,
+                period = nextWeeklyCounter.period
             )
         }
 

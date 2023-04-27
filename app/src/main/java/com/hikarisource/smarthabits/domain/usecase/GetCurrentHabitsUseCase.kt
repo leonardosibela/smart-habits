@@ -6,7 +6,7 @@ import com.hikarisource.smarthabits.domain.model.PeriodicHabit
 import com.hikarisource.smarthabits.domain.repository.PeriodicHabitRepository
 
 class GetCurrentHabitsUseCase<T : PeriodicHabit>(
-    private val periodicHabitRepository: PeriodicHabitRepository<T>,
+    private val periodicHabitRepository: PeriodicHabitRepository<T>
 ) {
 
     suspend operator fun invoke(): Result<List<T>> = resultBy {

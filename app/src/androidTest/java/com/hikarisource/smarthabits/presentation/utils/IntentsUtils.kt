@@ -21,4 +21,3 @@ object IntentsUtils {
         Intents.release()
     }
 }
-

@@ -26,7 +26,9 @@ class ResetDailyHabitsUseCase(
         habitCounterRepository.insert(nextDailyCounter)
 
         val dailyHabits = habitToPeriodicityHabitMapper.toDailyHabits(
-            habits, false, nextDailyCounter.period
+            habits = habits,
+            completed = false,
+            period = nextDailyCounter.period
         )
 
         dailyHabits.forEach { dailyHabit ->

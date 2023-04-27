@@ -19,5 +19,4 @@ class DailyHabitListViewModel(
 ) {
     override val HABITS_KEY: String
         get() = "DAILY_HABITS_KEY"
-
 }

@@ -17,5 +17,5 @@ data class HabitEntity(
     var description: String,
 
     @ColumnInfo(name = "periodicity")
-    val periodicity: PeriodicityEntity,
+    val periodicity: PeriodicityEntity
 ) : Parcelable

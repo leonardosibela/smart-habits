@@ -20,4 +20,3 @@ abstract class BaseUiTests<Arrange, Act, Assert> {
     @OptIn(ExperimentalCoroutinesApi::class)
     val koinTestRule: KoinTestRule by lazy { KoinTestRule(modules) }
 }
-

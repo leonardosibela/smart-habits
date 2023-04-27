@@ -1,11 +1,11 @@
 package com.hikarisource.smarthabits.domain.receiver
 
 import android.content.BroadcastReceiver
+import kotlin.coroutines.CoroutineContext
+import kotlin.coroutines.EmptyCoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import kotlin.coroutines.CoroutineContext
-import kotlin.coroutines.EmptyCoroutineContext
 
 fun BroadcastReceiver.goAsync(
     context: CoroutineContext = EmptyCoroutineContext,
