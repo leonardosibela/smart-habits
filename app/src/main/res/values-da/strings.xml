@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dag</string>
+    <string name="week">Uge</string>
+    <string name="month">Måned</string>
+    <string name="year">År</string>
+    <string name="settings">Indstillinger</string>
+
+    <string name="add_habit">Tilføj vane</string>
+    <string name="edit_habit">Rediger vane</string>
+    <string name="internal_error">Intern fejl</string>
+    <string name="no_habit">Ingen vaner tilføjet</string>
+    <string name="description">Beskrivelse</string>
+
+    <string name="list_daily_habits">List daglige vaner</string>
+    <string name="list_weekly_habits">List ugentlige vaner</string>
+    <string name="list_monthly_habits">List månedlige vaner</string>
+    <string name="list_yearly_habits">List årlige vaner</string>
+    <string name="delete">Slet</string>
+    <string name="edit">Rediger</string>
+    <string name="daily_habits">Daglige vaner</string>
+    <string name="weekly_habits">Ugentlige vaner</string>
+    <string name="monthly_habits">Månedlige vaner</string>
+    <string name="yearly_habits">Årlige vaner</string>
+    <string name="habit_name_saved">Vane %1$s gemt!</string>
+    <string name="fill_habit_description">Du skal indtaste en beskrivelse</string>
+
+    <string name="habit_deletion_title">Slet vane</string>
+    <string name="habit_deletion_message">Er du sikker på, at du vil slette %1$s?</string>
+
+    <string name="habit_completion_title">Afslut vane</string>
+    <string name="habit_completion_message">Er du sikker på, at du vil afslutte %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Tryk for at afslutte</string>
+
+    <string name="reset_daily_title">Nulstil daglige vaner</string>
+    <string name="reset_daily_summary">Klik her for at nulstille daglige vaner</string>
+    <string name="reset_weekly_title">Nulstil ugentlige vaner</string>
+    <string name="reset_weekly_summary">Klik her for at nulstille ugentlige vaner</string>
+    <string name="reset_monthly_title">Nulstil månedlige vaner</string>
+    <string name="reset_monthly_summary">Klik her for at nulstille månedlige vaner</string>
+    <string name="reset_yearly_title">Nulstil årlige vaner</string>
+    <string name="reset_yearly_summary">Klik her for at nulstille årlige vaner</string>
+
+    <string name="list_daily_title">List daglige vaner</string>
+    <string name="list_daily_summary">Klik her for at liste daglige vaner</string>
+    <string name="list_weekly_title">List ugentlige vaner</string>
+    <string name="list_weekly_summary">Klik her for at liste ugentlige vaner</string>
+    <string name="list_monthly_title">Liste over månedlige vaner</string>
+    <string name="list_monthly_summary">Klik her for at liste månedlige vaner</string>
+    <string name="list_yearly_title">Liste over årlige vaner</string>
+    <string name="list_yearly_summary">Klik her for at liste årlige vaner</string>
+</resources>

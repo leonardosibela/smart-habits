@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dag</string>
+    <string name="week">Uke</string>
+    <string name="month">Måned</string>
+    <string name="year">År</string>
+    <string name="settings">Innstillinger</string>
+
+    <string name="add_habit">Legg til vane</string>
+    <string name="edit_habit">Rediger vane</string>
+    <string name="internal_error">Intern feil</string>
+    <string name="no_habit">Ingen vaner lagt til</string>
+    <string name="description">Beskrivelse</string>
+
+    <string name="list_daily_habits">Liste over daglige vaner</string>
+    <string name="list_weekly_habits">Liste over ukentlige vaner</string>
+    <string name="list_monthly_habits">Liste over månedlige vaner</string>
+    <string name="list_yearly_habits">Liste over årlige vaner</string>
+    <string name="delete">Slett</string>
+    <string name="edit">Rediger</string>
+    <string name="daily_habits">Daglige vaner</string>
+    <string name="weekly_habits">Ukentlige vaner</string>
+    <string name="monthly_habits">Månedlige vaner</string>
+    <string name="yearly_habits">Årlige vaner</string>
+    <string name="habit_name_saved">Vane %1$s lagret!</string>
+    <string name="fill_habit_description">Du må skrive inn en beskrivelse</string>
+
+    <string name="habit_deletion_title">Slett vane</string>
+    <string name="habit_deletion_message">Er du sikker på at du vil slette %1$s?</string>
+
+    <string name="habit_completion_title">Fullfør vane</string>
+    <string name="habit_completion_message">Er du sikker på at du vil fullføre %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Trykk for å fullføre</string>
+
+    <string name="reset_daily_title">Nullstill daglige vaner</string>
+    <string name="reset_daily_summary">Klikk her for å nullstille daglige vaner</string>
+    <string name="reset_weekly_title">Nullstill ukentlige vaner</string>
+    <string name="reset_weekly_summary">Klikk her for å nullstille ukentlige vaner</string>
+    <string name="reset_monthly_title">Nullstill månedlige vaner</string>
+    <string name="reset_monthly_summary">Klikk her for å nullstille månedlige vaner</string>
+    <string name="reset_yearly_title">Nullstill årlige vaner</string>
+    <string name="reset_yearly_summary">Klikk her for å nullstille årlige vaner</string>
+
+    <string name="list_daily_title">Liste over daglige vaner</string>
+    <string name="list_daily_summary">Klikk her for å liste opp daglige vaner</string>
+    <string name="list_weekly_title">Liste over ukentlige vaner</string>
+    <string name="list_weekly_summary">Klikk her for å liste opp ukentlige vaner</string>
+    <string name="list_monthly_title">Liste over månedlige vaner</string>
+    <string name="list_monthly_summary">Klikk her for å liste opp månedlige vaner</string>
+    <string name="list_yearly_title">Liste over årlige vaner</string>
+    <string name="list_yearly_summary">Klikk her for å liste opp årlige vaner</string>
+</resources>

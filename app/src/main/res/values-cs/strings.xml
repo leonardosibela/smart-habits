@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Den</string>
+    <string name="week">Týden</string>
+    <string name="month">Měsíc</string>
+    <string name="year">Rok</string>
+    <string name="settings">Nastavení</string>
+
+    <string name="add_habit">Přidat návyk</string>
+    <string name="edit_habit">Upravit návyk</string>
+    <string name="internal_error">Interní chyba</string>
+    <string name="no_habit">Žádné přidané návyky</string>
+    <string name="description">Popis</string>
+
+    <string name="list_daily_habits">Seznam denních návyků</string>
+    <string name="list_weekly_habits">Seznam týdenních návyků</string>
+    <string name="list_monthly_habits">Seznam měsíčních návyků</string>
+    <string name="list_yearly_habits">Seznam ročních návyků</string>
+    <string name="delete">Smazat</string>
+    <string name="edit">Upravit</string>
+    <string name="daily_habits">Denní návyky</string>
+    <string name="weekly_habits">Týdenní návyky</string>
+    <string name="monthly_habits">Měsíční návyky</string>
+    <string name="yearly_habits">Roční návyky</string>
+    <string name="habit_name_saved">návyk %1$s uložen!</string>
+    <string name="fill_habit_description">Musíte napsat popis</string>
+
+    <string name="habit_deletion_title">Smazat návyk</string>
+    <string name="habit_deletion_message">Opravdu chcete smazat %1$s?</string>
+
+    <string name="habit_completion_title">Dokončit návyk</string>
+    <string name="habit_completion_message">Opravdu chcete dokončit %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Klepněte pro dokončení</string>
+
+    <string name="reset_daily_title">Resetovat denní návyky</string>
+    <string name="reset_daily_summary">Klikněte sem pro resetování denních návyků</string>
+    <string name="reset_weekly_title">Resetovat týdenní návyky</string>
+    <string name="reset_weekly_summary">Klikněte sem pro resetování týdenních návyků</string>
+    <string name="reset_monthly_title">Resetovat měsíční návyky</string>
+    <string name="reset_monthly_summary">Kliknutím sem resetujete měsíční návyky</string>
+    <string name="reset_yearly_title">Resetovat roční návyky</string>
+    <string name="reset_yearly_summary">Kliknutím sem resetujete roční návyky</string>
+
+    <string name="list_daily_title">Seznam denních návyků</string>
+    <string name="list_daily_summary">Kliknutím sem zobrazíte seznam denních návyků</string>
+    <string name="list_weekly_title">Seznam týdenních návyků</string>
+    <string name="list_weekly_summary">Kliknutím sem zobrazíte seznam týdenních návyků</string>
+    <string name="list_monthly_title">Seznam měsíčních návyků</string>
+    <string name="list_monthly_summary">Kliknutím sem zobrazíte seznam měsíčních návyků</string>
+    <string name="list_yearly_title">Seznam ročních návyků</string>
+    <string name="list_yearly_summary">Kliknutím sem zobrazíte seznam ročních návyků</string>
+</resources>

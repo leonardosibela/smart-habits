@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Nap</string>
+    <string name="week">Hét</string>
+    <string name="month">Hónap</string>
+    <string name="year">Év</string>
+    <string name="settings">Beállítások</string>
+
+    <string name="add_habit">Szokás hozzáadása</string>
+    <string name="edit_habit">Szokás szerkesztése</string>
+    <string name="internal_error">Belső hiba</string>
+    <string name="no_habit">Nincsenek hozzáadott szokások</string>
+    <string name="description">Leírás</string>
+
+    <string name="list_daily_habits">Napi szokások listázása</string>
+    <string name="list_weekly_habits">Heti szokások listázása</string>
+    <string name="list_monthly_habits">Havi szokások listázása</string>
+    <string name="list_yearly_habits">Évi szokások listázása</string>
+    <string name="delete">Törlés</string>
+    <string name="edit">Szerkesztés</string>
+    <string name="daily_habits">Napi szokások</string>
+    <string name="weekly_habits">Heti szokások</string>
+    <string name="monthly_habits">Havi szokások</string>
+    <string name="yearly_habits">Évi szokások</string>
+    <string name="habit_name_saved">%1$s szokás elmentve!</string>
+    <string name="fill_habit_description">Ki kell tölteni a leírást</string>
+
+    <string name="habit_deletion_title">Szokás törlése</string>
+    <string name="habit_deletion_message">Biztosan törölni szeretnéd ezt a(z) %1$s szokást?</string>
+
+    <string name="habit_completion_title">Szokás teljesítése</string>
+    <string name="habit_completion_message">Biztosan teljesítetted ezt a(z) %1$s szokást?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Koppints a teljesítéshez</string>
+
+    <string name="reset_daily_title">Napi szokások visszaállítása</string>
+    <string name="reset_daily_summary">Koppints ide a napi szokások visszaállításához</string>
+    <string name="reset_weekly_title">Heti szokások visszaállítása</string>
+    <string name="reset_weekly_summary">Koppints ide a heti szokások visszaállításához</string>
+    <string name="reset_monthly_title">Havi szokások visszaállítása</string>
+    <string name="reset_monthly_summary">Koppints ide a havi szokások visszaállításához</string>
+    <string name="reset_yearly_title">Évi szokások visszaállítása</string>
+    <string name="reset_yearly_summary">Kattintson ide az éves szokások visszaállításához</string>
+
+    <string name="list_daily_title">Napi szokások listázása</string>
+    <string name="list_daily_summary">Kattintson ide a napi szokások listázásához</string>
+    <string name="list_weekly_title">Heti szokások listázása</string>
+    <string name="list_weekly_summary">Kattintson ide a heti szokások listázásához</string>
+    <string name="list_monthly_title">Havi szokások listázása</string>
+    <string name="list_monthly_summary">Kattintson ide a havi szokások listázásához</string>
+    <string name="list_yearly_title">Éves szokások listázása</string>
+    <string name="list_yearly_summary">Kattintson ide az éves szokások listázásához</string>
+</resources>

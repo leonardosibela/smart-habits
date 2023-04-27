@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dag</string>
+    <string name="week">Week</string>
+    <string name="month">Maand</string>
+    <string name="year">Jaar</string>
+    <string name="settings">Instellingen</string>
+
+    <string name="add_habit">Habit toevoegen</string>
+    <string name="edit_habit">Habit bewerken</string>
+    <string name="internal_error">Interne fout</string>
+    <string name="no_habit">Geen habits toegevoegd</string>
+    <string name="description">Beschrijving</string>
+
+    <string name="list_daily_habits">Lijst met dagelijkse habits</string>
+    <string name="list_weekly_habits">Lijst met wekelijkse habits</string>
+    <string name="list_monthly_habits">Lijst met maandelijkse habits</string>
+    <string name="list_yearly_habits">Lijst met jaarlijkse habits</string>
+    <string name="delete">Verwijderen</string>
+    <string name="edit">Bewerken</string>
+    <string name="daily_habits">Dagelijkse habits</string>
+    <string name="weekly_habits">Wekelijkse habits</string>
+    <string name="monthly_habits">Maandelijkse habits</string>
+    <string name="yearly_habits">Jaarlijkse habits</string>
+    <string name="habit_name_saved">Habit %1$s opgeslagen!</string>
+    <string name="fill_habit_description">Je moet een beschrijving invoeren</string>
+
+    <string name="habit_deletion_title">Habit verwijderen</string>
+    <string name="habit_deletion_message">Weet je zeker dat je %1$s wilt verwijderen?</string>
+
+    <string name="habit_completion_title">Habit voltooien</string>
+    <string name="habit_completion_message">Weet je zeker dat je %1$s wilt voltooien?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Tik om te voltooien</string>
+
+    <string name="reset_daily_title">Dagelijkse habits resetten</string>
+    <string name="reset_daily_summary">Klik hier om dagelijkse habits te resetten</string>
+    <string name="reset_weekly_title">Wekelijkse habits resetten</string>
+    <string name="reset_weekly_summary">Klik hier om wekelijkse habits te resetten</string>
+    <string name="reset_monthly_title">Maandelijkse habits resetten</string>
+    <string name="reset_monthly_summary">Klik hier om maandelijkse habits te resetten</string>
+    <string name="reset_yearly_title">Jaarlijkse habits resetten</string>
+    <string name="reset_yearly_summary">Klik hier om jaarlijkse habits te resetten</string>
+
+    <string name="list_daily_title">Lijst met dagelijkse habits</string>
+    <string name="list_daily_summary">Klik hier om dagelijkse habits te bekijken</string>
+    <string name="list_weekly_title">Lijst met wekelijkse habits</string>
+    <string name="list_weekly_summary">Klik hier om wekelijkse habits te bekijken</string>
+    <string name="list_monthly_title">List monthly habits</string>
+    <string name="list_monthly_summary">Click here to list monthly habits</string>
+    <string name="list_yearly_title">List yearly habits</string>
+    <string name="list_yearly_summary">Click here to list yearly habits</string>
+</resources>

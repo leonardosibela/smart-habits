@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Zi</string>
+    <string name="week">Săptămână</string>
+    <string name="month">Lună</string>
+    <string name="year">An</string>
+    <string name="settings">Setări</string>
+
+    <string name="add_habit">Adaugă obicei</string>
+    <string name="edit_habit">Editează obicei</string>
+    <string name="internal_error">Eroare internă</string>
+    <string name="no_habit">Nu există obiceiuri adăugate</string>
+    <string name="description">Descriere</string>
+
+    <string name="list_daily_habits">Listează obiceiuri zilnice</string>
+    <string name="list_weekly_habits">Listează obiceiuri săptămânale</string>
+    <string name="list_monthly_habits">Listează obiceiuri lunare</string>
+    <string name="list_yearly_habits">Listează obiceiuri anuale</string>
+    <string name="delete">Șterge</string>
+    <string name="edit">Editează</string>
+    <string name="daily_habits">Obiceiuri zilnice</string>
+    <string name="weekly_habits">Obiceiuri săptămânale</string>
+    <string name="monthly_habits">Obiceiuri lunare</string>
+    <string name="yearly_habits">Obiceiuri anuale</string>
+    <string name="habit_name_saved">Obiceiul %1$s a fost salvat!</string>
+    <string name="fill_habit_description">Trebuie să introduceți o descriere</string>
+
+    <string name="habit_deletion_title">Ștergere obicei</string>
+    <string name="habit_deletion_message">Sigur doriți să ștergeți obiceiul %1$s?</string>
+
+    <string name="habit_completion_title">Finalizare obicei</string>
+    <string name="habit_completion_message">Sigur doriți să finalizați obiceiul %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Apăsați pentru finalizare</string>
+
+    <string name="reset_daily_title">Resetează obiceiuri zilnice</string>
+    <string name="reset_daily_summary">Apasă aici pentru a reseta obiceiurile zilnice</string>
+    <string name="reset_weekly_title">Resetează obiceiuri săptămânale</string>
+    <string name="reset_weekly_summary">Apasă aici pentru a reseta obiceiurile săptămânale</string>
+    <string name="reset_monthly_title">Resetează obiceiuri lunare</string>
+    <string name="reset_monthly_summary">Apasă aici pentru a reseta obiceiurile lunare</string>
+    <string name="reset_yearly_title">Resetează obiceiuri anuale</string>
+    <string name="reset_yearly_summary">Apasă aici pentru a reseta obiceiurile anuale</string>
+
+    <string name="list_daily_title">Listează obiceiuri zilnice</string>
+    <string name="list_daily_summary">Apasă aici pentru a lista obiceiurile zilnice</string>
+    <string name="list_weekly_title">Lista obiceiurilor săptămânale</string>
+    <string name="list_weekly_summary">Apasă aici pentru a lista obiceiurile săptămânale</string>
+    <string name="list_monthly_title">Lista obiceiurilor lunare</string>
+    <string name="list_monthly_summary">Apasă aici pentru a lista obiceiurile lunare</string>
+    <string name="list_yearly_title">Lista obiceiurilor anuale</string>
+    <string name="list_yearly_summary">Apasă aici pentru a lista obiceiurile anuale</string>
+</resources>

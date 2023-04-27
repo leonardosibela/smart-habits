@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dag</string>
+    <string name="week">Vecka</string>
+    <string name="month">Månad</string>
+    <string name="year">År</string>
+    <string name="settings">Inställningar</string>
+
+    <string name="add_habit">Lägg till vana</string>
+    <string name="edit_habit">Redigera vana</string>
+    <string name="internal_error">Internt fel</string>
+    <string name="no_habit">Inga vanor tillagda</string>
+    <string name="description">Beskrivning</string>
+
+    <string name="list_daily_habits">Lista dagliga vanor</string>
+    <string name="list_weekly_habits">Lista veckovisor</string>
+    <string name="list_monthly_habits">Lista månadsvis</string>
+    <string name="list_yearly_habits">Lista årliga vanor</string>
+    <string name="delete">Ta bort</string>
+    <string name="edit">Redigera</string>
+    <string name="daily_habits">Dagliga vanor</string>
+    <string name="weekly_habits">Veckovisor</string>
+    <string name="monthly_habits">Månadsvisa vanor</string>
+    <string name="yearly_habits">Årliga vanor</string>
+    <string name="habit_name_saved">Vanor %1$s sparade!</string>
+    <string name="fill_habit_description">Du måste skriva en beskrivning</string>
+
+    <string name="habit_deletion_title">Ta bort vana</string>
+    <string name="habit_deletion_message">Är du säker på att du vill ta bort %1$s?</string>
+
+    <string name="habit_completion_title">Fullborda vana</string>
+    <string name="habit_completion_message">Är du säker på att du vill fullborda %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Klicka för att fullborda</string>
+
+    <string name="reset_daily_title">Återställ dagliga vanor</string>
+    <string name="reset_daily_summary">Klicka här för att återställa dagliga vanor</string>
+    <string name="reset_weekly_title">Återställ veckovisor</string>
+    <string name="reset_weekly_summary">Klicka här för att återställa veckovisor</string>
+    <string name="reset_monthly_title">Återställ månadsvisa vanor</string>
+    <string name="reset_monthly_summary">Klicka här för att återställa månadsvisa vanor</string>
+    <string name="reset_yearly_title">Återställ årliga vanor</string>
+    <string name="reset_yearly_summary">Klicka här för att återställa årliga vanor</string>
+
+    <string name="list_daily_title">Lista dagliga vanor</string>
+    <string name="list_daily_summary">Klicka här för att lista dagliga vanor</string>
+    <string name="list_weekly_title">Lista veckovisor</string>
+    <string name="list_weekly_summary">Klicka här för att lista veckovana</string>
+    <string name="list_monthly_title">Lista månatliga vanor</string>
+    <string name="list_monthly_summary">Klicka här för att lista månatliga vanor</string>
+    <string name="list_yearly_title">Lista årliga vanor</string>
+    <string name="list_yearly_summary">Klicka här för att lista årliga vanor</string>
+</resources>

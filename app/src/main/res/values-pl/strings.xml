@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dzień</string>
+    <string name="week">Tydzień</string>
+    <string name="month">Miesiąc</string>
+    <string name="year">Rok</string>
+    <string name="settings">Ustawienia</string>
+
+    <string name="add_habit">Dodaj nawyk</string>
+    <string name="edit_habit">Edytuj nawyk</string>
+    <string name="internal_error">Błąd wewnętrzny</string>
+    <string name="no_habit">Nie dodano jeszcze żadnego nawyku</string>
+    <string name="description">Opis</string>
+
+    <string name="list_daily_habits">Lista nawyków dziennych</string>
+    <string name="list_weekly_habits">Lista nawyków tygodniowych</string>
+    <string name="list_monthly_habits">Lista nawyków miesięcznych</string>
+    <string name="list_yearly_habits">Lista nawyków rocznych</string>
+    <string name="delete">Usuń</string>
+    <string name="edit">Edytuj</string>
+    <string name="daily_habits">Nawyki dziennie</string>
+    <string name="weekly_habits">Nawyki tygodniowo</string>
+    <string name="monthly_habits">Nawyki miesięcznie</string>
+    <string name="yearly_habits">Nawyki rocznie</string>
+    <string name="habit_name_saved">Nawyk %1$s został zapisany!</string>
+    <string name="fill_habit_description">Musisz wpisać opis</string>
+
+    <string name="habit_deletion_title">Usuń nawyk</string>
+    <string name="habit_deletion_message">Czy na pewno chcesz usunąć %1$s?</string>
+
+    <string name="habit_completion_title">Ukończ nawyk</string>
+    <string name="habit_completion_message">Czy na pewno chcesz ukończyć %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Kliknij, aby ukończyć</string>
+
+    <string name="reset_daily_title">Zresetuj nawyki dziennie</string>
+    <string name="reset_daily_summary">Kliknij, aby zresetować nawyki dziennie</string>
+    <string name="reset_weekly_title">Zresetuj nawyki tygodniowo</string>
+    <string name="reset_weekly_summary">Kliknij, aby zresetować nawyki tygodniowo</string>
+    <string name="reset_monthly_title">Zresetuj nawyki miesięcznie</string>
+    <string name="reset_monthly_summary">Kliknij, aby zresetować nawyki miesięcznie</string>
+    <string name="reset_yearly_title">Zresetuj nawyki rocznie</string>
+    <string name="reset_yearly_summary">Kliknij, aby zresetować nawyki rocznie</string>
+
+    <string name="list_daily_title">Lista nawyków dziennych</string>
+    <string name="list_daily_summary">Kliknij, aby wyświetlić listę nawyków dziennych</string>
+    <string name="list_weekly_title">Lista nawyków tygodniowych</string>
+    <string name="list_weekly_summary">Kliknij tutaj, aby wyświetlić listę nawyków tygodniowych</string>
+    <string name="list_monthly_title">Lista nawyków miesięcznych</string>
+    <string name="list_monthly_summary">Kliknij tutaj, aby wyświetlić listę nawyków miesięcznych</string>
+    <string name="list_yearly_title">Lista nawyków rocznych</string>
+    <string name="list_yearly_summary">Kliknij tutaj, aby wyświetlić listę nawyków rocznych</string>
+</resources>

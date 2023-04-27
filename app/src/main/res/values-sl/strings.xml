@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dan</string>
+    <string name="week">Teden</string>
+    <string name="month">Mesec</string>
+    <string name="year">Leto</string>
+    <string name="settings">Nastavitve</string>
+
+    <string name="add_habit">Dodaj navado</string>
+    <string name="edit_habit">Uredi navado</string>
+    <string name="internal_error">Notranja napaka</string>
+    <string name="no_habit">Ni dodanih navad</string>
+    <string name="description">Opis</string>
+
+    <string name="list_daily_habits">Seznam dnevnih navad</string>
+    <string name="list_weekly_habits">Seznam tedenskih navad</string>
+    <string name="list_monthly_habits">Seznam mesečnih navad</string>
+    <string name="list_yearly_habits">Seznam letnih navad</string>
+    <string name="delete">Izbriši</string>
+    <string name="edit">Uredi</string>
+    <string name="daily_habits">Dnevne navade</string>
+    <string name="weekly_habits">Tedenske navade</string>
+    <string name="monthly_habits">Mesečne navade</string>
+    <string name="yearly_habits">Letne navade</string>
+    <string name="habit_name_saved">Navada %1$s je shranjena!</string>
+    <string name="fill_habit_description">Vnesite opis</string>
+
+    <string name="habit_deletion_title">Izbriši navado</string>
+    <string name="habit_deletion_message">Ali ste prepričani, da želite izbrisati %1$s?</string>
+
+    <string name="habit_completion_title">Dokončaj navado</string>
+    <string name="habit_completion_message">Ali ste prepričani, da želite dokončati %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Dotakni se, da dokončaš</string>
+
+    <string name="reset_daily_title">Ponastavi dnevne navade</string>
+    <string name="reset_daily_summary">Kliknite tukaj, da ponastavite dnevne navade</string>
+    <string name="reset_weekly_title">Ponastavi tedenske navade</string>
+    <string name="reset_weekly_summary">Kliknite tukaj, da ponastavite tedenske navade</string>
+    <string name="reset_monthly_title">Ponastavi mesečne navade</string>
+    <string name="reset_monthly_summary">Kliknite tukaj, da ponastavite mesečne navade</string>
+    <string name="reset_yearly_title">Ponastavi letne navade</string>
+    <string name="reset_yearly_summary">Kliknite tukaj, da ponastavite letne navade</string>
+
+    <string name="list_daily_title">Seznam dnevnih navad</string>
+    <string name="list_daily_summary">Kliknite tukaj, da prikažete seznam dnevnih navad</string>
+    <string name="list_weekly_title">Seznam tedenskih navad</string>
+    <string name="list_weekly_summary">Kliknite tukaj, da si ogledate tedenske navade</string>
+    <string name="list_monthly_title">Seznam mesečnih navad</string>
+    <string name="list_monthly_summary">Kliknite tukaj, da si ogledate mesečne navade</string>
+    <string name="list_yearly_title">Seznam letnih navad</string>
+    <string name="list_yearly_summary">Kliknite tukaj, da si ogledate letne navade</string>
+</resources>

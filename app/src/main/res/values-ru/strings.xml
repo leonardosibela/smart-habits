@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">День</string>
+    <string name="week">Неделя</string>
+    <string name="month">Месяц</string>
+    <string name="year">Год</string>
+    <string name="settings">Настройки</string>
+
+    <string name="add_habit">Добавить привычку</string>
+    <string name="edit_habit">Изменить привычку</string>
+    <string name="internal_error">Внутренняя ошибка</string>
+    <string name="no_habit">Привычки не добавлены</string>
+    <string name="description">Описание</string>
+
+    <string name="list_daily_habits">Список ежедневных привычек</string>
+    <string name="list_weekly_habits">Список еженедельных привычек</string>
+    <string name="list_monthly_habits">Список ежемесячных привычек</string>
+    <string name="list_yearly_habits">Список ежегодных привычек</string>
+    <string name="delete">Удалить</string>
+    <string name="edit">Изменить</string>
+    <string name="daily_habits">Ежедневные привычки</string>
+    <string name="weekly_habits">Еженедельные привычки</string>
+    <string name="monthly_habits">Ежемесячные привычки</string>
+    <string name="yearly_habits">Ежегодные привычки</string>
+    <string name="habit_name_saved">привычка %1$s сохранена!</string>
+    <string name="fill_habit_description">Вы должны ввести описание</string>
+
+    <string name="habit_deletion_title">Удаление привычки</string>
+    <string name="habit_deletion_message">Вы действительно хотите удалить %1$s?</string>
+
+    <string name="habit_completion_title">Выполнение привычки</string>
+    <string name="habit_completion_message">Вы действительно хотите выполнить %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Нажмите, чтобы выполнить</string>
+
+    <string name="reset_daily_title">Сброс ежедневных привычек</string>
+    <string name="reset_daily_summary">Нажмите здесь, чтобы сбросить ежедневные привычки</string>
+    <string name="reset_weekly_title">Сброс еженедельных привычек</string>
+    <string name="reset_weekly_summary">Нажмите здесь, чтобы сбросить еженедельные привычки</string>
+    <string name="reset_monthly_title">Сброс ежемесячных привычек</string>
+    <string name="reset_monthly_summary">Нажмите здесь, чтобы сбросить ежемесячные привычки</string>
+    <string name="reset_yearly_title">Сбросить ежегодные привычки</string>
+    <string name="reset_yearly_summary">Нажмите здесь, чтобы сбросить ежегодные привычки</string>
+
+    <string name="list_daily_title">Список ежедневных привычек</string>
+    <string name="list_daily_summary">Нажмите здесь, чтобы посмотреть список ежедневных привычек</string>
+    <string name="list_weekly_title">Список еженедельных привычек</string>
+    <string name="list_weekly_summary">Нажмите здесь, чтобы посмотреть список еженедельных привычек</string>
+    <string name="list_monthly_title">Список ежемесячных привычек</string>
+    <string name="list_monthly_summary">Нажмите здесь, чтобы посмотреть список ежемесячных привычек</string>
+    <string name="list_yearly_title">Список ежегодных привычек</string>
+    <string name="list_yearly_summary">Нажмите здесь, чтобы посмотреть список ежегодных привычек</string>
+</resources>

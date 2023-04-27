@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name" translatable="false">Έξυπνες Συνήθειες</string>
+
+    <string name="day">Ημέρα</string>
+    <string name="week">Εβδομάδα</string>
+    <string name="month">Μήνας</string>
+    <string name="year">Έτος</string>
+    <string name="settings">Ρυθμίσεις</string>
+
+    <string name="add_habit">Προσθήκη συνήθειας</string>
+    <string name="edit_habit">Επεξεργασία συνήθειας</string>
+    <string name="internal_error">Εσωτερικό σφάλμα</string>
+    <string name="no_habit">Δεν έχουν προστεθεί συνήθειες</string>
+    <string name="description">Περιγραφή</string>
+
+    <string name="list_daily_habits">Λίστα καθημερινών συνηθειών</string>
+    <string name="list_weekly_habits">Λίστα εβδομαδιαίων συνηθειών</string>
+    <string name="list_monthly_habits">Λίστα μηνιαίων συνηθειών</string>
+    <string name="list_yearly_habits">Λίστα ετήσιων συνηθειών</string>
+    <string name="delete">Διαγραφή</string>
+    <string name="edit">Επεξεργασία</string>
+    <string name="daily_habits">Καθημερινές συνήθειες</string>
+    <string name="weekly_habits">Εβδομαδιαίες συνήθειες</string>
+    <string name="monthly_habits">Μηνιαίες συνήθειες</string>
+    <string name="yearly_habits">Ετήσιες συνήθειες</string>
+    <string name="habit_name_saved">Η συνήθεια %1$s αποθηκεύτηκε!</string>
+    <string name="fill_habit_description">Πρέπει να εισάγετε μια περιγραφή</string>
+
+    <string name="habit_deletion_title">Διαγραφή συνήθειας</string>
+    <string name="habit_deletion_message">Είστε σίγουρος/η ότι θέλετε να διαγράψετε το %1$s;</string>
+
+    <string name="habit_completion_title">Ολοκλήρωση συνήθειας</string>
+    <string name="habit_completion_message">Είστε σίγουρος/η ότι θέλετε να ολοκληρώσετε το %1$s;</string>
+
+    <string name="habit_tap_to_complete">%1$s. Πατήστε για ολοκλήρωση</string>
+
+    <string name="reset_daily_title">Επαναφορά ημερήσιων συνηθειών</string>
+    <string name="reset_daily_summary">Πατήστε εδώ για επαναφορά ημερήσιων συνηθειών</string>
+    <string name="reset_weekly_title">Επαναφορά εβδομαδιαίων συνηθειών</string>
+    <string name="reset_weekly_summary">Πατήστε εδώ για επαναφορά εβδομαδιαίων συνηθειών</string>
+    <string name="reset_monthly_title">Επαναφορά μηνιαίων συνηθειών</string>
+    <string name="reset_monthly_summary">Πατήστε εδώ για επαναφορά μηνιαίων συνηθειών</string>
+    <string name="reset_yearly_title">Επαναφορά ετήσιων συνηθειών</string>
+    <string name="reset_yearly_summary">Πατήστε εδώ για επαναφορά ετήσιων συνηθειών</string>
+
+    <string name="list_daily_title">Λίστα ημερήσιων συνηθειών</string>
+    <string name="list_daily_summary">Πατήστε εδώ για να εμφανίσετε τις ημερήσιες συνήθειες</string>
+    <string name="list_weekly_title">Λίστα εβδομαδιαίων συνηθειών</string>
+    <string name="list_weekly_summary">Πατήστε εδώ για να εμφανίσετε τις εβδομαδιαίες συνήθειες</string>
+    <string name="list_monthly_title">Λίστα μηνιαίων συνηθειών</string>
+    <string name="list_monthly_summary">Κάντε κλικ εδώ για να αναφέρετε τις μηνιαίες συνήθειες</string>
+    <string name="list_yearly_title">Λίστα ετήσιων συνηθειών</string>
+    <string name="list_yearly_summary">Κάντε κλικ εδώ για να αναφέρετε τις ετήσιες συνήθειες</string>
+</resources>
