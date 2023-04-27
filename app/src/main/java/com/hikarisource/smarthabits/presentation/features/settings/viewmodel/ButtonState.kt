@@ -3,10 +3,10 @@ package com.hikarisource.smarthabits.presentation.features.settings.viewmodel
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-sealed interface DescriptionErrorState : Parcelable
+sealed interface ButtonState : Parcelable
 
 @Parcelize
-object EmptyError : DescriptionErrorState
+object Disable : ButtonState
 
 @Parcelize
-object NoError : DescriptionErrorState
+object Enable : ButtonState
