@@ -100,7 +100,7 @@ dependencies {
     def navigation_testing_version = "2.5.3"
     androidTestImplementation "androidx.navigation:navigation-testing:$navigation_testing_version"
 
-    def fragment_test_version = "1.5.6"
+    def fragment_test_version = "1.5.7"
     debugImplementation "androidx.fragment:fragment-testing:$fragment_test_version"
     debugImplementation "androidx.fragment:fragment-ktx:$fragment_test_version"
 
