@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Deň</string>
+    <string name="week">Týždeň</string>
+    <string name="month">Mesiac</string>
+    <string name="year">Rok</string>
+    <string name="settings">Nastavenia</string>
+
+    <string name="add_habit">Pridať zvyk</string>
+    <string name="edit_habit">Upraviť zvyk</string>
+    <string name="internal_error">Interná chyba</string>
+    <string name="no_habit">Nie sú pridané žiadne zvyky</string>
+    <string name="description">Popis</string>
+
+    <string name="list_daily_habits">Zoznam denných zvykov</string>
+    <string name="list_weekly_habits">Zoznam týždenných zvykov</string>
+    <string name="list_monthly_habits">Zoznam mesačných zvykov</string>
+    <string name="list_yearly_habits">Zoznam ročných zvykov</string>
+    <string name="delete">Odstrániť</string>
+    <string name="edit">Upraviť</string>
+    <string name="daily_habits">Denné zvyky</string>
+    <string name="weekly_habits">Týždenné zvyky</string>
+    <string name="monthly_habits">Mesačné zvyky</string>
+    <string name="yearly_habits">Ročné zvyky</string>
+    <string name="habit_name_saved">zvyk %1$s uložený!</string>
+    <string name="fill_habit_description">Musíte zadať popis</string>
+
+    <string name="habit_deletion_title">Odstrániť zvyk</string>
+    <string name="habit_deletion_message">Naozaj chcete odstrániť %1$s?</string>
+
+    <string name="habit_completion_title">Dokončiť zvyk</string>
+    <string name="habit_completion_message">Naozaj chcete dokončiť %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Kliknite pre dokončenie</string>
+
+    <string name="reset_daily_title">Resetovať denné zvyky</string>
+    <string name="reset_daily_summary">Kliknite sem pre resetovanie denných zvykov</string>
+    <string name="reset_weekly_title">Resetovať týždenné zvyky</string>
+    <string name="reset_weekly_summary">Kliknite sem pre resetovanie týždenných zvykov</string>
+    <string name="reset_monthly_title">Resetovať mesačné zvyky</string>
+    <string name="reset_monthly_summary">Kliknite sem pre resetovanie mesačných zvykov</string>
+    <string name="reset_yearly_title">Resetovať ročné zvyky</string>
+    <string name="reset_yearly_summary">Kliknite sem pre resetovanie ročných zvykov</string>
+
+    <string name="list_daily_title">Zoznam denných zvykov</string>
+    <string name="list_daily_summary">Kliknite sem pre zobrazenie zoznamu denných zvykov</string>
+    <string name="list_weekly_title">Zoznam týždenných zvykov</string>
+    <string name="list_weekly_summary">Kliknite sem pre zobrazenie zoznamu týždenných zvykov</string>
+    <string name="list_monthly_title">Zoznam mesačných návykov</string>
+    <string name="list_monthly_summary">Kliknite sem pre zobrazenie zoznamu mesačných návykov</string>
+    <string name="list_yearly_title">Zoznam ročných návykov</string>
+    <string name="list_yearly_summary">Kliknite sem pre zobrazenie zoznamu ročných návykov</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Päivä</string>
+    <string name="week">Viikko</string>
+    <string name="month">Kuukausi</string>
+    <string name="year">Vuosi</string>
+    <string name="settings">Asetukset</string>
+
+    <string name="add_habit">Lisää tapa</string>
+    <string name="edit_habit">Muokkaa tapaa</string>
+    <string name="internal_error">Sisäinen virhe</string>
+    <string name="no_habit">Ei lisättyjä tapoja</string>
+    <string name="description">Kuvaus</string>
+
+    <string name="list_daily_habits">Listaa päivittäiset tavat</string>
+    <string name="list_weekly_habits">Listaa viikottaiset tavat</string>
+    <string name="list_monthly_habits">Listaa kuukausittaiset tavat</string>
+    <string name="list_yearly_habits">Listaa vuosittaiset tavat</string>
+    <string name="delete">Poista</string>
+    <string name="edit">Muokkaa</string>
+    <string name="daily_habits">Päivittäiset tavat</string>
+    <string name="weekly_habits">Viikottaiset tavat</string>
+    <string name="monthly_habits">Kuukausittaiset tavat</string>
+    <string name="yearly_habits">Vuosittaiset tavat</string>
+    <string name="habit_name_saved">Tapa %1$s tallennettu!</string>
+    <string name="fill_habit_description">Sinun täytyy kirjoittaa kuvaus</string>
+
+    <string name="habit_deletion_title">Poista tapa</string>
+    <string name="habit_deletion_message">Oletko varma, että haluat poistaa %1$s?</string>
+
+    <string name="habit_completion_title">Tapa suoritettu</string>
+    <string name="habit_completion_message">Oletko varma, että haluat merkitä %1$s suoritetuksi?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Napauta suorittaaksesi</string>
+
+    <string name="reset_daily_title">Nollaa päivittäiset tavat</string>
+    <string name="reset_daily_summary">Napauta nollataksesi päivittäiset tavat</string>
+    <string name="reset_weekly_title">Nollaa viikottaiset tavat</string>
+    <string name="reset_weekly_summary">Napauta nollataksesi viikottaiset tavat</string>
+    <string name="reset_monthly_title">Nollaa kuukausittaiset tavat</string>
+    <string name="reset_monthly_summary">Napauta nollataksesi kuukausittaiset tavat</string>
+    <string name="reset_yearly_title">Nollaa vuosittaiset tavat</string>
+    <string name="reset_yearly_summary">Napauta nollataksesi vuosittaiset tavat</string>
+
+    <string name="list_daily_title">Listaa päivittäiset tavat</string>
+    <string name="list_daily_summary">Näytä päivittäiset tavat klikkaamalla tästä</string>
+    <string name="list_weekly_title">Näytä viikottaiset tavat</string>
+    <string name="list_weekly_summary">Näytä viikottaiset tavat klikkaamalla tästä</string>
+    <string name="list_monthly_title">Näytä kuukausittaiset tavat</string>
+    <string name="list_monthly_summary">Näytä kuukausittaiset tavat klikkaamalla tästä</string>
+    <string name="list_yearly_title">Näytä vuosittaiset tavat</string>
+    <string name="list_yearly_summary">Näytä vuosittaiset tavat klikkaamalla tästä</string>
+</resources>

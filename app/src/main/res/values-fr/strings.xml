@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Jour</string>
+    <string name="week">Semaine</string>
+    <string name="month">Mois</string>
+    <string name="year">Année</string>
+    <string name="settings">Paramètres</string>
+
+    <string name="add_habit">Ajouter une habitude</string>
+    <string name="edit_habit">Modifier l\'habitude</string>
+    <string name="internal_error">Erreur interne</string>
+    <string name="no_habit">Aucune habitude ajoutée</string>
+    <string name="description">Description</string>
+
+    <string name="list_daily_habits">Liste des habitudes quotidiennes</string>
+    <string name="list_weekly_habits">Liste des habitudes hebdomadaires</string>
+    <string name="list_monthly_habits">Liste des habitudes mensuelles</string>
+    <string name="list_yearly_habits">Liste des habitudes annuelles</string>
+    <string name="delete">Supprimer</string>
+    <string name="edit">Modifier</string>
+    <string name="daily_habits">Habitudes quotidiennes</string>
+    <string name="weekly_habits">Habitudes hebdomadaires</string>
+    <string name="monthly_habits">Habitudes mensuelles</string>
+    <string name="yearly_habits">Habitudes annuelles</string>
+    <string name="habit_name_saved">L\'habitude %1$s a été enregistrée !</string>
+    <string name="fill_habit_description">Vous devez taper une description</string>
+
+    <string name="habit_deletion_title">Supprimer l\'habitude</string>
+    <string name="habit_deletion_message">Êtes-vous sûr de vouloir supprimer %1$s ?</string>
+
+    <string name="habit_completion_title">Terminer l\'habitude</string>
+    <string name="habit_completion_message">Êtes-vous sûr de vouloir terminer %1$s ?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Tapez pour terminer</string>
+
+    <string name="reset_daily_title">Réinitialiser les habitudes quotidiennes</string>
+    <string name="reset_daily_summary">Cliquez ici pour réinitialiser les habitudes quotidiennes</string>
+    <string name="reset_weekly_title">Réinitialiser les habitudes hebdomadaires</string>
+    <string name="reset_weekly_summary">Cliquez ici pour réinitialiser les habitudes hebdomadaires</string>
+    <string name="reset_monthly_title">Réinitialiser les habitudes mensuelles</string>
+    <string name="reset_monthly_summary">Cliquez ici pour réinitialiser les habitudes mensuelles</string>
+    <string name="reset_yearly_title">Réinitialiser les habitudes annuelles</string>
+    <string name="reset_yearly_summary">Cliquez ici pour réinitialiser les habitudes annuelles</string>
+
+    <string name="list_daily_title">Liste des habitudes quotidiennes</string>
+    <string name="list_daily_summary">Cliquez ici pour lister les habitudes quotidiennes</string>
+    <string name="list_weekly_title">Liste des habitudes hebdomadaires</string>
+    <string name="list_weekly_summary">Cliquez ici pour lister les habitudes hebdomadaires</string>
+    <string name="list_monthly_title">Liste des habitudes mensuelles</string>
+    <string name="list_monthly_summary">Cliquez ici pour afficher la liste des habitudes mensuelles</string>
+    <string name="list_yearly_title">Liste des habitudes annuelles</string>
+    <string name="list_yearly_summary">Cliquez ici pour afficher la liste des habitudes annuelles</string>
+</resources>

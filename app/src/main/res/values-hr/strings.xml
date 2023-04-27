@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Dan</string>
+    <string name="week">Tjedan</string>
+    <string name="month">Mjesec</string>
+    <string name="year">Godina</string>
+    <string name="settings">Postavke</string>
+
+    <string name="add_habit">Dodaj naviku</string>
+    <string name="edit_habit">Uredi naviku</string>
+    <string name="internal_error">Unutarnja greška</string>
+    <string name="no_habit">Nema dodanih navika</string>
+    <string name="description">Opis</string>
+
+    <string name="list_daily_habits">Popis svakodnevnih navika</string>
+    <string name="list_weekly_habits">Popis tjednih navika</string>
+    <string name="list_monthly_habits">Popis mjesečnih navika</string>
+    <string name="list_yearly_habits">Popis godišnjih navika</string>
+    <string name="delete">Izbriši</string>
+    <string name="edit">Uredi</string>
+    <string name="daily_habits">Svakodnevne navike</string>
+    <string name="weekly_habits">Tjedne navike</string>
+    <string name="monthly_habits">Mjesečne navike</string>
+    <string name="yearly_habits">Godišnje navike</string>
+    <string name="habit_name_saved">Navika %1$s spremljena!</string>
+    <string name="fill_habit_description">Morate unijeti opis navike</string>
+
+    <string name="habit_deletion_title">Izbriši naviku</string>
+    <string name="habit_deletion_message">Jeste li sigurni da želite izbrisati naviku %1$s?</string>
+
+    <string name="habit_completion_title">Završi naviku</string>
+    <string name="habit_completion_message">Jeste li sigurni da želite završiti naviku %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Dodirnite za dovršetak</string>
+
+    <string name="reset_daily_title">Resetiraj svakodnevne navike</string>
+    <string name="reset_daily_summary">Kliknite ovdje za resetiranje svakodnevnih navika</string>
+    <string name="reset_weekly_title">Resetiraj tjedne navike</string>
+    <string name="reset_weekly_summary">Kliknite ovdje za resetiranje tjednih navika</string>
+    <string name="reset_monthly_title">Resetiraj mjesečne navike</string>
+    <string name="reset_monthly_summary">Kliknite ovdje za resetiranje mjesečnih navika</string>
+    <string name="reset_yearly_title">Resetiraj godišnje navike</string>
+    <string name="reset_yearly_summary">Kliknite ovdje za resetiranje godišnjih navika</string>
+
+    <string name="list_daily_title">Popis svakodnevnih navika</string>
+    <string name="list_daily_summary">Klikni ovdje da bi vidio/la dnevne navike</string>
+    <string name="list_weekly_title">Prikaži tjedne navike</string>
+    <string name="list_weekly_summary">Klikni ovdje da bi vidio/la tjedne navike</string>
+    <string name="list_monthly_title">Prikaži mjesečne navike</string>
+    <string name="list_monthly_summary">Klikni ovdje da bi vidio/la mjesečne navike</string>
+    <string name="list_yearly_title">Prikaži godišnje navike</string>
+    <string name="list_yearly_summary">Klikni ovdje da bi vidio/la godišnje navike</string>
+</resources>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Tag</string>
+    <string name="week">Woche</string>
+    <string name="month">Monat</string>
+    <string name="year">Jahr</string>
+    <string name="settings">Einstellungen</string>
+
+    <string name="add_habit">Gewohnheit hinzufügen</string>
+    <string name="edit_habit">Gewohnheit bearbeiten</string>
+    <string name="internal_error">Interner Fehler</string>
+    <string name="no_habit">Keine Gewohnheiten hinzugefügt</string>
+    <string name="description">Beschreibung</string>
+
+    <string name="list_daily_habits">Tägliche Gewohnheiten auflisten</string>
+    <string name="list_weekly_habits">Wöchentliche Gewohnheiten auflisten</string>
+    <string name="list_monthly_habits">Monatliche Gewohnheiten auflisten</string>
+    <string name="list_yearly_habits">Jährliche Gewohnheiten auflisten</string>
+    <string name="delete">Löschen</string>
+    <string name="edit">Bearbeiten</string>
+    <string name="daily_habits">Tägliche Gewohnheiten</string>
+    <string name="weekly_habits">Wöchentliche Gewohnheiten</string>
+    <string name="monthly_habits">Monatliche Gewohnheiten</string>
+    <string name="yearly_habits">Jährliche Gewohnheiten</string>
+    <string name="habit_name_saved">Gewohnheit %1$s gespeichert!</string>
+    <string name="fill_habit_description">Sie müssen eine Beschreibung eingeben</string>
+
+    <string name="habit_deletion_title">Gewohnheit löschen</string>
+    <string name="habit_deletion_message">Sind Sie sicher, dass Sie %1$s löschen möchten?</string>
+
+    <string name="habit_completion_title">Gewohnheit abschließen</string>
+    <string name="habit_completion_message">Sind Sie sicher, dass Sie %1$s abschließen möchten?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Tippen zum Abschließen</string>
+
+    <string name="reset_daily_title">Tägliche Gewohnheiten zurücksetzen</string>
+    <string name="reset_daily_summary">Klicken Sie hier, um die täglichen Gewohnheiten zurückzusetzen</string>
+    <string name="reset_weekly_title">Wöchentliche Gewohnheiten zurücksetzen</string>
+    <string name="reset_weekly_summary">Klicken Sie hier, um die wöchentlichen Gewohnheiten zurückzusetzen</string>
+    <string name="reset_monthly_title">Monatliche Gewohnheiten zurücksetzen</string>
+    <string name="reset_monthly_summary">Klicken Sie hier, um die monatlichen Gewohnheiten zurückzusetzen</string>
+    <string name="reset_yearly_title">Jährliche Gewohnheiten zurücksetzen</string>
+    <string name="reset_yearly_summary">Klicken Sie hier, um die jährlichen Gewohnheiten zurückzusetzen</string>
+
+    <string name="list_daily_title">Tägliche Gewohnheiten auflisten</string>
+    <string name="list_daily_summary">Klicken Sie hier, um tägliche Gewohnheiten aufzulisten</string>
+    <string name="list_weekly_title">Liste wöchentlicher Gewohnheiten</string>
+    <string name="list_weekly_summary">Klicken Sie hier, um wöchentliche Gewohnheiten aufzulisten</string>
+    <string name="list_monthly_title">Liste monatlicher Gewohnheiten</string>
+    <string name="list_monthly_summary">Klicken Sie hier, um monatliche Gewohnheiten aufzulisten</string>
+    <string name="list_yearly_title">Liste jährlicher Gewohnheiten</string>
+    <string name="list_yearly_summary">Klicken Sie hier, um jährliche Gewohnheiten aufzulisten</string>
+</resources>

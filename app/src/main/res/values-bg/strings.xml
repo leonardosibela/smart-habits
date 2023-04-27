@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="day">Ден</string>
+    <string name="week">Седмица</string>
+    <string name="month">Месец</string>
+    <string name="year">Година</string>
+    <string name="settings">Настройки</string>
+
+    <string name="add_habit">Добави навик</string>
+    <string name="edit_habit">Редактирай навик</string>
+    <string name="internal_error">Вътрешна грешка</string>
+    <string name="no_habit">Не са добавени навици</string>
+    <string name="description">Описание</string>
+
+    <string name="list_daily_habits">Списък с дневни навици</string>
+    <string name="list_weekly_habits">Списък със седмични навици</string>
+    <string name="list_monthly_habits">Списък с месечни навици</string>
+    <string name="list_yearly_habits">Списък с годишни навици</string>
+    <string name="delete">Изтрий</string>
+    <string name="edit">Редактирай</string>
+    <string name="daily_habits">Дневни навици</string>
+    <string name="weekly_habits">Седмични навици</string>
+    <string name="monthly_habits">Месечни навици</string>
+    <string name="yearly_habits">Годишни навици</string>
+    <string name="habit_name_saved">Навикът %1$s е запазен!</string>
+    <string name="fill_habit_description">Трябва да въведете описание</string>
+
+    <string name="habit_deletion_title">Изтрий навика</string>
+    <string name="habit_deletion_message">Наистина ли искате да изтриете %1$s?</string>
+
+    <string name="habit_completion_title">Завърши навика</string>
+    <string name="habit_completion_message">Наистина ли искате да завършите %1$s?</string>
+
+    <string name="habit_tap_to_complete">%1$s. Докоснете, за да го завършите</string>
+
+    <string name="reset_daily_title">Нулирайте дневните навици</string>
+    <string name="reset_daily_summary">Кликнете тук, за да нулирате дневните навици</string>
+    <string name="reset_weekly_title">Нулирайте седмичните навици</string>
+    <string name="reset_weekly_summary">Кликнете тук, за да нулирате седмичните навици</string>
+    <string name="reset_monthly_title">Нулирайте месечните навици</string>
+    <string name="reset_monthly_summary">Натиснете тук, за да нулирате месечните навици</string>
+    <string name="reset_yearly_title">Нулиране на годишните навици</string>
+    <string name="reset_yearly_summary">Натиснете тук, за да нулирате годишните навици</string>
+
+    <string name="list_daily_title">Списък с дневни навици</string>
+    <string name="list_daily_summary">Натиснете тук, за да изброите дневните навици</string>
+    <string name="list_weekly_title">Списък със седмични навици</string>
+    <string name="list_weekly_summary">Натиснете тук, за да изброите седмичните навици</string>
+    <string name="list_monthly_title">Списък с месечни навици</string>
+    <string name="list_monthly_summary">Натиснете тук, за да изброите месечните навици</string>
+    <string name="list_yearly_title">Списък с годишни навици</string>
+    <string name="list_yearly_summary">Натиснете тук, за да изброите годишните навици</string>
+</resources>
