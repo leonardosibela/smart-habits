@@ -18,22 +18,20 @@ class AddPeriodicHabitViewModel(
         const val DESCRIPTION_STATE_KEY = "description_state_key"
     }
 
-    val descriptionErrorState = savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, NoError)
+    val descriptionErrorState = savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, Disable)
 
     fun addHabit(description: String, periodicity: Periodicity) = viewModelScope.launch {
-        if (description.isBlank()) {
-            savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError
-        } else {
-            addHabitUseCase(description, periodicity)
-            savedStateHandle[DESCRIPTION_STATE_KEY] = NoError
-        }
+        addHabitUseCase(
+            description = description,
+            periodicity = periodicity
+        )
     }
 
     fun onDescriptionChanged(description: String) {
         savedStateHandle[DESCRIPTION_STATE_KEY] = if (description.isBlank()) {
-            EmptyError
+            Disable
         } else {
-            NoError
+            Enable
         }
     }
 }

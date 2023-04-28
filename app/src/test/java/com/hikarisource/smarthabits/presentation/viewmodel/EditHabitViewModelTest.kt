@@ -2,10 +2,10 @@ package com.hikarisource.smarthabits.presentation.viewmodel
 
 import androidx.lifecycle.SavedStateHandle
 import com.hikarisource.smarthabits.domain.usecase.EditHabitUseCase
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Disable
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel.Companion.DESCRIPTION_STATE_KEY
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EmptyError
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.NoError
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Enable
 import com.hikarisource.smarthabits.util.CoroutineTestRule
 import com.hikarisource.smarthabits.util.TestData
 import com.hikarisource.smarthabits.util.TestData.FIRST_DESCRIPTION
@@ -61,7 +61,7 @@ class EditHabitViewModelTest {
 
         editHabitViewModel.editHabit(habit, description)
 
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError }
+        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = Disable }
         coVerify(exactly = 0) { editHabitUseCase.invoke(habit, description) }
     }
 
@@ -81,7 +81,7 @@ class EditHabitViewModelTest {
 
         editHabitViewModel.onDescriptionChanged(description)
 
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError }
+        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = Disable }
     }
 
     @Test
@@ -90,6 +90,6 @@ class EditHabitViewModelTest {
 
         editHabitViewModel.onDescriptionChanged(description)
 
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = NoError }
+        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = Enable }
     }
 }

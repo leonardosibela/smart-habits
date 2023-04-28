@@ -11,10 +11,10 @@ import com.hikarisource.smarthabits.R
 import com.hikarisource.smarthabits.databinding.FragmentEditHabitBinding
 import com.hikarisource.smarthabits.presentation.extensions.doOnTextChanged
 import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.DescriptionErrorState
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.ButtonState
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Disable
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EditHabitViewModel
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EmptyError
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.NoError
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Enable
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -48,10 +48,10 @@ class EditHabitFragment : Fragment() {
         viewModel.descriptionErrorState.collectLatest(::onDescriptionErrorStateChanged)
     }
 
-    private fun onDescriptionErrorStateChanged(descriptionErrorState: DescriptionErrorState) {
-        binding.descriptionInputLayout.error = when (descriptionErrorState) {
-            EmptyError -> getString(R.string.fill_habit_description)
-            NoError -> ""
+    private fun onDescriptionErrorStateChanged(buttonState: ButtonState) {
+        binding.descriptionInputLayout.error = when (buttonState) {
+            Disable -> getString(R.string.fill_habit_description)
+            Enable -> ""
         }
     }
 

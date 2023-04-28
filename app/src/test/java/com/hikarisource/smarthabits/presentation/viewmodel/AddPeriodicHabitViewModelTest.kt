@@ -4,8 +4,8 @@ import androidx.lifecycle.SavedStateHandle
 import com.hikarisource.smarthabits.domain.usecase.AddHabitUseCase
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel.Companion.DESCRIPTION_STATE_KEY
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EmptyError
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.NoError
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Disable
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Enable
 import com.hikarisource.smarthabits.util.CoroutineTestRule
 import com.hikarisource.smarthabits.util.TestData.BLANK_DESCRIPTION
 import com.hikarisource.smarthabits.util.TestData.DAILY_PERIODICITY
@@ -44,23 +44,12 @@ class AddPeriodicHabitViewModelTest {
     }
 
     @Test
-    fun `GIVEN description is blank WHEN addHabit called THEN addHabitUseCase must not be called`() {
-        val description = BLANK_DESCRIPTION
-
-        addPeriodicHabitViewModel.addHabit(description, DAILY_PERIODICITY)
-
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError }
-        coVerify(exactly = 0) { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY) }
-    }
-
-    @Test
-    fun `GIVEN description not blank WHEN addHabit called THEN addHabitUseCase must be called and NoError must be set`() {
+    fun `GIVEN description WHEN addHabit called THEN addHabitUseCase must be called`() {
         val description = FIRST_DESCRIPTION
 
         addPeriodicHabitViewModel.addHabit(description, DAILY_PERIODICITY)
 
         coVerify(exactly = 1) { addHabitUseCase.invoke(FIRST_DESCRIPTION, DAILY_PERIODICITY) }
-        verify(exactly = 1) { savedStateHandle[DESCRIPTION_STATE_KEY] = NoError }
     }
 
     @Test
@@ -69,7 +58,7 @@ class AddPeriodicHabitViewModelTest {
 
         addPeriodicHabitViewModel.onDescriptionChanged(description)
 
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError }
+        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = Disable }
     }
 
     @Test
@@ -78,6 +67,6 @@ class AddPeriodicHabitViewModelTest {
 
         addPeriodicHabitViewModel.onDescriptionChanged(description)
 
-        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = NoError }
+        verify { savedStateHandle[DESCRIPTION_STATE_KEY] = Enable }
     }
 }

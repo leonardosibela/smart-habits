@@ -20,11 +20,11 @@ class EditHabitViewModel(
     }
 
     val descriptionErrorState =
-        savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, NoError)
+        savedStateHandle.getStateFlow(DESCRIPTION_STATE_KEY, Enable)
 
     fun editHabit(habit: Habit, newDescription: String) = CoroutineScope(Dispatchers.IO).launch {
         if (newDescription.isBlank()) {
-            savedStateHandle[DESCRIPTION_STATE_KEY] = EmptyError
+            savedStateHandle[DESCRIPTION_STATE_KEY] = Disable
         } else {
             editHabitUseCase(habit, newDescription)
         }
@@ -32,9 +32,9 @@ class EditHabitViewModel(
 
     fun onDescriptionChanged(description: String) {
         savedStateHandle[DESCRIPTION_STATE_KEY] = if (description.isBlank()) {
-            EmptyError
+            Disable
         } else {
-            NoError
+            Enable
         }
     }
 }

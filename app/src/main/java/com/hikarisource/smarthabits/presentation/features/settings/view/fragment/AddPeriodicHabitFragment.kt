@@ -12,9 +12,9 @@ import com.hikarisource.smarthabits.databinding.FragmentAddPeriodicHabitBinding
 import com.hikarisource.smarthabits.presentation.extensions.doOnTextChanged
 import com.hikarisource.smarthabits.presentation.extensions.launchWhenCreated
 import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.AddPeriodicHabitViewModel
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.DescriptionErrorState
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.EmptyError
-import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.NoError
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.ButtonState
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Disable
+import com.hikarisource.smarthabits.presentation.features.settings.viewmodel.Enable
 import kotlinx.coroutines.flow.collectLatest
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -52,20 +52,16 @@ class AddPeriodicHabitFragment : Fragment() {
         viewModel.descriptionErrorState.collectLatest(::onDescriptionErrorStateChanged)
     }
 
-    private fun onDescriptionErrorStateChanged(descriptionErrorState: DescriptionErrorState) {
-        binding.descriptionInputLayout.error = when (descriptionErrorState) {
-            EmptyError -> getString(R.string.fill_habit_description)
-            NoError -> ""
+    private fun onDescriptionErrorStateChanged(buttonState: ButtonState) = binding.run {
+        addHabitButton.isEnabled = when (buttonState) {
+            Disable -> false
+            Enable -> true
         }
     }
 
     private fun setupListeners() = with(binding) {
-        descriptionInput.doOnTextChanged(::onDescriptionChanged)
+        descriptionInput.doOnTextChanged(viewModel::onDescriptionChanged)
         addHabitButton.setOnClickListener { onAddHabitClicked() }
-    }
-
-    private fun onDescriptionChanged(description: String) {
-        viewModel.onDescriptionChanged(description)
     }
 
     private fun onAddHabitClicked() {
